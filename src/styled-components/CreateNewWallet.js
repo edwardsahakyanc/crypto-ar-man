@@ -4,10 +4,9 @@ import collect from "../assets/collect.png"
 import {NavLink} from "react-router-dom";
 
 export const ButtonWrapper = styled.button`
-  max-width: 321px;
   width:100%;
   margin: 0 auto;
-  height: 62px;
+  height: 106px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 -4px 0 #161616;
   border-radius: 10px;
   background-image: linear-gradient(180deg, #2e2e2e 0%, #1e1e1e 100%);
@@ -26,7 +25,6 @@ export const ButtonWrapper = styled.button`
   line-height: normal;
   padding-left:12px;
   padding-right:25px;
-  margin-bottom: 25px;
   @media(max-width: 374px) {
   padding-left:5px;
         padding-right:10px
@@ -57,17 +55,17 @@ const CardIcon = styled.div`
 const NavBtn = styled(NavLink)`
    text-decoration: none;
 `
-const WalletCollection = () => {
+const CreateNewWallet = () => {
     return (
-        <NavBtn to="/connected-wallets">
+        <NavBtn to="/create-new-wallet/step1">
             <ButtonWrapper>
                 <CardIcon>
                     <img src={collect} alt="icon"/>
                 </CardIcon>
-                Wallet Connections
+                Connect New Wallet
             </ButtonWrapper>
         </NavBtn>
     )
 }
 
-export default WalletCollection
+export default CreateNewWallet

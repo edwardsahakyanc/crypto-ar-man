@@ -12,15 +12,15 @@ function App() {
       <div className="w-100">
           <Navbar/>
           <Switch>
-              <Route path="/">
+              <Route exact path="/">
                   <HomePage/>
+                  <Footer/>
               </Route>
-              <Route path="/conncted-wallets">
+              <Route path="/connected-wallets">
                   <ConnectedWallets/>
               </Route>
           </Switch>
       </div>
-      <Footer/>
     </div>
   );
 }
