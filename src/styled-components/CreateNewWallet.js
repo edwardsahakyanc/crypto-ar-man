@@ -1,7 +1,8 @@
 import styled from "styled-components";
-import circle from "../assets/circle.png";
-import collect from "../assets/collect.png"
+import circle from "../assets/circle.svg";
+import pin from "../assets/pin.svg"
 import {NavLink} from "react-router-dom";
+import React from "react";
 
 export const ButtonWrapper = styled.button`
   width:100%;
@@ -15,7 +16,7 @@ export const ButtonWrapper = styled.button`
   cursor: pointer;
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  justify-content: center;
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   color: #eaeaea;
   font-size: 24px;
@@ -23,12 +24,13 @@ export const ButtonWrapper = styled.button`
   font-style: normal;
   letter-spacing: normal;
   line-height: normal;
-  padding-left:12px;
+  padding-left:65px;
   padding-right:25px;
+  position:relative;
   @media(max-width: 374px) {
-  padding-left:5px;
-        padding-right:10px
-      }
+    padding-left: 50px;
+    padding-right:10px
+  }
 `;
 const CardIcon = styled.div`
   width: 47px;
@@ -41,28 +43,38 @@ const CardIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  position: absolute;
+  top: 50%;
+  left: 12px;
+  transform: translateY(-50%);
   @media(max-width: 374px) {
-    width: 37px;
-    height: 37px;
+    width: 35px;
+    height: 35px;
+    left: 8px;
     img{
       margin-top: 5px;
       width: 19px
     }
   }
 `;
+const ButtonText = styled.p`
+  margin-top: 0;
+  margin-bottom: 0;
+  text-align:left;
+`;
 
 
 const NavBtn = styled(NavLink)`
    text-decoration: none;
 `
-const CreateNewWallet = () => {
+const CreateNewWallet = ({text, pathTo}) => {
     return (
-        <NavBtn to="/create-new-wallet/step1">
+        <NavBtn to={pathTo}>
             <ButtonWrapper>
                 <CardIcon>
-                    <img src={collect} alt="icon"/>
+                    <img src={pin} alt="icon"/>
                 </CardIcon>
-                Connect New Wallet
+                <ButtonText>{text}</ButtonText>
             </ButtonWrapper>
         </NavBtn>
     )

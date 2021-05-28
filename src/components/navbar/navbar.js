@@ -11,7 +11,7 @@ const Navbar = () => {
             <Row className="justify-between">
                 <Row className="items-center">
                     <Logo/>
-                    <Link>
+                    <Link to="/">
                         Home
                     </Link>
                 </Row>

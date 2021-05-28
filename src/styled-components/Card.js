@@ -1,6 +1,6 @@
 import React from 'react'
 import styled from "styled-components";
-import circle from "../assets/circle.png";
+import circle from "../assets/circle.svg";
 
 
 const CardWrapper = styled.div`
@@ -46,6 +46,11 @@ const CardIcon = styled.div`
   display: flex;
   align-items: center;
   justify-content: center;
+  img{
+   width: 24px;
+   height: 24px;
+   object-fit: scale-down;
+  }
   @media(max-width: 374px) {
    width: 39px;
   height: 39px;

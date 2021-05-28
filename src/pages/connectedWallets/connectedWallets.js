@@ -13,9 +13,14 @@ const ConnectedWalletsContainer = styled.div`
   border-radius: 10px;
   background-color: #151414;
   overflow: hidden;
+  display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    justify-content: stretch;
 `;
 const WalletsContainer = styled.div`
     max-height: 363px;
+    height: 100%;
     overflow-y: auto;
     padding: 22px 0;
 `;
@@ -141,7 +146,9 @@ const ConnectedWallets = () => {
                         </WalletLink>
                     </Wallet>
                 </WalletsContainer>
-                <CreateNewWallet/>
+                <CreateNewWallet
+                    text="Connect New Wallet"
+                    pathTo="/create-new-wallet/step1"/>
             </ConnectedWalletsContainer>
         </Container>
     )

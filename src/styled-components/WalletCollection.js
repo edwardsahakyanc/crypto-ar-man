@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import circle from "../assets/circle.png";
-import collect from "../assets/collect.png"
+import circle from "../assets/circle.svg";
+import pin from "../assets/pin.svg"
 import {NavLink} from "react-router-dom";
 
 export const ButtonWrapper = styled.button`
@@ -56,13 +56,14 @@ const CardIcon = styled.div`
 
 const NavBtn = styled(NavLink)`
    text-decoration: none;
-`
+`;
+
 const WalletCollection = () => {
     return (
         <NavBtn to="/connected-wallets">
             <ButtonWrapper>
                 <CardIcon>
-                    <img src={collect} alt="icon"/>
+                    <img src={pin} alt="icon"/>
                 </CardIcon>
                 Wallet Connections
             </ButtonWrapper>

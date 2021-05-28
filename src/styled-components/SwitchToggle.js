@@ -1,7 +1,7 @@
 import React from "react"
 import styled from "styled-components";
-import sun from "../assets/sun.png";
-import moon from "../assets/moon.png";
+import sun from "../assets/sun.svg";
+import moon from "../assets/moon.svg";
 
 const Switch = styled.div`
     display: flex;
@@ -37,6 +37,9 @@ const RadioBoxLabel = styled.label`
   border-radius: 100px;
   background: transparent;
   cursor: pointer;
+  img{
+    height: 28px;
+  }
   @media(max-width: 374px){
         img{
         width: 25px;

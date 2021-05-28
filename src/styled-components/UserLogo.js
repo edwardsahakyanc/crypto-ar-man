@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import userImg from "../assets/Oval.png"
+import userImg from "../assets/user.svg"
 
 export const UserLogo = styled.div`
   width: 36px;
