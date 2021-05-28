@@ -10,7 +10,7 @@ import {CardsWrapper} from "../../styled-components/CardsWrapper";
 import Card from "../../styled-components/Card";
 import glass from "../../assets/glass.svg";
 import diamond from "../../assets/diamond.svg";
-import partEmoji from "../../assets/party-emoji.svg";
+import partEmoji from "../../assets/emoji.svg";
 import frame from "../../assets/frame.svg";
 import WalletCollection from "../../styled-components/WalletCollection";
 
