@@ -1,32 +1,20 @@
 import React from "react";
-import './App.css';
-import Navbar from "./components/navbar/navbar";
-import HomePage from "./pages/homePage/homePage";
-import Footer from "./components/footer/footer";
+import './App.scss';
 import {Route, Switch} from "react-router-dom";
-import ConnectedWallets from "./pages/connectedWallets/connectedWallets";
-import ConnectNewWallet from "./pages/connectNewWallet/connectNewWallet";
+import ExploreGalleries from "./exploreGalleries";
+import DropMagnet from "./dropMagnet";
 
 function App() {
   return (
     <div className="App">
-      <div className="app-content">
-          <Navbar/>
-          <Switch>
-              <Route exact path="/">
-                  <div className="homepage">
-                      <HomePage/>
-                      <Footer/>
-                  </div>
-              </Route>
-              <Route path="/connected-wallets">
-                  <ConnectedWallets/>
-              </Route>
-              <Route path="/create-new-wallet">
-                  <ConnectNewWallet/>
-              </Route>
-          </Switch>
-      </div>
+        <Switch>
+            <Route path="/explore-galleries">
+                <ExploreGalleries/>
+            </Route>
+            <Route path="/drop-magnet">
+                <DropMagnet/>
+            </Route>
+        </Switch>
     </div>
   );
 }

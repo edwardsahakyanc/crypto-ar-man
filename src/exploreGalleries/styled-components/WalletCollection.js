@@ -60,7 +60,7 @@ const NavBtn = styled(NavLink)`
 
 const WalletCollection = () => {
     return (
-        <NavBtn to="/connected-wallets">
+        <NavBtn to="/explore-galleries/connected-wallets">
             <ButtonWrapper>
                 <CardIcon>
                     <img src={pin} alt="icon"/>
