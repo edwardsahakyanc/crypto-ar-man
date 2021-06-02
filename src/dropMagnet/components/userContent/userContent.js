@@ -34,6 +34,9 @@ const UserName = styled.p`
   line-height: normal;
   text-align: center;
   margin: 0 16px;
+  @media(max-width: 500px){
+    font-size: 20px;
+  }
 `;
 const PayWrapper = styled.div`
   width: 52px;
@@ -52,6 +55,11 @@ const PayWrapper = styled.div`
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
+  @media(max-width: 500px){
+  width: 44px;
+  height: 44px;
+    font-size: 14px;
+  }
 `;
 const Description = styled.p`
   color: #eaeaea;
@@ -61,7 +69,7 @@ const Description = styled.p`
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
-  margin-top: 24px;
+  margin: 25px 0;
 `;
 
 const UserContent = () => {

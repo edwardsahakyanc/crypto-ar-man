@@ -4,7 +4,18 @@ import "../../slider.scss"
 import ArtGalleryCard from "../../components/card/card";
 import {ConatinerCol, Container, ContainerRow, ContainerWithBackground} from "../../styled-component/container";
 import {StyledTab, StyledTabs, StyledTabList, StyledTabPanel} from "../../styled-component/tabs";
+import {NavLink} from "react-router-dom";
+import styled from "styled-components";
 
+
+const StyledNavLink = styled(NavLink)`
+    text-decoration: none;
+    transition: all 150ms ease;
+    &:hover{
+    transition: all 150ms ease;
+    transform: scale(1.05)
+    }
+`
 
 const SliderPage = () => {
     const tab1List = Array.from(Array(16).keys());
@@ -15,18 +26,26 @@ const SliderPage = () => {
         <div>
             <Slider/>
             <Container>
-                <ContainerRow>
+                <ContainerRow className="mt-25">
                     <ConatinerCol>
-                        <ArtGalleryCard />
+                        <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
+                            <ArtGalleryCard />
+                        </StyledNavLink>
                     </ConatinerCol>
                     <ConatinerCol>
-                        <ArtGalleryCard />
+                        <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
+                            <ArtGalleryCard />
+                        </StyledNavLink>
                     </ConatinerCol>
                     <ConatinerCol>
-                        <ArtGalleryCard />
+                        <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
+                            <ArtGalleryCard />
+                        </StyledNavLink>
                     </ConatinerCol>
                     <ConatinerCol>
-                        <ArtGalleryCard />
+                        <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
+                            <ArtGalleryCard />
+                        </StyledNavLink>
                     </ConatinerCol>
                 </ContainerRow>
             </Container>
@@ -44,7 +63,9 @@ const SliderPage = () => {
                                 tab1List.map((card, index) => {
                                     return (
                                         <ConatinerCol key={index}>
-                                            <ArtGalleryCard />
+                                            <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
+                                                <ArtGalleryCard />
+                                            </StyledNavLink>
                                         </ConatinerCol>
                                     )
                                 })
@@ -57,7 +78,9 @@ const SliderPage = () => {
                                 tab2List.map((card, index) => {
                                     return (
                                         <ConatinerCol key={index}>
-                                            <ArtGalleryCard />
+                                            <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
+                                                <ArtGalleryCard />
+                                            </StyledNavLink>
                                         </ConatinerCol>
                                     )
                                 })
@@ -70,7 +93,9 @@ const SliderPage = () => {
                                 tab3List.map((card, index) => {
                                     return (
                                         <ConatinerCol key={index}>
-                                            <ArtGalleryCard />
+                                            <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
+                                                <ArtGalleryCard />
+                                            </StyledNavLink>
                                         </ConatinerCol>
                                     )
                                 })

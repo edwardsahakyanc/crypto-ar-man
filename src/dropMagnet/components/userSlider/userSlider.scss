@@ -1,6 +1,9 @@
-.mySwiper{
+.userSwiper{
   .swiper-wrapper{
     align-items: center;
+    .slide-item{
+      padding: 0 40px;
+    }
   }
   .swiper-button-disabled{
     display: none;

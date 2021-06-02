@@ -6,6 +6,7 @@ export const Field = styled.input`
     border-radius: 19px;
     background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
     max-width: 310px;
+    width: 100%;
     padding: 8px 18px;
     color: #d8d8d8;
     font-size: 16px;

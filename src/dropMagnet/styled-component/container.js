@@ -24,6 +24,9 @@ export const ContainerRow = styled.div`
     &.flex-wrap{
         flex-wrap: wrap;
     }
+    &.mt-25{
+        margin-top: 25px;
+    }
 `;
 export const ConatinerCol = styled.div`
     display: flex;
