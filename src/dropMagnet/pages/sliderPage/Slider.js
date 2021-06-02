@@ -72,13 +72,16 @@ const Overlay = styled.div`
     top:0;
     right: 0;
     }
+    @media(max-width: 1200px){
+    display:none
+    }
     
 `;
 
 
 
 const Slider = () => {
-    const [size, setSize] = useState(window.innerWidth/4);
+    const [size, setSize] = useState(window.innerWidth-1200);
 
     useEffect(() => {
         window.addEventListener("resize", () => {
