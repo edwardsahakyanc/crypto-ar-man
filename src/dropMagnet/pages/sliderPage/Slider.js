@@ -72,6 +72,7 @@ const Overlay = styled.div`
     top:0;
     right: 0;
     }
+    
 `;
 
 
@@ -91,19 +92,19 @@ const Slider = () => {
 
     return (
         <SliderWrapper>
-            <Overlay className="overlay_left" style={{width: `${size + 100}px`}}/>
+            <Overlay className="overlay_left" style={{width: `${size}px`}}/>
             <SwiperSlider
                 effect={'coverflow'}
                 grabCursor={true}
                 centeredSlides={true}
                 slidesPerView={'auto'}
                 loop={true}
-                // watchSlidesProgress={true}
-                // watchSlidesVisibility={true}
-                // autoplay={{
-                //     "delay": 2500,
-                //     "disableOnInteraction": false
-                // }}
+                watchSlidesProgress={true}
+                watchSlidesVisibility={true}
+                autoplay={{
+                    "delay": 2500,
+                    "disableOnInteraction": false
+                }}
                 coverflowEffect={{
                     "rotate": 50,
                     "stretch": 0,

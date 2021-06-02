@@ -12,7 +12,8 @@ export const StyledTab = styled(Tab)`
     letter-spacing: normal;
     line-height: normal;
     text-align: center;
-    margin: 0 9px;
+    margin: 5px 9px;
+    min-width: fit-content;
     &.react-tabs__tab--selected{
     text-decoration: underline;
     background: transparent;
@@ -31,6 +32,8 @@ export const StyledTabList = styled(TabList)`
     justify-content: center;
     list-style-type: none;
     margin-bottom: 62px;
+    flex-wrap: wrap;
+    padding: 0;
 `;
 
 export const StyledTabPanel = styled(TabPanel)`

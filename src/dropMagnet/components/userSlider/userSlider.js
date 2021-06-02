@@ -57,7 +57,7 @@ const MusicPlayerWrapper = styled.div`
   background-origin: border-box;
   background-position: center;
   background-repeat: no-repeat;
-  background-size: contain;
+  background-size: cover;
   position: relative;
   margin: 0 auto;
   display:flex;
@@ -79,6 +79,9 @@ const MusicSecond = styled.p`
   justify-content: flex-end;
   width: fit-content;
   margin: 0 0 0 auto;
+  @media(max-width: 420px){
+   font-size: 14px;
+  }
 `;
 const MusicName = styled.p`
  color: #f3f3f3;
@@ -95,6 +98,9 @@ const MusicName = styled.p`
   justify-content: flex-end;
   width: 100%;
   margin: 0;
+  @media(max-width: 420px){
+   font-size: 16px;
+  }
 `;
 const MusicPlayBtn = styled.button`
     position: absolute;
@@ -114,6 +120,10 @@ const MusicPlayBtn = styled.button`
       width: 34px;
       height: 35px;
       object-fit: contain;
+    }
+    @media(max-width: 420px){
+    width: 70px;
+    height: 70px;
     }
 `;
 
