@@ -11,12 +11,8 @@ function App() {
         <NavLink to="/drop-magnet/artgallery.link">DropMagnet artgallery</NavLink>
         <NavLink to="/drop-magnet/artgallery.link/cryptoartman">DropMagnet cryptoartman</NavLink>
         <Switch>
-            <Route path="/explore-galleries">
-                <ExploreGalleries/>
-            </Route>
-            <Route path="/drop-magnet">
-                <DropMagnet/>
-            </Route>
+            <Route path="/explore-galleries" component={ExploreGalleries} />
+            <Route path="/drop-magnet" component={DropMagnet} />
         </Switch>
     </div>
   );
