@@ -1,10 +1,13 @@
 import styled from "styled-components";
 
 export const Container = styled.div`
-    max-width: 1296px;
+    max-width: 1360px;
     width: 100%;
-    padding: 0 16px;
+    padding: 0 32px;
     margin: 0 auto;
+    @media (max-width: 370px){
+       padding: 0 10px
+    }
 `;
 export const ContainerRow = styled.div`
     display: flex;
@@ -12,6 +15,10 @@ export const ContainerRow = styled.div`
     justify-content: space-around;
     margin-left: -16px;
     margin-right: -16px;
+    @media(max-width: 370px){
+       margin-left: -10px;
+    margin-right: -10px;
+    }
     &.items-center{
         align-items: center;
     }
@@ -32,8 +39,10 @@ export const ConatinerCol = styled.div`
     display: flex;
     padding: 0 16px;
     flex: 0 0 25%;
+    @media(max-width: 370px){
+    padding: 0 10px;
+    }
 `;
-
 export const ContainerWithBackground = styled.div`
     max-width: 1360px;
     width: 100%;

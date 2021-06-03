@@ -1,5 +1,5 @@
 import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Navigation} from 'swiper/core';
 import styled from "styled-components";
 import "swiper/swiper.min.css";
@@ -13,6 +13,7 @@ import playerBackground from "../../assets/player-background.png";
 import playBtn from "../../assets/play-btn.svg"
 
 SwiperCore.use([Navigation]);
+
 const Slide1Items = [
     {id: 1, borderColor: "#ff9400", value: "Rarible"},
     {id: 2, borderColor: "#00b8ff", value: "OpenSea"},
@@ -28,7 +29,6 @@ const SliderWrapper = styled.div`
      margin: 0 auto;
      height: fit-content;
 `;
-
 const SlideImgItem = styled.div`
     width: 143px;
     height: 143px;
@@ -40,10 +40,10 @@ const SlideImgItem = styled.div`
     height: 100%;
     object-fit: content;
     }
-    @media(max-width: 500px){
-    width: 100px;
-    height: 100px;
-    margin: 5px 10px;
+    @media(max-width: 380px){
+        width: 40%;
+        height: 40%;
+        margin: 0 10px;
     }
 `;
 const MusicPlayerWrapper = styled.div`
@@ -63,6 +63,12 @@ const MusicPlayerWrapper = styled.div`
   display:flex;
   flex-direction: column;
   justify-content: space-between;
+  @media(max-width: 400px){
+       max-width: 90%;
+  }
+  @media(max-width: 370px){
+       max-width: 85%;
+  }
 `;
 const MusicSecond = styled.p`
   color: #f3f3f3;
@@ -79,7 +85,7 @@ const MusicSecond = styled.p`
   justify-content: flex-end;
   width: fit-content;
   margin: 0 0 0 auto;
-  @media(max-width: 420px){
+  @media(max-width: 400px){
    font-size: 14px;
   }
 `;
@@ -98,7 +104,7 @@ const MusicName = styled.p`
   justify-content: flex-end;
   width: 100%;
   margin: 0;
-  @media(max-width: 420px){
+  @media(max-width: 400px){
    font-size: 16px;
   }
 `;
@@ -121,12 +127,11 @@ const MusicPlayBtn = styled.button`
       height: 35px;
       object-fit: contain;
     }
-    @media(max-width: 420px){
+    @media(max-width: 400px){
     width: 70px;
     height: 70px;
     }
 `;
-
 
 const UserSlider = () => {
     return (
@@ -138,7 +143,7 @@ const UserSlider = () => {
                 className="userSwiper"
             >
                 <SwiperSlide className="slide-item">
-                    <Row className="items-center justify-center flex-wrap">
+                    <Row className="items-center justify-center flex-wrap slider-padding">
                         {
                             Slide1Items.map(button => {
                                 return (

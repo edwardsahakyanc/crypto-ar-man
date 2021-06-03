@@ -14,4 +14,10 @@ export const Row = styled.div`
     &.flex-wrap{
         flex-wrap: wrap;
     }
+    &.slider-padding{
+        padding: 0 32px;
+        @media(max-width: 530px){
+            padding:0;
+        }
+    }
 `

@@ -4,9 +4,7 @@ import {Row} from "../../styled-component/row";
 import cardImg from "../../assets/card-img.png";
 
 const Card = styled.div`
-  min-width: 290px;
-  max-width: 300px;
-  width: 100%;
+  width: 300px;
   height: 300px;
   border-radius: 8px;
   background-color: #3b99a8;

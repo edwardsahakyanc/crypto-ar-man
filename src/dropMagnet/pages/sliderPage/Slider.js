@@ -5,6 +5,7 @@ import "swiper/swiper.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "../../slider.scss";
 import styled from "styled-components";
+import ArtGalleryCard from "../../components/card/card";
 
 
 
@@ -57,12 +58,8 @@ const Overlay = styled.div`
     width: 100%;
     height: 100%;
     z-index: 10;
-    // background-image: linear-gradient(270deg, rgba(21, 20, 20, 0.7) 0%, rgb(21, 20, 20) 100%);
     background-color: rgba(21, 20, 20, 0.8);
-    // box-shadow: rgba(21, 20, 20, 80%) 0px 0px 5px 10px;
     box-shadow: 0 0 5px 10px rgba(21, 20, 20, 0.7);
-    // backdrop-filter: blur(20px); 
-    // filter: blur(40px);
     filter: blur(10px) drop-shadow(-4px 4px 10px #151414);
     &.overlay_left{
     top:0;
@@ -112,14 +109,13 @@ const Slider = () => {
                     "rotate": 50,
                     "stretch": 0,
                     "depth": 100,
-                    "modifier": 1,
-                    // "slideShadows": true
+                    "modifier": 1
                 }}>
                 {
                     imgUrls.map(img => {
                         return (
                             <SwiperSlide key={img.id} className="slide-item">
-                                <img src={img.url} alt="slide"/>
+                                <ArtGalleryCard/>
                             </SwiperSlide>
                         )
                     })
