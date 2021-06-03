@@ -16,4 +16,19 @@ export const Link = styled(NavLink)`
   padding: 6px 12px 10px;
   text-decoration: none;
   margin: 0 14px;
+  position: relative;
+  overflow: hidden;
+  display:block;
+  min-width:fit-content;
+  &:after{
+    content: "";
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top:0;
+    left:0;
+    z-index: 1;
+    box-shadow: 0 7px 8px rgba(0, 0, 0, 0.5);
+    opacity: 0.81;
+  }
 `

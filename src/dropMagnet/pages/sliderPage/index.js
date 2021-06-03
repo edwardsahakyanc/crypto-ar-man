@@ -15,6 +15,10 @@ const StyledNavLink = styled(NavLink)`
     transition: all 150ms ease;
     transform: scale(1.05)
     }
+`;
+
+const SliderPageWrapper = styled.div`
+  background: rgba(26,26,26,.6);
 `
 
 const SliderPage = () => {
@@ -23,7 +27,7 @@ const SliderPage = () => {
     const tab3List = Array.from(Array(11).keys());
 
     return (
-        <div>
+        <SliderPageWrapper>
             <Slider/>
             <Container>
                 <ContainerRow className="mt-25">
@@ -105,7 +109,7 @@ const SliderPage = () => {
                 </StyledTabs>
 
             </ContainerWithBackground>
-        </div>
+        </SliderPageWrapper>
     )
 }
 

@@ -87,7 +87,6 @@ const SmartGalleryBtn = styled.button`
   line-height: normal;
   cursor: pointer;
   margin-top: 24px;
-  margin-bottom: 36px;
   position:relative;
   overflow: hidden;
   &:after{
@@ -103,6 +102,10 @@ const SmartGalleryBtn = styled.button`
   }
 `;
 
+const UserContentWrapper = styled.div`
+    background: rgba(26,26,26,.6);
+    padding-bottom: 36px;
+`
 
 const UserContent = () => {
     const [likeFrame, setLikeFrame] = useState(0);
@@ -113,7 +116,7 @@ const UserContent = () => {
         }, 1200);
     }
     return (
-        <div>
+        <UserContentWrapper>
             <Container>
                 <Row className="items-center justify-center">
                     <CircleIcon imgUrl={chat} alt={"icon"}/>
@@ -158,7 +161,7 @@ const UserContent = () => {
             <SmartGalleryBtn>
                 Smart Gallery
             </SmartGalleryBtn>
-        </div>
+        </UserContentWrapper>
     )
 }
 

@@ -61,11 +61,14 @@ const UserLogo = styled.div`
   @media(max-width: 500px){
     display: none;
   }
+`;
+const Nav = styled.div`
+  background: rgba(26,26,26,.6);
 `
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
+        <Nav className="navbar">
             <Row className="justify-between">
                 <Row className="items-center">
                     <img src={logo} alt="logo"/>
@@ -82,7 +85,7 @@ const Navbar = () => {
                     <UserLogo/>
                 </Row>
             </Row>
-        </nav>
+        </Nav>
     )
 }
 

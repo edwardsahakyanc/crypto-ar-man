@@ -58,8 +58,8 @@ const Overlay = styled.div`
     width: 100%;
     height: 100%;
     z-index: 10;
-    background-color: rgba(21, 20, 20, 0.8);
-    box-shadow: 0 0 5px 10px rgba(21, 20, 20, 0.7);
+    background-color: rgba(26, 26, 26, 0.8);
+    box-shadow: 0 0 5px 10px rgba(26, 26, 26, 0.7);
     filter: blur(10px) drop-shadow(-4px 4px 10px #151414);
     &.overlay_left{
     top:0;
