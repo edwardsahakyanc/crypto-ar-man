@@ -1,8 +1,9 @@
 import React from "react";
 import {Row} from "../../styled-components/Row";
+import {NavLink} from "react-router-dom";
 import styled from "styled-components";
 
-const FooterLink = styled.a`
+const FooterLink = styled(NavLink)`
   text-shadow: 0 2px 5px rgba(0, 0, 0, 0.5);
   color: #eaeaea;
   font-size: 14px;
@@ -36,9 +37,9 @@ const Footer = () => {
     return (
             <Row className="items-center justify-center flex-wrap">
                 <FooterLinkWrapper>
-                    <FooterLink href="/">Terms & Conditions</FooterLink>
-                    <FooterLink href="/">Privacy Policy</FooterLink>
-                    <FooterLink href="/">© Drop Magnet 2021</FooterLink>
+                    <FooterLink to="/drop-magnet">Terms & Conditions</FooterLink>
+                    <FooterLink to="/drop-magnet">Privacy Policy</FooterLink>
+                    <FooterLink to="/drop-magnet">© Drop Magnet 2021</FooterLink>
                 </FooterLinkWrapper>
             </Row>
     )
