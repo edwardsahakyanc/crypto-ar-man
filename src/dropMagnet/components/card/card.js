@@ -46,6 +46,10 @@ const Title = styled.p`
   left: 0;
   right: 0;
   margin: 0 auto;
+  width: 150px;
+  height: 25px;
+  border-radius: 100px;
+  background-color: rgba(40, 40, 40, 0.54);
 `;
 
 const ArtGalleryCard = () => {

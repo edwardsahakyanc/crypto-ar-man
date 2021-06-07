@@ -7,7 +7,7 @@ import styled from "styled-components";
 import userImg from "../../../exploreGalleries/assets/user.svg";
 
 const DropDownBtn = styled.button`
-width: 36px;
+  width: 36px;
   height: 36px;
   position: relative;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 -1px 0 #002b40;
@@ -66,16 +66,16 @@ const Nav = styled.div`
   background: #1a1a1a;
 `
 
-const Navbar = () => {
+const Navbar = ({path, text}) => {
     return (
         <Nav className="navbar">
             <Row className="justify-between">
                 <Row className="items-center">
                     <img src={logo} alt="logo"/>
-                    <Link to="/drop-magnet/artgallery.link">
-                        ArtGallery.Link
+                    <Link to={path}>
+                        {text}
                     </Link>
-                    <Link to="/drop-magnet/artgallery.link">
+                    <Link to={path} className="points">
                         ...
                     </Link>
                     <TextField type="search" placeholder="Search"/>

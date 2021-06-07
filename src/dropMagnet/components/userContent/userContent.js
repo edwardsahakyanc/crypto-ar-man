@@ -10,34 +10,48 @@ import {Container} from "../../styled-component/container";
 import LikeButton from "../../styled-component/likeButton";
 
 const UserImage = styled.div`
-  width: 164px;
-  height: 164px;
+  width: 228px;
+  height: 228px;
+  margin: 0 32px 33px;
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
   border-radius: 1000px;
+  @media(max-width: 500px){
+  width: 164px;
+  height: 164px;
   margin: 0 16px 24px;
+  }
   img{
    width: 100%;
    height: 100%;
   }
 `;
 const UserName = styled.p`
-  padding: 11px 16px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 0 4px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(0, 0, 0, 0.5);
+   width: 268px;
+  height: 52px;
+  font-size: 32px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 2px rgba(0,0,0,0.05), inset 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.5);
   border-radius: 26px;
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
   color: #eaeaea;
-  font-size: 24px;
   font-weight: 700;
   font-style: normal;
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
   margin: 0 16px;
+  @media(max-width: 500px){
+  font-size: 24px;
+  width: 210px;
+  height: 52px;
+  }
 `;
 const PayWrapper = styled.div`
   width: 52px;
   height: 52px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 0 4px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 2px rgba(0,0,0,0.05), inset 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.5);
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
   border-radius: 100px;
   display: flex;
@@ -54,13 +68,18 @@ const PayWrapper = styled.div`
 `;
 const Description = styled.p`
   color: #eaeaea;
-  font-size: 16px;
+  font-size: 26px;
   font-weight: 700;
   font-style: normal;
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
-  margin: 25px 0;
+  margin: 41px 36px 42px;
+  @media(max-width: 500px){
+  font-size: 16px;
+  margin: 24px 0 16px;
+  padding: 0 44px;
+  }
 `;
 const SmartGalleryBtn = styled.button`
   display: flex;
@@ -73,7 +92,7 @@ const SmartGalleryBtn = styled.button`
   background: transparent;
   outline: none !important;
   border: 1px solid #5502d0;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 2px rgba(0,0,0,0.05), inset 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.5);
   border-radius: 26px;
   background-color:transparent;
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
@@ -84,7 +103,7 @@ const SmartGalleryBtn = styled.button`
   letter-spacing: normal;
   line-height: normal;
   cursor: pointer;
-  margin-top: 24px;
+  margin-top: 26px;
   position:relative;
   overflow: hidden;
   &:after{
@@ -97,13 +116,20 @@ const SmartGalleryBtn = styled.button`
     z-index: 1;
     box-shadow: 0 7px 8px rgba(0, 0, 0, 0.5);
     opacity: 0.81;
+    border-radius: 100px;
   }
 `;
 
 const UserContentWrapper = styled.div`
     background: #1a1a1a;
+    padding-top: 64px;
+    @media(max-width: 500px){
     padding-bottom: 36px;
-`
+    padding-top: 31px;
+    }
+    
+`;
+
 
 const UserContent = () => {
     return (
@@ -123,11 +149,11 @@ const UserContent = () => {
                     <UserName>Crypto Art Man</UserName>
                     <PayWrapper>pay</PayWrapper>
                 </Row>
-                <Description>
-                    I’m a crypto artist. I’ve been collecting NFTs
-                    since 2017, and I also created Drop Magnet.
-                </Description>
             </Container>
+            <Description>
+                I’m a crypto artist. I’ve been collecting NFTs
+                since 2017, and I also created Drop Magnet.
+            </Description>
             <UserSlider/>
             <SmartGalleryBtn>
                 Smart Gallery

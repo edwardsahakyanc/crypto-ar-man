@@ -18,6 +18,7 @@ export const StyledTab = styled(Tab)`
     text-decoration: underline;
     background: transparent;
     border: none;
+    color: #eaeaea;
     border-radius: 0;
     }
 `;

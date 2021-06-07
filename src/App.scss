@@ -11,6 +11,9 @@ body{
 .navbar{
   width: 100%;
   padding: 16px;
+  @media (max-width: 500px) {
+    padding: 9px;
+  }
 }
 .explore-galleries-content{
   width: 100%;
