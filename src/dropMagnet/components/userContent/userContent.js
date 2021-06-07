@@ -1,15 +1,13 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import CircleIcon from "../../styled-component/icon-wrapper";
 import chat from "../../assets/chat.svg"
 import {Row} from "../../styled-component/row";
-import HeartAnim from '../../assets/likeanim.gif';
-import HeartBefore from '../../assets/like_before.gif';
-import HeartAfter from '../../assets/like_after.gif';
 import ProfilePic from '../../assets/profile_pic.png';
 import ShareIcon from "../../assets/share-icon.svg";
 import UserSlider from "../userSlider/userSlider";
 import {Container} from "../../styled-component/container";
+import LikeButton from "../../styled-component/likeButton";
 
 const UserImage = styled.div`
   width: 164px;
@@ -24,7 +22,7 @@ const UserImage = styled.div`
 `;
 const UserName = styled.p`
   padding: 11px 16px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 0 4px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(0, 0, 0, 0.5);
   border-radius: 26px;
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
   color: #eaeaea;
@@ -39,7 +37,7 @@ const UserName = styled.p`
 const PayWrapper = styled.div`
   width: 52px;
   height: 52px;
-  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 0 2px rgba(0, 0, 0, 0.05), inset 0 0 4px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 1px 3px rgba(0, 0, 0, 0.5);
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
   border-radius: 100px;
   display: flex;
@@ -103,18 +101,11 @@ const SmartGalleryBtn = styled.button`
 `;
 
 const UserContentWrapper = styled.div`
-    background: rgba(26,26,26,.6);
+    background: #1a1a1a;
     padding-bottom: 36px;
 `
 
 const UserContent = () => {
-    const [likeFrame, setLikeFrame] = useState(0);
-    const doLike = () => {
-        setLikeFrame(1);
-        setTimeout(() => {
-            setLikeFrame(2);
-        }, 1200);
-    }
     return (
         <UserContentWrapper>
             <Container>
@@ -124,27 +115,7 @@ const UserContent = () => {
                         <img src={ProfilePic} alt="profile-pic"/>
                     </UserImage>
                     <div>
-                        {
-                            likeFrame === 0 ?
-                                <div onClick={() => doLike()}>
-                                    <CircleIcon imgUrl={HeartBefore} alt='like_before' className="heart-image"/>
-                                </div>
-                                : null
-                        }
-                        {
-                            likeFrame === 1 ?
-                                <div>
-                                    <CircleIcon imgUrl={HeartAnim} alt='like_animation' className="heart-image"/>
-                                </div>
-                                : null
-                        }
-                        {
-                            likeFrame === 2 ?
-                                <div onClick={() => setLikeFrame(0)}>
-                                    <CircleIcon imgUrl={HeartAfter} alt='like_liked' className="heart-image"/>
-                                </div>
-                                : null
-                        }
+                        <LikeButton/>
                     </div>
                 </Row>
                 <Row className="items-center justify-center">

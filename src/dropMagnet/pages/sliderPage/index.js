@@ -18,7 +18,7 @@ const StyledNavLink = styled(NavLink)`
 `;
 
 const SliderPageWrapper = styled.div`
-  background: rgba(26,26,26,.6);
+  background: #1a1a1a;
 `
 
 const SliderPage = () => {

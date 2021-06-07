@@ -63,7 +63,7 @@ const UserLogo = styled.div`
   }
 `;
 const Nav = styled.div`
-  background: rgba(26,26,26,.6);
+  background: #1a1a1a;
 `
 
 const Navbar = () => {
