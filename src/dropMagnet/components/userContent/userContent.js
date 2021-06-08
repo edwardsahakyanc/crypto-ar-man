@@ -28,6 +28,7 @@ const UserImage = styled.div`
 const UserName = styled.p`
    width: 268px;
   height: 52px;
+  padding-bottom: 3px;
   font-size: 32px;
   display: flex;
   align-items: center;
@@ -51,6 +52,7 @@ const UserName = styled.p`
 const PayWrapper = styled.div`
   width: 52px;
   height: 52px;
+  padding-bottom:3px;
   box-shadow: 0 0 2px rgba(0,0,0,0.05), inset 0 1px 3px rgba(0, 0, 0, 0.5), inset 0 -1px 3px rgba(0, 0, 0, 0.5), inset 0 -3px 0 rgba(37, 37, 37, 0.5), inset 0 2px 4px rgba(0, 0, 0, 0.5);
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
   border-radius: 100px;
@@ -87,7 +89,7 @@ const SmartGalleryBtn = styled.button`
   justify-content: center;
   text:align: center;
   width: 268px;
-  height: 46px;
+  height: 52px;
   margin: 0 auto;
   background: transparent;
   outline: none !important;
@@ -118,8 +120,10 @@ const SmartGalleryBtn = styled.button`
     opacity: 0.81;
     border-radius: 100px;
   }
+  @media(max-width: 500px){
+  height: 46px;
+  }
 `;
-
 const UserContentWrapper = styled.div`
     background: #1a1a1a;
     padding-top: 64px;
@@ -134,7 +138,7 @@ const UserContentWrapper = styled.div`
 const UserContent = () => {
     return (
         <UserContentWrapper>
-            <Container>
+            <Container className="slider-container">
                 <Row className="items-center justify-center">
                     <CircleIcon imgUrl={chat} alt={"icon"}/>
                     <UserImage>

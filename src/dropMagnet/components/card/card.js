@@ -12,6 +12,10 @@ const Card = styled.div`
   padding: 8px 8px 12px 12px;
   background-position: center;
   margin-bottom: 32px;
+  &.slider-item{
+  margin-top:32px;
+  margin-bottom: 32px;
+  }
 `;
 const TopCircle = styled.div`
   width: 31px;
@@ -52,9 +56,9 @@ const Title = styled.p`
   background-color: rgba(40, 40, 40, 0.54);
 `;
 
-const ArtGalleryCard = () => {
+const ArtGalleryCard = ({className}) => {
     return (
-        <Card style={{backgroundImage: `url(${cardImg})`}}>
+        <Card style={{backgroundImage: `url(${cardImg})`}} className={className}>
             <Row className="items-center justify-between">
                 <TopCircle />
                 <Nfts>

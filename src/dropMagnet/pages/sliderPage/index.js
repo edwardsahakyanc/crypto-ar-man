@@ -2,7 +2,7 @@ import React from "react";
 import Slider from "./Slider";
 import "../../slider.scss"
 import ArtGalleryCard from "../../components/card/card";
-import {ConatinerCol, Container, ContainerRow, ContainerWithBackground} from "../../styled-component/container";
+import {ConatinerCol, ContainerRow, ContainerWithBackground} from "../../styled-component/container";
 import {StyledTab, StyledTabs, StyledTabList, StyledTabPanel} from "../../styled-component/tabs";
 import {NavLink} from "react-router-dom";
 import styled from "styled-components";
@@ -29,30 +29,6 @@ const SliderPage = () => {
     return (
         <SliderPageWrapper>
             <Slider/>
-            <Container>
-                <ContainerRow className="mt-25">
-                    <ConatinerCol>
-                        <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
-                            <ArtGalleryCard />
-                        </StyledNavLink>
-                    </ConatinerCol>
-                    <ConatinerCol>
-                        <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
-                            <ArtGalleryCard />
-                        </StyledNavLink>
-                    </ConatinerCol>
-                    <ConatinerCol>
-                        <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
-                            <ArtGalleryCard />
-                        </StyledNavLink>
-                    </ConatinerCol>
-                    <ConatinerCol>
-                        <StyledNavLink to={"/drop-magnet/artgallery.link/cryptoartman"}>
-                            <ArtGalleryCard />
-                        </StyledNavLink>
-                    </ConatinerCol>
-                </ContainerRow>
-            </Container>
             <ContainerWithBackground >
                 <StyledTabs>
                     <StyledTabList>

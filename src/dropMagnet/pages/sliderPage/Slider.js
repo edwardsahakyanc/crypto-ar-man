@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, {EffectCoverflow,Autoplay} from 'swiper/core';
+import SwiperCore, {EffectCoverflow,Autoplay, Mousewheel} from 'swiper/core';
 import "swiper/swiper.min.css";
 import "swiper/components/effect-coverflow/effect-coverflow.min.css";
 import "../../slider.scss";
@@ -9,7 +9,7 @@ import ArtGalleryCard from "../../components/card/card";
 
 
 
-SwiperCore.use([EffectCoverflow,Autoplay]);
+SwiperCore.use([EffectCoverflow,Autoplay, Mousewheel]);
 const imgUrls = [
     {id:1, url: "https://swiperjs.com/demos/images/nature-1.jpg"},
     {id:2, url: "https://swiperjs.com/demos/images/nature-2.jpg"},
@@ -22,12 +22,29 @@ const imgUrls = [
     {id:9, url: "https://swiperjs.com/demos/images/nature-9.jpg"}
 ];
 
-const SwiperSlider = styled(Swiper)`
+const SwiperSlider = styled.div`
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
     .slide-item{
         padding: 0 10px;
+        filter: blur(0);
+        .swiper-slide-shadow-left{
+            background: none;
+        }
+        .swiper-slide-shadow-right{
+            background: none;
+        }
+        &.swiper-slide-active{
+        filter: blur(0);
+        }
+        &.swiper-slide-prev{
+        filter: blur(0);
+        }
+        &.swiper-slide-next{
+        filter: blur(0);
+        }
+        @media(max-width: 991){
         filter: blur(10px);
         .swiper-slide-shadow-left{
             background: none;
@@ -43,6 +60,7 @@ const SwiperSlider = styled(Swiper)`
         }
         &.swiper-slide-next{
         filter: blur(0);
+        }
         }
     }
 `;
@@ -69,8 +87,8 @@ const Overlay = styled.div`
     top:0;
     right: 0;
     }
-    @media(max-width: 1200px){
-    display:none
+    @media(min-width: 991px){
+    display:none;
     }
     
 `;
@@ -78,12 +96,13 @@ const Overlay = styled.div`
 
 
 const Slider = () => {
-    const [size, setSize] = useState(window.innerWidth-1200);
+    // const [size, setSize] = useState(window.innerWidth-991);
+    const [size, setSize] = useState(0);
 
     useEffect(() => {
         window.addEventListener("resize", () => {
-            if(window.innerWidth > 1200){
-                setSize(window.innerWidth - 1200)
+            if(window.innerWidth > 991){
+                setSize(window.innerWidth - 991)
             }else{
                 setSize(0)
             }
@@ -93,33 +112,50 @@ const Slider = () => {
     return (
         <SliderWrapper>
             <Overlay className="overlay_left" style={{width: `${size}px`}}/>
-            <SwiperSlider
-                effect={'coverflow'}
-                grabCursor={true}
-                centeredSlides={true}
-                slidesPerView={'auto'}
-                loop={true}
-                watchSlidesProgress={true}
-                watchSlidesVisibility={true}
-                autoplay={{
-                    "delay": 2500,
-                    "disableOnInteraction": false
-                }}
-                coverflowEffect={{
-                    "rotate": 50,
-                    "stretch": 0,
-                    "depth": 100,
-                    "modifier": 1
-                }}>
-                {
-                    imgUrls.map(img => {
-                        return (
-                            <SwiperSlide key={img.id} className="slide-item">
-                                <ArtGalleryCard/>
-                            </SwiperSlide>
-                        )
-                    })
-                }
+            <SwiperSlider>
+                <Swiper
+                    className={"mySwiper"}
+                    effect={'coverflow'}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={'auto'}
+                    mousewheel={true}
+                    loop={true}
+                    spaceBetween={0}
+                    autoplay={{
+                        "delay": 2500,
+                        "disableOnInteraction": false
+                    }}
+                    // coverflowEffect={{
+                    //     "rotate": 50,
+                    //     "stretch": 0,
+                    //     "depth": 100,
+                    //     "modifier": 1
+                    // }}
+                    breakpoints={{
+                        "991": {
+                            effect: "slide",
+                            autoplay: {
+                                delay: 10000000000000,
+                            },
+                            grabCursor: true,
+                            centeredSlides: true,
+                            slidesPerView: 'auto',
+                            spaceBetween:12
+                        }
+                    }}
+                >
+                    {
+                        imgUrls.map(img => {
+                            return (
+                                <SwiperSlide key={img.id} className="slide-item">
+                                    <ArtGalleryCard className="slider-item"/>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
+                </Swiper>
+
             </SwiperSlider>
             <Overlay className="overlay_right" style={{width: `${size}px`}}/>
         </SliderWrapper>

@@ -9,8 +9,7 @@ import {Row} from "../../styled-component/row";
 import StyledButton from "../../styled-component/button";
 import cat1 from "../../assets/cat1.png";
 import cat2 from "../../assets/cat2.png";
-import playerBackground from "../../assets/player-background.png";
-import playBtn from "../../assets/play-btn.svg"
+import MusicPlayer from "../musicPlayer/musicPlayer";
 
 SwiperCore.use([Navigation]);
 
@@ -28,6 +27,11 @@ const SliderWrapper = styled.div`
      width: 100%;
      margin: 0 auto;
      height: fit-content;
+     overflow: hidden;
+     position: relative;
+     @media(max-width:500px){
+     padding: 0 32px;
+     }
 `;
 const SlideImgItem = styled.div`
     width: 143px;
@@ -46,92 +50,7 @@ const SlideImgItem = styled.div`
         margin: 0 10px;
     }
 `;
-const MusicPlayerWrapper = styled.div`
-  max-width: 344px;
-  width: 100%;
-  height: 143px;
-  border-radius: 11px;
-  border: 1px solid #6f4b8f;
-  background-color: #d8d8d8;
-  background-image: url(${playerBackground});
-  background-origin: border-box;
-  background-position: center;
-  background-repeat: no-repeat;
-  background-size: cover;
-  position: relative;
-  margin: 0 auto;
-  display:flex;
-  flex-direction: column;
-  justify-content: space-between;
-  @media(max-width: 400px){
-       max-width: 90%;
-  }
-  @media(max-width: 370px){
-       max-width: 85%;
-  }
-`;
-const MusicSecond = styled.p`
-  color: #f3f3f3;
-  font-size: 16px;
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: normal;
-  line-height: normal;
-  text-align: center;
-  padding: 9px 15px 11px 24px;
-  border-radius: 11px;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: flex-end;
-  width: fit-content;
-  margin: 0 0 0 auto;
-  @media(max-width: 400px){
-   font-size: 14px;
-  }
-`;
-const MusicName = styled.p`
- color: #f3f3f3;
-  font-size: 18px;
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: normal;
-  line-height: normal;
-  text-align: right;
-  padding: 13px 15px 11px 24px;
-  border-radius: 11px;
-  background-color: rgba(0, 0, 0, 0.4);
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  margin: 0;
-  @media(max-width: 400px){
-   font-size: 16px;
-  }
-`;
-const MusicPlayBtn = styled.button`
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
-    left: 28px;
-    width: 89px;
-    height: 89px;
-    box-shadow: 0 6px 13px rgba(0, 0, 0, 0.5), inset 0 4px 6px rgba(0, 0, 0, 0.5);
-    background-color: #202020;
-    border-radius: 1000px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    cursor: pointer;
-    img{
-      width: 34px;
-      height: 35px;
-      object-fit: contain;
-    }
-    @media(max-width: 400px){
-    width: 70px;
-    height: 70px;
-    }
-`;
+
 
 const UserSlider = () => {
     return (
@@ -141,6 +60,7 @@ const UserSlider = () => {
                 centeredSlides={true}
                 navigation={true}
                 className="userSwiper"
+                spaceBetween={30}
             >
                 <SwiperSlide className="slide-item">
                     <Row className="items-center justify-center flex-wrap slider-padding">
@@ -166,17 +86,7 @@ const UserSlider = () => {
                     </Row>
                 </SwiperSlide>
                 <SwiperSlide className="slide-item">
-                    <MusicPlayerWrapper>
-                        <MusicSecond>
-                            30 second preview
-                        </MusicSecond>
-                        <MusicName>
-                            I Wanna Be A Spaceman
-                        </MusicName>
-                        <MusicPlayBtn>
-                            <img src={playBtn} alt="playBtn"/>
-                        </MusicPlayBtn>
-                    </MusicPlayerWrapper>
+                    <MusicPlayer/>
                 </SwiperSlide>
             </Swiper>
         </SliderWrapper>
