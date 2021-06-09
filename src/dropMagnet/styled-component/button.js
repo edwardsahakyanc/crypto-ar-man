@@ -37,6 +37,14 @@ const Button = styled.button`
   font-size: 16px;
   min-height: 36px;
   }
+  @media(max-width: 380px){
+    margin: 5px;
+    min-width:144px;
+  }
+  @media(max-width: 330px){
+    margin: 5px;
+    min-width:134px;
+  }
   @media(max-width: 390px){
   width: 40%;
   }
