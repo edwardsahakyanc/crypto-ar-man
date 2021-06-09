@@ -30,7 +30,10 @@ const SliderWrapper = styled.div`
      overflow: hidden;
      position: relative;
      @media(max-width:500px){
-     padding: 0 32px;
+      padding: 0 32px;
+     }
+      @media(max-width:425px){
+      padding: 0 10px;
      }
 `;
 const SlideImgItem = styled.div`

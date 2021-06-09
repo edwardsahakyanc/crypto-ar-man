@@ -1,4 +1,4 @@
-import React, {useEffect, useState} from "react";
+import React, {useRef, useState} from "react";
 import playBtn from "../../assets/play-btn.svg";
 import pauseBtn from "../../assets/pause-btn.svg";
 import styled from "styled-components";
@@ -131,30 +131,45 @@ const PlayBtnBack = styled.div`
 `
 
 
-const useAudio = url => {
-    const [audio] = useState(new Audio(url));
-    const [playing, setPlaying] = useState(false);
-
-    const toggle = () => setPlaying(!playing);
-
-    useEffect(() => {
-            playing ? audio.play() : audio.pause();
-        },
-        [playing, audio]
-    );
-
-    useEffect(() => {
-        audio.addEventListener('ended', () => setPlaying(false));
-        return () => {
-            audio.removeEventListener('ended', () => setPlaying(false));
-        };
-    }, [audio]);
-
-    return [playing, toggle];
-};
+// const useAudio = (url, audioRef) => {
+//     const audio = audioRef.current;
+//
+//     const [playing, setPlaying] = useState(false);
+//
+//     const toggle = () => {
+//         setPlaying(!playing)
+//     };
+//
+//     useEffect(() => {
+//             playing ? audio.play() : audio.pause();
+//         },
+//         [playing, audio]
+//     );
+//
+//     useEffect(() => {
+//         audio.addEventListener('ended', () => setPlaying(false));
+//         return () => {
+//             audio.removeEventListener('ended', () => setPlaying(false));
+//         };
+//     }, [audio]);
+//
+//     return [playing, toggle];
+// };
 
 const MusicPlayer = () => {
-    const [playing, toggle] = useAudio(song1);
+    // const [playing, toggle] = useAudio(song1);
+    const audioRef = useRef(null);
+    const [playing, setPlaying] = useState(false);
+
+
+    const toggle = (audio) => {
+        if(playing){
+            audio.pause()
+        }else {
+            audio.play()
+        }
+        setPlaying(!playing)
+    };
       return (
         <MusicPlayerWrapper>
             <MusicSecond>
@@ -163,7 +178,8 @@ const MusicPlayer = () => {
             <MusicName>
                 I Wanna Be A Spaceman
             </MusicName>
-            <MusicPlayBtn onClick={toggle}>
+            <audio src={song1} controls ref={audioRef} style={{display: "none"}}/>
+            <MusicPlayBtn onClick={() => toggle(audioRef.current)}>
                 <PlayBtnBack className={`${playing ? "animate" : ""}`}/>
                 {
                     playing

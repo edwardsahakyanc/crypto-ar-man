@@ -26,6 +26,18 @@ const SwiperSlider = styled.div`
     width: 100%;
     padding-top: 50px;
     padding-bottom: 50px;
+    .mySwiper{
+      display:none;
+      @media(max-width: 991px){
+        display: block;
+      }
+    }
+    .mySwiper-desktop{
+      display:block;
+       @media(max-width: 991px){
+         display:none;
+       }
+    }
     .slide-item{
         padding: 0 10px;
         filter: blur(0);
@@ -69,7 +81,6 @@ const SliderWrapper = styled.div`
     width: 100%;
     overflow: hidden;
 `;
-
 const Overlay = styled.div`
     position: absolute;
     max-width: 510px;
@@ -99,15 +110,18 @@ const Slider = () => {
     // const [size, setSize] = useState(window.innerWidth-991);
     const [size, setSize] = useState(0);
 
+    const resizeWindow = () => {
+        if(window.innerWidth > 991){
+            setSize(window.innerWidth - 991)
+        }else{
+            setSize(0)
+        }
+    }
+
     useEffect(() => {
-        window.addEventListener("resize", () => {
-            if(window.innerWidth > 991){
-                setSize(window.innerWidth - 991)
-            }else{
-                setSize(0)
-            }
-        })
-    },[]);
+        window.addEventListener("resize", resizeWindow)
+        return window.removeEventListener('resize', resizeWindow)
+    },[size]);
 
     return (
         <SliderWrapper>
@@ -119,30 +133,18 @@ const Slider = () => {
                     grabCursor={true}
                     centeredSlides={true}
                     slidesPerView={'auto'}
-                    mousewheel={true}
+                    mousewheel={false}
                     loop={true}
                     spaceBetween={0}
                     autoplay={{
                         "delay": 2500,
                         "disableOnInteraction": false
                     }}
-                    // coverflowEffect={{
-                    //     "rotate": 50,
-                    //     "stretch": 0,
-                    //     "depth": 100,
-                    //     "modifier": 1
-                    // }}
-                    breakpoints={{
-                        "991": {
-                            effect: "slide",
-                            autoplay: {
-                                delay: 10000000000000,
-                            },
-                            grabCursor: true,
-                            centeredSlides: true,
-                            slidesPerView: 'auto',
-                            spaceBetween:12
-                        }
+                    coverflowEffect={{
+                        "rotate": 50,
+                        "stretch": 0,
+                        "depth": 100,
+                        "modifier": 1
                     }}
                 >
                     {
@@ -155,7 +157,25 @@ const Slider = () => {
                         })
                     }
                 </Swiper>
-
+                <Swiper
+                    className={"mySwiper-desktop"}
+                    grabCursor={true}
+                    centeredSlides={true}
+                    slidesPerView={'auto'}
+                    mousewheel={true}
+                    loop={true}
+                    spaceBetween={12}
+                >
+                    {
+                        imgUrls.map(img => {
+                            return (
+                                <SwiperSlide key={img.id} className="slide-item">
+                                    <ArtGalleryCard className="slider-item"/>
+                                </SwiperSlide>
+                            )
+                        })
+                    }
+                </Swiper>
             </SwiperSlider>
             <Overlay className="overlay_right" style={{width: `${size}px`}}/>
         </SliderWrapper>
