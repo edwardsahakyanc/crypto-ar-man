@@ -28,13 +28,13 @@ const SwiperSlider = styled.div`
     padding-bottom: 50px;
     .mySwiper{
       display:none;
-      @media(max-width: 991px){
+      @media(max-width: 429px){
         display: block;
       }
     }
     .mySwiper-desktop{
       display:block;
-       @media(max-width: 991px){
+       @media(max-width: 429px){
          display:none;
        }
     }
@@ -56,7 +56,7 @@ const SwiperSlider = styled.div`
         &.swiper-slide-next{
         filter: blur(0);
         }
-        @media(max-width: 991){
+        @media(max-width: 429){
         filter: blur(10px);
         .swiper-slide-shadow-left{
             background: none;
@@ -98,7 +98,7 @@ const Overlay = styled.div`
     top:0;
     right: 0;
     }
-    @media(min-width: 991px){
+    @media(min-width: 429px){
     display:none;
     }
     
@@ -111,8 +111,8 @@ const Slider = () => {
     const [size, setSize] = useState(0);
 
     const resizeWindow = () => {
-        if(window.innerWidth > 991){
-            setSize(window.innerWidth - 991)
+        if(window.innerWidth > 429){
+            setSize(window.innerWidth - 429)
         }else{
             setSize(0)
         }
