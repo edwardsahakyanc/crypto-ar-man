@@ -8,9 +8,9 @@ import song1 from "../../musics/Be a Music.mp3";
 
 
 const MusicPlayerWrapper = styled.div`
-  max-width: 344px;
+  max-width: 336px;
   width: 100%;
-  height: 143px;
+  height: 158px;
   border-radius: 11px;
   border: 1px solid #6f4b8f;
   background-color: #d8d8d8;
@@ -146,7 +146,7 @@ const PlayBtnBack = styled.div`
 //     return [playing, toggle];
 // };
 
-const MusicPlayer = () => {
+const NewMusicPlayer = () => {
     // const [playing, toggle] = useAudio(song1);
     const audioRef = useRef(null);
     const [playing, setPlaying] = useState(false);
@@ -160,7 +160,7 @@ const MusicPlayer = () => {
         }
         setPlaying(!playing)
     };
-      return (
+    return (
         <MusicPlayerWrapper>
             <MusicSecond>
                 30 second preview
@@ -184,4 +184,4 @@ const MusicPlayer = () => {
     )
 }
 
-export default MusicPlayer
+export default NewMusicPlayer

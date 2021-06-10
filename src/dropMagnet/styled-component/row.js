@@ -5,6 +5,9 @@ export const Row = styled.div`
     &.items-center{
         align-items: center;
     }
+    &.items-bottom{
+        align-items: flex-end;
+    }
     &.justify-center{
         justify-content: center;
     }

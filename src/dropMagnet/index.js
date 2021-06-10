@@ -3,6 +3,7 @@ import {Redirect, Route} from "react-router-dom"
 import SliderPage from "./pages/sliderPage";
 import Navbar from "./components/navbar/navbar";
 import CryptoArtManPage from "./pages/cryptoartman/cryptoartmanPage";
+import NewUserContent from "./components/newUserContent/newUserContent";
 
 const DropMagnet = () => {
 	return (
@@ -15,6 +16,9 @@ const DropMagnet = () => {
 			<Route path="/drop-magnet/artgallery.link/cryptoartman">
 				<Navbar path={'/drop-magnet/artgallery.link/cryptoartman'} text={'Mag.Link/CryptoArtMan'}/>
 				<CryptoArtManPage/>
+			</Route>
+			<Route path="/drop-magnet/artgallery.link/newcryptoartman">
+				<NewUserContent/>
 			</Route>
 		</div>
 
