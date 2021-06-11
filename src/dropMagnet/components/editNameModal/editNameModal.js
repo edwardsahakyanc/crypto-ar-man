@@ -66,7 +66,7 @@ const DoneBtn = styled.button`
     background-color: #101010;
     border:none;
     outline:none;
-    background-color: #101010;
+    padding:0;
     cursor:pointer;
     font-size: 24px;
     font-weight: 700;
