@@ -187,10 +187,12 @@ const NewUserContent = () => {
     const defaultOption = options[0];
 
     const handleOpenModal = () => {
+        document.querySelector("body").style.overflow="hidden"
         setIsOpen(true);
     }
 
     const handleCloseModal = () => {
+        document.querySelector("body").style.overflow="auto"
         setIsOpen(false);
     }
 
@@ -233,13 +235,6 @@ const NewUserContent = () => {
                     <Tab>NFT Gallery</Tab>
                 </PageLiks>
             </GreyBack>
-            {/*{*/}
-            {/*    isOpen*/}
-            {/*        ?*/}
-            {/*        <PortaledComponent modal={<BlurModal close={handleCloseModal} className={isOpen ? 'active' : ""} name={name} setName={setName}/>}/>*/}
-            {/*        :*/}
-            {/*        null*/}
-            {/*}*/}
             <PortaledComponent modal={<BlurModal close={handleCloseModal} open={isOpen} className={isOpen ? 'active' : ""} name={name} setName={setName}/>}/>
         </div>
     )
