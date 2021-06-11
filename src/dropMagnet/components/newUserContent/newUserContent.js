@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import background from "../../assets/cat-background.png";
 import arrowDown from "../../assets/arrowDown.png";
@@ -11,8 +11,8 @@ import LikeButton from "./styled-components/likeButton";
 import {Row} from "../../styled-component/row";
 import ShareIcon from "../../assets/share-icon.svg";
 import UserSlider from "../newUserSlider/newUserSlider";
-
-
+import BlurModal from "../editNameModal/editNameModal";
+import PortaledComponent from "../portaledComponent";
 
 const UserHeader = styled.div`
     position: relative;
@@ -22,6 +22,12 @@ const UserHeader = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
+    @media(max-width: 391px){
+    min-height: 137px;
+    }
+    @media(max-width: 376px){
+    min-height: 116px;
+    }
 `;
 const StyledDropDown = styled(Dropdown)`
     position: absolute;
@@ -78,7 +84,7 @@ const UserWrapper = styled.div`
     border-top: 4px solid #101010;
     border-bottom: 4px solid #101010;
     background: transparent;
-    padding: 93px 20px 19px;
+    padding: 93px 10px 19px;
     position:relative;
 `;
 const UserImage = styled.div`
@@ -143,6 +149,7 @@ const Description = styled.div`
   margin-top: 16px;
 `;
 const GreyBack = styled.div`
+  height: 100%;
   background-color: #292929;
   padding-bottom: 20px;
 `;
@@ -171,13 +178,23 @@ const Tab = styled.p`
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
-`
+`;
 
 const NewUserContent = () => {
-    const options = [
-        'Mag.Link', 'Mag.Link 2', 'Mag.Link 3'
-    ];
+    const [isOpen, setIsOpen] = useState(false);
+    const [name,setName] = useState("Alexander Newton")
+    const options = ['Mag.Link', 'Mag.Link 2', 'Mag.Link 3'];
     const defaultOption = options[0];
+
+    const handleOpenModal = () => {
+        setIsOpen(true);
+    }
+
+    const handleCloseModal = () => {
+        setIsOpen(false);
+    }
+
+
     return (
         <div>
             <UserHeader>
@@ -185,23 +202,23 @@ const NewUserContent = () => {
                     className={"dropdown"}
                     options={options}
                     value={defaultOption}
-                    placeholder="Select an option" />;
+                    placeholder="Select an option"/>;
             </UserHeader>
             <UserWrapper>
                 <LikeAndCommentWrapper>
-                <Row className="items-bottom justify-center">
-                    <CircleIcon imgUrl={chat} alt={"icon"}/>
-                    <UserImage>
-                        <img src={ProfilePic} alt="profile-pic"/>
-                    </UserImage>
-                    <div>
-                        <LikeButton/>
-                    </div>
-                </Row>
+                    <Row className="items-bottom justify-center">
+                        <CircleIcon imgUrl={chat} alt={"icon"}/>
+                        <UserImage>
+                            <img src={ProfilePic} alt="profile-pic"/>
+                        </UserImage>
+                        <div>
+                            <LikeButton/>
+                        </div>
+                    </Row>
                 </LikeAndCommentWrapper>
                 <Row className="items-center justify-center">
                     <CircleIcon imgUrl={ShareIcon} alt={"icon"}/>
-                    <UserName>Alexander Newton</UserName>
+                    <UserName onClick={handleOpenModal}>{name}</UserName>
                     <PayWrapper>pay</PayWrapper>
                 </Row>
                 <Description>
@@ -216,6 +233,14 @@ const NewUserContent = () => {
                     <Tab>NFT Gallery</Tab>
                 </PageLiks>
             </GreyBack>
+            {/*{*/}
+            {/*    isOpen*/}
+            {/*        ?*/}
+            {/*        <PortaledComponent modal={<BlurModal close={handleCloseModal} className={isOpen ? 'active' : ""} name={name} setName={setName}/>}/>*/}
+            {/*        :*/}
+            {/*        null*/}
+            {/*}*/}
+            <PortaledComponent modal={<BlurModal close={handleCloseModal} open={isOpen} className={isOpen ? 'active' : ""} name={name} setName={setName}/>}/>
         </div>
     )
 }
