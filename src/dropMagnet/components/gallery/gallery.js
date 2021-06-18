@@ -37,7 +37,7 @@ const GalleryContent = styled.div`
     left: 50%;
     transform: translate(-50%, -50%);
     @media(max-width: 500px){
-        padding: 32px 0;
+        padding: 0 0 50px 0;
     }
 `;
 const ImgWrapper = styled.div`
