@@ -3,7 +3,7 @@ import {Redirect, Route} from "react-router-dom"
 import SliderPage from "./pages/sliderPage";
 import Navbar from "./components/navbar/navbar";
 import CryptoArtManPage from "./pages/cryptoartman/cryptoartmanPage";
-import NewUserContent from "./components/newUserContent/newUserContent";
+import VericalySlidedPage from "./pages/vericalySlidedPage/vericalySlidedPage";
 
 const DropMagnet = () => {
 	return (
@@ -18,7 +18,7 @@ const DropMagnet = () => {
 				<CryptoArtManPage/>
 			</Route>
 			<Route path="/drop-magnet/artgallery.link/newcryptoartman">
-				<NewUserContent/>
+				<VericalySlidedPage/>
 			</Route>
 		</div>
 

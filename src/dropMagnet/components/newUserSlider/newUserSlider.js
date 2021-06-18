@@ -24,7 +24,7 @@ const Slide1Items = [
 ];
 
 const SliderWrapper = styled.div`
-     max-width: 1200px;
+     max-width: 530px;
      width: 100%;
      margin: 0 auto;
      height: fit-content;
@@ -32,9 +32,15 @@ const SliderWrapper = styled.div`
      position: relative;
      padding-top: 24px;
      padding-bottom: 60px;
-     @media(max-width: 376px){
-        padding-bottom: 44px;
-    }
+    //  @media(max-width: 835px){
+    //   padding-bottom: 139px;
+    //  }
+    //  @media(max-width: 530px){
+    //  padding-bottom: 60px;
+    //  }
+    //  @media(max-width: 376px){
+    //     padding-bottom: 44px;
+    // }
 `;
 const SlideImgItem = styled.div`
     width: 158px;
@@ -46,10 +52,14 @@ const SlideImgItem = styled.div`
     height: 100%;
     object-fit: content;
     }
+    @media(max-width: 360px){
+      width: 140px;
+      height: 140px;
+    }
 `;
 const Button = styled.button`
-  min-width: 165px;
-  min-height: 42px; 
+  min-width: 243px;
+  min-height: 62px; 
   border-radius: 100px;
   border: 1px solid;
   background-color: transparent;
@@ -62,10 +72,20 @@ const Button = styled.button`
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
-  margin: 8px 7px;
+  margin: 11.5px 10px;
   position:relative;
   overflow: hidden;
   cursor:pointer;
+  @media (max-width: 530px){
+  min-width: 165px;
+  min-height: 42px;
+  margin: 8px 7px;
+  }
+  @media(max-width: 360px){
+  min-width: 150px;
+  min-height: 40px;
+  margin: 6px 4px;
+  }
 `;
 const SliderPrev = styled.div`
      width: 8px;
@@ -78,9 +98,15 @@ const SliderPrev = styled.div`
      left: calc(50% - 48px);
      z-index:10;
      cursor: pointer;
-     @media(max-width: 376px) {
-      bottom: 20px;
-    }
+    //  @media(max-width: 835px){
+    //    bottom: 79px;
+    //  }
+    //  @media(max-width: 530px) {
+    //   bottom: 36px;
+    // }
+    //  @media(max-width: 376px) {
+    //   bottom: 20px;
+    // }
 `;
 const SliderNext = styled.div`
      width: 8px;
@@ -92,9 +118,15 @@ const SliderNext = styled.div`
      right: calc(50% - 48px);
      z-index:10;
      cursor: pointer;
-     @media(max-width: 376px) {
-      bottom: 20px;
-    }
+    //  @media(max-width: 835px){
+    //    bottom: 79px;
+    //  }
+    //  @media(max-width: 530px) {
+    //   bottom: 36px;
+    // }
+    //  @media(max-width: 376px) {
+    //   bottom: 20px;
+    // }
 `;
 
 

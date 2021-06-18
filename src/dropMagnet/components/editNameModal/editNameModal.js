@@ -9,7 +9,7 @@ const BlurModalWrapper = styled.div`
     top: 0;
     left: 0;
     z-index: 1000;
-    padding-top:172px;
+    padding-top:267px;
     display: flex;
     align-items:center;
     flex-direction: column;
@@ -19,11 +19,11 @@ const BlurModalWrapper = styled.div`
       from { backdrop-filter: blur(0);}
       to { backdrop-filter: blur(20px);}
     }
-    @media(max-width: 391px){
-    padding-top:126px;
+    @media(max-width: 500px){
+    padding-top:172px;
     }
-    @media(max-width: 376px) {
-      padding-top:105px;
+    @media(max-width: 391px) {
+      padding-top:126px;
     }
 `;
 const Title = styled.div`

@@ -7,6 +7,7 @@ import DropMagnet from "./dropMagnet";
 function App() {
   return (
     <div className="App">
+
         <Switch>
             <Route exact path="/" render={()=> <Redirect to="/explore-galleries" />}/>
             <Route path="/explore-galleries" component={ExploreGalleries} />

@@ -30,3 +30,7 @@ body{
     justify-content: space-between;
   }
 }
+.ReactModal__Overlay{
+  z-index: 999999 !important;
+  background-color: transparent !important;
+}

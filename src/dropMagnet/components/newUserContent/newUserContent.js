@@ -1,9 +1,6 @@
 import React, {useState} from 'react';
 import styled from "styled-components";
 import background from "../../assets/cat-background.png";
-import arrowDown from "../../assets/arrowDown.png";
-import Dropdown from 'react-dropdown';
-import 'react-dropdown/style.css';
 import CircleIcon from "./styled-components/icon-wrapper";
 import chat from "../../assets/chat.svg";
 import ProfilePic from "../../assets/profile_pic.png";
@@ -13,71 +10,26 @@ import ShareIcon from "../../assets/share-icon.svg";
 import UserSlider from "../newUserSlider/newUserSlider";
 import BlurModal from "../editNameModal/editNameModal";
 import PortaledComponent from "../portaledComponent";
+import Dropdown from "../dropdown/dropdown";
 
 const UserHeader = styled.div`
     position: relative;
     width: 100%;
-    min-height:183px;
+    height: 278px;
     background-image: url(${background});
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    @media(max-width: 391px){
-    min-height: 137px;
+    @media (max-width: 500px){
+    height:183px;
     }
-    @media(max-width: 376px){
-    min-height: 116px;
+    @media (max-width: 391px){
+    height: 137px;
     }
-`;
-const StyledDropDown = styled(Dropdown)`
-    position: absolute;
-    top:8px;
-    left:15px;
-    .Dropdown-control{
-        min-width: 110px;
-        height: 36px;
-        background: #101010;
-        border-radius: 100px;
-        border: none;
-        color: #d8d8d8;
-        font-size: 16px;
-        font-weight: 600;
-        font-style: normal;
-        letter-spacing: normal;
-        line-height: normal;
-        text-align: left;
-        padding: 8px 30px 8px 12px;
-        .Dropdown-arrow{
-            border: none;
-            background-image: url(${arrowDown});
-            background-repeat: no-repeat;
-            background-position: center;
-            background-size: cover;
-            height: 8px;
-            width: 14px;
-            transition: all 150ms ease;
-        }
+    @media (max-width: 376px){
+    height: 116px;
     }
-    &.dropdown.is-open{
-    .Dropdown-arrow{
-            transition: all 150ms ease;
-            transform: rotate(180deg);
-        }
-    }
-    .Dropdown-menu{
-        border-radius: 10px;
-        background: #101010;
-        border: none;
-        box-shadow: none;
-        margin-top: 0;
-        .Dropdown-option{
-            color: #d8d8d8;
-            &.is-selected{
-                font-weight:bold;
-                background: #101010;
-            }
-        }
-    }
+    
 `;
 
 const UserWrapper = styled.div`
@@ -119,6 +71,7 @@ const UserName = styled.p`
   line-height: normal;
   text-align: center;
   margin: 0 8px;
+  cursor: pointer;
 `;
 const PayWrapper = styled.div`
   width: 46px;
@@ -139,6 +92,9 @@ const PayWrapper = styled.div`
 `;
 
 const Description = styled.div`
+  max-width: 342px;
+  margin-left: auto;
+  margin-right: auto;
   color: #eaeaea;
   font-size: 16px;
   font-weight: 700;
@@ -173,38 +129,43 @@ const Tab = styled.p`
     line-height: normal;
     text-align: center;
     margin: 0;
+    cursor: pointer;
     &.active{
-        background: linear-gradient(to right, #d600ff 0%, #6600ff 100%);;
+        background: linear-gradient(to right, #d600ff 0%, #6600ff 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
     }
 `;
 
-const NewUserContent = () => {
+const UserContentWrapper = styled.div`
+    width: 100%;
+    height:100%;
+`;
+
+const NewUserContent = ({handleSlideNext}) => {
     const [isOpen, setIsOpen] = useState(false);
-    const [name,setName] = useState("Alexander Newton")
-    const options = ['Mag.Link', 'Mag.Link 2', 'Mag.Link 3'];
-    const defaultOption = options[0];
+    const [name, setName] = useState("Alexander Newton");
+    const options = [
+        {id:1, label: 'Mag.Link'},
+        {id:2, label: 'Mag.Link 2'},
+        {id:3, label: 'Mag.Link 3'},
+    ];
 
     const handleOpenModal = () => {
-        document.querySelector("body").style.overflow="hidden"
+        document.querySelector("body").style.overflow = "hidden";
         setIsOpen(true);
     }
 
     const handleCloseModal = () => {
-        document.querySelector("body").style.overflow="auto"
+        document.querySelector("body").style.overflow = "auto";
         setIsOpen(false);
     }
 
 
     return (
-        <div>
+        <UserContentWrapper>
             <UserHeader>
-                <StyledDropDown
-                    className={"dropdown"}
-                    options={options}
-                    value={defaultOption}
-                    placeholder="Select an option"/>;
+                <Dropdown data={options} />
             </UserHeader>
             <UserWrapper>
                 <LikeAndCommentWrapper>
@@ -232,11 +193,18 @@ const NewUserContent = () => {
                 <UserSlider/>
                 <PageLiks>
                     <Tab className="active">Cover Page</Tab>
-                    <Tab>NFT Gallery</Tab>
+                    <Tab onClick={handleSlideNext} className="nextEl">NFT Gallery</Tab>
                 </PageLiks>
             </GreyBack>
-            <PortaledComponent modal={<BlurModal close={handleCloseModal} open={isOpen} className={isOpen ? 'active' : ""} name={name} setName={setName}/>}/>
-        </div>
+            <PortaledComponent
+                modal={
+                    <BlurModal
+                        close={handleCloseModal}
+                        open={isOpen}
+                        className={isOpen ? 'active' : ""} name={name}
+                        setName={setName}/>
+                }/>
+        </UserContentWrapper>
     )
 }
 
