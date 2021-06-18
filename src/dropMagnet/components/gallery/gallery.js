@@ -36,12 +36,15 @@ const GalleryContent = styled.div`
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
+    @media(max-width: 500px){
+        padding: 32px 0;
+    }
 `;
 const ImgWrapper = styled.div`
     max-width: 500px;
     max-height: 500px;
-    min-width:300px;
-    min-height: 300px;
+    min-width: 250px;
+    min-height: 250px;
     width: 40vw;
     height: 40vw;
     img{
