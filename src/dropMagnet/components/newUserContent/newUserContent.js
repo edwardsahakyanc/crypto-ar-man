@@ -147,8 +147,6 @@ const UserContentWrapper = styled.div`
 
 const NewUserContent = () => {
     const [isOpen, setIsOpen] = useState(false);
-    // const contentRef = useRef(null);
-    // const nft = useRef(null);
     const [name, setName] = useState("Alexander Newton");
     const options = [
         {id:1, label: 'Mag.Link'},
@@ -166,26 +164,6 @@ const NewUserContent = () => {
         document.querySelector("body").style.overflow = "auto";
         setIsOpen(false);
     }
-
-    // let a = 0;
-    // const handleScroll = () => {
-    //     const scrollHeight = contentRef.current.scrollHeight;
-    //     const userScroll = contentRef.current.offsetHeight + contentRef.current.scrollTop;
-    //     if(scrollHeight === userScroll && a > 12){
-    //         console.log("POXI")
-    //         contentRef.current.classList.add("nextEl")
-    //         if(contentRef.current.classList.contains('nextEl')){
-    //             nft.current.click()
-    //             contentRef.current.scrollTop = 0
-    //             setTouchMove(true)
-    //         }
-    //     }else {
-    //         console.log("chpoxi")
-    //         contentRef.current.classList.remove("nextEl")
-    //     }
-    //     a++;
-    // }
-
 
     return (
         <UserContentWrapper>

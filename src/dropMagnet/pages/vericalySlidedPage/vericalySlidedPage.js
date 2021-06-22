@@ -11,22 +11,15 @@ import VideoPlayer from "../../components/videoPlayer/videoPlayer";
 import Portrait from "../../components/portrait/portrait";
 import Landscape from "../../components/landscape/landscape";
 import Three from "../../components/threeJs/threeJs";
-// import Three from "../../components/threeJs/threeJs";
 
 SwiperCore.use([Mousewheel]);
 
 const VericalySlidedPage = () => {
     const firstSlide = {id: 1, imgUrl: galleryImage, backgroundColor: "#292929", price: "100"};
-    const [touchMove, setTouchMove] = useState(false);
-
-    const handleSwiper = (swiper) => {
-        console.log(Swiper)
-    }
-    console.log(touchMove)
 
     return (
         <div>
-            <NewUserContent setTouchMove={setTouchMove}/>
+            <NewUserContent/>
             <Swiper
                 speed={700}
                 direction={'vertical'}

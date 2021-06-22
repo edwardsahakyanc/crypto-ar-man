@@ -32,15 +32,6 @@ const SliderWrapper = styled.div`
      position: relative;
      padding-top: 24px;
      padding-bottom: 60px;
-    //  @media(max-width: 835px){
-    //   padding-bottom: 139px;
-    //  }
-    //  @media(max-width: 530px){
-    //  padding-bottom: 60px;
-    //  }
-    //  @media(max-width: 376px){
-    //     padding-bottom: 44px;
-    // }
 `;
 const SlideImgItem = styled.div`
     width: 158px;
@@ -98,15 +89,6 @@ const SliderPrev = styled.div`
      left: calc(50% - 48px);
      z-index:10;
      cursor: pointer;
-    //  @media(max-width: 835px){
-    //    bottom: 79px;
-    //  }
-    //  @media(max-width: 530px) {
-    //   bottom: 36px;
-    // }
-    //  @media(max-width: 376px) {
-    //   bottom: 20px;
-    // }
 `;
 const SliderNext = styled.div`
      width: 8px;
@@ -118,15 +100,6 @@ const SliderNext = styled.div`
      right: calc(50% - 48px);
      z-index:10;
      cursor: pointer;
-    //  @media(max-width: 835px){
-    //    bottom: 79px;
-    //  }
-    //  @media(max-width: 530px) {
-    //   bottom: 36px;
-    // }
-    //  @media(max-width: 376px) {
-    //   bottom: 20px;
-    // }
 `;
 
 
