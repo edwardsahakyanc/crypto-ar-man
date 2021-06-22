@@ -33,7 +33,6 @@ const UserHeader = styled.div`
 `;
 
 const UserWrapper = styled.div`
-    
     background: #1a1a1a;
     padding: 93px 10px 19px;
     position:relative;
@@ -148,8 +147,8 @@ const UserContentWrapper = styled.div`
 
 const NewUserContent = () => {
     const [isOpen, setIsOpen] = useState(false);
-    const contentRef = useRef(null);
-    const nft = useRef(null);
+    // const contentRef = useRef(null);
+    // const nft = useRef(null);
     const [name, setName] = useState("Alexander Newton");
     const options = [
         {id:1, label: 'Mag.Link'},
@@ -168,27 +167,28 @@ const NewUserContent = () => {
         setIsOpen(false);
     }
 
-    let a = 0;
-    const handleScroll = () => {
-        const scrollHeight = contentRef.current.scrollHeight;
-        const userScroll = contentRef.current.offsetHeight + contentRef.current.scrollTop;
-        if(scrollHeight === userScroll && a > 12){
-            console.log("POXI")
-            contentRef.current.classList.add("nextEl")
-            if(contentRef.current.classList.contains('nextEl')){
-                nft.current.click()
-                contentRef.current.scrollTop = 0
-            }
-        }else {
-            console.log("chpoxi")
-            contentRef.current.classList.remove("nextEl")
-        }
-        a++;
-    }
+    // let a = 0;
+    // const handleScroll = () => {
+    //     const scrollHeight = contentRef.current.scrollHeight;
+    //     const userScroll = contentRef.current.offsetHeight + contentRef.current.scrollTop;
+    //     if(scrollHeight === userScroll && a > 12){
+    //         console.log("POXI")
+    //         contentRef.current.classList.add("nextEl")
+    //         if(contentRef.current.classList.contains('nextEl')){
+    //             nft.current.click()
+    //             contentRef.current.scrollTop = 0
+    //             setTouchMove(true)
+    //         }
+    //     }else {
+    //         console.log("chpoxi")
+    //         contentRef.current.classList.remove("nextEl")
+    //     }
+    //     a++;
+    // }
 
 
     return (
-        <UserContentWrapper ref={contentRef} onWheel={handleScroll}>
+        <UserContentWrapper>
             <UserHeader>
                 <Dropdown data={options} />
             </UserHeader>
@@ -218,7 +218,7 @@ const NewUserContent = () => {
                 <UserSlider/>
                 <PageLiks>
                     <Tab className="active">Cover Page</Tab>
-                    <Tab className="nextEl" ref={nft}>NFT Gallery</Tab>
+                    <Tab className="nextEl">NFT Gallery</Tab>
                 </PageLiks>
             </GreyBack>
             <PortaledComponent

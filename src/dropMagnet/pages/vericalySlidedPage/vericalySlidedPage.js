@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Mousewheel} from 'swiper/core';
 import "swiper/swiper.min.css";
@@ -16,62 +16,51 @@ import Three from "../../components/threeJs/threeJs";
 SwiperCore.use([Mousewheel]);
 
 const VericalySlidedPage = () => {
-    const firstSlide = {id: 1, imgUrl: galleryImage, backgroundColor: "#292929", price: "100"}
+    const firstSlide = {id: 1, imgUrl: galleryImage, backgroundColor: "#292929", price: "100"};
+    const [touchMove, setTouchMove] = useState(false);
 
     const handleSwiper = (swiper) => {
         console.log(Swiper)
     }
+    console.log(touchMove)
 
     return (
-        <Swiper
-            speed={700}
-            direction={'vertical'}
-            mousewheel={{
-                releaseOnEdges: true,
-                eventsTarget: '.slide-content',
-            }}
-            navigation={{
-                nextEl: ".nextEl"
-            }}
-            slideToClickedSlide={true}
-            preventClicks={true}
-            preventClicksPropagation={false}
-            onSlideChange={() => console.log('slide change')}
-            onSwiper={(swiper) => handleSwiper(swiper)}
-            className="verticalSwipper">
-            <SwiperSlide>
-                <NewUserContent/>
-            </SwiperSlide>
-
-            <SwiperSlide className="slide-content">
-                <Gallery {...firstSlide}/>
-            </SwiperSlide>
-            <SwiperSlide className="slide-content">
-                <HoveredCard/>
-            </SwiperSlide>
-            <SwiperSlide className="slide-content">
-                <Three/>
-            </SwiperSlide>
-            <SwiperSlide className="slide-content">
-                <VideoPlayer/>
-            </SwiperSlide>
-            <SwiperSlide className="slide-content">
-                <Portrait/>
-            </SwiperSlide>
-            <SwiperSlide className="slide-content">
-                <Landscape/>
-            </SwiperSlide>
-
-            {/*<SwiperSlide className="slide-content">*/}
-            {/*    <h1>SECOND SLIDE</h1>*/}
-            {/*</SwiperSlide>*/}
-            {/*<SwiperSlide className="slide-content">*/}
-            {/*    <h1>Third SLIDE</h1>*/}
-            {/*</SwiperSlide>*/}
-            {/*<SwiperSlide className="slide-content">*/}
-            {/*    <h1>Fourth SLIDE</h1>*/}
-            {/*</SwiperSlide>*/}
-        </Swiper>
+        <div>
+            <NewUserContent setTouchMove={setTouchMove}/>
+            <Swiper
+                speed={700}
+                direction={'vertical'}
+                mousewheel={{
+                    releaseOnEdges: true,
+                }}
+                navigation={{
+                    nextEl: ".nextEl"
+                }}
+                autoHeight={true}
+                slideToClickedSlide={true}
+                preventClicks={true}
+                preventClicksPropagation={false}
+                className="verticalSwipper">
+                <SwiperSlide>
+                    <Gallery {...firstSlide}/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <HoveredCard/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <Three/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <VideoPlayer/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <Portrait/>
+                </SwiperSlide>
+                <SwiperSlide>
+                    <Landscape/>
+                </SwiperSlide>
+            </Swiper>
+        </div>
     )
 }
 
