@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useRef, useState} from 'react';
 import styled from "styled-components";
 import background from "../../assets/cat-background.png";
 import CircleIcon from "./styled-components/icon-wrapper";
@@ -146,14 +146,17 @@ const UserContentWrapper = styled.div`
     background-color: #292929;
 `;
 
-const NewUserContent = ({handleSlideNext}) => {
+const NewUserContent = () => {
     const [isOpen, setIsOpen] = useState(false);
+    const contentRef = useRef(null);
+    const nft = useRef(null);
     const [name, setName] = useState("Alexander Newton");
     const options = [
         {id:1, label: 'Mag.Link'},
         {id:2, label: 'Mag.Link 2'},
         {id:3, label: 'Mag.Link 3'},
     ];
+
 
     const handleOpenModal = () => {
         document.querySelector("body").style.overflow = "hidden";
@@ -165,9 +168,24 @@ const NewUserContent = ({handleSlideNext}) => {
         setIsOpen(false);
     }
 
+    let a = 0;
+    const handleScroll = (event) => {
+        const scrollHeight = contentRef.current.scrollHeight;
+        const userScroll = contentRef.current.offsetHeight + contentRef.current.scrollTop;
+        if(scrollHeight === userScroll && a > 10){
+            console.log("POXI")
+            contentRef.current.classList.add("nextEl")
+            nft.current.click()
+            contentRef.current.scrollTop = 0
+        }else {
+            console.log("MI POXI")
+        }
+        a++;
+    }
+
 
     return (
-        <UserContentWrapper>
+        <UserContentWrapper ref={contentRef} onWheel={handleScroll}>
             <UserHeader>
                 <Dropdown data={options} />
             </UserHeader>
@@ -197,7 +215,7 @@ const NewUserContent = ({handleSlideNext}) => {
                 <UserSlider/>
                 <PageLiks>
                     <Tab className="active">Cover Page</Tab>
-                    <Tab onClick={handleSlideNext} className="nextEl">NFT Gallery</Tab>
+                    <Tab className="nextEl" ref={nft}>NFT Gallery</Tab>
                 </PageLiks>
             </GreyBack>
             <PortaledComponent
