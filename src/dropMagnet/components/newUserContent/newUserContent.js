@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from 'react';
+import React, { useRef, useState} from 'react';
 import styled from "styled-components";
 import background from "../../assets/cat-background.png";
 import CircleIcon from "./styled-components/icon-wrapper";
@@ -169,16 +169,19 @@ const NewUserContent = () => {
     }
 
     let a = 0;
-    const handleScroll = (event) => {
+    const handleScroll = () => {
         const scrollHeight = contentRef.current.scrollHeight;
         const userScroll = contentRef.current.offsetHeight + contentRef.current.scrollTop;
-        if(scrollHeight === userScroll && a > 10){
+        if(scrollHeight === userScroll && a > 12){
             console.log("POXI")
             contentRef.current.classList.add("nextEl")
-            nft.current.click()
-            contentRef.current.scrollTop = 0
+            if(contentRef.current.classList.contains('nextEl')){
+                nft.current.click()
+                contentRef.current.scrollTop = 0
+            }
         }else {
-            console.log("MI POXI")
+            console.log("chpoxi")
+            contentRef.current.classList.remove("nextEl")
         }
         a++;
     }
