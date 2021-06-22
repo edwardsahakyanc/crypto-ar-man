@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Mousewheel} from 'swiper/core';
 import "swiper/swiper.min.css";
