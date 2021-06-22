@@ -33,11 +33,14 @@ const UserHeader = styled.div`
 `;
 
 const UserWrapper = styled.div`
-    border-top: 4px solid #101010;
-    border-bottom: 4px solid #101010;
-    background: transparent;
+    
+    background: #1a1a1a;
     padding: 93px 10px 19px;
     position:relative;
+    @media(max-width: 500px){
+    border-top: 4px solid #101010;
+    border-bottom: 4px solid #101010;
+    }
 `;
 const UserImage = styled.div`
   width: 164px;
@@ -105,9 +108,8 @@ const Description = styled.div`
   margin-top: 16px;
 `;
 const GreyBack = styled.div`
-  height: 100%;
-  background-color: #292929;
-  padding-bottom: 20px;
+  // height: 100%;
+  padding-bottom: 40px;
 `;
 const PageLiks = styled.div`
   width: 248px;
@@ -140,6 +142,8 @@ const Tab = styled.p`
 const UserContentWrapper = styled.div`
     width: 100%;
     height:100%;
+    overflow: auto;
+    background-color: #292929;
 `;
 
 const NewUserContent = ({handleSlideNext}) => {

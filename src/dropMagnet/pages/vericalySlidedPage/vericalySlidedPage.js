@@ -22,36 +22,49 @@ const VericalySlidedPage = () => {
         <Swiper
             speed={700}
             direction={'vertical'}
-            mousewheel={true}
+            mousewheel={{
+                releaseOnEdges: true,
+                eventsTarget: '.slide-content',
+            }}
             navigation={{
                 nextEl: ".nextEl"
             }}
-            // allowTouchMove={false}
             slideToClickedSlide={true}
             preventClicks={true}
             preventClicksPropagation={false}
+            onSlideChange={() => console.log('slide change')}
+            onSwiper={(swiper) => console.log("ONSWPIPER", swiper)}
             className="verticalSwipper">
             <SwiperSlide>
                 <NewUserContent/>
             </SwiperSlide>
-            <SwiperSlide>
-                <Gallery {...firstSlide}/>
+            <SwiperSlide className="slide-content">
+                <h1>SECOND SLIDE</h1>
             </SwiperSlide>
-            <SwiperSlide>
-                <HoveredCard/>
+            <SwiperSlide className="slide-content">
+                <h1>Third SLIDE</h1>
             </SwiperSlide>
-            <SwiperSlide>
-                <Three/>
+            <SwiperSlide className="slide-content">
+                <h1>Fourth SLIDE</h1>
             </SwiperSlide>
-            <SwiperSlide>
-                <VideoPlayer/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <Portrait/>
-            </SwiperSlide>
-            <SwiperSlide>
-                <Landscape/>
-            </SwiperSlide>
+            {/*<SwiperSlide className="slide-content">*/}
+            {/*    <Gallery {...firstSlide}/>*/}
+            {/*</SwiperSlide>*/}
+            {/*<SwiperSlide className="slide-content">*/}
+            {/*    <HoveredCard/>*/}
+            {/*</SwiperSlide>*/}
+            {/*<SwiperSlide className="slide-content">*/}
+            {/*    <Three/>*/}
+            {/*</SwiperSlide>*/}
+            {/*<SwiperSlide className="slide-content">*/}
+            {/*    <VideoPlayer/>*/}
+            {/*</SwiperSlide>*/}
+            {/*<SwiperSlide className="slide-content">*/}
+            {/*    <Portrait/>*/}
+            {/*</SwiperSlide>*/}
+            {/*<SwiperSlide className="slide-content">*/}
+            {/*    <Landscape/>*/}
+            {/*</SwiperSlide>*/}
         </Swiper>
     )
 }
