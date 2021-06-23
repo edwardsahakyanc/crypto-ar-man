@@ -23,6 +23,10 @@ const CloseButton = styled.button`
     top: 30px;
     right: 32px;
     z-index: 9999;
+    @media(max-width: 500px){
+        top: 12px;
+        right: 15px;
+    }
 `;
 const OpenModalButton = styled.button`
     padding: 8px 16px;
@@ -57,10 +61,8 @@ const MyModal = (props) => {
             isOpen={props.isOpen}
             contentLabel="Example Modal"
             className="MODAL"
-            appElement={document.getElementById('portal')}
-        >
-
-            <CloseButton onClick={props.onRequestClose}>&#10006;</CloseButton>
+            appElement={document.getElementById('portal')}>
+            <CloseButton onClick={props.onRequestClose}>&#10005;</CloseButton>
             <model-viewer
                 style={{width: "100%", height: "100%"}}
                 src={laptop}

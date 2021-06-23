@@ -7,6 +7,10 @@ const DropDownWrapper = styled.div`
     top:8px;
     left:15px;
     z-index: 1000;
+    @media (max-width: 375px) and (max-height: 700px) {
+        top: 12px;
+        left: 13px;
+    }
 `;
 const DropDown = styled.div`
     min-width: 110px;

@@ -19,11 +19,17 @@ const GalleryWrapper = styled.div`
     width: 100%;
     height: 100%;
     position:relative;
+    display:flex;
+    align-items: center;
+    justify-content: center;
+    padding: 32px 0;
+     @media(max-height: 550px){
+      align-items: stretch;
+    }
 `;
 const GalleryContent = styled.div`
     box-sizing: border-box;
     display: flex;
-    padding: 32px;
     flex-flow: column;
     align-items: center;
     font-weight: 700;
@@ -32,10 +38,7 @@ const GalleryContent = styled.div`
     margin: 0 auto;
     height: auto;
     justify-content: space-between;
-    position:absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
+   
 `;
 const ImgWrapper = styled.div`
     max-width: 500px;
@@ -71,12 +74,21 @@ const GalleryButton = styled.button`
   cursor: pointer;
 `;
 
+
 const Gallery = (props) => {
-    const [isZoomed, setIsZoomed] = useState(false)
+    const [isZoomed, setIsZoomed] = useState(false);
+    const [margin, setMargin] = useState(100)
 
     const handleZoomChange = useCallback(shouldZoom => {
         setIsZoomed(shouldZoom)
-    }, [])
+    }, []);
+
+
+    window.addEventListener("resize", () => {
+        if(document.body.clientWidth <= 500){
+            setMargin(20)
+        }
+    })
 
 
     return (
@@ -87,7 +99,7 @@ const Gallery = (props) => {
                     overlayBgColorEnd={"rgba(0,0,0,.7)"}
                     isZoomed={isZoomed}
                     onZoomChange={handleZoomChange}
-                    zoomMargin={100}>
+                    zoomMargin={margin}>
                     <ImgWrapper>
                         <img src={props.imgUrl} alt="gallery"/>
                     </ImgWrapper>

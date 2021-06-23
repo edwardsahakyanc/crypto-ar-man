@@ -19,6 +19,14 @@ const IconWrap = styled.div`
         height: 100%;
       }
   }
+   @media (max-width: 350px) and (max-height: 650px) {
+        width: 36px;
+        height: 36px;
+        img{
+            width: 18px;
+            height: 18px;
+        }
+    }
 `
 
 const CircleIcon = ({imgUrl, alt, className}) => {

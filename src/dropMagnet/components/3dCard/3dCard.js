@@ -34,6 +34,10 @@ const Card = styled.div`
   transition-duration: 150ms;
   box-shadow: 0 5px 20px 5px #00000044;
   }
+  &:active{
+  transition-duration: 150ms;
+  box-shadow: 0 5px 20px 5px #00000044;
+  }
   .glow{
   position: absolute;
   width: 100%;

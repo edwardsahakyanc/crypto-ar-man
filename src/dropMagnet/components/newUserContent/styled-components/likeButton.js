@@ -14,9 +14,17 @@ const Like = styled.div`
   justify-content: center;
   cursor: pointer;
   position: relative;
+  @media (max-width: 350px) and (max-height: 650px) {
+        width: 36px;
+        height: 36px;
+  }
   svg{
     width: 22px;
     height: 22px;
+    @media (max-width: 350px) and (max-height: 650px) {
+        width: 18px;
+        height: 18px;
+  }
   }
   .not-liked {
     display: block;

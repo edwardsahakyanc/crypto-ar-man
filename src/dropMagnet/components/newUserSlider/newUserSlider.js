@@ -73,9 +73,9 @@ const Button = styled.button`
   margin: 8px 7px;
   }
   @media(max-width: 360px){
-  min-width: 150px;
-  min-height: 40px;
-  margin: 6px 4px;
+  min-width: 142px;
+  min-height: 33px;
+  margin: 6px 6.5px;
   }
 `;
 const SliderPrev = styled.div`

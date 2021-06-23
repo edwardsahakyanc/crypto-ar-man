@@ -29,24 +29,78 @@ const UserHeader = styled.div`
     @media (max-width: 376px){
     height: 116px;
     }
-    
+    @media (max-width: 375px) and (max-height: 700px) {
+        display:none;
+    }
 `;
 
 const UserWrapper = styled.div`
     background: #1a1a1a;
     padding: 93px 10px 19px;
     position:relative;
+    @media (max-width: 375px) and (max-height: 700px) {
+     display: none;
+    }
     @media(max-width: 500px){
     border-top: 4px solid #101010;
     border-bottom: 4px solid #101010;
     }
 `;
+
+const MobileUserWrapper = styled.div`
+    display: none;
+    background-color:#1a1a1a;
+    padding-bottom: 12px;
+    @media (max-width: 375px) and (max-height: 700px) {
+        display: block;
+    }
+    @media (max-width: 350px) and (max-height: 650px) {
+        display: none;
+    }
+`;
+
+const MobileUserContent = styled.div`
+    display: flex;
+    position: relative;
+    padding-top: 64px;
+`;
+
+const SmallDevice = styled.div`
+    display: none;
+    position: relative;
+    padding-top: 62px;
+    padding-bottom: 12px;
+    background-color:#1a1a1a;
+    @media (max-width: 350px) and (max-height: 650px) {
+        display: block;
+    }
+    .icons{
+        margin-top: 12px;
+        display:flex;
+        align-items: center;
+        justify-content: center;
+        &>div{
+            margin: 0 6px;
+        }
+    }
+`;
+
 const UserImage = styled.div`
   width: 164px;
   height: 164px;
   margin: 0 14px 4px;
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
   border-radius: 1000px;
+  @media (max-width: 375px) and (max-height: 700px) {
+        width: 87px;
+        height: 87px;
+        margin: 3px 11px 0 13px;
+    }
+    @media (max-width: 350px) and (max-height: 650px) {
+        width: 36px;
+        height: 36px;
+        margin: 0 19px 0 0;
+    }
 `;
 
 const LikeAndCommentWrapper = styled.div`
@@ -74,6 +128,15 @@ const UserName = styled.p`
   text-align: center;
   margin: 0 8px;
   cursor: pointer;
+  @media (max-width: 375px) and (max-height: 700px) {
+        margin: 0 0 12px 0;
+    }
+    @media (max-width: 350px) and (max-height: 650px) {
+        width: 158px;
+        height: 36px;
+        font-size: 16px;
+        margin: 0;
+    }
 `;
 const PayWrapper = styled.div`
   width: 46px;
@@ -91,6 +154,11 @@ const PayWrapper = styled.div`
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
+  @media (max-width: 350px) and (max-height: 650px) {
+        width: 36px;
+        height: 36px;
+        font-size: 14px;
+   }
 `;
 
 const Description = styled.div`
@@ -105,6 +173,9 @@ const Description = styled.div`
   line-height: normal;
   text-align: center;
   margin-top: 16px;
+  @media (max-width: 375px) and (max-height: 700px) {
+        margin-top: 12px;
+    }
 `;
 const GreyBack = styled.div`
   // height: 100%;
@@ -144,6 +215,7 @@ const UserContentWrapper = styled.div`
     overflow: auto;
     background-color: #292929;
 `;
+
 
 const NewUserContent = () => {
     const [isOpen, setIsOpen] = useState(false);
@@ -192,6 +264,45 @@ const NewUserContent = () => {
                     since 2017, and I also created Drop Magnet.
                 </Description>
             </UserWrapper>
+            <MobileUserWrapper>
+                <MobileUserContent>
+                    <Dropdown data={options} />
+                    <UserImage>
+                        <img src={ProfilePic} alt="profile-pic"/>
+                    </UserImage>
+                    <div>
+                        <UserName onClick={handleOpenModal}>{name}</UserName>
+                        <Row className="items-center justify-between">
+                            <CircleIcon imgUrl={ShareIcon} alt={"icon"}/>
+                            <CircleIcon imgUrl={chat} alt={"icon"}/>
+                            <LikeButton/>
+                            <PayWrapper>pay</PayWrapper>
+                        </Row>
+                    </div>
+                </MobileUserContent>
+                <Description>
+                    I’m a crypto artist. I’ve been collecting NFTs
+                    since 2017, and I also created Drop Magnet.
+                </Description>
+            </MobileUserWrapper>
+            <SmallDevice>
+                <Dropdown data={options} />
+                <div>
+                    <Row className="items-center justify-center">
+                        <UserImage>
+                            <img src={ProfilePic} alt="profile-pic"/>
+                        </UserImage>
+                        <UserName onClick={handleOpenModal}>{name}</UserName>
+                    </Row>
+                </div>
+                <div className="icons">
+                    <CircleIcon imgUrl={ShareIcon} alt={"icon"}/>
+                    <CircleIcon imgUrl={chat} alt={"icon"}/>
+                    <LikeButton/>
+                    <PayWrapper>pay</PayWrapper>
+                    <PayWrapper>bio</PayWrapper>
+                </div>
+            </SmallDevice>
             <GreyBack>
                 <UserSlider/>
                 <PageLiks>

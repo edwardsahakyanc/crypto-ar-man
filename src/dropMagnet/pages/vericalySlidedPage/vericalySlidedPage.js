@@ -18,42 +18,40 @@ const VericalySlidedPage = () => {
     const firstSlide = {id: 1, imgUrl: galleryImage, backgroundColor: "#292929", price: "100"};
 
     return (
-        <div>
-            <NewUserContent/>
-            <Swiper
-                speed={700}
-                direction={'vertical'}
-                mousewheel={{
-                    releaseOnEdges: true,
-                }}
-                navigation={{
-                    nextEl: ".nextEl"
-                }}
-                autoHeight={true}
-                slideToClickedSlide={true}
-                preventClicks={true}
-                preventClicksPropagation={false}
-                className="verticalSwipper">
-                <SwiperSlide>
-                    <Gallery {...firstSlide}/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <HoveredCard/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Three/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <VideoPlayer/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Portrait/>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <Landscape/>
-                </SwiperSlide>
-            </Swiper>
-        </div>
+        <Swiper
+            speed={700}
+            direction={'vertical'}
+            mousewheel={true}
+            navigation={{
+                nextEl: ".nextEl"
+            }}
+            autoHeight={true}
+            slideToClickedSlide={true}
+            preventClicks={true}
+            preventClicksPropagation={false}
+            className="verticalSwipper">
+            <SwiperSlide>
+                <NewUserContent/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <Gallery {...firstSlide}/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <HoveredCard/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <Three/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <VideoPlayer/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <Portrait/>
+            </SwiperSlide>
+            <SwiperSlide>
+                <Landscape/>
+            </SwiperSlide>
+        </Swiper>
     )
 }
 
