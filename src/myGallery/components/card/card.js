@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback, useMemo, useState} from "react";
 import styled from "styled-components";
 // import more from "../../assets/more.svg";
 import edit from "../../assets/edit.svg";
@@ -456,7 +456,7 @@ const Card = (props) => {
             return null
         }
     }
-    // const memoizedShowModals = useMemo(() => showModals(), [isOpen, isEdit, linkCopied ])
+    const memoizedShowModals = useMemo(showModals, [showModals ])
 
 
     return (
@@ -466,7 +466,7 @@ const Card = (props) => {
                 <MoreBtn handleClick={handleMenu} isOpen={isOpen}/>
                 <NFT>{nft} NFTs</NFT>
                 <Artist>{artist}</Artist>
-                {showModals()}
+                {memoizedShowModals}
             </CardSize>
         </CardWrapper>
     )
