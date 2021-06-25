@@ -1,4 +1,4 @@
-import React, {useCallback, useMemo, useState} from "react";
+import React, {useCallback, useState} from "react";
 import styled from "styled-components";
 // import more from "../../assets/more.svg";
 import edit from "../../assets/edit.svg";
@@ -352,7 +352,7 @@ const Card = (props) => {
         setIsEdit(false);
         setWalletEdit(false);
     };
-    const handleChangeTab = useCallback((id) => setActiveTab(id), [activeTab]);
+    const handleChangeTab = useCallback((id) => setActiveTab(id), []);
 
     const showModals = () => {
         if (isOpen && !isEdit) {
@@ -456,7 +456,7 @@ const Card = (props) => {
             return null
         }
     }
-    const memoizedShowModals = useMemo(() => showModals(), [isOpen, isEdit, linkCopied, ])
+    // const memoizedShowModals = useMemo(() => showModals(), [isOpen, isEdit, linkCopied ])
 
 
     return (
@@ -466,7 +466,7 @@ const Card = (props) => {
                 <MoreBtn handleClick={handleMenu} isOpen={isOpen}/>
                 <NFT>{nft} NFTs</NFT>
                 <Artist>{artist}</Artist>
-                {memoizedShowModals}
+                {showModals()}
             </CardSize>
         </CardWrapper>
     )
