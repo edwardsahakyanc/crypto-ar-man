@@ -315,7 +315,8 @@ const NewUserContent = () => {
                     <BlurModal
                         close={handleCloseModal}
                         open={isOpen}
-                        className={isOpen ? 'active' : ""} name={name}
+                        className={isOpen ? 'active' : ""}
+                        name={name}
                         setName={setName}/>
                 }/>
         </UserContentWrapper>

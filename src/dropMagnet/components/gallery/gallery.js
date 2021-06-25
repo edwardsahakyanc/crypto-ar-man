@@ -1,20 +1,13 @@
 import React, {useCallback, useState} from "react";
-import { Controlled as ControlledZoom } from 'react-medium-image-zoom'
-import 'react-medium-image-zoom/dist/styles.css'
+import { Controlled as ControlledZoom } from 'react-medium-image-zoom';
+import 'react-medium-image-zoom/dist/styles.css';
 import styled from "styled-components";
+import GalleryModal from "../../../myGallery/components/galleryModal";
+import dots from "../../assets/dots.svg";
+import share from "../../assets/share.svg"
 
-const Title = styled.p`
-  padding-bottom: 32px;
-  font-size: 36px;
-  margin: 0;
-  color: #eaeaea;
-`;
-const Decription = styled.p`
-    font-size: 24px;
-    padding: 32px 0;
-    margin: 0;
-    color: #eaeaea;
-`;
+
+
 const GalleryWrapper = styled.div`
     width: 100%;
     height: 100%;
@@ -41,43 +34,47 @@ const GalleryContent = styled.div`
    
 `;
 const ImgWrapper = styled.div`
-    max-width: 500px;
-    max-height: 500px;
+    max-width: 440px;
+    max-height: 440px;
     min-width: 250px;
     min-height: 250px;
     width: 40vw;
     height: 40vw;
+    border-radius: 15px;
+    overflow: hidden;
     img{
     width:100%;
     height:100%;
     object-fit: cover;
     }
 `;
-const GalleryButton = styled.button`
-  width: 236px;
-  height: 46px;
-  font-size: 24px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  background-color: #101010;
-  border-radius: 100px;
-  color: #eaeaea;
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: normal;
-  line-height: normal;
-  text-align: center;
-  margin: 0 8px;
-  border:none;
-  outline: none;
-  cursor: pointer;
-`;
-
+const GalleryButtonWrapper = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin-top:14px;
+    button{
+        width: 51px;
+        height: 51px;
+        border-radius: 100px;
+        background-color: #ffffff;
+        border:none;
+        outline: none;
+        margin: 0 8px;
+        cursor:pointer;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        img{
+        width: 27px;
+        }
+    }
+`
 
 const Gallery = (props) => {
     const [isZoomed, setIsZoomed] = useState(false);
-    const [margin, setMargin] = useState(100)
+    const [margin, setMargin] = useState(70);
+    const [isOpen, setIsOpen] = React.useState(false);
 
     const handleZoomChange = useCallback(shouldZoom => {
         setIsZoomed(shouldZoom)
@@ -90,24 +87,40 @@ const Gallery = (props) => {
         }
     })
 
+    const closeModal = () => {
+        setIsOpen(false)
+    }
+
+    const openModal = () => {
+        setIsOpen(true)
+    }
+
 
     return (
-        <GalleryWrapper style={{backgroundColor: `${props.backgroundColor}`}}>
-            <GalleryContent>
-                <Title>Art title</Title>
-                <ControlledZoom
-                    overlayBgColorEnd={"rgba(0,0,0,.7)"}
-                    isZoomed={isZoomed}
-                    onZoomChange={handleZoomChange}
-                    zoomMargin={margin}>
-                    <ImgWrapper>
-                        <img src={props.imgUrl} alt="gallery"/>
-                    </ImgWrapper>
-                </ControlledZoom>
-                <Decription>The Description goes here</Decription>
-                <GalleryButton>Buy for {props.price}$</GalleryButton>
-            </GalleryContent>
-        </GalleryWrapper>
+        <>
+            <GalleryWrapper style={{backgroundColor: `${props.backgroundColor}`}}>
+                <GalleryContent>
+                    <ControlledZoom
+                        overlayBgColorEnd={"rgba(0,0,0,.7)"}
+                        isZoomed={isZoomed}
+                        onZoomChange={handleZoomChange}
+                        zoomMargin={margin}>
+                        <ImgWrapper>
+                            <img src={props.imgUrl} alt="gallery"/>
+                        </ImgWrapper>
+                    </ControlledZoom>
+                    <GalleryButtonWrapper>
+                        <button onClick={openModal}>
+                            <img src={dots} alt="dots"/>
+                        </button>
+                        <button>
+                            <img src={share} alt="share"/>
+                        </button>
+                    </GalleryButtonWrapper>
+                </GalleryContent>
+            </GalleryWrapper>
+            <GalleryModal isOpen={isOpen} closeModal={closeModal}/>
+        </>
     );
 };
 

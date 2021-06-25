@@ -13,6 +13,7 @@ import diamond from "../../assets/diamond.svg";
 import partEmoji from "../../assets/emoji.svg";
 import frame from "../../assets/frame.svg";
 import WalletCollection from "../../styled-components/WalletCollection";
+import {Link} from "../../styled-components/NavLink";
 
 const HomePage = () => {
     return (
@@ -33,7 +34,9 @@ const HomePage = () => {
             <CardsWrapper>
                 <Card title="Explore" subtitle="Galleries" img={frame}/>
                 <Card title="Drop" subtitle="Swipe" img={diamond}/>
-                <Card title="My" subtitle="Galleries" img={partEmoji}/>
+                <Link to="/my-gallery">
+                    <Card title="My" subtitle="Galleries" img={partEmoji}/>
+                </Link>
                 <Card title="Schedule" subtitle="Drop" img={glass}/>
             </CardsWrapper>
             <WalletCollection/>

@@ -117,7 +117,7 @@ const ConnectNewWallet = () => {
                             </p>
                         </div>
                     </WalletsContainer>
-                    <CreateNewWallet text="Share Link!" pathTo="/explore-galleries/finish"/>
+                    <CreateNewWallet text="Share NavLink!" pathTo="/explore-galleries/finish"/>
                 </Route>
             </ConnectedWalletsContainer>
         </Container>

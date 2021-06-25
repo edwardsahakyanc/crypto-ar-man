@@ -3,9 +3,9 @@ import {Swiper, SwiperSlide} from "swiper/react";
 import SwiperCore, {Mousewheel} from 'swiper/core';
 import "swiper/swiper.min.css";
 import NewUserContent from "../../components/newUserContent/newUserContent";
-import "./verticalySlidedPage.scss"
+import "./verticalySlidedPage.scss";
 import Gallery from "../../components/gallery/gallery";
-import galleryImage from "../../assets/gallery.png"
+import galleryImage from "../../assets/gallery.png";
 import HoveredCard from "../../components/3dCard/3dCard";
 import VideoPlayer from "../../components/videoPlayer/videoPlayer";
 import Portrait from "../../components/portrait/portrait";

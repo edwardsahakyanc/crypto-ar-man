@@ -21,7 +21,7 @@ const IconWrap = styled.div`
         height: 100%;
       }
   }
-`
+`;
 
 const CircleIcon = ({imgUrl, alt, className}) => {
     return (
