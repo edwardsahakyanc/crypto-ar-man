@@ -10,7 +10,6 @@ import ShareIcon from "../../assets/share-icon.svg";
 import UserSlider from "../newUserSlider/newUserSlider";
 import BlurModal from "../editNameModal/editNameModal";
 import PortaledComponent from "../portaledComponent";
-import Dropdown from "../dropdown/dropdown";
 import FileMenu from "../../../myGallery/fileMenu/fileMenu";
 
 const UserHeader = styled.div`
@@ -222,11 +221,6 @@ const UserContentWrapper = styled.div`
 const NewUserContent = () => {
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("Alexander Newton");
-    const options = [
-        {id:1, label: 'Mag.Link'},
-        {id:2, label: 'Mag.Link 2'},
-        {id:3, label: 'Mag.Link 3'},
-    ];
 
 
     const handleOpenModal = () => {
