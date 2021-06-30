@@ -17,6 +17,10 @@ const DropDown = styled.div`
   top:8px;
   left:15px;
   transition: width .2s ease-in-out, height .2s ease-in-out, border-radius .2s ease-in-out;
+  @media (max-width: 375px) and (max-height: 700px) {
+        top: 12px;
+        left: 13px;
+    }
   .dropdown-btn{
     border: none;
     outline: none;
@@ -65,6 +69,12 @@ const DropDown = styled.div`
       width: calc(444px);
       height: calc(785px);
   }
+  @media (max-width: 375px) and (max-height: 700px) {
+        top: 12px;
+        left: 13px;
+        width: calc(100vw - 26px);
+        height: calc(100vh - 24px);
+    }
   border-radius: 8px;
     .dropdown-btn{
       img{

@@ -269,7 +269,8 @@ const NewUserContent = () => {
             </UserWrapper>
             <MobileUserWrapper>
                 <MobileUserContent>
-                    <Dropdown data={options} />
+                    {/*<Dropdown data={options} />*/}
+                    <FileMenu/>
                     <UserImage>
                         <img src={ProfilePic} alt="profile-pic"/>
                     </UserImage>
@@ -289,7 +290,8 @@ const NewUserContent = () => {
                 </Description>
             </MobileUserWrapper>
             <SmallDevice>
-                <Dropdown data={options} />
+                {/*<Dropdown data={options} />*/}
+                <FileMenu/>
                 <div>
                     <Row className="items-center justify-center">
                         <UserImage>
