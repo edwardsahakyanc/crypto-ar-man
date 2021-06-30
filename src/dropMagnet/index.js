@@ -4,6 +4,7 @@ import SliderPage from "./pages/sliderPage";
 import Navbar from "./components/navbar/navbar";
 import CryptoArtManPage from "./pages/cryptoartman/cryptoartmanPage";
 import VericalySlidedPage from "./pages/vericalySlidedPage/vericalySlidedPage";
+import ScrollSnapPage from "./pages/scrollSnapPage/ScrollSnapPage";
 
 const DropMagnet = () => {
 	return (
@@ -19,6 +20,9 @@ const DropMagnet = () => {
 			</Route>
 			<Route path="/drop-magnet/artgallery.link/newcryptoartman">
 				<VericalySlidedPage/>
+			</Route>
+			<Route path="/drop-magnet/artgallery.link/verticaly">
+				<ScrollSnapPage/>
 			</Route>
 		</div>
 

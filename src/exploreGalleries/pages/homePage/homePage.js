@@ -37,7 +37,9 @@ const HomePage = () => {
                 <Link to="/my-gallery">
                     <Card title="My" subtitle="Galleries" img={partEmoji}/>
                 </Link>
-                <Card title="Schedule" subtitle="Drop" img={glass}/>
+                <Link to="/drop-magnet/artgallery.link/verticaly">
+                    <Card title="Schedule" subtitle="Drop" img={glass}/>
+                </Link>
             </CardsWrapper>
             <WalletCollection/>
         </Container>

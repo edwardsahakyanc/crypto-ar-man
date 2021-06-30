@@ -59,7 +59,7 @@ const GalleryButtonWrapper = styled.div`
     display:flex;
     align-items:center;
     justify-content: center;
-    margin-top:14px;
+    margin-top:25px;
     button{
         width: 51px;
         height: 51px;
