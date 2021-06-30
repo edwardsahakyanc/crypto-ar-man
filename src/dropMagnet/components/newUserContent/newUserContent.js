@@ -11,6 +11,7 @@ import UserSlider from "../newUserSlider/newUserSlider";
 import BlurModal from "../editNameModal/editNameModal";
 import PortaledComponent from "../portaledComponent";
 import Dropdown from "../dropdown/dropdown";
+import FileMenu from "../../../myGallery/fileMenu/fileMenu";
 
 const UserHeader = styled.div`
     position: relative;
@@ -40,10 +41,6 @@ const UserWrapper = styled.div`
     position:relative;
     @media (max-width: 375px) and (max-height: 700px) {
      display: none;
-    }
-    @media(max-width: 500px){
-    border-top: 4px solid #101010;
-    border-bottom: 4px solid #101010;
     }
 `;
 
@@ -240,7 +237,8 @@ const NewUserContent = () => {
     return (
         <UserContentWrapper>
             <UserHeader>
-                <Dropdown data={options} />
+                {/*<Dropdown data={options} />*/}
+                <FileMenu/>
             </UserHeader>
             <UserWrapper>
                 <LikeAndCommentWrapper>

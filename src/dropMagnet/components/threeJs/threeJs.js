@@ -1,7 +1,10 @@
-import React from "react";
+import React, {useState} from "react";
 import laptop from "../../assets/laptop.glb";
 import styled from "styled-components";
 import Modal from 'react-modal';
+import dots from "../../assets/dots.svg";
+import share from "../../assets/share.svg";
+import GalleryModal from "../galleryModal";
 
 const ThreeWrapper = styled.div`
    display:flex;
@@ -53,7 +56,28 @@ const StyledModal = styled(Modal)`
   justify-content: center;
   position: relative;
 `;
-
+const GalleryButtonWrapper = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin-top:14px;
+    button{
+        width: 51px;
+        height: 51px;
+        border-radius: 100px;
+        background-color: #ffffff;
+        border:none;
+        outline: none;
+        margin: 0 8px;
+        cursor:pointer;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        img{
+        width: 27px;
+        }
+    }
+`;
 
 const MyModal = (props) => {
     return (
@@ -75,29 +99,48 @@ const MyModal = (props) => {
     )
 }
 
-const Three = () => {
 
-    const [modalIsOpen, setIsOpen] = React.useState(false);
+const Three = () => {
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [overlay, setOverlay] = useState(false);
     function openModal() {
         setIsOpen(true);
     }
     function closeModal() {
         setIsOpen(false);
     }
+    const closeOverlay = () => {
+        setOverlay(false)
+    }
+
+    const openOverlay = () => {
+        setOverlay(true)
+    }
     return (
-          <ThreeWrapper>
-              <model-viewer
-                  style={{width: "100%", height: "300px"}}
-                  src={laptop}
-                  ar
-                  ar-modes="webxr scene-viewer quick-look"
-                  environment-image="neutral"
-                  disable-zoom
-                  auto-rotate
-              />
-              <OpenModalButton onClick={openModal}>Click to see it</OpenModalButton>
-              <MyModal isOpen={modalIsOpen} onRequestClose={closeModal} className="MODALIK"/>
-          </ThreeWrapper>
+          <>
+              <ThreeWrapper>
+                  <model-viewer
+                      style={{width: "100%", height: "300px"}}
+                      src={laptop}
+                      ar
+                      ar-modes="webxr scene-viewer quick-look"
+                      environment-image="neutral"
+                      disable-zoom
+                      auto-rotate
+                  />
+                  <OpenModalButton onClick={openModal}>Click to see it</OpenModalButton>
+                  <MyModal isOpen={modalIsOpen} onRequestClose={closeModal} className="MODALIK"/>
+                  <GalleryButtonWrapper>
+                      <button onClick={openOverlay}>
+                          <img src={dots} alt="dots"/>
+                      </button>
+                      <button>
+                          <img src={share} alt="share"/>
+                      </button>
+                  </GalleryButtonWrapper>
+              </ThreeWrapper>
+              <GalleryModal isOpen={overlay} closeModal={closeOverlay}/>
+          </>
     )
 }
 

@@ -1,14 +1,11 @@
 import Modal from 'react-modal';
-import React, {useState} from "react";
+import React, {useCallback, useState} from "react";
 import "./galleryModal.scss";
 import styled from "styled-components";
 import close from "../../assets/close.svg";
 import menu from "../../assets/menu.svg";
 
 Modal.setAppElement('#portal');
-
-
-
 
 
 const Header = styled.div`
@@ -29,6 +26,9 @@ const Header = styled.div`
     font-style: normal;
     letter-spacing: normal;
     line-height: normal;
+    @media(max-width: 520px){
+        font-size: 20px;
+    }
 `;
 
 const Close = styled.button`
@@ -45,6 +45,12 @@ const Close = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    @media(max-width: 520px){
+    position: relative;
+    top: 0;
+    left: 0;
+    margin-bottom: 10px;
+    }
     img{
         width:18px;
         height:18px
@@ -54,11 +60,19 @@ const Close = styled.button`
 const Footer = styled.div`
     display: flex;
     align-items: center;
-    justify-content: space-between;
+    justify-content: center;
+    margin-left: -6px;
+    margin-right: -6px;
+    flex-wrap: wrap;
 `;
 
+const BoxWrap = styled.div`
+    padding-left: 6px;
+    padding-right: 6px;
+;`
+
 const Box = styled.div`
-    max-width: 213px;
+    width: 213px;
     height: auto;
     border-radius: 6px;
     background-color: #ffffff;
@@ -76,45 +90,78 @@ const Box = styled.div`
     text-overflow: ellipsis;
     overflow: hidden;
     white-space: nowrap;
+    margin-bottom: 6px;
     &.small-box{
-        max-width: 161px;
+        width: 161px;
     }
 `;
 const Tabs = styled.div`
     margin: 32px 0;
 `;
 const TabsHeader = styled.div`
-    margin-left: -3.5px;
-    margin-right: -3.5px;
-    display: flex;
-    align-items: center;
-`;
-const Tab = styled.div`
-    color: #000000;
-    font-size: 24px;
-    font-weight: 700;
-    font-style: normal;
-    letter-spacing: normal;
-    line-height: normal;
-    text-align: left;
-    font-style: normal;
-    letter-spacing: normal;
-    line-height: normal;
-    padding-left: 3.5px;
-    padding-right: 3.5px;
-    cursor:pointer;
-    p{
-        margin: 0;
-        padding:8px 16px;
-        border: 1px solid transparent;
-    }
-     &.active{
-            p{
-                border-radius: 100px;
-                border: 1px solid #7600ff;
-                background-color: #ffffff;
-            }
+    .edit-tabs{
+        display: flex;
+        position: relative;
+        align-items: center;
+        justify-content: center;
+        width: fit-content;
+        label{
+          display: flex;
+          text-transform: capitalize;
+          align-items: center;
+          justify-content: center;
+          width: 163px;
+          height: 46px;
+          border-radius: 100px;
+          background-color: transparent;
+          cursor: pointer;
+          z-index: 2;
+          color: #000000;
+          margin: 0 3.5px;
+          font-size: 24px;
+          font-weight: 700;
+          font-style: normal;
+          letter-spacing: normal;
+          line-height: normal;
+          text-align: left;
+          font-style: normal;
+          letter-spacing: normal;
+          line-height: normal;
         }
+        input[type="radio"] {
+          display: none;
+        }
+        input[id="1"] {
+          &:checked {
+            & ~ .glider {
+              transform: translateX(0);
+            }
+          }
+        }
+        input[id="2"] {
+          &:checked {
+            & ~ .glider {
+              transform: translateX(calc(100% + 7px));
+            }
+          }
+        }
+        .glider {
+          position: absolute;
+          display: flex;
+          left: 0;
+          align-items: center;
+          justify-content: center;
+          width: 163px;
+          height: 46px;
+          border-radius: 100px;
+          border: 1px solid #7600ff;
+          background-color: #ffffff;
+          cursor: pointer;
+          margin: 0 3.5px;
+          z-index:1;
+          transition: 0.25s ease-out;
+        }
+    }
 `;
 const TabContent = styled.div`
     margin-top:32px;
@@ -141,6 +188,10 @@ const Textarea = styled.textarea`
     letter-spacing: normal;
     line-height: normal;
     outline:none !important;
+    @media(max-width: 520px){
+    padding:20px;
+    font-size: 20px;
+    }
 `;
 
 const CollectWrapper = styled.div`
@@ -163,6 +214,9 @@ const CollectWrapper = styled.div`
     letter-spacing: normal;
     line-height: normal;
     cursor:pointer;
+    @media(max-width: 520px){
+        font-size: 20px;
+    }
 `;
 const Collect = styled.div`
     display:flex;
@@ -196,7 +250,8 @@ const GalleryModal = ({isOpen, closeModal}) => {
             content: "This artwork is a beautiful mix of hand drawn illustration, AI neural compositing."
         },
     ];
-    const [activeTab, setActiveTab] = useState(1);
+    const [activeTab, setActiveTab] = useState(tabsInfo[0].id);
+    const handleChangeTab = useCallback((id) => setActiveTab(id), []);
 
     const handleChange = (value) => {
 
@@ -214,21 +269,21 @@ const GalleryModal = ({isOpen, closeModal}) => {
                     <Header>[Title] by [Artist name]</Header>
                     <Tabs>
                         <TabsHeader>
-                            {
-                                tabsInfo.map(element => {
-                                    return (
-                                        <Tab
-                                            key={element.id}
-                                            onClick={() => setActiveTab(element.id)}
-                                            className={activeTab === element.id ? "active" : null}
-                                        >
-                                            <p>
-                                                {element.tab}
-                                            </p>
-                                        </Tab>
-                                    )
-                                })
-                            }
+                            <div className="edit-tabs">
+                                {
+                                    tabsInfo.map(element => {
+                                        return (
+                                            <React.Fragment key={element.id}>
+                                                <label htmlFor={element.id}
+                                                       onClick={() => handleChangeTab(element.id)}>{element.tab}</label>
+                                                <input type="radio" id={element.id} name="tabs"
+                                                       defaultChecked={element.id === activeTab}/>
+                                            </React.Fragment>
+                                        )
+                                    })
+                                }
+                                <span className="glider"/>
+                            </div>
                         </TabsHeader>
                         <TabContent>
                             <Textarea name="text" value={tabsInfo[activeTab-1].content} onChange={(e) => handleChange(e.target.value)}/>
@@ -243,10 +298,18 @@ const GalleryModal = ({isOpen, closeModal}) => {
                         <span>Collect</span>
                     </CollectWrapper>
                     <Footer>
-                        <Box>View Contract On Etherscan</Box>
-                        <Box className="small-box">View Content Source</Box>
-                        <Box className="small-box">Token ID: 88557894…</Box>
-                        <Box>Contract Address: 88557894…</Box>
+                        <BoxWrap>
+                            <Box>View Contract On Etherscan</Box>
+                        </BoxWrap>
+                        <BoxWrap>
+                            <Box className="small-box">View Content Source</Box>
+                        </BoxWrap>
+                        <BoxWrap>
+                            <Box className="small-box">Token ID: 88557894…</Box>
+                        </BoxWrap>
+                        <BoxWrap>
+                            <Box>Contract Address: 88557894…</Box>
+                        </BoxWrap>
                     </Footer>
                 </div>
             </Modal>

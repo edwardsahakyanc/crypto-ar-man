@@ -2,7 +2,7 @@ import React, {useCallback, useState} from "react";
 import { Controlled as ControlledZoom } from 'react-medium-image-zoom';
 import 'react-medium-image-zoom/dist/styles.css';
 import styled from "styled-components";
-import GalleryModal from "../../../myGallery/components/galleryModal";
+import GalleryModal from "../galleryModal";
 import dots from "../../assets/dots.svg";
 import share from "../../assets/share.svg"
 
@@ -74,7 +74,7 @@ const GalleryButtonWrapper = styled.div`
 const Gallery = (props) => {
     const [isZoomed, setIsZoomed] = useState(false);
     const [margin, setMargin] = useState(70);
-    const [isOpen, setIsOpen] = React.useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const handleZoomChange = useCallback(shouldZoom => {
         setIsZoomed(shouldZoom)

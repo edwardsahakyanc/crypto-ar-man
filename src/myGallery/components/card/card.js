@@ -1,6 +1,5 @@
 import React, {useCallback, useMemo, useState} from "react";
 import styled from "styled-components";
-// import more from "../../assets/more.svg";
 import edit from "../../assets/edit.svg";
 import link from "../../assets/link.svg";
 import wallet from "../../assets/wallet.svg";
@@ -29,36 +28,6 @@ const CardSize = styled.div`
         object-fit:contain;
     }
 `;
-// const Menu = styled.div`
-//     width: 39px;
-//     height: 39px;
-//     border-radius: 1000px;
-//     background-color: rgba(40, 40, 40, 0.54);
-//     cursor:pointer;
-//     position:absolute;
-//     top:8px;
-//     left: 8px;
-//     z-index: 1;
-//     transition: all 200ms;
-//     outline: none !important;
-//     img{
-//         position:absolute;
-//         top:50%;
-//         left:50%;
-//         transform: translate(-50%,-50%);
-//         width:25px;
-//         height:7px;
-//         transition: all 200ms;
-//         z-index: 1;
-//     }
-//     &.open{
-//         transition: all 200ms;
-//         img{
-//             transform: translate(-50%,-50%) rotate(90deg);
-//             transition: all 200ms;
-//         }
-//     }
-// `;
 const LiIcon = styled.div`
     width: 39px;
     height: 39px;
@@ -351,6 +320,7 @@ const Card = (props) => {
         setIsOpen(prevState => !prevState);
         setIsEdit(false);
         setWalletEdit(false);
+        setLinkCopied(false);
     };
     const handleChangeTab = useCallback((id) => setActiveTab(id), []);
 
@@ -368,11 +338,11 @@ const Card = (props) => {
                             </LiIcon>
                             <p>Edit</p>
                         </li>
-                        <li onClick={() => setLinkCopied(!linkCopied)}>
+                        <li onClick={() => setLinkCopied(true)}>
                             <LiIcon>
                                 <img src={link} alt="link"/>
                             </LiIcon>
-                            <p>{linkCopied ? "Copy link" : "Link copied!"}</p>
+                            <p>{!linkCopied ? "Copy link" : "Link copied!"}</p>
                         </li>
                         <li onClick={() => {
                             setIsOpen(false);
@@ -456,7 +426,7 @@ const Card = (props) => {
             return null
         }
     }
-    const memoizedShowModals = useMemo(showModals, [showModals ])
+    const memoizedShowModals = useMemo(showModals, [showModals])
 
 
     return (

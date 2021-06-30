@@ -1,19 +1,26 @@
 import React, {useCallback, useRef, useState} from "react";
 import styled from "styled-components";
 import cardImg from "../../assets/portrait.png"
+import dots from "../../assets/dots.svg";
+import share from "../../assets/share.svg";
+import GalleryModal from "../galleryModal";
 
 const SlideWrapper = styled.div`
    position: relative;
    width:100%;
    height:100vh;
    perspective: 1500px;
+   display:flex;
+   flex-direction: column;
+   align-items:center;
+   justify-content:center;
 `;
 const CardWrapper = styled.div`
    display:flex;
    align-items:center;
    justify-content:center;
    width:100%;
-   height:100%;
+   height:400px;
 `;
 const Card = styled.div`
   border-radius: 10px;
@@ -48,12 +55,36 @@ const Card = styled.div`
   }
 `;
 
+const GalleryButtonWrapper = styled.div`
+    display:flex;
+    align-items:center;
+    justify-content: center;
+    margin-top:14px;
+    button{
+        width: 51px;
+        height: 51px;
+        border-radius: 100px;
+        background-color: #ffffff;
+        border:none;
+        outline: none;
+        margin: 0 8px;
+        cursor:pointer;
+        display:flex;
+        align-items:center;
+        justify-content: center;
+        img{
+        width: 27px;
+        }
+    }
+`
+
 const HoveredCard = () => {
     const cardRef = useRef();
     const [center, setCenter] = useState({x: 0, y: 0, distance: 0});
     const [scale, setScale] = useState({x: 1, y: 1, z: 1});
     const [bound, setBound] = useState({width: 0, height: 0});
     const [grow, setGrow] = useState(false);
+    const [isOpen, setIsOpen] = useState(false);
 
     const rotateToMouse = useCallback((e) => {
         const bounds = cardRef.current.getBoundingClientRect();
@@ -75,22 +106,41 @@ const HoveredCard = () => {
         setScale(prevState => ({...prevState, x: 1, y: 1, z: 1}));
     }, [rotateToMouse]);
 
+    const closeModal = () => {
+        setIsOpen(false)
+    }
+
+    const openModal = () => {
+        setIsOpen(true)
+    }
+
     return (
-        <SlideWrapper>
-            <CardWrapper>
-                <Card
-                    ref={cardRef}
-                    className={".card"}
-                    style={{transform: `scale3d(${scale.x}, ${scale.y}, ${scale.z}) rotate3d(${center.y / 100},${-center.x / 100},0,${Math.log(center.distance) * 2}deg)`}}
-                    onMouseMove={rotateToMouse}
-                    onMouseLeave={mouseLeave}>
-                    <div className="glow" style={{
-                        backgroundImage: `${grow ? `radial-gradient(circle at ${center.x * 2 + bound.width}px ${center.y * 2 + bound.height}px, #ffffff55, #0000000f)` : ""}`,
-                        backdropFilter: `hue-rotate(180deg)`
-                    }}/>
-                </Card>
-            </CardWrapper>
-        </SlideWrapper>
+        <>
+            <SlideWrapper>
+                <CardWrapper>
+                    <Card
+                        ref={cardRef}
+                        className={".card"}
+                        style={{transform: `scale3d(${scale.x}, ${scale.y}, ${scale.z}) rotate3d(${center.y / 100},${-center.x / 100},0,${Math.log(center.distance) * 2}deg)`}}
+                        onMouseMove={rotateToMouse}
+                        onMouseLeave={mouseLeave}>
+                        <div className="glow" style={{
+                            backgroundImage: `${grow ? `radial-gradient(circle at ${center.x * 2 + bound.width}px ${center.y * 2 + bound.height}px, #ffffff55, #0000000f)` : ""}`,
+                            backdropFilter: `hue-rotate(180deg)`
+                        }}/>
+                    </Card>
+                </CardWrapper>
+                <GalleryButtonWrapper>
+                    <button onClick={openModal}>
+                        <img src={dots} alt="dots"/>
+                    </button>
+                    <button>
+                        <img src={share} alt="share"/>
+                    </button>
+                </GalleryButtonWrapper>
+            </SlideWrapper>
+            <GalleryModal isOpen={isOpen} closeModal={closeModal}/>
+        </>
     )
 }
 
