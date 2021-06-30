@@ -88,6 +88,11 @@ const UserImage = styled.div`
   margin: 0 14px 4px;
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
   border-radius: 1000px;
+  img{
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+  }
   @media (max-width: 375px) and (max-height: 700px) {
         width: 87px;
         height: 87px;
