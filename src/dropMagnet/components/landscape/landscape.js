@@ -19,8 +19,6 @@ const LandscapeImgWrapper = styled.div`
     max-height:350px;
     border-radius: 10px;
     width: 90%;
-    // height:90%;
-    // margin: auto;
     overflow:hidden;
 `;
 

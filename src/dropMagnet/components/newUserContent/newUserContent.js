@@ -33,7 +33,6 @@ const UserHeader = styled.div`
         display:none;
     }
 `;
-
 const UserWrapper = styled.div`
     background: #1a1a1a;
     padding: 93px 10px 19px;
@@ -42,7 +41,6 @@ const UserWrapper = styled.div`
      display: none;
     }
 `;
-
 const MobileUserWrapper = styled.div`
     display: none;
     background-color:#1a1a1a;
@@ -54,13 +52,11 @@ const MobileUserWrapper = styled.div`
         display: none;
     }
 `;
-
 const MobileUserContent = styled.div`
     display: flex;
     position: relative;
     padding-top: 64px;
 `;
-
 const SmallDevice = styled.div`
     display: none;
     position: relative;
@@ -80,7 +76,6 @@ const SmallDevice = styled.div`
         }
     }
 `;
-
 const UserImage = styled.div`
   width: 164px;
   height: 164px;
@@ -103,7 +98,6 @@ const UserImage = styled.div`
         margin: 0 19px 0 0;
     }
 `;
-
 const LikeAndCommentWrapper = styled.div`
     position: absolute;
     left: 0;
@@ -161,7 +155,6 @@ const PayWrapper = styled.div`
         font-size: 14px;
    }
 `;
-
 const Description = styled.div`
   max-width: 342px;
   margin-left: auto;
@@ -179,7 +172,6 @@ const Description = styled.div`
     }
 `;
 const GreyBack = styled.div`
-  // height: 100%;
   padding-bottom: 40px;
 `;
 const PageLiks = styled.div`
@@ -192,6 +184,12 @@ const PageLiks = styled.div`
   display:flex;
   align-items:center;
   justify-content:space-between;
+  position: fixed;
+  left: 0;
+  right: 0;
+  margin: 0 auto;
+  z-index: 1;
+  bottom: 40px;
 `;
 const Tab = styled.p`
     font-size: 16px;
@@ -209,7 +207,6 @@ const Tab = styled.p`
         -webkit-text-fill-color: transparent;
     }
 `;
-
 const UserContentWrapper = styled.div`
     width: 100%;
     height:100%;
@@ -218,25 +215,33 @@ const UserContentWrapper = styled.div`
 `;
 
 
-const NewUserContent = () => {
+const NewUserContent = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("Alexander Newton");
+    const [activeTab, setActiveTab] = useState(1);
 
 
     const handleOpenModal = () => {
         document.querySelector("body").style.overflow = "hidden";
         setIsOpen(true);
-    }
-
+    };
     const handleCloseModal = () => {
         document.querySelector("body").style.overflow = "auto";
         setIsOpen(false);
-    }
+    };
+
+    const scrollToCover = () => {
+        props.coverPageRef.current.scrollIntoView();
+        setActiveTab(1)
+    };
+    const scrollToGallery = () => {
+        props.galleryRef.current.scrollIntoView();
+        setActiveTab(2)
+    };
 
     return (
         <UserContentWrapper>
             <UserHeader>
-                {/*<Dropdown data={options} />*/}
                 <FileMenu/>
             </UserHeader>
             <UserWrapper>
@@ -263,7 +268,6 @@ const NewUserContent = () => {
             </UserWrapper>
             <MobileUserWrapper>
                 <MobileUserContent>
-                    {/*<Dropdown data={options} />*/}
                     <FileMenu/>
                     <UserImage>
                         <img src={ProfilePic} alt="profile-pic"/>
@@ -284,7 +288,6 @@ const NewUserContent = () => {
                 </Description>
             </MobileUserWrapper>
             <SmallDevice>
-                {/*<Dropdown data={options} />*/}
                 <FileMenu/>
                 <div>
                     <Row className="items-center justify-center">
@@ -305,8 +308,8 @@ const NewUserContent = () => {
             <GreyBack>
                 <UserSlider/>
                 <PageLiks>
-                    <Tab className="active">Cover Page</Tab>
-                    <Tab className="nextEl">NFT Gallery</Tab>
+                    <Tab className={activeTab === 1 ? "active" : ""} onClick={scrollToCover}>Cover Page</Tab>
+                    <Tab className={activeTab === 2 ? "active" : ""} onClick={scrollToGallery}>NFT Gallery</Tab>
                 </PageLiks>
             </GreyBack>
             <PortaledComponent

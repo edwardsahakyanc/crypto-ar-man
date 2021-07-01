@@ -18,9 +18,7 @@ const PortraitImgWrapper = styled.div`
     max-width:400px;
     max-height:550px;
     border-radius: 10px;
-    width: 90%;
-    // height:90%;
-    // margin: auto;
+    width: 70%;
     overflow:hidden;
 `;
 

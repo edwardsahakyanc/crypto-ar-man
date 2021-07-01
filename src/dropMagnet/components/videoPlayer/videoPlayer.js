@@ -14,6 +14,12 @@ const PlayerWrapper = styled.div`
     justify-content: center;
     flex-direction: column;
 `;
+const ReactPlayerWrapper = styled.div`
+    max-width: 640px;
+    max-height: 360px;
+    width: 100%;
+    height: 100%;
+`;
 const GalleryButtonWrapper = styled.div`
     display:flex;
     align-items:center;
@@ -50,10 +56,14 @@ const VideoPlayer = () => {
     return (
         <>
             <PlayerWrapper>
-                <ReactPlayer
-                    url='https://www.youtube.com/watch?v=MzI_CIYSsfQ'
-                    controls={true}
-                />
+                <ReactPlayerWrapper>
+                    <ReactPlayer
+                        url='https://www.youtube.com/watch?v=MzI_CIYSsfQ'
+                        controls={true}
+                        width='100%'
+                        height='100%'
+                    />
+                </ReactPlayerWrapper>
                 <GalleryButtonWrapper>
                     <button onClick={openOverlay}>
                         <img src={dots} alt="dots"/>
