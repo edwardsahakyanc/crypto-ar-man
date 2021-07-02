@@ -45,7 +45,7 @@ const OpenModalButton = styled.button`
     border:none;
     outline: none;
     cursor: pointer;
-    margin-top:40px;
+    margin-top:20px;
 `;
 const StyledModal = styled(Modal)`
   background-color: #1a1a1a;
@@ -61,7 +61,7 @@ const GalleryButtonWrapper = styled.div`
     align-items:center;
     justify-content: center;
     margin-top:25px;
-    margin-bottom: 70px;
+    margin-bottom: 80px;
     button{
         width: 51px;
         height: 51px;

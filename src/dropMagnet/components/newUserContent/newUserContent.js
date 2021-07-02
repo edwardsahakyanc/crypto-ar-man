@@ -218,7 +218,7 @@ const UserContentWrapper = styled.div`
 const NewUserContent = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("Alexander Newton");
-    const [activeTab, setActiveTab] = useState(1);
+    // const [activeTab, setActiveTab] = useState(1);
 
 
     const handleOpenModal = () => {
@@ -232,11 +232,11 @@ const NewUserContent = (props) => {
 
     const scrollToCover = () => {
         props.coverPageRef.current.scrollIntoView();
-        setActiveTab(1)
+        // setActiveTab(1)
     };
     const scrollToGallery = () => {
         props.galleryRef.current.scrollIntoView();
-        setActiveTab(2)
+        // setActiveTab(2)
     };
 
     return (
@@ -308,8 +308,8 @@ const NewUserContent = (props) => {
             <GreyBack>
                 <UserSlider/>
                 <PageLiks>
-                    <Tab className={activeTab === 1 ? "active" : ""} onClick={scrollToCover}>Cover Page</Tab>
-                    <Tab className={activeTab === 2 ? "active" : ""} onClick={scrollToGallery}>NFT Gallery</Tab>
+                    <Tab className={"active"} onClick={scrollToCover}>Cover Page</Tab>
+                    <Tab className={""} onClick={scrollToGallery}>NFT Gallery</Tab>
                 </PageLiks>
             </GreyBack>
             <PortaledComponent

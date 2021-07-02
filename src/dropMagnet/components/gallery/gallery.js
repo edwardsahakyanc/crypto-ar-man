@@ -30,7 +30,7 @@ const GalleryContent = styled.div`
     margin: 0 auto;
     height: auto;
     justify-content: space-between;
-    margin-bottom: 40px;
+    margin-bottom: 50px;
 `;
 const ImgWrapper = styled.div`
     max-width: 440px;
