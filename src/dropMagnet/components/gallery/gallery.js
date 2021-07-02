@@ -15,7 +15,6 @@ const GalleryWrapper = styled.div`
     display:flex;
     align-items: center;
     justify-content: center;
-    padding: 32px 0;
      @media(max-height: 550px){
       align-items: stretch;
     }
@@ -31,7 +30,7 @@ const GalleryContent = styled.div`
     margin: 0 auto;
     height: auto;
     justify-content: space-between;
-   
+    margin-bottom: 40px;
 `;
 const ImgWrapper = styled.div`
     max-width: 440px;
