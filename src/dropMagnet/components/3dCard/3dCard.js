@@ -21,12 +21,15 @@ const CardWrapper = styled.div`
    justify-content:center;
    width:100%;
    height:400px;
+   @media(max-width: 500px) {
+    height: 300px;
+  }
 `;
 const Card = styled.div`
   border-radius: 10px;
   overflow:hidden;
   box-shadow: 0 1px 5px #00000099;
-  width:  300px;
+  width: 300px;
   height: 400px;
   background-image: url(${cardImg});
   background-size: cover;
@@ -37,6 +40,10 @@ const Card = styled.div`
   transition-property: transform, box-shadow;
   transition-timing-function: ease-out;
   transform: rotate3d(0,0,0,0deg);
+  @media(max-width: 500px) {
+    width: 210px;
+    height: 300px;
+  }
   &:hover{
   transition-duration: 150ms;
   box-shadow: 0 5px 20px 5px #00000044;
