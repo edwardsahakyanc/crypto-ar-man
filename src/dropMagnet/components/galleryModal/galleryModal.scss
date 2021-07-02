@@ -20,6 +20,9 @@
     margin: 20px auto 20px !important;
     padding: 16px;
   }
+  @media(max-width: 370px){
+    padding: 8px;
+  }
   .gallery-modal-content{
     transition: all 200ms ease;
     opacity: 0;

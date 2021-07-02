@@ -127,6 +127,15 @@ const TabsHeader = styled.div`
           font-style: normal;
           letter-spacing: normal;
           line-height: normal;
+          @media(max-width: 420px){
+            width: 140px;
+            height: 36px;
+            font-size: 20px;
+          }
+          @media(max-width: 370px){
+            width: 125px;
+            font-size: 18px;
+          }
         }
         input[type="radio"] {
           display: none;
@@ -160,6 +169,13 @@ const TabsHeader = styled.div`
           margin: 0 3.5px;
           z-index:1;
           transition: 0.25s ease-out;
+           @media(max-width: 420px){
+            width: 140px;
+            height: 36px;
+          }
+          @media(max-width: 370px){
+            width: 125px;
+          }
         }
     }
 `;
