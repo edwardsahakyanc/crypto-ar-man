@@ -18,13 +18,14 @@ const ReactPlayerWrapper = styled.div`
     max-width: 640px;
     max-height: 360px;
     width: 100%;
-    height: 100%;
+    height: calc(100vw/1.8);
 `;
 const GalleryButtonWrapper = styled.div`
     display:flex;
     align-items:center;
     justify-content: center;
     margin-top:25px;
+    margin-bottom: 40px;
     button{
         width: 51px;
         height: 51px;
