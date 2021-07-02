@@ -189,7 +189,7 @@ const PageLiks = styled.div`
   right: 0;
   margin: 0 auto;
   z-index: 1;
-  bottom: 40px;
+  bottom: 20px;
 `;
 const Tab = styled.p`
     font-size: 16px;
