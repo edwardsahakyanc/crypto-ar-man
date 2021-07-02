@@ -1,6 +1,5 @@
 .scroller {
-  min-height: 100vh;
-  height: auto;
+  height: 100vh;
   overflow-y: scroll;
   scroll-snap-type: y mandatory;
   width: 100%;
