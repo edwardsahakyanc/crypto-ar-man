@@ -70,7 +70,7 @@ const SmallDevice = styled.div`
         margin-top: 12px;
         display:flex;
         align-items: center;
-        justify-content: center;
+       0 justify-content: center;
         &>div{
             margin: 0 6px;
         }

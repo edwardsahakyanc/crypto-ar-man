@@ -3,6 +3,7 @@
   box-sizing: border-box;
   font-family: "Quicksand", sans-serif;
   scroll-behavior: smooth;
+  -webkit-overflow-scrolling: touch;
   /* width */
   &::-webkit-scrollbar {
     width: 5px;
