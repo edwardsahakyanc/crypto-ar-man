@@ -31,7 +31,7 @@ const UserHeader = styled.div`
     @media (max-width: 376px){
     height: 116px;
     }
-    @media (max-height: 850px){
+    @media (max-height: 870px){
         height:183px;
     }
     @media (max-height: 770px){
