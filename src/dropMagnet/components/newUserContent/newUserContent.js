@@ -15,7 +15,9 @@ import FileMenu from "../../../myGallery/fileMenu/fileMenu";
 const UserHeader = styled.div`
     position: relative;
     width: 100%;
-    height: 278px;
+    max-height: 278px;
+    height: 100%;
+    min-height: 96px;
     background-image: url(${background});
     background-repeat: no-repeat;
     background-position: center;
@@ -28,6 +30,18 @@ const UserHeader = styled.div`
     }
     @media (max-width: 376px){
     height: 116px;
+    }
+    @media (max-height: 850px){
+        height:183px;
+    }
+    @media (max-height: 770px){
+        height: 137px;
+    }
+    @media (max-height: 720px){
+        height: 116px;
+    }
+    @media (max-height: 700px){
+        height: 96px;
     }
     @media (max-width: 375px) and (max-height: 700px) {
         display:none;
@@ -70,7 +84,7 @@ const SmallDevice = styled.div`
         margin-top: 12px;
         display:flex;
         align-items: center;
-       0 justify-content: center;
+        justify-content: center;
         &>div{
             margin: 0 6px;
         }

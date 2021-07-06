@@ -1,4 +1,4 @@
-import React, {useRef} from "react";
+import React, { useRef } from "react";
 import "./ScrollSnapPage.scss";
 import NewUserContent from "../../components/newUserContent/newUserContent";
 import Gallery from "../../components/gallery/gallery";
@@ -14,12 +14,14 @@ const ScrollSnapPage = () => {
     const galleryRef = useRef(null);
     const coverPageRef = useRef(null);
     const firstSlide = {id: 1, imgUrl: galleryImage, backgroundColor: "#292929", price: "100"};
+
     return (
         <article className="scroller">
+
             <section ref={coverPageRef}>
                 <NewUserContent galleryRef={galleryRef} coverPageRef={coverPageRef}/>
             </section>
-            <section ref={galleryRef}>
+            <section ref={galleryRef} className="testik">
                 <Gallery {...firstSlide}/>
             </section>
             <section>

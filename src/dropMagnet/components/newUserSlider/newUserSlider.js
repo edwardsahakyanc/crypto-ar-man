@@ -32,6 +32,9 @@ const SliderWrapper = styled.div`
      position: relative;
      padding-top: 24px;
      padding-bottom: 60px;
+     @media (max-height: 700px){
+        max-width: 450px;
+     }
 `;
 const SlideImgItem = styled.div`
     width: 158px;
@@ -76,6 +79,11 @@ const Button = styled.button`
   min-width: 142px;
   min-height: 33px;
   margin: 6px 6.5px;
+  }
+  @media (max-height: 700px){
+      min-width: 142px;
+      min-height: 33px;
+      margin: 6px 6.5px;
   }
 `;
 const SliderPrev = styled.div`
