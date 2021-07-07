@@ -7,4 +7,5 @@ export const Container = styled.div`
     margin: 0 auto;
     &.mt-5{
     margin-top: 5px
+    }
 `
