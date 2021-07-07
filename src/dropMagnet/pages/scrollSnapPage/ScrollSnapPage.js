@@ -17,11 +17,10 @@ const ScrollSnapPage = () => {
 
     return (
         <article className="scroller">
-
             <section ref={coverPageRef}>
                 <NewUserContent galleryRef={galleryRef} coverPageRef={coverPageRef}/>
             </section>
-            <section ref={galleryRef} className="testik">
+            <section ref={galleryRef}>
                 <Gallery {...firstSlide}/>
             </section>
             <section>
