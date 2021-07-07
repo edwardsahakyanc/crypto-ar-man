@@ -80,7 +80,7 @@ const Button = styled.button`
   min-height: 33px;
   margin: 6px 6.5px;
   }
-  @media (max-height: 700px){
+  @media (max-height: 700px) and (min-width: 1024px){
       min-width: 142px;
       min-height: 33px;
       margin: 6px 6.5px;
@@ -109,9 +109,6 @@ const SliderNext = styled.div`
      z-index:10;
      cursor: pointer;
 `;
-
-
-
 
 const UserSlider = () => {
     const pagination = {

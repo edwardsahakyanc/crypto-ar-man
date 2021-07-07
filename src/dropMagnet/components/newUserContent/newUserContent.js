@@ -31,16 +31,16 @@ const UserHeader = styled.div`
     @media (max-width: 376px){
     height: 116px;
     }
-    @media (max-height: 870px){
+    @media (max-height: 870px) and (min-width: 1024px){
         height:183px;
     }
-    @media (max-height: 770px){
+    @media (max-height: 770px) and (min-width: 1024px){
         height: 137px;
     }
-    @media (max-height: 720px){
+    @media (max-height: 720px) and (min-width: 1024px){
         height: 116px;
     }
-    @media (max-height: 700px){
+    @media (max-height: 700px) and (min-width: 1024px){
         height: 96px;
     }
     @media (max-width: 375px) and (max-height: 700px) {
