@@ -43,7 +43,7 @@ const SliderPage = () => {
                                 tab1List.map((card, index) => {
                                     return (
                                         <ConatinerCol key={index}>
-                                            <StyledNavLink to={"/drop-magnet/artgallery.link/newcryptoartman"}>
+                                            <StyledNavLink to={"/drop-magnet/artgallery.link/verticaly"}>
                                                 <ArtGalleryCard />
                                             </StyledNavLink>
                                         </ConatinerCol>
@@ -58,7 +58,7 @@ const SliderPage = () => {
                                 tab2List.map((card, index) => {
                                     return (
                                         <ConatinerCol key={index}>
-                                            <StyledNavLink to={"/drop-magnet/artgallery.link/newcryptoartman"}>
+                                            <StyledNavLink to={"/drop-magnet/artgallery.link/verticaly"}>
                                                 <ArtGalleryCard />
                                             </StyledNavLink>
                                         </ConatinerCol>
@@ -73,7 +73,7 @@ const SliderPage = () => {
                                 tab3List.map((card, index) => {
                                     return (
                                         <ConatinerCol key={index}>
-                                            <StyledNavLink to={"/drop-magnet/artgallery.link/newcryptoartman"}>
+                                            <StyledNavLink to={"/drop-magnet/artgallery.link/verticaly"}>
                                                 <ArtGalleryCard />
                                             </StyledNavLink>
                                         </ConatinerCol>

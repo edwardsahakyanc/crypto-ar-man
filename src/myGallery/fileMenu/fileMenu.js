@@ -5,7 +5,7 @@ import styled from "styled-components";
 
 
 const DropDown = styled.div`
-  width: 84px;
+  width: 160px;
   height: 36px;
   overflow: hidden;
   border-radius: 20px;
@@ -105,7 +105,7 @@ const FileMenu = () => {
     return (
         <DropDown className={dropped ? "dropped" : ""}>
             <button className="dropdown-btn" onClick={handleOpen}>
-                <p>File</p>
+                <p>Me.Link/Alex…</p>
                 <img src={arrow} alt="arrow"/>
             </button>
             <div className="dropdown-content">

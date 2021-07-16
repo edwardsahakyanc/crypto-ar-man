@@ -4,6 +4,7 @@ import {Route, Switch, Redirect} from "react-router-dom";
 import ExploreGalleries from "./exploreGalleries";
 import DropMagnet from "./dropMagnet";
 import MyGallery from "./myGallery";
+import Politician from './dropMagnet/components/politician/politician';
 
 function App() {
   return (
@@ -13,6 +14,7 @@ function App() {
             <Route path="/explore-galleries" component={ExploreGalleries} />
             <Route path="/drop-magnet" component={DropMagnet} />
             <Route path="/my-gallery" component={MyGallery} />
+            <Route path="/politician" component={Politician} />
         </Switch>
     </div>
   );

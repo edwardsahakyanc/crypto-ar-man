@@ -11,17 +11,23 @@ import cat1 from "../../assets/cat1.png";
 import cat2 from "../../assets/cat2.png";
 import arrow from "../../assets/arrows.svg"
 import NewMusicPlayer from "../musicPlayer/newMusicPlayer";
+import CircleIcon from "../newUserContent/styled-components/icon-wrapper";
+import discord from "../../assets/Discord.svg";
+import telegram from "../../assets/Telegram.svg";
+import openSea from "../../assets/Open Sea.svg";
+import rarible from "../../assets/Rarible.svg";
+import instagram from "../../assets/Instagram.svg";
 
 SwiperCore.use([Navigation, Pagination]);
 
-const Slide1Items = [
-    {id: 1, borderColor: "#ff9400", value: "Rarible"},
-    {id: 2, borderColor: "#00b8ff", value: "OpenSea"},
-    {id: 3, borderColor: "#ff5f00", value: "Instagram"},
-    {id: 4, borderColor: "#00f1ff", value: "Twitter"},
-    {id: 5, borderColor: "#afafaf", value: "Clubhouse"},
-    {id: 6, borderColor: "#36b2f0", value: "Telegram"},
-];
+// const Slide1Items = [
+//     {id: 1, borderColor: "#ff9400", value: "Rarible"},
+//     {id: 2, borderColor: "#00b8ff", value: "OpenSea"},
+//     {id: 3, borderColor: "#ff5f00", value: "Instagram"},
+//     {id: 4, borderColor: "#00f1ff", value: "Twitter"},
+//     {id: 5, borderColor: "#afafaf", value: "Clubhouse"},
+//     {id: 6, borderColor: "#36b2f0", value: "Telegram"},
+// ];
 
 const SliderWrapper = styled.div`
      max-width: 530px;
@@ -30,8 +36,8 @@ const SliderWrapper = styled.div`
      height: fit-content;
      overflow: hidden;
      position: relative;
-     padding-top: 24px;
-     padding-bottom: 60px;
+     padding-top: 32px;
+     padding-bottom: 80px;
      @media (max-height: 700px){
         max-width: 450px;
      }
@@ -46,46 +52,52 @@ const SlideImgItem = styled.div`
     height: 100%;
     object-fit: content;
     }
+    
+    @media(max-width: 440px){
+      width: 146px;
+      height: 146px;
+    }
+    
     @media(max-width: 360px){
       width: 140px;
       height: 140px;
     }
 `;
-const Button = styled.button`
-  min-width: 243px;
-  min-height: 62px; 
-  border-radius: 100px;
-  border: 1px solid;
-  background-color: transparent;
-  background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
-  cursor: pointer;
-  color: #ffffff;
-  font-size: 18px;
-  font-weight: 700;
-  font-style: normal;
-  letter-spacing: normal;
-  line-height: normal;
-  text-align: center;
-  margin: 11.5px 10px;
-  position:relative;
-  overflow: hidden;
-  cursor:pointer;
-  @media (max-width: 530px){
-  min-width: 165px;
-  min-height: 42px;
-  margin: 8px 7px;
-  }
-  @media(max-width: 360px){
-  min-width: 142px;
-  min-height: 33px;
-  margin: 6px 6.5px;
-  }
-  @media (max-height: 700px) and (min-width: 1024px){
-      min-width: 142px;
-      min-height: 33px;
-      margin: 6px 6.5px;
-  }
-`;
+// const Button = styled.button`
+//   min-width: 243px;
+//   min-height: 62px;
+//   border-radius: 100px;
+//   border: 1px solid;
+//   background-color: transparent;
+//   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
+//   cursor: pointer;
+//   color: #ffffff;
+//   font-size: 18px;
+//   font-weight: 700;
+//   font-style: normal;
+//   letter-spacing: normal;
+//   line-height: normal;
+//   text-align: center;
+//   margin: 11.5px 10px;
+//   position:relative;
+//   overflow: hidden;
+//   cursor:pointer;
+//   @media (max-width: 530px){
+//   min-width: 165px;
+//   min-height: 42px;
+//   margin: 8px 7px;
+//   }
+//   @media(max-width: 360px){
+//   min-width: 142px;
+//   min-height: 33px;
+//   margin: 6px 6.5px;
+//   }
+//   @media (max-height: 700px) and (min-width: 1024px){
+//       min-width: 142px;
+//       min-height: 33px;
+//       margin: 6px 6.5px;
+//   }
+// `;
 const SliderPrev = styled.div`
      width: 8px;
      height:14px;
@@ -108,6 +120,23 @@ const SliderNext = styled.div`
      right: calc(50% - 48px);
      z-index:10;
      cursor: pointer;
+`;
+const SocialMediaLinks = styled.div`
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 0 36px;
+`;
+const UserContentListDescription = styled.div`
+    font-size: 18px;
+    color: #fff;
+    text-align: center;
+    // margin-bottom: 16px;
+    background: #000000;
+    padding: 10px 0;
+    border-radius: 9px;
+    font-family: Azo Sans;
+    margin: 0 36px 16px 36px;
 `;
 
 const UserSlider = () => {
@@ -143,17 +172,32 @@ const UserSlider = () => {
             >
                 <SliderPrev ref={navigationPrevRef} />
                 <SwiperSlide className="slide-item">
-                    <Row className="items-center justify-center flex-wrap">
-                        {
-                            Slide1Items.map(button => {
-                                return (
-                                    <Button key={button.id} style={{borderColor: `${button.borderColor}`}}>
-                                        {button.value}
-                                    </Button>
-                                )
-                            })
-                        }
-                    </Row>
+                    {/*<Row className="items-center justify-center flex-wrap">*/}
+                    {/*    {*/}
+                    {/*        Slide1Items.map(button => {*/}
+                    {/*            return (*/}
+                    {/*                <Button key={button.id} style={{borderColor: `${button.borderColor}`}}>*/}
+                    {/*                    {button.value}*/}
+                    {/*                </Button>*/}
+                    {/*            )*/}
+                    {/*        })*/}
+                    {/*    }*/}
+                    {/*</Row>*/}
+                    <UserContentListDescription>
+                        My latest movie “Beautiful Blue Eyes”
+                    </UserContentListDescription>
+
+                    <UserContentListDescription>
+                        My special merch for NFT holders!
+                    </UserContentListDescription>
+
+                    <SocialMediaLinks>
+                        <CircleIcon imgUrl={discord} alt={"icon"} className='social-media'/>
+                        <CircleIcon imgUrl={telegram} alt={"icon"} className='social-media'/>
+                        <CircleIcon imgUrl={openSea} alt={"icon"} className='social-media'/>
+                        <CircleIcon imgUrl={rarible} alt={"icon"} className='social-media'/>
+                        <CircleIcon imgUrl={instagram} alt={"icon"} className='social-media'/>
+                    </SocialMediaLinks>
                 </SwiperSlide>
                 <SwiperSlide className="slide-item">
                     <Row className="items-center justify-center flex-wrap">

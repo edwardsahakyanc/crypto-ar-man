@@ -1,21 +1,18 @@
-import React, {useState} from 'react';
-import styled from "styled-components";
-import background from "../../assets/cat-background.png";
-import CircleIcon from "./styled-components/icon-wrapper";
-import chat from "../../assets/chat.svg";
-import edit from "../../assets/edit.svg";
+import React from "react";
+import FileMenu from "../../../myGallery/fileMenu/fileMenu";
+import CircleIcon from "../newUserContent/styled-components/icon-wrapper";
+import {Row} from "../../styled-component/row";
+import message from "../../assets/message.svg";
+import ProfilePic from "../../assets/profile_pic.png";
+import flag from "../../assets/United_Kingdom.svg.png";
+import boris from "../../assets/boris.jpg";
+import LikeButton from "../newUserContent/styled-components/likeButton";
 import link from "../../assets/link.svg";
 import bitcoin from "../../assets/bitcoin.svg";
-import message from "../../assets/message.svg";
-import userLogo from "../../assets/profile.svg";
-import ProfilePic from "../../assets/profile_pic.png";
-import LikeButton from "./styled-components/likeButton";
-import {Row} from "../../styled-component/row";
 import ShareIcon from "../../assets/share-icon.svg";
-import UserSlider from "../newUserSlider/newUserSlider";
-import BlurModal from "../editNameModal/editNameModal";
-import PortaledComponent from "../portaledComponent";
-import FileMenu from "../../../myGallery/fileMenu/fileMenu";
+import chat from "../../assets/chat.svg";
+import styled from "styled-components";
+import {NavLink} from "react-router-dom";
 
 const UserHeader = styled.div`
     position: relative;
@@ -23,7 +20,7 @@ const UserHeader = styled.div`
     max-height: 278px;
     height: 100%;
     min-height: 96px;
-    background-image: url(${background});
+    background-image: url(${flag});
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
@@ -96,25 +93,16 @@ const SmallDevice = styled.div`
     }
 `;
 const UserImage = styled.div`
-  width: 164px;
-  height: 164px;
-  margin: 0 14px 4px;
-  background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
-  border-radius: 1000px;
-  img{
-    width: 100%;
-    height: 100%;
-    object-fit: contain;
-  }
-  @media (max-width: 375px) and (max-height: 700px) {
-        width: 87px;
-        height: 87px;
-        margin: 3px 11px 0 13px;
-    }
-    @media (max-width: 350px) and (max-height: 650px) {
-        width: 36px;
-        height: 36px;
-        margin: 0 19px 0 0;
+    max-width: 164px;
+    max-height: 164px;
+    width: 164px;
+    height: 164px;
+    border-radius: 100%;
+    overflow: hidden;  
+    img {
+      width: 100%;  
+      height: 100%;
+      object-fit: cover;
     }
 `;
 const LikeAndCommentWrapper = styled.div`
@@ -190,99 +178,95 @@ const Description = styled.div`
         margin-top: 12px;
     }
 `;
-const GreyBack = styled.div`
-  // padding: 32px 36px 0px 36px;
-  
-`;
-const PageLiks = styled.div`
-  max-width: 122px;
-  height: 36px;
-  border-radius: 55px;
-  background-color: #101010;
-  margin: 0 auto;
-  padding: 21px 16px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  position: fixed;
-  left: 0;
-  right: 0;
-  margin: 0 auto;
-  z-index: 10;
-  bottom: 20px;
-  
-  img {
-    position: relative;
-    bottom: -3px
-  }
-`;
-const Tab = styled.p`
-    font-size: 21px;
-    font-weight: 700;
-    color: #ffffff;
-    font-style: normal;
-    letter-spacing: normal;
-    line-height: normal;
-    text-align: center;
-    margin: 0;
-    cursor: pointer;
-    &.active{
-        background: linear-gradient(to right, #d600ff 0%, #6600ff 100%);
-        -webkit-background-clip: text;
-        -webkit-text-fill-color: transparent;
-    }
-`;
+
 const UserContentWrapper = styled.div`
     width: 100%;
     height:100%;
     overflow: auto;
     background-color: #292929;
 `;
-const HeaderIcon = styled.div`
-    position: absolute;
-    font-family: "Azo Sans", sans-serif;
-    left: 196px;
-    top: 10px
+
+const QuizContent = styled.div`
+    padding: 18px 22px;
+    margin: 18px 35px 16px 35px;
+    border-radius: 16px;
+    color: #fff;
+    background: #000;
+    text-align: center;
+    
+    .quiz-text {
+      margin: 7px 0 24px 0;
+      font-size: 24px;
+      text-align: center;
+    }
+    
+    .quiz-btn {
+      color: #fff;
+      width: 142px;
+      height: 52px;
+      border-radius: 20px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      font-family: "Azo Sans", sans-serif;
+    }
+    
+    .no-btn {
+      background-color: #954141;
+    }
+    
+    .yes-btn {
+      background-color: #2B6734;
+      margin-left: 16px;
+    }
+    
 `;
 
-const NewUserContent = (props) => {
-    const [isOpen, setIsOpen] = useState(false);
-    const [name, setName] = useState("Alexander Newton");
-    // const [activeTab, setActiveTab] = useState(1);
+const FooterContent = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center
+`;
 
+const CommentBtn = styled.button`
+      padding: 8px 22px;
+      text-align: center;
+      color: #D3D3D3;
+      font-family: "Azo Sans", sans-serif;
+      background-color: #000;
+      border: none;
+      outline: none;
+      border-radius: 54.5px;
+      font-size: 16px;
+      margin: 0 auto;
+`
 
-    const handleOpenModal = () => {
-        document.querySelector("body").style.overflow = "hidden";
-        setIsOpen(true);
-    };
-    const handleCloseModal = () => {
-        document.querySelector("body").style.overflow = "auto";
-        setIsOpen(false);
-    };
+const FooterLink = styled.div`
+     font-size: 12px;
+     margin: 26px 0 24px 0; 
+     
+     a {
+       color: #DFDFDF;
+       text-decoration: none;
+       font-family: "Azo Sans", sans-serif;
+     }
+`;
 
-    const scrollToCover = () => {
-        props.coverPageRef.current.scrollIntoView();
-        // setActiveTab(1)
-    };
-    const scrollToGallery = () => {
-        props.galleryRef.current.scrollIntoView();
-        // setActiveTab(2)
-    };
+const Separator = styled.div`
+    height: 9px;
+    background: #141414;
+`;
 
+const Politician = () => {
     return (
         <UserContentWrapper>
-            <UserHeader>
-                <FileMenu/>
-                <HeaderIcon>
-                    <CircleIcon imgUrl={edit} alt={"icon"} className='header-edit'/>
-                </HeaderIcon>
-            </UserHeader>
+            <UserHeader> </UserHeader>
             <UserWrapper>
                 <LikeAndCommentWrapper>
                     <Row className="items-bottom justify-center">
                         <CircleIcon imgUrl={message} alt={"icon"}/>
                         <UserImage>
-                            <img src={ProfilePic} alt="profile-pic"/>
+                            <img src={boris} alt="profile-pic"/>
                         </UserImage>
                         <div>
                             <LikeButton/>
@@ -291,13 +275,13 @@ const NewUserContent = (props) => {
                 </LikeAndCommentWrapper>
                 <Row className="items-center justify-center">
                     <CircleIcon imgUrl={link} alt={"icon"}/>
-                    <UserName onClick={handleOpenModal}>{name}</UserName>
+                    <UserName onClick={'handleOpenModal'}>Boris Johnson</UserName>
                     <CircleIcon imgUrl={bitcoin} alt={"icon"}/>
                     {/*<PayWrapper>pay</PayWrapper>*/}
                 </Row>
                 <Description>
-                    I’m a crypto artist. I’ve been collecting NFTs
-                    since 2017, and I also created Drop Magnet.
+                    Boris Johnson is a conservative politician
+                    and the current Prime Minister of the UK.
                 </Description>
             </UserWrapper>
             <MobileUserWrapper>
@@ -307,7 +291,7 @@ const NewUserContent = (props) => {
                         <img src={ProfilePic} alt="profile-pic"/>
                     </UserImage>
                     <div>
-                        <UserName onClick={handleOpenModal}>{name}</UserName>
+                        <UserName onClick={"handleOpenModal"}>{"name"}</UserName>
                         <Row className="items-center justify-between">
                             <CircleIcon imgUrl={ShareIcon} alt={"icon"}/>
                             <CircleIcon imgUrl={chat} alt={"icon"}/>
@@ -317,8 +301,8 @@ const NewUserContent = (props) => {
                     </div>
                 </MobileUserContent>
                 <Description>
-                    I’m a crypto artist. I’ve been collecting NFTs
-                    since 2017, and I also created Drop Magnet.
+                    Boris Johnson is a conservative politician
+                    and the current Prime Minister of the UK.
                 </Description>
             </MobileUserWrapper>
             <SmallDevice>
@@ -328,7 +312,7 @@ const NewUserContent = (props) => {
                         <UserImage>
                             <img src={ProfilePic} alt="profile-pic"/>
                         </UserImage>
-                        <UserName onClick={handleOpenModal}>{name}</UserName>
+                        <UserName onClick={"handleOpenModal"}>{"name"}</UserName>
                     </Row>
                 </div>
                 <div className="icons">
@@ -339,27 +323,24 @@ const NewUserContent = (props) => {
                     <PayWrapper>bio</PayWrapper>
                 </div>
             </SmallDevice>
-            <GreyBack>
-                <UserSlider/>
+            <Separator> </Separator>
+            <FooterContent>
+                <QuizContent>
+                    <div className='quiz-text'>
+                        Will Boris Johnson win the next election?
+                    </div>
+                    <button className='quiz-btn no-btn'>No</button>
+                    <button className='quiz-btn yes-btn'>Yes</button>
 
-                <PageLiks>
-                    <Tab className={"active"} onClick={scrollToCover}>
-                        <img src={userLogo} alt="user logo"/>
-                    </Tab>
-                    <Tab className={""} onClick={scrollToGallery}>NFTs</Tab>
-                </PageLiks>
-            </GreyBack>
-            <PortaledComponent
-                modal={
-                    <BlurModal
-                        close={handleCloseModal}
-                        open={isOpen}
-                        className={isOpen ? 'active' : ""}
-                        name={name}
-                        setName={setName}/>
-                }/>
+                </QuizContent>
+                <CommentBtn>Leave a comment for Boris</CommentBtn>
+
+                <FooterLink>
+                    <NavLink to="#">Boris? Claim this Politician.link</NavLink>
+                </FooterLink>
+            </FooterContent>
         </UserContentWrapper>
     )
 }
 
-export default NewUserContent
+export default Politician;

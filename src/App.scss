@@ -1,7 +1,7 @@
 @import "fonts/fonts";
 *{
   box-sizing: border-box;
-  font-family: "Quicksand", sans-serif;
+  font-family: "Azo Sans", sans-serif;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
   /* width */
@@ -38,9 +38,37 @@ body{
 }
 .navbar{
   width: 100%;
-  padding: 16px 30px 16px 16px;
+  padding: 16px 18px 23px 16px;
+  //border-bottom: 1px solid black;
+  //clip-path: polygon(0 0, 100% 0, 100% 75px, 60% 75px, 50% 91px, 40% 75px, 0 75px);
+  //background-color: grey;
+  position: relative;
+  &::after {
+    content: '';
+    display: inline-block;
+    border-style: solid;
+    border-width: 20px 186px 0;
+    border-color: #1a1a1a transparent transparent transparent;
+    position: absolute;
+    left: calc(50% - 186px);
+    bottom: -20px
+  }
+  &::before {
+    content: '';
+    display: inline-block;
+    max-width: 375px;
+    width: 100%;
+    background-color: black;
+    height: 20px;
+    clip-path: polygon(1px 0, 50% 19px, 374px 0, 100% 1px, 50% 20px, 0 1px);
+    position: absolute;
+    left: calc(50% - 186px);
+    bottom: -20px;
+    z-index: 1;
+  }
   @media (max-width: 500px) {
-    padding: 9px;
+    //padding: 9px;
+    min-height: 70px;
   }
 }
 .explore-galleries-content{
@@ -61,4 +89,55 @@ body{
 .ReactModal__Overlay{
   z-index: 100 !important;
   background-color: transparent !important;
+}
+
+.greeting-Alexander {
+  color: #eaeaea;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.mx-auto {
+  margin-left: auto;
+  margin-right: auto;
+}
+.max-w-324 {
+  max-width: 324px;
+}
+.max-w-564 {
+  max-width: 564px;
+}
+.flex-content {
+  display: flex;
+  justify-content: center;
+  border-top: 1px solid black;
+  //margin-bottom: 8px;
+  border-bottom: 8px solid #191919;
+}
+
+.grid-content {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 16px 13px;
+  margin-bottom: 16px;
+  .grid-item {
+    width: 100%;
+    aspect-ratio: 1 / 1;
+    border-radius: 4px;
+    background-color: #404040;
+    &:nth-child(4) {
+      grid-area: 2 / 1 / 2 /4;
+    }
+  }
+  @media (max-width: 375px) {
+    padding-right: 8px;
+    padding-left: 8px;
+  }
+
+}
+.feed {
+  color: #eaeaea;
+  text-align: center;
+  font-style: italic;
+  padding: 12px 0 16px;
 }
