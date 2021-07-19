@@ -14,6 +14,19 @@ const Like = styled.div`
   justify-content: center;
   cursor: pointer;
   position: relative;
+  
+  &.light {
+    background-color: #EFEFEF;
+    border: 1px solid #D6D6D6;
+    box-shadow: 0 2px 4px #C3C3C3;
+  }
+  
+  &.modal-icons {
+    width: 50px;
+    height: 40px;
+    border-radius: 7px;
+  }   
+  
   @media (max-width: 350px) and (max-height: 650px) {
         width: 36px;
         height: 36px;
@@ -22,15 +35,23 @@ const Like = styled.div`
     width: 22px;
     height: 22px;
     @media (max-width: 350px) and (max-height: 650px) {
-        width: 18px;
-        height: 18px;
+        width: 22px;
+        height: 19px;
   }
   }
   .not-liked {
     display: block;
-    color: #b5b5b5;
+    color: #fff;
     position: relative;
     z-index: 1;
+    
+    &.light {
+       color: #484848;
+    }
+    
+    &.black {
+       color: #000000;
+    } 
   }
   .is-liked {
     display: none;
@@ -71,14 +92,14 @@ const Like = styled.div`
 }
 `
 
-const LikeButton = () => {
+const LikeButton = ({lightTheme, modalIcons}) => {
     const [isActive, setIsActive] = useState(false);
 
     return (
         <div>
-            <Like className={`like-button ${isActive ? "is-active" : " "}`} onClick={() => setIsActive(!isActive)}>
+            <Like className={`like-button ${isActive ? "is-active" : " "} ${lightTheme} ${modalIcons}`} onClick={() => setIsActive(!isActive)}>
                 <FavoriteIcon className="is-liked bouncy"/>
-                <FavoriteBorderIcon className="not-liked bouncy"/>
+                <FavoriteBorderIcon className={`not-liked bouncy ${lightTheme}`}/>
             </Like>
         </div>
     )

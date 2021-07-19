@@ -1,21 +1,29 @@
 import React, {useState} from "react";
-import arrow from "./arrow.svg"
+import arrow from "./arrow.svg";
+import blackArrow from "./greyArrow.svg";
 import Cart from "./dropdownCard";
 import styled from "styled-components";
-
+// import UserSlider from "../../dropMagnet/components/newUserSlider/newUserSlider";
 
 const DropDown = styled.div`
   width: 160px;
   height: 36px;
   overflow: hidden;
   border-radius: 20px;
-  border: 1px solid #e8e8e8;
-  background-color: #3e3e3e;
+  border: 1px solid #000000;
+  background-color: #000000;
   padding: 8px 12px;
   position: absolute;
   z-index: 9999;
-  top:8px;
-  left:15px;
+  top:16px;
+  left:16px;
+  backdrop-filter: blur(2px);
+  
+  &.light {
+    border: 1px solid #D6D6D6;
+    background-color: #EFEFEF;
+  }
+  
   transition: width .2s ease-in-out, height .2s ease-in-out, border-radius .2s ease-in-out;
   @media (max-width: 375px) and (max-height: 700px) {
         top: 12px;
@@ -34,7 +42,7 @@ const DropDown = styled.div`
       margin: 0;
       color: #ffffff;
       font-size: 16px;
-      font-weight: 500;
+      font-weight: 400;
       font-style: normal;
       letter-spacing: normal;
       line-height: normal;
@@ -45,6 +53,16 @@ const DropDown = styled.div`
       transform: rotate(180deg);
       margin-left: 6px;
     }
+    
+    &.light {
+      
+      p {
+       color: #000000;
+       font-weight: 400;
+      }
+      
+    }
+    
   }
   .dropdown-header{
     color: #ffffff;
@@ -95,7 +113,7 @@ const CardsContent = styled.div`
 `;
 
 
-const FileMenu = () => {
+const FileMenu = ({darkTheme}) => {
     const [dropped, setDropped] = useState(false);
 
     const handleOpen = () => {
@@ -103,10 +121,10 @@ const FileMenu = () => {
     }
 
     return (
-        <DropDown className={dropped ? "dropped" : ""}>
-            <button className="dropdown-btn" onClick={handleOpen}>
+        <DropDown className={`${darkTheme ? 'light' : ''} ${dropped ? 'dropped' : ''}`} >
+            <button className={`${darkTheme ? 'light dropdown-btn' : 'dropdown-btn'}`} onClick={handleOpen}>
                 <p>Me.Link/Alex…</p>
-                <img src={arrow} alt="arrow"/>
+                <img src={darkTheme ? blackArrow : arrow} alt="arrow"/>
             </button>
             <div className="dropdown-content">
                 <h2 className="dropdown-header">Me.link/AlexanderNewton</h2>

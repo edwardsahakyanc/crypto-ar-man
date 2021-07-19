@@ -1,8 +1,8 @@
 import styled from "styled-components";
 
 export const InsetBoxIcon = styled.div`
-    width:52px;
-    height:52px;
+    width:46px;
+    height:46px;
     display: flex;
     align-items: center;
     justify-content: center;

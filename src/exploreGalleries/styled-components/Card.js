@@ -61,7 +61,7 @@ const CardIcon = styled.div`
 const CardTitle = styled.p`
     color: #eaeaea;
     font-size: 18px;
-      margin-top: 9;
+      margin-top: 8px;
       text-align:center;
   `;
 // const CardSubtitle = styled.p`

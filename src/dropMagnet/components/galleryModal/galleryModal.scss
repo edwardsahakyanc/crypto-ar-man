@@ -2,23 +2,24 @@
   border-radius: 6px;
   background-color: #f4f4f4;
   max-width: 926px;
-  width:90%;
+  //width:90%;
   margin: 0 auto !important;
   position: absolute;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%) !important;
   box-sizing: border-box;
-  padding: 32px;
+  //padding: 32px;
   outline:none !important;
-  overflow: auto;
+  overflow: hidden;
   @media(max-width: 520px){
     position: relative;
+    max-width: 100%;
     top: 0;
     left: 0;
     transform: unset !important;
-    margin: 20px auto 20px !important;
-    padding: 16px;
+    //margin: 20px auto 20px !important;
+    //padding: 16px;
   }
   @media(max-width: 370px){
     padding: 8px;
@@ -26,6 +27,8 @@
   .gallery-modal-content{
     transition: all 200ms ease;
     opacity: 0;
+    max-width: 100%;
+    overflow: hidden;
   }
 }
 .ReactModal__Overlay {
@@ -35,6 +38,7 @@
   .gallery-modal-content{
     transition-delay: 389ms;
     opacity: 0;
+    background-color: #2C2C2C;
   }
 }
 

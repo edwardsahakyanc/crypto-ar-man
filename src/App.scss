@@ -39,7 +39,7 @@ body{
 .navbar{
   width: 100%;
   padding: 16px 18px 23px 16px;
-  //border-bottom: 1px solid black;
+  border-bottom: 1px solid black;
   //clip-path: polygon(0 0, 100% 0, 100% 75px, 60% 75px, 50% 91px, 40% 75px, 0 75px);
   //background-color: grey;
   position: relative;
@@ -51,7 +51,7 @@ body{
     border-color: #1a1a1a transparent transparent transparent;
     position: absolute;
     left: calc(50% - 186px);
-    bottom: -20px
+    bottom: -19px
   }
   &::before {
     content: '';
@@ -63,7 +63,7 @@ body{
     clip-path: polygon(1px 0, 50% 19px, 374px 0, 100% 1px, 50% 20px, 0 1px);
     position: absolute;
     left: calc(50% - 186px);
-    bottom: -20px;
+    bottom: -19px;
     z-index: 1;
   }
   @media (max-width: 500px) {

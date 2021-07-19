@@ -15,8 +15,6 @@ const DropMagnet = () => {
 				<SliderPage/>
 			</Route>
 
-
-
 			{/*<Route path="/drop-magnet/artgallery.link/cryptoartman">*/}
 			{/*	<Navbar path={'/drop-magnet/artgallery.link/cryptoartman'} text={'Mag.Link/CryptoArtMan'}/>*/}
 			{/*	<CryptoArtManPage/>*/}
@@ -24,8 +22,6 @@ const DropMagnet = () => {
 			{/*<Route path="/drop-magnet/artgallery.link/newcryptoartman">*/}
 			{/*	<VericalySlidedPage/>*/}
 			{/*</Route>*/}
-
-
 
 			<Route path="/drop-magnet/artgallery.link/verticaly">
 				<ScrollSnapPage/>

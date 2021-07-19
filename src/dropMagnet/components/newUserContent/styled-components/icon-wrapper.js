@@ -20,6 +20,12 @@ const IconWrap = styled.div`
       }
   }
   
+  &.light {
+    background-color: #EFEFEF;
+    border: 1px solid #D6D6D6;
+    box-shadow: 0 2px 4px #C3C3C3;
+  }
+  
   &.social-media {
         width: 62px;
         height: 42px;
@@ -40,7 +46,7 @@ const IconWrap = styled.div`
             height: 18px;
         }
     }
-    @media (max-width: 414px) {  
+    @media (max-width: 650px) {  
       &.header-edit {
         width: 36px;
         height: 36px;
@@ -49,7 +55,14 @@ const IconWrap = styled.div`
          width: 17px;
          height: 17px;   
         }
-      } 
+      }
+    }
+  
+  &.modal-icons {
+    width: 50px;
+    height: 40px;
+    border-radius: 7px;
+  }     
 `
 
 const CircleIcon = ({imgUrl, alt, className}) => {

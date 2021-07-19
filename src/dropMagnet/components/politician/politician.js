@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useState} from "react";
 import FileMenu from "../../../myGallery/fileMenu/fileMenu";
 import CircleIcon from "../newUserContent/styled-components/icon-wrapper";
 import {Row} from "../../styled-component/row";
 import message from "../../assets/message.svg";
+import brownMessage from "../../assets/brownMessage.svg";
 import ProfilePic from "../../assets/profile_pic.png";
 import flag from "../../assets/United_Kingdom.svg.png";
 import boris from "../../assets/boris.jpg";
 import LikeButton from "../newUserContent/styled-components/likeButton";
 import link from "../../assets/link.svg";
+import brownLink from "../../assets/brownLink.svg";
 import bitcoin from "../../assets/bitcoin.svg";
+import brownBitcoin from "../../assets/brownBitcoin.svg";
 import ShareIcon from "../../assets/share-icon.svg";
 import chat from "../../assets/chat.svg";
 import styled from "styled-components";
@@ -51,10 +54,16 @@ const UserHeader = styled.div`
 `;
 const UserWrapper = styled.div`
     background: #1a1a1a;
-    padding: 93px 10px 19px;
+    padding: 94px 10px 21px;
     position:relative;
+    box-shadow: 0 -3px 4px rgba(0 0 0 / 19%);
+    
     @media (max-width: 375px) and (max-height: 700px) {
      display: none;
+    }
+    
+    &.light {
+      background: #FCFCFC;
     }
 `;
 const MobileUserWrapper = styled.div`
@@ -123,13 +132,21 @@ const UserName = styled.p`
   background-color: #101010;
   border-radius: 100px;
   color: #eaeaea;
-  font-weight: 700;
   font-style: normal;
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
   margin: 0 8px;
   cursor: pointer;
+  font-family: Azo Sans;
+  font-weight:400;
+  
+  &.light {
+    color: #000000;
+    background-color: #FCFCFC;
+    border: 1px solid #DFDFDF
+  }
+  
   @media (max-width: 375px) and (max-height: 700px) {
         margin: 0 0 12px 0;
     }
@@ -168,12 +185,17 @@ const Description = styled.div`
   margin-right: auto;
   color: #eaeaea;
   font-size: 16px;
-  font-weight: 700;
+  font-weight: 400;
   font-style: normal;
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
   margin-top: 16px;
+  
+  &.light {
+    color: #000000;
+  }
+  
   @media (max-width: 375px) and (max-height: 700px) {
         margin-top: 12px;
     }
@@ -184,6 +206,10 @@ const UserContentWrapper = styled.div`
     height:100%;
     overflow: auto;
     background-color: #292929;
+    
+    &.light {
+      background-color: #EEEEEE;
+    }
 `;
 
 const QuizContent = styled.div`
@@ -192,12 +218,30 @@ const QuizContent = styled.div`
     border-radius: 16px;
     color: #fff;
     background: #000;
-    text-align: center;
+    font-size: 24px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    
+    &.light{
+      background-color: #F7F7F7;
+      border: 1px solid #D6D6D6;
+      box-shadow: 0 2px 4px rgba(195 195 195 / 50%);
+      
+      div {
+        color: #000000;
+      }
+    }
     
     .quiz-text {
-      margin: 7px 0 24px 0;
+      margin: 7px 0 26px 0;
       font-size: 24px;
       text-align: center;
+      font-weight: 400;
+    }
+    
+    .btn-wrap {
+      display: flex;
     }
     
     .quiz-btn {
@@ -209,15 +253,30 @@ const QuizContent = styled.div`
       outline: none;
       font-size: 16px;
       font-family: "Azo Sans", sans-serif;
+      font-weight: 400;
+      
+      &.light {
+        background-color: #EFEFEF;
+        border: 1px solid #D6D6D6;
+        box-shadow: 0, 2px, 4px #C3C3C3;
+      }
     }
     
     .no-btn {
       background-color: #954141;
+      
+      &.light {
+         color: #954141;
+      }
     }
     
     .yes-btn {
       background-color: #2B6734;
       margin-left: 16px;
+      
+      &.light {
+         color: #2B6734;
+      }
     }
     
 `;
@@ -225,7 +284,11 @@ const QuizContent = styled.div`
 const FooterContent = styled.div`
     display: flex;
     flex-direction: column;
-    align-items: center
+    align-items: center;
+    
+    & .light {
+      // background-color: #EEEEEE;
+    }
 `;
 
 const CommentBtn = styled.button`
@@ -239,6 +302,13 @@ const CommentBtn = styled.button`
       border-radius: 54.5px;
       font-size: 16px;
       margin: 0 auto;
+      
+      &.light {
+        background-color: #FAFAFA;
+        border: 1px solid #D6D6D6;
+        box-shadow: 0 1px 3px #C3C3C3;
+        color: #363636;
+      }
 `
 
 const FooterLink = styled.div`
@@ -250,36 +320,51 @@ const FooterLink = styled.div`
        text-decoration: none;
        font-family: "Azo Sans", sans-serif;
      }
+     
+     &.light {
+       a {
+         color: #9C9C9C;
+         text-decoration: underline
+       }
+     }
 `;
 
 const Separator = styled.div`
     height: 9px;
     background: #141414;
+    box-shadow: inset 0px 1px 3px rgb(0 0 0 / 50%);
+    
+    &.light {
+     background: #D3D3D3;
+     box-shadow: inset 0px 3px 4px rgb(0 0 0 / 50%);
+    }
 `;
 
 const Politician = () => {
+
+    const [darkTheme, setDarkTheme] = useState(false);
     return (
-        <UserContentWrapper>
+        <UserContentWrapper className={darkTheme ? 'light' : ''}>
             <UserHeader> </UserHeader>
-            <UserWrapper>
+            <UserWrapper className={darkTheme ? 'light' : ''}>
                 <LikeAndCommentWrapper>
                     <Row className="items-bottom justify-center">
-                        <CircleIcon imgUrl={message} alt={"icon"}/>
+                        <CircleIcon imgUrl={darkTheme ? brownMessage : message} alt={"icon"} className={darkTheme ? 'light' : ''}/>
                         <UserImage>
-                            <img src={boris} alt="profile-pic"/>
+                            <img src={boris} alt="profile-pic" onClick={() => setDarkTheme(!darkTheme)}/>
                         </UserImage>
                         <div>
-                            <LikeButton/>
+                            <LikeButton lightTheme={darkTheme ? 'light' : ''}/>
                         </div>
                     </Row>
                 </LikeAndCommentWrapper>
                 <Row className="items-center justify-center">
-                    <CircleIcon imgUrl={link} alt={"icon"}/>
-                    <UserName onClick={'handleOpenModal'}>Boris Johnson</UserName>
-                    <CircleIcon imgUrl={bitcoin} alt={"icon"}/>
+                    <CircleIcon imgUrl={darkTheme ? brownLink : link} alt={"icon"} className={darkTheme ? 'light' : ''}/>
+                    <UserName className={darkTheme ? 'light' : ''}>Boris Johnson</UserName>
+                    <CircleIcon imgUrl={darkTheme ? brownBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light' : ''}/>
                     {/*<PayWrapper>pay</PayWrapper>*/}
                 </Row>
-                <Description>
+                <Description className={darkTheme ? 'light' : ''}>
                     Boris Johnson is a conservative politician
                     and the current Prime Minister of the UK.
                 </Description>
@@ -323,20 +408,22 @@ const Politician = () => {
                     <PayWrapper>bio</PayWrapper>
                 </div>
             </SmallDevice>
-            <Separator> </Separator>
+            <Separator className={darkTheme ? 'light' : ''}> </Separator>
             <FooterContent>
-                <QuizContent>
-                    <div className='quiz-text'>
+                <QuizContent className={darkTheme ? 'light' : ''}>
+                    <div className={darkTheme ? 'light quiz-text' : 'quiz-text'}>
                         Will Boris Johnson win the next election?
                     </div>
-                    <button className='quiz-btn no-btn'>No</button>
-                    <button className='quiz-btn yes-btn'>Yes</button>
+                    <div className='btn-wrap'>
+                        <button className={darkTheme ? 'light quiz-btn no-btn' : 'quiz-btn no-btn'}>No</button>
+                        <button className={darkTheme ? 'light quiz-btn yes-btn' : 'quiz-btn yes-btn'} >Yes</button>
+                    </div>
 
                 </QuizContent>
-                <CommentBtn>Leave a comment for Boris</CommentBtn>
+                <CommentBtn className={darkTheme ? 'light' : ''}>Leave a comment for Boris</CommentBtn>
 
-                <FooterLink>
-                    <NavLink to="#">Boris? Claim this Politician.link</NavLink>
+                <FooterLink className={darkTheme ? 'light' : ''}>
+                    <NavLink to="#">Boris? Claim this Pbitolitician.link</NavLink>
                 </FooterLink>
             </FooterContent>
         </UserContentWrapper>

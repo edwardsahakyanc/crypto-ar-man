@@ -17,6 +17,11 @@ import telegram from "../../assets/Telegram.svg";
 import openSea from "../../assets/Open Sea.svg";
 import rarible from "../../assets/Rarible.svg";
 import instagram from "../../assets/Instagram.svg";
+import blackDiscord from "../../assets/BlackDiscord.svg";
+import blackTelegram from "../../assets/BlackTelegram.svg";
+import blackOpenSea from "../../assets/BlackOpen Sea.svg";
+import blackRarible from "../../assets/BlackRarible.svg";
+import blackInstagram from "../../assets/blackInstagram.svg";
 
 SwiperCore.use([Navigation, Pagination]);
 
@@ -37,7 +42,7 @@ const SliderWrapper = styled.div`
      overflow: hidden;
      position: relative;
      padding-top: 32px;
-     padding-bottom: 80px;
+     padding-bottom: 70px;
      @media (max-height: 700px){
         max-width: 450px;
      }
@@ -132,18 +137,33 @@ const UserContentListDescription = styled.div`
     color: #fff;
     text-align: center;
     // margin-bottom: 16px;
-    background: #000000;
+    background-color: #000000;
+    border: 1px solid #000000;
     padding: 10px 0;
     border-radius: 9px;
     font-family: Azo Sans;
     margin: 0 36px 16px 36px;
+    font-weight: 400;
+    
+    .nft {
+      font-style: italic;
+      font-weight: 600;
+    }
+    
+    &.light {
+      background-color: #F7F7F7;
+      border: 1px solid #D6D6D6;
+      box-shadow: 0 2px 4px #C3C3C3;
+      color: #000000;
+    }
 `;
 
-const UserSlider = () => {
+const UserSlider = ({darkTheme}) => {
+
     const pagination = {
         "clickable": true,
         "renderBullet": (index, className) => {
-            return '<span class=' + className + '></span>';
+            return '<span class=' + className + '> </span>';
         }
     }
     const navigationPrevRef = React.useRef(null)
@@ -183,23 +203,23 @@ const UserSlider = () => {
                     {/*        })*/}
                     {/*    }*/}
                     {/*</Row>*/}
-                    <UserContentListDescription>
+                    <UserContentListDescription className={darkTheme ? 'light' : ''} >
                         My latest movie “Beautiful Blue Eyes”
                     </UserContentListDescription>
 
-                    <UserContentListDescription>
-                        My special merch for NFT holders!
+                    <UserContentListDescription className={darkTheme ? 'light' : ''} >
+                        My special merch for <span className='nft'>NFT</span> holders!
                     </UserContentListDescription>
 
                     <SocialMediaLinks>
-                        <CircleIcon imgUrl={discord} alt={"icon"} className='social-media'/>
-                        <CircleIcon imgUrl={telegram} alt={"icon"} className='social-media'/>
-                        <CircleIcon imgUrl={openSea} alt={"icon"} className='social-media'/>
-                        <CircleIcon imgUrl={rarible} alt={"icon"} className='social-media'/>
-                        <CircleIcon imgUrl={instagram} alt={"icon"} className='social-media'/>
+                        <CircleIcon imgUrl={darkTheme ? blackDiscord : discord} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
+                        <CircleIcon imgUrl={darkTheme ? blackTelegram : telegram} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
+                        <CircleIcon imgUrl={darkTheme ? blackOpenSea : openSea} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
+                        <CircleIcon imgUrl={darkTheme ? blackRarible : rarible} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
+                        <CircleIcon imgUrl={darkTheme ? blackInstagram : instagram} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
                     </SocialMediaLinks>
                 </SwiperSlide>
-                <SwiperSlide className="slide-item">
+                <SwiperSlide className={`${darkTheme ? 'light' : ''} slide-item`}>
                     <Row className="items-center justify-center flex-wrap">
                         <SlideImgItem>
                             <img src={cat1} alt=""/>
@@ -209,7 +229,7 @@ const UserSlider = () => {
                         </SlideImgItem>
                     </Row>
                 </SwiperSlide>
-                <SwiperSlide className="slide-item">
+                <SwiperSlide className={`${darkTheme ? 'light' : ''} slide-item`}>
                     <NewMusicPlayer/>
                 </SwiperSlide>
                 <SliderNext ref={navigationNextRef} />
