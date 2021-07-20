@@ -6,22 +6,22 @@ import styled from "styled-components";
 // import UserSlider from "../../dropMagnet/components/newUserSlider/newUserSlider";
 
 const DropDown = styled.div`
-  width: 160px;
+  width: 151px;
   height: 36px;
   overflow: hidden;
   border-radius: 20px;
-  border: 1px solid #000000;
-  background-color: #000000;
+  background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+  border: 0.75px solid #000000;
   padding: 8px 12px;
   position: absolute;
-  z-index: 9999;
   top:16px;
   left:16px;
   backdrop-filter: blur(2px);
   
   &.light {
     border: 1px solid #D6D6D6;
-    background-color: #EFEFEF;
+    background-image: linear-gradient(rgba(239, 239, 239, 0.83), rgba(239, 239, 239, 0.83));
+    backdrop-filter: blur(3px) grayscale(100%) saturate(1%);
   }
   
   transition: width .2s ease-in-out, height .2s ease-in-out, border-radius .2s ease-in-out;
@@ -51,7 +51,7 @@ const DropDown = styled.div`
     img{
       transition: transform 200ms ease-in-out;
       transform: rotate(180deg);
-      margin-left: 6px;
+      margin-left: 0px;
     }
     
     &.light {

@@ -108,6 +108,7 @@ const UserImage = styled.div`
     height: 164px;
     border-radius: 100%;
     overflow: hidden;  
+    box-shadow: 0 1 4 rgba(0, 0, 0, 0.25);
     img {
       width: 100%;  
       height: 100%;
@@ -123,28 +124,27 @@ const LikeAndCommentWrapper = styled.div`
     z-index: 10;
 `;
 const UserName = styled.p`
-  width: 236px;
-  height: 46px;
+  padding: 8px 19px;  
   font-size: 24px;
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #101010;
-  border-radius: 100px;
-  color: #eaeaea;
+  background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+  border: 0.75px solid #000000;
+  border-radius: 23px;
+  color: #EAEAEA;
+  font-weight: 500;
   font-style: normal;
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
-  margin: 0 8px;
+  margin: 0 16px;
   cursor: pointer;
-  font-family: Azo Sans;
-  font-weight:400;
   
   &.light {
     color: #000000;
-    background-color: #FCFCFC;
-    border: 1px solid #DFDFDF
+    background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247));
+    border: 1px solid #DFDFDF;
   }
   
   @media (max-width: 375px) and (max-height: 700px) {
@@ -191,6 +191,7 @@ const Description = styled.div`
   line-height: normal;
   text-align: center;
   margin-top: 16px;
+  padding: 0 16px;
   
   &.light {
     color: #000000;
@@ -217,14 +218,16 @@ const QuizContent = styled.div`
     margin: 18px 35px 16px 35px;
     border-radius: 16px;
     color: #fff;
-    background: #000;
+    background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+    border: 0.75px solid #000000;
     font-size: 24px;
+    font-weight: 400;
     display: flex;
     flex-direction: column;
     align-items: center;
     
     &.light{
-      background-color: #F7F7F7;
+      background-image: linear-gradient(rgba(247, 247, 247), rgba(247, 247, 247));
       border: 1px solid #D6D6D6;
       box-shadow: 0 2px 4px rgba(195 195 195 / 50%);
       
@@ -238,6 +241,7 @@ const QuizContent = styled.div`
       font-size: 24px;
       text-align: center;
       font-weight: 400;
+      padding: 0 12px;
     }
     
     .btn-wrap {
@@ -254,16 +258,17 @@ const QuizContent = styled.div`
       font-size: 16px;
       font-family: "Azo Sans", sans-serif;
       font-weight: 400;
+      border: 0.75px solid #000000;
       
       &.light {
-        background-color: #EFEFEF;
+        background-image: linear-gradient(rgba(239, 239, 239, 0.27), rgba(239, 239, 239, 0.27));
         border: 1px solid #D6D6D6;
-        box-shadow: 0, 2px, 4px #C3C3C3;
+        box-shadow: 0 2px 4px #C3C3C3;
       }
     }
     
     .no-btn {
-      background-color: #954141;
+      background-image: linear-gradient(rgba(149, 65, 65, 0.83), rgba(149, 65, 65, 0.83));
       
       &.light {
          color: #954141;
@@ -271,7 +276,7 @@ const QuizContent = styled.div`
     }
     
     .yes-btn {
-      background-color: #2B6734;
+      background-image: linear-gradient(rgba(43, 103, 52, 0.83), rgba(43, 103, 52, 0.83));
       margin-left: 16px;
       
       &.light {
@@ -292,19 +297,20 @@ const FooterContent = styled.div`
 `;
 
 const CommentBtn = styled.button`
+      min-width: 248px;
       padding: 8px 22px;
       text-align: center;
       color: #D3D3D3;
       font-family: "Azo Sans", sans-serif;
-      background-color: #000;
-      border: none;
+      border: 0.75px solid #000000;
       outline: none;
       border-radius: 54.5px;
       font-size: 16px;
       margin: 0 auto;
+      background: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
       
       &.light {
-        background-color: #FAFAFA;
+        background: linear-gradient(rgba(250, 250, 250, 0.99), rgba(250, 250, 250, 0.99));;
         border: 1px solid #D6D6D6;
         box-shadow: 0 1px 3px #C3C3C3;
         color: #363636;

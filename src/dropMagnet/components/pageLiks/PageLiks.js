@@ -6,23 +6,26 @@ import styled from "styled-components";
 const PageLiks = styled.div`
   max-width: 122px;
   height: 36px;
-  border-radius: 55px;
-  background-color: #101010;
-  border: 1px solid #101010;
+  border-radius: 54.5px;
+  display: flex:
+  text-align: center;
+  background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+  border: 0.75px solid #000000;
   margin: 0 auto;
-  padding: 21px 16px;
   display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 3px 13px 3px 16px;
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 14px;
-  z-index: 9999;
-  align-items: center;
-  justify-content: space-between;
+  bottom: 16px;
+  z-index: 10;
   margin: 0 auto;
+  -webkit-transform: translateZ(10px);
   
   &.light {
-    background-color: #F7F7F7;
+    background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247));
     border: 1px solid #D6D6D6;
     box-shadow: 0 2px 4px #C3C3C3;
   }
@@ -59,6 +62,7 @@ const Tab = styled.p`
     
     &.nft {
       font-style: italic;
+      padding-top: 2px;
     }
     
     &.light {

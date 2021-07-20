@@ -58,8 +58,8 @@ const UserHeader = styled.div`
     }
 `;
 const UserWrapper = styled.div`
-    background-color: #1a1a1a;
-    padding: 94px 10px 21px;
+    background-color: #1A1A1A;
+    padding: 91px 10px 16px;
     position:relative;
     box-shadow: 0 -7px 10px rgba(28,28,28, .33);
     
@@ -150,20 +150,20 @@ const UserName = styled.p`
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #101010;
-  border: 1px solid #101010;
-  border-radius: 100px;
-  color: #eaeaea;
+  background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+  border: 0.75px solid #000000;
+  border-radius: 26px;
+  color: #EAEAEA;
   font-weight: 400;
   font-style: normal;
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
-  margin: 0 8px;
+  margin: 0 16px;
   cursor: pointer;
   
   &.light {
-    background-color: #FCFCFC;
+    background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247));
     border: 1px solid #DFDFDF;
     color: #000000;
     font-weight: 500;  
@@ -203,8 +203,6 @@ const PayWrapper = styled.div`
 `;
 const Description = styled.div`
   max-width: 342px;
-  margin-left: auto;
-  margin-right: auto;
   color: #eaeaea;
   font-size: 16px;
   font-weight: 400;
@@ -212,8 +210,8 @@ const Description = styled.div`
   letter-spacing: normal;
   line-height: normal;
   text-align: center;
-  margin-top: 16px;
-  
+  margin: 0 auto;
+  padding-top: 24px;    
   &.light {
    font-weight: 400;
    color: #000000;  
@@ -295,13 +293,16 @@ const UserContentWrapper = styled.div`
 const HeaderIcon = styled.div`
     position: absolute;
     font-family: "Azo Sans", sans-serif;
-    left: 193px;
-    top: 16px
+    left: 185px;
+    top: 16px;
+    transform: translateZ(15px);
+    -webkit-transform: translateZ(15px);
 `;
 
 const Separator = styled.div`
     height: 9px;
     background: #141414;
+    box-shadow: inset 1px 3px 0 rgb(0 0 0 / 50%);
     
     &.light {
      background: #D3D3D3;
@@ -312,8 +313,8 @@ const Separator = styled.div`
 const HeaderTop = styled.div`
   height: 68px;
   position: fixed;
-  z-index: 9999;
   top: 0;
+  z-index: 19;
 `;
 
 const NewUserContent = (props) => {
@@ -339,7 +340,7 @@ const NewUserContent = (props) => {
                     <FileMenu darkTheme={darkTheme}/>
                 </HeaderTop>
                 <HeaderIcon onClick={() => setDarkTheme(!darkTheme)}>
-                    <CircleIcon imgUrl={darkTheme ? blackEdit : edit} alt={"icon"} className={darkTheme ? 'light header-edit' : 'header-edit'}/>
+                        <CircleIcon imgUrl={darkTheme ? blackEdit : edit} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
                 </HeaderIcon>
             </UserHeader>
             <UserWrapper className={darkTheme ? 'light' : ''}>

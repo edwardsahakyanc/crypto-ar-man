@@ -7,16 +7,17 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 const Like = styled.div`
   width: 46px;
   height: 46px;
-  background-color: #101010;
+  background-image: linear-gradient(180deg, #181818 0%, #131313 100%);
   border-radius: 100px;
   display: flex;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   position: relative;
+  border: 0.75px solid #000000;
   
   &.light {
-    background-color: #EFEFEF;
+    background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247));
     border: 1px solid #D6D6D6;
     box-shadow: 0 2px 4px #C3C3C3;
   }
@@ -27,6 +28,13 @@ const Like = styled.div`
     border-radius: 7px;
   }   
   
+  &.gallery-style {
+    width: 99px;
+    height: 40px;
+    border-radius: 9px;
+    margin-right: 16px;
+  }
+  
   @media (max-width: 350px) and (max-height: 650px) {
         width: 36px;
         height: 36px;
@@ -36,7 +44,7 @@ const Like = styled.div`
     height: 22px;
     @media (max-width: 350px) and (max-height: 650px) {
         width: 22px;
-        height: 19px;
+        height: 22px;
   }
   }
   .not-liked {
@@ -51,6 +59,7 @@ const Like = styled.div`
     
     &.black {
        color: #000000;
+       background-color: linear-gradient(180deg, #181818 0%, #131313 100%);
     } 
   }
   .is-liked {
@@ -92,12 +101,12 @@ const Like = styled.div`
 }
 `
 
-const LikeButton = ({lightTheme, modalIcons}) => {
+const LikeButton = ({lightTheme, modalIcons, galleryStyle}) => {
     const [isActive, setIsActive] = useState(false);
 
     return (
         <div>
-            <Like className={`like-button ${isActive ? "is-active" : " "} ${lightTheme} ${modalIcons}`} onClick={() => setIsActive(!isActive)}>
+            <Like className={`like-button ${isActive ? "is-active" : " "} ${lightTheme} ${modalIcons} ${galleryStyle}`} onClick={() => setIsActive(!isActive)}>
                 <FavoriteIcon className="is-liked bouncy"/>
                 <FavoriteBorderIcon className={`not-liked bouncy ${lightTheme}`}/>
             </Like>

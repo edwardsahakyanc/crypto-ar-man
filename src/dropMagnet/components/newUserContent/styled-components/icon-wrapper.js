@@ -4,7 +4,8 @@ import styled from "styled-components";
 const IconWrap = styled.div`
   width: 46px;
   height: 46px;
-  background-color: #101010;
+  background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+  border: 0.75px solid #000000;
   border-radius: 100px;
   display: flex;
   align-items: center;
@@ -21,9 +22,25 @@ const IconWrap = styled.div`
   }
   
   &.light {
-    background-color: #EFEFEF;
+    // background-color: #EFEFEF;
+    background-image: linear-gradient(rgba(239, 239, 239, 0.27), rgba(239, 239, 239, 0.27));
     border: 1px solid #D6D6D6;
-    box-shadow: 0 2px 4px #C3C3C3;
+    box-shadow: 0 2px 4px rgba(195, 195, 195, 0.5);
+  }
+    
+  &.header-edit {
+    background-image: linear-gradient(rgba(239, 239, 239, 0.83), rgba(239, 239, 239, 0.83));
+    border: 1px solid #D6D6D6;
+  }
+  
+   &.header-edit-black {
+    width: 36px;
+    height: 36px;
+    
+    img {
+        max-width: 17px;
+        max-height: 17px;
+    }
   }
   
   &.social-media {

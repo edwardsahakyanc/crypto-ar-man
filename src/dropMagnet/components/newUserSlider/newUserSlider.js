@@ -42,7 +42,7 @@ const SliderWrapper = styled.div`
      overflow: hidden;
      position: relative;
      padding-top: 32px;
-     padding-bottom: 70px;
+     padding-bottom: 80px;
      @media (max-height: 700px){
         max-width: 450px;
      }
@@ -107,7 +107,7 @@ const SliderPrev = styled.div`
      width: 8px;
      height:14px;
      background-image: url(${arrow});
-     opacity:0.1;
+     // opacity:0.1;
      transform: rotate(180deg);
      position: absolute;
      bottom: 36px;
@@ -119,7 +119,7 @@ const SliderNext = styled.div`
      width: 8px;
      height:14px;
      background-image: url(${arrow});
-     opacity:0.1;
+     // opacity:0.1;
      position: absolute;
      bottom: 36px;
      right: calc(50% - 48px);
@@ -131,14 +131,16 @@ const SocialMediaLinks = styled.div`
     flex-direction: row;
     justify-content: space-between;
     padding: 0 36px;
+    margin-right: -5px;
 `;
 const UserContentListDescription = styled.div`
     font-size: 18px;
+    min-width: 342px;
     color: #fff;
     text-align: center;
     // margin-bottom: 16px;
-    background-color: #000000;
-    border: 1px solid #000000;
+    background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+    border: 0.75px solid #000000;
     padding: 10px 0;
     border-radius: 9px;
     font-family: Azo Sans;
@@ -151,9 +153,9 @@ const UserContentListDescription = styled.div`
     }
     
     &.light {
-      background-color: #F7F7F7;
+      background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247));
       border: 1px solid #D6D6D6;
-      box-shadow: 0 2px 4px #C3C3C3;
+      box-shadow: 0 2px 4px rgba(195, 195, 195, 0.5);
       color: #000000;
     }
 `;

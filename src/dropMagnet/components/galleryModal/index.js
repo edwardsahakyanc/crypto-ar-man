@@ -18,8 +18,7 @@ import LikeButton from "../newUserContent/styled-components/likeButton";
 Modal.setAppElement('#portal');
 
 const Header = styled.div`
-   background-color: #444444;    
-   margin-top: 69px;
+   background-color: #444444;
    padding: 12px 10px 24px 10px;
 `;
 
@@ -192,8 +191,8 @@ const TabsHeader = styled.div`
           width: 163px;
           height: 46px;
           border-radius: 100px;
-          border: 1px solid #000000;
-          background-color: #000000;
+          background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+          border: 0.75px solid #000000;
           cursor: pointer;
           margin: 0 3.5px;
           z-index:1;
@@ -211,7 +210,6 @@ const TabsHeader = styled.div`
 const TabContent = styled.div`
     // margin-top:32px;
     background-color: #000000;
-    
     @media(max-width: 530px) {
       height: 235px;
     }
@@ -277,12 +275,12 @@ const CollectWrapper = styled.div`
 `;
 const Collect = styled.div`
     display:flex;
-    border: 1px solid transparent;
+    background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+    border: 0.75px solid #000000;
     justify-content: center;
     padding: 12px 0;
     width: 100%;
     border-radius: 7px;
-    background-color: #000000;
     color: #fff;
     margin-top: 32px;
     img{
@@ -316,12 +314,14 @@ const TabsWrapper = styled.div`
 const Tab = styled.div`
     padding: 4px 0;
     width: 94px;
-    background-color: #000000;
     border-radius: 11px;
     color: #EAEAEA;
     font-size: 18px;
     font-weight: 500;
     text-align: center;
+    margin: 0 4px;
+    background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+    border: 0.75px solid #000000;
 `;
 
 const GalleryModal = ({isOpen, closeModal}) => {
@@ -334,12 +334,11 @@ const GalleryModal = ({isOpen, closeModal}) => {
         {
             id: 2,
             tab: "Provenance",
-            content: "Minted on X date by Y owner and listed for Z Ξ \n Sold on X date to Y owner for Z Ξ"
+            content: "TestMinted on X date by Y owner and listed for Z Ξ \n Sold on X date to Y owner for Z Ξ"
         },
     ];
     const [activeTab, setActiveTab] = useState(tabsInfo[0].id);
     const handleChangeTab = useCallback((id) => setActiveTab(id), []);
-    console.log(activeTab)
     const handleChange = (value) => {
 
     }

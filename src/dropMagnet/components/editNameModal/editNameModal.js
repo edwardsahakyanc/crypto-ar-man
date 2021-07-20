@@ -76,7 +76,7 @@ const DoneBtn = styled.button`
     text-align: center;
 `;
 const ClipText = styled.p`
-        background: linear-gradient(to right, #d600ff 0%, #6600ff 100%);;
+        background: linear-gradient(to right, #d600ff 0%, #6600ff 100%);
         -webkit-background-clip: text;
         -webkit-text-fill-color: transparent;
         margin:0

@@ -2,8 +2,8 @@ import React, {useCallback, useRef, useState} from "react";
 import styled from "styled-components";
 import cardImg from "../../assets/portrait.png"
 import dots from "../../assets/dots.svg";
-import share from "../../assets/share.svg";
 import GalleryModal from "../galleryModal";
+import LikeButton from "../newUserContent/styled-components/likeButton";
 
 const SlideWrapper = styled.div`
    position: relative;
@@ -20,16 +20,18 @@ const CardWrapper = styled.div`
    align-items:center;
    justify-content:center;
    width:100%;
-   height:400px;
-   @media(max-width: 500px) {
-    height: 300px;
-  }
+   height:414px;
+
+  //  @media(max-width: 500px) {
+  //   height: 300px;
+  // }
 `;
 const Card = styled.div`
-  border-radius: 10px;
+  // border-radius: 10px;
   overflow:hidden;
   box-shadow: 0 1px 5px #00000099;
-  width: 300px;
+  // width: 300px;
+  width: 100%;
   height: 400px;
   background-image: url(${cardImg});
   background-size: cover;
@@ -40,10 +42,10 @@ const Card = styled.div`
   transition-property: transform, box-shadow;
   transition-timing-function: ease-out;
   transform: rotate3d(0,0,0,0deg);
-  @media(max-width: 500px) {
-    width: 210px;
-    height: 300px;
-  }
+  // @media(max-width: 500px) {
+  //   width: 210px;
+  //   height: 300px;
+  // }
   &:hover{
   transition-duration: 150ms;
   box-shadow: 0 5px 20px 5px #00000044;
@@ -68,12 +70,17 @@ const GalleryButtonWrapper = styled.div`
     justify-content: center;
     margin-top:25px;
     margin-bottom: 55px;
-    button{
-        width: 51px;
-        height: 51px;
-        border-radius: 100px;
-        background-color: #ffffff;
-        border:none;
+    .button{
+        // width: 51px;
+        // height: 51px;
+        // border-radius: 100px;
+        // background-color: #ffffff;
+        // border:none;
+        width: 99px;
+        height: 40px;
+        border-radius: 9px;
+        border: 0.75px solid #000000;
+        border: 1px solid #000;
         outline: none;
         margin: 0 8px;
         cursor:pointer;
@@ -139,12 +146,16 @@ const HoveredCard = () => {
                     </Card>
                 </CardWrapper>
                 <GalleryButtonWrapper>
-                    <button onClick={openModal}>
+
+                    {/*<button>*/}
+                    {/*    <img src={share} alt="share"/>*/}
+                    {/*</button>*/}
+
+                    <LikeButton galleryStyle='gallery-style'/>
+
+                    <div className='button' onClick={openModal}>
                         <img src={dots} alt="dots"/>
-                    </button>
-                    <button>
-                        <img src={share} alt="share"/>
-                    </button>
+                    </div>
                 </GalleryButtonWrapper>
             </SlideWrapper>
             <GalleryModal isOpen={isOpen} closeModal={closeModal}/>
