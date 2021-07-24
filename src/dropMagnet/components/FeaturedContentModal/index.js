@@ -18,7 +18,8 @@ Modal.setAppElement('#portal');
 
 const ComponentContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    max-height: 100vh;
     align-items: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.61));
     backdrop-filter: blur(10px);
@@ -258,10 +259,12 @@ const FeaturedContent = ({isOpen, closeModal}) => {
                                   </div>
                                 </Content>
                       }
-                      <button className='close-btn' onClick={() => {
+                      <button className='add-btn' onClick={() => {
                           closeModal();
                           setAdditionalSlider(false)
-                      }}>Add slide</button>
+                      }}>
+                          <div>Add slide</div>
+                      </button>
                   </ComponentContainer>
                   <AddLinkModal isOpen={addLinkModalToggle} closeModal={handleCloseModal}/>
                   <AddMediaModal isOpen={addMediaModalToggle} closeModal={handleCloseModal}/>

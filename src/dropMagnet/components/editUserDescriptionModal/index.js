@@ -6,7 +6,8 @@ Modal.setAppElement('#portal');
 
 const ComponentContainer = styled.div`
     width: 100%;
-    height: 100vh;
+    height: 100%;
+    max-height: 100vh;
     align-items: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.61));
     backdrop-filter: blur(10px);
