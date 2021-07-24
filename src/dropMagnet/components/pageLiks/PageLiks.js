@@ -1,6 +1,7 @@
 import React from "react";
-import userLogo from "../../assets/profile.svg";
-import whiteUserLogo from "../../assets/profileWhiteSvg.svg";
+// import userLogo from "../../assets/profile.svg";
+// import whiteUserLogo from "../../assets/profileWhiteSvg.svg";
+import userLogo from "../../assets/account (1).svg";
 import styled from "styled-components";
 
 const PageLiks = styled.div`
@@ -15,11 +16,11 @@ const PageLiks = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 3px 13px 3px 16px;
+  padding: 5px 13px 5px 16px;
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 16px;
+  bottom: 30px;
   z-index: 10;
   margin: 0 auto;
   -webkit-transform: translateZ(10px);
@@ -96,7 +97,7 @@ const PageLiksComponent = ({darkTheme, props, modalPageStyles, userComponentStyl
     return (
         <PageLiks className={`${darkTheme ? 'light' : '' } ${modalPageStyles} ${userComponentStyles}`}>
             <Tab className={"active"} onClick={scrollToCover}>
-                <img src={modalPageStyles ? whiteUserLogo : userLogo} alt="user logo"/>
+                <img src={modalPageStyles ? userLogo : userLogo} alt="user logo"/>
             </Tab>
             <Tab className={`${darkTheme ? 'light nft' : 'nft'} ${modalPageStyles}`} onClick={scrollToGallery}>NFTs</Tab>
         </PageLiks>

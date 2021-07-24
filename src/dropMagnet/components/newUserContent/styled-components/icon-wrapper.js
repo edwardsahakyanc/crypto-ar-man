@@ -29,11 +29,13 @@ const IconWrap = styled.div`
   }
     
   &.header-edit {
-    background-image: linear-gradient(rgba(239, 239, 239, 0.83), rgba(239, 239, 239, 0.83));
-    border: 1px solid #D6D6D6;
+    background-image: linear-gradient(rgb(239, 239, 239, 0.83), rgb(239, 239, 239, 0.83));
+    border: 1px solid rgb(214, 214, 214);
   }
   
    &.header-edit-black {
+    background-image: linear-gradient(rgb(24, 24, 24), rgba(19, 19, 19, 0.83));
+    border: 0.75px solid #000;
     width: 36px;
     height: 36px;
     

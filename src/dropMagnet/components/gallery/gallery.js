@@ -5,7 +5,7 @@ import styled from "styled-components";
 import GalleryModal from "../galleryModal";
 import dots from "../../assets/dots.svg";
 import LikeButton from "../newUserContent/styled-components/likeButton";
-import ShareModal from "../sharingIconsModal";
+// import ShareModal from "../sharingIconsModal";
 // import share from "../../assets/share.svg"
 
 
@@ -78,7 +78,6 @@ const Gallery = (props) => {
     const [isZoomed, setIsZoomed] = useState(false);
     const [margin, setMargin] = useState(70);
     const [isOpen, setIsOpen] = useState(false);
-    const [shareIsOpen, setShareIsOpen] = useState(false);
 
     const handleZoomChange = useCallback(shouldZoom => {
         setIsZoomed(shouldZoom)
@@ -98,14 +97,6 @@ const Gallery = (props) => {
     const openModal = () => {
         setIsOpen(true)
     }
-    const closeShareModal = () => {
-        setShareIsOpen(false)
-    }
-
-    const openShareModal = () => {
-        setShareIsOpen(true)
-    }
-
 
     return (
         <>
@@ -126,7 +117,7 @@ const Gallery = (props) => {
                         {/*    <img src={share} alt="share"/>*/}
                         {/*</button>*/}
 
-                        <div onClick={openShareModal}>
+                        <div>
                             <LikeButton galleryStyle='gallery-style'/>
                         </div>
 
@@ -137,7 +128,6 @@ const Gallery = (props) => {
                 </GalleryContent>
             </GalleryWrapper>
             <GalleryModal isOpen={isOpen} closeModal={closeModal}/>
-            <ShareModal isOpen={shareIsOpen} closeModal={closeShareModal}/>
         </>
     );
 };

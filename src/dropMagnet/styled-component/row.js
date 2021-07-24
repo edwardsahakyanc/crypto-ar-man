@@ -2,6 +2,7 @@ import styled from "styled-components";
 
 export const Row = styled.div`
     display: flex;
+    justify-content: center; 
     &.items-center{
         align-items: center;
     }

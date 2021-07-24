@@ -1,17 +1,20 @@
 import React from "react";
-import {Swiper, SwiperSlide} from "swiper/react";
-import SwiperCore, {Navigation, Pagination} from 'swiper/core';
-import styled from "styled-components";
+
+import { Swiper, SwiperSlide } from "swiper/react";
+
 import "swiper/swiper.min.css";
-import "swiper/components/navigation/navigation.min.css"
 import "swiper/components/pagination/pagination.min.css"
-import "./newUserSlider.scss";
-import {Row} from "../../styled-component/row";
-import cat1 from "../../assets/cat1.png";
-import cat2 from "../../assets/cat2.png";
-import arrow from "../../assets/arrows.svg"
-import NewMusicPlayer from "../musicPlayer/newMusicPlayer";
+
+import SwiperCore, {
+    Pagination,
+    Navigation
+} from 'swiper/core';
+
+import ContectGreySection from "../contectGreySection/ContectGreySection";
 import CircleIcon from "../newUserContent/styled-components/icon-wrapper";
+import NewMusicPlayer from "../musicPlayer/newMusicPlayer";
+import {Row} from "../../styled-component/row";
+import arrow from "../../assets/arrows.svg";
 import discord from "../../assets/Discord.svg";
 import telegram from "../../assets/Telegram.svg";
 import openSea from "../../assets/Open Sea.svg";
@@ -22,31 +25,13 @@ import blackTelegram from "../../assets/BlackTelegram.svg";
 import blackOpenSea from "../../assets/BlackOpen Sea.svg";
 import blackRarible from "../../assets/BlackRarible.svg";
 import blackInstagram from "../../assets/blackInstagram.svg";
+import styled from "styled-components";
+import cat1 from "../../assets/cat1.png";
+import cat2 from "../../assets/cat2.png";
+import './newUserSlider.scss';
 
-SwiperCore.use([Navigation, Pagination]);
+SwiperCore.use([Pagination, Navigation]);
 
-// const Slide1Items = [
-//     {id: 1, borderColor: "#ff9400", value: "Rarible"},
-//     {id: 2, borderColor: "#00b8ff", value: "OpenSea"},
-//     {id: 3, borderColor: "#ff5f00", value: "Instagram"},
-//     {id: 4, borderColor: "#00f1ff", value: "Twitter"},
-//     {id: 5, borderColor: "#afafaf", value: "Clubhouse"},
-//     {id: 6, borderColor: "#36b2f0", value: "Telegram"},
-// ];
-
-const SliderWrapper = styled.div`
-     max-width: 530px;
-     width: 100%;
-     margin: 0 auto;
-     height: fit-content;
-     overflow: hidden;
-     position: relative;
-     padding-top: 32px;
-     padding-bottom: 80px;
-     @media (max-height: 700px){
-        max-width: 450px;
-     }
-`;
 const SlideImgItem = styled.div`
     width: 158px;
     height: 158px;
@@ -57,52 +42,34 @@ const SlideImgItem = styled.div`
     height: 100%;
     object-fit: content;
     }
-    
+
     @media(max-width: 440px){
       width: 146px;
       height: 146px;
     }
-    
+
     @media(max-width: 360px){
       width: 140px;
       height: 140px;
     }
 `;
-// const Button = styled.button`
-//   min-width: 243px;
-//   min-height: 62px;
-//   border-radius: 100px;
-//   border: 1px solid;
-//   background-color: transparent;
-//   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
-//   cursor: pointer;
-//   color: #ffffff;
-//   font-size: 18px;
-//   font-weight: 700;
-//   font-style: normal;
-//   letter-spacing: normal;
-//   line-height: normal;
-//   text-align: center;
-//   margin: 11.5px 10px;
-//   position:relative;
-//   overflow: hidden;
-//   cursor:pointer;
-//   @media (max-width: 530px){
-//   min-width: 165px;
-//   min-height: 42px;
-//   margin: 8px 7px;
-//   }
-//   @media(max-width: 360px){
-//   min-width: 142px;
-//   min-height: 33px;
-//   margin: 6px 6.5px;
-//   }
-//   @media (max-height: 700px) and (min-width: 1024px){
-//       min-width: 142px;
-//       min-height: 33px;
-//       margin: 6px 6.5px;
-//   }
-// `;
+
+const SliderWrapp = styled.div`
+    margin: 16px;
+    
+    @media (max-width: 370px) {
+       margin: 16px 8px; 
+    }
+`;
+
+const SocialMediaLinks = styled.div`
+    max-width: 342px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin: 0 auto;
+`;
+
 const SliderPrev = styled.div`
      width: 8px;
      height:14px;
@@ -110,10 +77,10 @@ const SliderPrev = styled.div`
      // opacity:0.1;
      transform: rotate(180deg);
      position: absolute;
-     bottom: 36px;
      left: calc(50% - 48px);
      z-index:10;
      cursor: pointer;
+     bottom: 96px;
 `;
 const SliderNext = styled.div`
      width: 8px;
@@ -121,46 +88,45 @@ const SliderNext = styled.div`
      background-image: url(${arrow});
      // opacity:0.1;
      position: absolute;
-     bottom: 36px;
      right: calc(50% - 48px);
      z-index:10;
      cursor: pointer;
-`;
-const SocialMediaLinks = styled.div`
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    padding: 0 36px;
-    margin-right: -5px;
-`;
-const UserContentListDescription = styled.div`
-    font-size: 18px;
-    min-width: 342px;
-    color: #fff;
-    text-align: center;
-    // margin-bottom: 16px;
-    background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
-    border: 0.75px solid #000000;
-    padding: 10px 0;
-    border-radius: 9px;
-    font-family: Azo Sans;
-    margin: 0 36px 16px 36px;
-    font-weight: 400;
-    
-    .nft {
-      font-style: italic;
-      font-weight: 600;
-    }
-    
-    &.light {
-      background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247));
-      border: 1px solid #D6D6D6;
-      box-shadow: 0 2px 4px rgba(195, 195, 195, 0.5);
-      color: #000000;
-    }
+     bottom: 96px;
 `;
 
-const UserSlider = ({darkTheme}) => {
+const FeaturedContent = styled.div`
+    border: 1px solid transparent;
+    position: relative;
+    border-radius: 12px;
+    div {
+      &.edited-text {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        left: 0px;
+        border-radius: 12px;    
+        background-image: linear-gradient(rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%);
+        backdrop-filter: blur(4px);
+        color: #EAEAEA;
+        font-size: 24px;
+        font-weight: 400;
+        z-index: 1000;
+        
+        ::after {
+        content: "Edit Featured Content";
+       }
+      }
+            
+      &.edited-text-active {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+      }  
+    }
+
+`;
+
+const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
 
     const pagination = {
         "clickable": true,
@@ -170,18 +136,20 @@ const UserSlider = ({darkTheme}) => {
     }
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
+
     return (
-        <SliderWrapper>
+        <>
             <Swiper
                 slidesPerView={1}
+                slidesPerColumn={1}
+                spaceBetween={30}
                 centeredSlides={true}
                 navigation={{
                     prevEl: navigationPrevRef.current,
                     nextEl: navigationNextRef.current,
                 }}
                 pagination={pagination}
-                className="userSwiper"
-                spaceBetween={30}
+
                 onSwiper={(swiper) => {
                     setTimeout(() => {
                         swiper.params.navigation.prevEl = navigationPrevRef.current
@@ -192,52 +160,60 @@ const UserSlider = ({darkTheme}) => {
                     })
                 }}
             >
-                <SliderPrev ref={navigationPrevRef} />
-                <SwiperSlide className="slide-item">
-                    {/*<Row className="items-center justify-center flex-wrap">*/}
-                    {/*    {*/}
-                    {/*        Slide1Items.map(button => {*/}
-                    {/*            return (*/}
-                    {/*                <Button key={button.id} style={{borderColor: `${button.borderColor}`}}>*/}
-                    {/*                    {button.value}*/}
-                    {/*                </Button>*/}
-                    {/*            )*/}
-                    {/*        })*/}
-                    {/*    }*/}
-                    {/*</Row>*/}
-                    <UserContentListDescription className={darkTheme ? 'light' : ''} >
-                        My latest movie “Beautiful Blue Eyes”
-                    </UserContentListDescription>
+                <SliderPrev ref={navigationPrevRef}/>
+                <SwiperSlide>
+                    <SliderWrapp>
+                        <FeaturedContent onClick={() => editedActive && setFeaturedContentModal(true)}>
+                            <div className={`${editedActive}`}> </div>
+                            <ContectGreySection content='My latest movie “Beautiful Blue Eyes”' styles={`${darkTheme && 'light'}`} />
+                            <ContectGreySection
+                                styles={`${darkTheme && 'light'}`}
+                                content={<>My special merch for <span className='nft'>NFT</span> holders!</>}
+                                />
 
-                    <UserContentListDescription className={darkTheme ? 'light' : ''} >
-                        My special merch for <span className='nft'>NFT</span> holders!
-                    </UserContentListDescription>
-
-                    <SocialMediaLinks>
-                        <CircleIcon imgUrl={darkTheme ? blackDiscord : discord} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
-                        <CircleIcon imgUrl={darkTheme ? blackTelegram : telegram} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
-                        <CircleIcon imgUrl={darkTheme ? blackOpenSea : openSea} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
-                        <CircleIcon imgUrl={darkTheme ? blackRarible : rarible} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
-                        <CircleIcon imgUrl={darkTheme ? blackInstagram : instagram} alt={"icon"} className={darkTheme ? 'light social-media' : 'social-media'} />
-                    </SocialMediaLinks>
+                            <SocialMediaLinks>
+                                <CircleIcon imgUrl={darkTheme ? blackDiscord : discord} alt={"icon"} className={`${darkTheme && 'light'} social-media`}/>
+                                <CircleIcon imgUrl={darkTheme ? blackTelegram : telegram} alt={"icon"} className={`${darkTheme && 'light'} social-media`}/>
+                                <CircleIcon imgUrl={darkTheme ? blackOpenSea : openSea} alt={"icon"} className={`${darkTheme && 'light'} social-media`}/>
+                                <CircleIcon imgUrl={darkTheme ? blackRarible : rarible} alt={"icon"} className={`${darkTheme && 'light'} social-media`}/>
+                                <CircleIcon imgUrl={darkTheme ? blackInstagram : instagram} alt={"icon"} className={`${darkTheme && 'light'} social-media`}/>
+                            </SocialMediaLinks>
+                        </FeaturedContent>
+                    </SliderWrapp>
                 </SwiperSlide>
-                <SwiperSlide className={`${darkTheme ? 'light' : ''} slide-item`}>
-                    <Row className="items-center justify-center flex-wrap">
-                        <SlideImgItem>
-                            <img src={cat1} alt=""/>
-                        </SlideImgItem>
-                        <SlideImgItem>
-                            <img src={cat2} alt=""/>
-                        </SlideImgItem>
-                    </Row>
+                <SwiperSlide>
+                    <SliderWrapp>
+                        <Row>
+                            <SlideImgItem>
+                                <img src={cat1} alt=""/>
+                            </SlideImgItem>
+                            <SlideImgItem>
+                                <img src={cat2} alt=""/>
+                            </SlideImgItem>
+                        </Row>
+                    </SliderWrapp>
                 </SwiperSlide>
-                <SwiperSlide className={`${darkTheme ? 'light' : ''} slide-item`}>
-                    <NewMusicPlayer/>
+                <SwiperSlide>
+                    <SliderWrapp>
+                        <NewMusicPlayer/>
+                    </SliderWrapp>
                 </SwiperSlide>
-                <SliderNext ref={navigationNextRef} />
+                <SwiperSlide>
+                    <SliderWrapp>
+                        <Row>
+                            <SlideImgItem>
+                                <img src={cat1} alt=""/>
+                            </SlideImgItem>
+                            <SlideImgItem>
+                                <img src={cat2} alt=""/>
+                            </SlideImgItem>
+                        </Row>
+                    </SliderWrapp>
+                </SwiperSlide>
+                <SliderNext ref={navigationNextRef}/>
             </Swiper>
-        </SliderWrapper>
+        </>
     )
 }
 
-export default UserSlider
+export default UserSlider;

@@ -135,6 +135,7 @@ const UserContentWrapper = styled.div`
 `;
 
 
+
 const UserContent = () => {
     return (
         <UserContentWrapper>
@@ -158,7 +159,7 @@ const UserContent = () => {
                 I’m a crypto artist. I’ve been collecting NFTs
                 since 2017, and I also created Drop Magnet.
             </Description>
-            <UserSlider/>
+                <UserSlider/>
             <SmartGalleryBtn>
                 Smart Gallery
             </SmartGalleryBtn>

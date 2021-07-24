@@ -3,8 +3,10 @@ import styled from "styled-components";
 import background from "../../assets/cat-background.png";
 import CircleIcon from "./styled-components/icon-wrapper";
 import chat from "../../assets/chat.svg";
-import edit from "../../assets/edit.svg";
-import blackEdit from "../../assets/blackEdit.svg";
+import setting from "../../assets/settings-2.svg";
+import blackSetting from "../../assets/settings-black.svg";
+// import edit from "../../assets/edit.svg";
+// import blackEdit from "../../assets/blackEdit.svg";
 import link from "../../assets/link.svg";
 import bitcoin from "../../assets/bitcoin.svg";
 import message from "../../assets/message.svg";
@@ -21,41 +23,45 @@ import BlurModal from "../editNameModal/editNameModal";
 import PortaledComponent from "../portaledComponent";
 import FileMenu from "../../../myGallery/fileMenu/fileMenu";
 import PageLiksComponent from "../pageLiks/PageLiks";
+import ShareModal from "../sharingIconsModal";
+import EditUserDescription from "../editUserDescriptionModal";
+import FeaturedContent from "../FeaturedContentModal";
+import ImageUpdateModal from "../ImageUpdateModal";
 
 const UserHeader = styled.div`
     position: relative;
     width: 100%;
-    max-height: 278px;
+    max-height: 183px;
     height: 100%;
     min-height: 96px;
     background-image: url(${background});
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    @media (max-width: 500px){
-    height:183px;
-    }
-    @media (max-width: 391px){
-    height: 137px;
-    }
-    @media (max-width: 376px){
-    height: 116px;
-    }
-    @media (max-height: 870px) and (min-width: 1024px){
-        height:183px;
-    }
-    @media (max-height: 770px) and (min-width: 1024px){
-        height: 137px;
-    }
-    @media (max-height: 720px) and (min-width: 1024px){
-        height: 116px;
-    }
-    @media (max-height: 700px) and (min-width: 1024px){
-        height: 96px;
-    }
-    @media (max-width: 375px) and (max-height: 700px) {
-        display:none;
-    }
+    // @media (max-width: 500px){
+    // height:183px;
+    // }
+    // @media (max-width: 391px){
+    // height: 137px;
+    // }
+    // @media (max-width: 376px){
+    // height: 116px;
+    // }
+    // @media (max-height: 870px) and (min-width: 1024px){
+    //     height:183px;
+    // }
+    // @media (max-height: 770px) and (min-width: 1024px){
+    //     height: 137px;
+    // }
+    // @media (max-height: 720px) and (min-width: 1024px){
+    //     height: 116px;
+    // }
+    // @media (max-height: 700px) and (min-width: 1024px){
+    //     height: 96px;
+    // }
+    // @media (max-width: 375px) and (max-height: 700px) {
+    //     display:none;
+    // }
 `;
 const UserWrapper = styled.div`
     background-color: #1A1A1A;
@@ -299,6 +305,15 @@ const HeaderIcon = styled.div`
     -webkit-transform: translateZ(15px);
 `;
 
+const HeaderEditText = styled.span`
+    color: #EAEAEA;
+    font-size: 16px; 
+    font-weight: 400;
+    position: absolute;
+    right: 31px;
+    top: 25px
+`;
+
 const Separator = styled.div`
     height: 9px;
     background: #141414;
@@ -321,8 +336,29 @@ const NewUserContent = (props) => {
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("Alexander Newton");
     // const [activeTab, setActiveTab] = useState(1);
+    const [shareIsOpen, setShareIsOpen] = useState(false);
+
+    const [userDescription, setUserDescription] = useState(`I’m a crypto artist. I’ve been collecting NFTs since 2017, and I also created Drop Magnet.`);
+    const [editUserDescription, setEditUserDescription] = useState(false);
+
+    const [featuredContentModal, setFeaturedContentModal] = useState(false);
+
+    const [imageUpdateModalToggle, setImageUpdateModalToggle] = useState(false)
+
+    const [editedActive, setEditedActive] = useState(false);
 
     const [darkTheme, setDarkTheme] = useState(false);
+
+    const closeModal = () => {
+        setShareIsOpen(false);
+        setEditUserDescription(false);
+        setFeaturedContentModal(false);
+        setImageUpdateModalToggle(false);
+    }
+    console.log(setDarkTheme)
+    const openShareModal = () => {
+        setShareIsOpen(true)
+    }
 
     const handleOpenModal = () => {
         document.querySelector("body").style.overflow = "hidden";
@@ -339,9 +375,16 @@ const NewUserContent = (props) => {
                 <HeaderTop>
                     <FileMenu darkTheme={darkTheme}/>
                 </HeaderTop>
-                <HeaderIcon onClick={() => setDarkTheme(!darkTheme)}>
-                        <CircleIcon imgUrl={darkTheme ? blackEdit : edit} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
+                <HeaderIcon onClick={() => setEditedActive(!editedActive)}>
+                        <CircleIcon imgUrl={darkTheme ? blackSetting : setting} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
                 </HeaderIcon>
+                {
+                    editedActive
+                        ? <div onClick={() => setImageUpdateModalToggle(true)}>
+                            <HeaderEditText>Edit Header & BGs</HeaderEditText>
+                          </div>
+                        : null
+                }
             </UserHeader>
             <UserWrapper className={darkTheme ? 'light' : ''}>
                 <LikeAndCommentWrapper>
@@ -356,14 +399,19 @@ const NewUserContent = (props) => {
                     </Row>
                 </LikeAndCommentWrapper>
                 <Row className="items-center justify-center">
-                    <CircleIcon imgUrl={darkTheme ? blackLink : link} alt={"icon"} className={darkTheme ? 'light' : ''} />
+                    <div onClick={openShareModal}>
+                        <CircleIcon imgUrl={darkTheme ? blackLink : link} alt={"icon"} className={darkTheme ? 'light' : ''} />
+                    </div>
                     <UserName onClick={handleOpenModal} className={darkTheme ? 'light' : ''}>{name}</UserName>
                     <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light' : ''} />
                     {/*<PayWrapper>pay</PayWrapper>*/}
                 </Row>
-                <Description className={darkTheme ? 'light' : ''}>
-                    I’m a crypto artist. I’ve been collecting NFTs
-                    since 2017, and I also created Drop Magnet.
+                <Description className={darkTheme ? 'light' : ''} onClick={() => {
+                    if (editedActive) {
+                        setEditUserDescription(!editUserDescription)
+                    }
+                }}>
+                    {userDescription}
                 </Description>
             </UserWrapper>
             <MobileUserWrapper>
@@ -382,10 +430,12 @@ const NewUserContent = (props) => {
                         </Row>
                     </div>
                 </MobileUserContent>
-                <Description>
-                    I’m a crypto artist. I’ve been collecting NFTs
-                    since 2017, and I also created Drop Magnet.
-                </Description>
+                <div>
+                    <Description>
+                        I’m a crypto artist. I’ve been collecting NFTs
+                        since 2017, and I also created Drop Magnet.
+                    </Description>
+                </div>
             </MobileUserWrapper>
             <SmallDevice>
                 <FileMenu darkTheme={darkTheme}/>
@@ -407,7 +457,11 @@ const NewUserContent = (props) => {
             </SmallDevice>
             <Separator className={darkTheme ? 'light' : ''}> </Separator>
             <GreyBack>
-                <UserSlider darkTheme={darkTheme}/>
+                <UserSlider
+                    darkTheme={darkTheme}
+                    editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}
+                    setFeaturedContentModal={setFeaturedContentModal}
+                />
                 {/*<PageLiks className={darkTheme ? 'light' : ''}>*/}
                 {/*    <Tab className={"active"} onClick={scrollToCover}>*/}
                 {/*        <img src={userLogo} alt="user logo"/>*/}
@@ -425,8 +479,17 @@ const NewUserContent = (props) => {
                         name={name}
                         setName={setName}/>
                 }/>
+            <EditUserDescription
+                isOpen={editUserDescription}
+                closeModal={closeModal}
+                userDescription={userDescription}
+                setUserDescription={setUserDescription}
+            />
+            <FeaturedContent isOpen={featuredContentModal} closeModal={closeModal}/>
+            <ShareModal isOpen={shareIsOpen} closeModal={closeModal}/>
+            <ImageUpdateModal isOpen={imageUpdateModalToggle} closeModal={closeModal}/>
         </UserContentWrapper>
     )
 }
 
-export default NewUserContent
+export default NewUserContent;
