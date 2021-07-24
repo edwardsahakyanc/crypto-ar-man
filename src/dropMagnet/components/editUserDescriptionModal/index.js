@@ -39,6 +39,22 @@ const ComponentContainer = styled.div`
       display: none;
     }
     
+    .add-btn {
+      background: none; 
+      outline: none;
+      border: none;
+      
+      div {
+        padding: 8px 16px;
+        background-image: linear-gradient(rgba(0, 0, 0, 0.61) 0%, rgba(0, 0, 0, 0.61) 100%);
+        color: #EAEAEA;
+        font-size: 18px;
+        border-radius: 26px;
+        border: 0.75px solid #000;
+
+      }  
+    }
+    
     .close-btn {
       font-size: 18px;
       padding: 8px 16px;
@@ -68,7 +84,9 @@ const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescri
                   <ComponentContainer>
                       <header>Edit Bio</header>
                       <textarea value={userDescription} onChange={(e) => setUserDescription(e.currentTarget.value)}/>
-                      <button className='close-btn' onClick={closeModal}>Finish Editing</button>
+                      <button className='add-btn' onClick={closeModal}>
+                          <div>Finish Editing</div>
+                      </button>
                   </ComponentContainer>
             </Modal>
     )

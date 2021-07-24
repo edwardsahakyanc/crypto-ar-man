@@ -311,7 +311,7 @@ const HeaderEditText = styled.span`
     font-weight: 400;
     position: absolute;
     right: 31px;
-    top: 25px
+    top: 25px;
 `;
 
 const Separator = styled.div`
