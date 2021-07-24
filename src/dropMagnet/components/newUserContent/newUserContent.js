@@ -312,6 +312,14 @@ const HeaderEditText = styled.span`
     position: absolute;
     right: 31px;
     top: 25px;
+    
+    @media screen and (max-width: 390px) {
+      right: 21px;
+    }
+    
+    @media screen and (max-width: 390px) {
+      right: 4px;
+    }
 `;
 
 const Separator = styled.div`

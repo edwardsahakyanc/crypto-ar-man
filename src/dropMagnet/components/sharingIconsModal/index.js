@@ -14,6 +14,7 @@ import close from "../../assets/close.svg";
 Modal.setAppElement('#portal');
 
 const ComponentContainer = styled.div`
+    min-width: 100%;
     height: 100vh;
     align-items: center;
     backdrop-filter: blur(10px);
@@ -22,6 +23,8 @@ const ComponentContainer = styled.div`
 `;
 
 const Content = styled.div`
+    max-width: 470px;
+    margin: 0 auto;
     display: flex;
     justify-content: space-between;
     flex-wrap: wrap;
@@ -29,13 +32,22 @@ const Content = styled.div`
 `;
 
 const Items = styled.div`
-    min-width: 89px;
-    min-height: 74px;
+    width: 89px;
+    height: 74px;
     border-radius: 7px;
     border: 1px solid #C0C0C0;
-    margin-bottom: 16px;
+    margin: 0 4px 16px 4px ;
     background-color: #000;
     
+    @media screen and (max-width: 407px) {
+      width: 75px;
+      height: 60px;
+    }
+    
+    @media screen and (max-width: 365px) {
+      width: 60px;
+      height: 50px;
+    }
 `;
 
 const TimeOutText = styled.div`

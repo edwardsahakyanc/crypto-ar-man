@@ -98,6 +98,8 @@ const FeaturedContent = styled.div`
     border: 1px solid transparent;
     position: relative;
     border-radius: 12px;
+    max-width: 351px;
+    margin: 0 auto;
     div {
       &.edited-text {
         position: absolute;

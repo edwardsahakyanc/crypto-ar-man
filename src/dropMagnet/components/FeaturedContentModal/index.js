@@ -2,7 +2,7 @@ import Modal from 'react-modal';
 import React, {useState} from "react";
 import styled from "styled-components";
 import CircleIcon from "../newUserContent/styled-components/icon-wrapper";
-
+import {StatefulList} from 'baseui/dnd-list';
 import discord from "../../assets/Discord.svg";
 import telegram from "../../assets/Telegram.svg";
 import openSea from "../../assets/Open Sea.svg";
@@ -13,6 +13,7 @@ import AddButtonsModal from "../addButtonsContentModal";
 import AddMediaModal from "../addMediaContentModal";
 import AddLinkModal from "../addLinkModal";
 import ContectGreySection from "../contectGreySection/ContectGreySection";
+import ToggleItems from "./toggleItems";
 
 Modal.setAppElement('#portal');
 
@@ -28,7 +29,15 @@ const ComponentContainer = styled.div`
     text-align: center;
     color: #ffffff;
     font-weight: 400;
-
+    
+    ul {
+     padding: 0;
+     display: flex;
+     flex-direction: column;
+     justify-content: center;
+     align-items: center;
+    }
+    
     header {
       display: flex;
       align-items: center;
@@ -195,70 +204,39 @@ const FeaturedContent = ({isOpen, closeModal}) => {
                               setAdditionalSlider(false);
                           }}/>
                       </header>
-                      <Content>
-                          <div className='content'>
-                              <div className='menu'>
-                                  <div className='line'> </div>
-                                  <div className='line'> </div>
-                                  <div className='line'> </div>
-                              </div>
-                              <div className='title'>Slide One</div>
-                              <ContectGreySection content='My latest movie “Beautiful Blue Eyes”'/>
 
-                              <ContectGreySection content={<>My special merch for <span className='nft'>NFT</span> holders!</>}/>
 
-                              <SocialMediaLinks>
-                                  <CircleIcon imgUrl={discord} alt={"icon"} className='social-media' />
-                                  <CircleIcon imgUrl={telegram} alt={"icon"} className='social-media' />
-                                  <CircleIcon imgUrl={openSea} alt={"icon"} className='social-media' />
-                                  <CircleIcon imgUrl={rarible} alt={"icon"} className='social-media' />
-                                  <CircleIcon imgUrl={instagram} alt={"icon"} className='social-media' />
-                              </SocialMediaLinks>
-                          </div>
-                      </Content>
+                      <StatefulList
+                          initialState={{
+                              items: [
+                                  <Content>
+                                      <div className='content'>
+                                          <div className='menu'>
+                                              <div className='line'> </div>
+                                              <div className='line'> </div>
+                                              <div className='line'> </div>
+                                          </div>
+                                          <div className='title'>Slide One</div>
+                                          <ContectGreySection content='My latest movie “Beautiful Blue Eyes”'/>
 
-                      {
-                          additionalSlider
-                             ? <Content>
-                                  <div className='content content-additional'>
-                                      <div className='title'>Slide Two</div>
+                                          <ContectGreySection content={<>My special merch for <span className='nft'>NFT</span> holders!</>}/>
 
-                                      <div className='description'>
-                                          What shall we add?
+                                          <SocialMediaLinks>
+                                              <CircleIcon imgUrl={discord} alt={"icon"} className='social-media' />
+                                              <CircleIcon imgUrl={telegram} alt={"icon"} className='social-media' />
+                                              <CircleIcon imgUrl={openSea} alt={"icon"} className='social-media' />
+                                              <CircleIcon imgUrl={rarible} alt={"icon"} className='social-media' />
+                                              <CircleIcon imgUrl={instagram} alt={"icon"} className='social-media' />
+                                          </SocialMediaLinks>
                                       </div>
+                                  </Content>,
+                                  <ToggleItems additionalSlider={additionalSlider} setAdditionalSlider={setAdditionalSlider}/>
 
-                                      <button className='add-btn additional-btn' onClick={() => setAddLinkModalToggle(true)}>
-                                          <div>Links</div>
-                                      </button>
-                                      <button className='add-btn additional-btn' onClick={() => setAddMediaModalToggle(true)}>
-                                          <div>Media</div>
-                                      </button>
-                                      <button className='add-btn additional-btn' onClick={() => setAddButtonModalToggle(true)}>
-                                          <div>Buttons</div>
-                                      </button>
+                              ],
+                          }}
+                          onChange={console.log}
+                      />
 
-                                      <div className='slots-text'>Slide is empty</div>
-                                  </div>
-                               </Content>
-                              : <Content>
-                                  <div className='content'>
-                                      <div className='menu'>
-                                          <div className='line'> </div>
-                                          <div className='line'> </div>
-                                          <div className='line'> </div>
-                                      </div>
-                                      <div className='title'>Slide Two</div>
-
-                                      <ContectGreySection content='My latest movie “Beautiful Blue Eyes”'/>
-
-                                      <button className='add-btn' onClick={() => setAdditionalSlider(true)}>
-                                          <div>Add something else</div>
-                                      </button>
-
-                                      <div className='slots-text'>1/3 slots used</div>
-                                  </div>
-                                </Content>
-                      }
                       <button className='add-btn' onClick={() => {
                           closeModal();
                           setAdditionalSlider(false)

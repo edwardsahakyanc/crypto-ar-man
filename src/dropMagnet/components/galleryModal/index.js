@@ -312,7 +312,10 @@ const TabsWrapper = styled.div`
 `;
 
 const Tab = styled.div`
-    padding: 4px 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 0 4px 0;
     width: 94px;
     border-radius: 11px;
     color: #EAEAEA;

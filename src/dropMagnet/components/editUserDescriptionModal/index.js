@@ -43,6 +43,11 @@ const ComponentContainer = styled.div`
       background: none; 
       outline: none;
       border: none;
+      position: absolute;
+      bottom: 16px;
+      left: 0;
+      right: 0;
+      margin: 0 auto;
       
       div {
         padding: 8px 16px;
