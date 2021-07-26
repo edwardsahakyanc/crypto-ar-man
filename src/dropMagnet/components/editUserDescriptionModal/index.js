@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import React from "react";
+import React, {useState} from "react";
 import styled from "styled-components";
 
 Modal.setAppElement('#portal');
@@ -77,7 +77,9 @@ const ComponentContainer = styled.div`
     }
 `;
 
-const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescription}) => {
+const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescription, setMaxHeight}) => {
+
+    const [maxHeight, setMaxHeights] = useState('40px')
 
     return (
             <Modal
@@ -88,8 +90,20 @@ const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescri
             >
                   <ComponentContainer>
                       <header>Edit Bio</header>
-                      <textarea value={userDescription} onChange={(e) => setUserDescription(e.currentTarget.value)}/>
-                      <button className='add-btn' onClick={closeModal}>
+                      <textarea
+                          value={`${userDescription}`}
+                          style={{height: maxHeight}}
+                          onChange={(e) => setUserDescription(e.currentTarget.value)}
+                          onClick={() => {
+                              setMaxHeight('120px')
+                              setMaxHeights('62px')
+                          }}
+
+                      />
+                      <button className='add-btn' onClick={() => {
+                          closeModal()
+                          setMaxHeight("40px")
+                      }}>
                           <div>Finish Editing</div>
                       </button>
                   </ComponentContainer>

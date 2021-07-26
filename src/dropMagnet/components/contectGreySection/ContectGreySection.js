@@ -4,6 +4,7 @@ import styled from "styled-components";
 const Element = styled.div`
     font-size: 18px;
     max-width: 342px;
+    max-height: 42px;
     color: #fff;
     text-align: center;
     background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);

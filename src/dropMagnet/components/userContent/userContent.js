@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from "styled-components";
 import CircleIcon from "../../styled-component/icon-wrapper";
 import chat from "../../assets/chat.svg";
@@ -8,6 +8,7 @@ import ShareIcon from "../../assets/share-icon.svg";
 import UserSlider from "../userSlider/userSlider";
 import {Container} from "../../styled-component/container";
 import LikeButton from "../../styled-component/likeButton";
+import {color} from "three/examples/jsm/libs/dat.gui.module";
 
 const UserImage = styled.div`
   width: 228px;
@@ -156,8 +157,8 @@ const UserContent = () => {
                 </Row>
             </Container>
             <Description>
-                I’m a crypto artist. I’ve been collecting NFTs
-                since 2017, and I also created Drop Magnet.
+                    I’m a crypto artist. I’ve been collecting NFTs
+                    since 2017, and I also created Drop Magnet.
             </Description>
                 <UserSlider/>
             <SmartGalleryBtn>

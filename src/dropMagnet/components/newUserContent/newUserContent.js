@@ -346,6 +346,8 @@ const NewUserContent = (props) => {
     // const [activeTab, setActiveTab] = useState(1);
     const [shareIsOpen, setShareIsOpen] = useState(false);
 
+    const [maxHeight, setMaxHeight] = useState('62px')
+
     const [userDescription, setUserDescription] = useState(`I’m a crypto artist. I’ve been collecting NFTs since 2017, and I also created Drop Magnet.`);
     const [editUserDescription, setEditUserDescription] = useState(false);
 
@@ -414,7 +416,8 @@ const NewUserContent = (props) => {
                     <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light' : ''} />
                     {/*<PayWrapper>pay</PayWrapper>*/}
                 </Row>
-                <Description className={darkTheme ? 'light' : ''} onClick={() => {
+                <Description className={darkTheme ? 'light' : ''} style={{maxHeight: maxHeight}} onClick={() => {
+                    setMaxHeight('inherit')
                     if (editedActive) {
                         setEditUserDescription(!editUserDescription)
                     }
@@ -492,6 +495,7 @@ const NewUserContent = (props) => {
                 closeModal={closeModal}
                 userDescription={userDescription}
                 setUserDescription={setUserDescription}
+                setMaxHeight={setMaxHeight}
             />
             <FeaturedContent isOpen={featuredContentModal} closeModal={closeModal}/>
             <ShareModal isOpen={shareIsOpen} closeModal={closeModal}/>

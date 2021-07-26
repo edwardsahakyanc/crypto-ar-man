@@ -16,7 +16,7 @@ const ComponentContainer = styled.div`
     height: 100%;
     max-height: 100vh;
     align-items: center;
-    background-image: linear-gradient(rgba(0, 0, 0, 0.61), rgba(0, 0, 0, 0.61));
+    background-color: #292929;
     backdrop-filter: blur(10px);
     position: fixed;
     z-index: 1200;
