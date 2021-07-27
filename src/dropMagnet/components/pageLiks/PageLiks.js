@@ -33,8 +33,7 @@ const PageLiks = styled.div`
   
   img {
     position: relative;
-    bottom: -3px
-    
+    bottom: 1px;
   }
   
   &.user-component-styles {

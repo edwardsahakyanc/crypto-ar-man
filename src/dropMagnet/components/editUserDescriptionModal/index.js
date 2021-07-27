@@ -32,7 +32,17 @@ const ComponentContainer = styled.div`
       scrollbar-width: none;
       width: 100%;
       outline: none;
-      height: 400px;
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      line-clamp: 2;
+      box-orient: vertical;  
+      overflow: hidden;
+      // white-space: nowrap;     
+      text-overflow: ellipsis;
+      overflow: hidden;
+      line-height: 1.4;
+  }
     }
     
     textarea::-webkit-scrollbar {
@@ -77,9 +87,9 @@ const ComponentContainer = styled.div`
     }
 `;
 
-const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescription, setMaxHeight}) => {
+const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescription}) => {
 
-    const [maxHeight, setMaxHeights] = useState('40px')
+    const [maxHeight, setMaxHeight] = useState(false)
 
     return (
             <Modal
@@ -92,17 +102,13 @@ const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescri
                       <header>Edit Bio</header>
                       <textarea
                           value={`${userDescription}`}
-                          style={{height: maxHeight}}
+                          style={{height: `${maxHeight && 'inherit'}`, display: `${maxHeight && 'block'}`}}
                           onChange={(e) => setUserDescription(e.currentTarget.value)}
-                          onClick={() => {
-                              setMaxHeight('120px')
-                              setMaxHeights('62px')
-                          }}
-
+                          onClick={() => setMaxHeight(true)}
                       />
                       <button className='add-btn' onClick={() => {
                           closeModal()
-                          setMaxHeight("40px")
+                          setMaxHeight(false)
                       }}>
                           <div>Finish Editing</div>
                       </button>

@@ -57,7 +57,7 @@ const Close = styled.button`
     left:32px;
     width: 42px;
     height: 42px;
-    background-color: #ffffff;
+    background-color: #000;
     border-radius: 100px;
     cursor:pointer;
     border:none;
@@ -216,7 +216,6 @@ const TabContent = styled.div`
 `;
 const Textarea = styled.textarea`
     width: 100%;
-    height: 174px;
     overflow-y: auto;
     resize: none;
     border: none;
@@ -286,7 +285,7 @@ const Collect = styled.div`
     img{
         width: 14px;
         height: 14px;
-        margin: 3px 11px 0 6px;
+        margin: 6px 11px 0 6px;
     }
 `;
 // const Line = styled.div`
@@ -391,7 +390,7 @@ const GalleryModal = ({isOpen, closeModal}) => {
                     </Header>
                     <Tabs>
                         <TabContent>
-                            <Textarea name="text" value={tabsInfo[activeTab-1].content} className={`${activeTab === 2 ? 'active' : ''}`} onChange={(e) => handleChange(e.target.value)}/>
+                            <Textarea style={{minHeight: activeTab !== 1 ? '235px' : '176px'}} name="text" value={tabsInfo[activeTab-1].content} className={`${activeTab === 2 ? 'active' : ''}`} onChange={(e) => handleChange(e.target.value)}/>
 
                             {activeTab === 1
                                 ? <TabsWrapper>
@@ -419,7 +418,7 @@ const GalleryModal = ({isOpen, closeModal}) => {
                                 { activeTab === 1
                                     ? <>
                                         <div>Collect for 72</div>
-                                        <img src={menu} alt=""/>
+                                        <img src={menu} alt="" className='col-img'/>
                                         {/*<Line/>*/}
                                       </>
                                     : <div>

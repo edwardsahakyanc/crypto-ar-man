@@ -81,6 +81,10 @@ const IconWrap = styled.div`
     width: 50px;
     height: 40px;
     border-radius: 7px;
+  }
+  
+  .bitcoin {
+    padding-left: 2px;
   }     
 `
 

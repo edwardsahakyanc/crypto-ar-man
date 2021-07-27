@@ -38,30 +38,30 @@ const UserHeader = styled.div`
     background-repeat: no-repeat;
     background-position: center;
     background-size: cover;
-    // @media (max-width: 500px){
-    // height:183px;
-    // }
-    // @media (max-width: 391px){
-    // height: 137px;
-    // }
-    // @media (max-width: 376px){
-    // height: 116px;
-    // }
-    // @media (max-height: 870px) and (min-width: 1024px){
-    //     height:183px;
-    // }
-    // @media (max-height: 770px) and (min-width: 1024px){
-    //     height: 137px;
-    // }
-    // @media (max-height: 720px) and (min-width: 1024px){
-    //     height: 116px;
-    // }
-    // @media (max-height: 700px) and (min-width: 1024px){
-    //     height: 96px;
-    // }
-    // @media (max-width: 375px) and (max-height: 700px) {
-    //     display:none;
-    // }
+    @media (max-width: 500px){
+    height: 356px;
+    }
+    @media (max-width: 391px){
+    height: 137px;
+    }
+    @media (max-width: 376px){
+    height: 116px;
+    }
+    @media (max-height: 870px) and (min-width: 1024px){
+        height:183px;
+    }
+    @media (max-height: 770px) and (min-width: 1024px){
+        height: 137px;
+    }
+    @media (max-height: 720px) and (min-width: 1024px){
+        height: 116px;
+    }
+    @media (max-height: 700px) and (min-width: 1024px){
+        height: 96px;
+    }
+    @media (max-width: 375px) and (max-height: 700px) {
+        display:none;
+    }
 `;
 const UserWrapper = styled.div`
     background-color: #1A1A1A;
@@ -160,10 +160,6 @@ const UserName = styled.p`
   border: 0.75px solid #000000;
   border-radius: 26px;
   color: #EAEAEA;
-  font-weight: 400;
-  font-style: normal;
-  letter-spacing: normal;
-  line-height: normal;
   text-align: center;
   margin: 0 16px;
   cursor: pointer;
@@ -217,7 +213,19 @@ const Description = styled.div`
   line-height: normal;
   text-align: center;
   margin: 0 auto;
-  padding-top: 24px;    
+  padding-top: 24px;
+  word-break: break-word;
+  .hide-text{
+     display: -webkit-box;
+     -webkit-line-clamp: 2;
+     -webkit-box-orient: vertical;
+     line-clamp: 2;
+     box-orient: vertical;  
+     overflow: hidden;
+     // white-space: nowrap;     
+     text-overflow: ellipsis;
+     overflow: hidden;
+  }    
   &.light {
    font-weight: 400;
    color: #000000;  
@@ -297,7 +305,8 @@ const UserContentWrapper = styled.div`
     }
 `;
 const HeaderIcon = styled.div`
-    position: absolute;
+    position: fixed;
+    z-index: 19;
     font-family: "Azo Sans", sans-serif;
     left: 185px;
     top: 16px;
@@ -346,7 +355,7 @@ const NewUserContent = (props) => {
     // const [activeTab, setActiveTab] = useState(1);
     const [shareIsOpen, setShareIsOpen] = useState(false);
 
-    const [maxHeight, setMaxHeight] = useState('62px')
+    const [hideText, setHideText] = useState(true);
 
     const [userDescription, setUserDescription] = useState(`I’m a crypto artist. I’ve been collecting NFTs since 2017, and I also created Drop Magnet.`);
     const [editUserDescription, setEditUserDescription] = useState(false);
@@ -413,16 +422,17 @@ const NewUserContent = (props) => {
                         <CircleIcon imgUrl={darkTheme ? blackLink : link} alt={"icon"} className={darkTheme ? 'light' : ''} />
                     </div>
                     <UserName onClick={handleOpenModal} className={darkTheme ? 'light' : ''}>{name}</UserName>
-                    <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light' : ''} />
+                    <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light bitcoin' : 'bitcoin'} />
                     {/*<PayWrapper>pay</PayWrapper>*/}
                 </Row>
-                <Description className={darkTheme ? 'light' : ''} style={{maxHeight: maxHeight}} onClick={() => {
-                    setMaxHeight('inherit')
+                <Description className={darkTheme ? 'light' : ''} onClick={() => {
                     if (editedActive) {
                         setEditUserDescription(!editUserDescription)
                     }
                 }}>
-                    {userDescription}
+                    <div className={hideText && 'hide-text'} onClick={() => !editedActive && setHideText(!hideText)}>
+                        {userDescription}
+                    </div>
                 </Description>
             </UserWrapper>
             <MobileUserWrapper>
@@ -495,7 +505,6 @@ const NewUserContent = (props) => {
                 closeModal={closeModal}
                 userDescription={userDescription}
                 setUserDescription={setUserDescription}
-                setMaxHeight={setMaxHeight}
             />
             <FeaturedContent isOpen={featuredContentModal} closeModal={closeModal}/>
             <ShareModal isOpen={shareIsOpen} closeModal={closeModal}/>

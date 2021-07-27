@@ -10,6 +10,7 @@ const DropDown = styled.div`
   height: 36px;
   overflow: hidden;
   border-radius: 20px;
+  // background-image: linear-gra
   // background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
   background-image: linear-gradient(90deg, rgba(24, 24, 24, 0.98) 0%, rgb(19, 19, 19) 100%);
   border: 0.75px solid #000000;

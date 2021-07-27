@@ -135,8 +135,6 @@ const UserContentWrapper = styled.div`
     
 `;
 
-
-
 const UserContent = () => {
     return (
         <UserContentWrapper>

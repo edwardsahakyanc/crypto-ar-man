@@ -15,7 +15,7 @@ const GalleryWrapper = styled.div`
     height: 100%;
     position:relative;
     display:flex;
-    // align-items: center;
+    align-items: center;
     justify-content: center;
      @media(max-height: 550px){
       // align-items: stretch;
@@ -43,7 +43,7 @@ const ImgWrapper = styled.div`
     // border-radius: 15px;
     overflow: hidden;
     height: 414px;
-    margin-top: 139px;
+    // margin-top: 139px;
     
     img{
     width:100%;

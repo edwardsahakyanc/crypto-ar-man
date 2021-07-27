@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useRef} from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -129,13 +129,17 @@ const FeaturedContent = styled.div`
 `;
 
 const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
-
+    const swiperRef = useRef();
     const pagination = {
-        "clickable": true,
+        "clickable": false,
         "renderBullet": (index, className) => {
             return '<span class=' + className + '> </span>';
         }
     }
+    useEffect(() => {
+        editedActive ? swiperRef.current.swiper.disable() : swiperRef.current.swiper.enable();
+        // swiperRef.current.swiper.disable();
+    },[editedActive, swiperRef])
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
 
@@ -145,7 +149,13 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                 slidesPerView={1}
                 slidesPerColumn={1}
                 spaceBetween={30}
-                centeredSlides={true}
+                initialSlide={editedActive ? 1 : undefined }
+                // hideOnClick={false}
+                // centeredSlides={true}
+                // enabled={true}
+                // noSwiping={true}
+                // enabled={false}
+                ref={swiperRef}
                 navigation={{
                     prevEl: navigationPrevRef.current,
                     nextEl: navigationNextRef.current,
@@ -183,35 +193,37 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                         </FeaturedContent>
                     </SliderWrapp>
                 </SwiperSlide>
-                <SwiperSlide>
-                    <SliderWrapp>
-                        <Row>
-                            <SlideImgItem>
-                                <img src={cat1} alt=""/>
-                            </SlideImgItem>
-                            <SlideImgItem>
-                                <img src={cat2} alt=""/>
-                            </SlideImgItem>
-                        </Row>
-                    </SliderWrapp>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SliderWrapp>
-                        <NewMusicPlayer/>
-                    </SliderWrapp>
-                </SwiperSlide>
-                <SwiperSlide>
-                    <SliderWrapp>
-                        <Row>
-                            <SlideImgItem>
-                                <img src={cat1} alt=""/>
-                            </SlideImgItem>
-                            <SlideImgItem>
-                                <img src={cat2} alt=""/>
-                            </SlideImgItem>
-                        </Row>
-                    </SliderWrapp>
-                </SwiperSlide>
+                {!editedActive && <>
+                    <SwiperSlide>
+                        <SliderWrapp>
+                            <Row>
+                                <SlideImgItem>
+                                    <img src={cat1} alt=""/>
+                                </SlideImgItem>
+                                <SlideImgItem>
+                                    <img src={cat2} alt=""/>
+                                </SlideImgItem>
+                            </Row>
+                        </SliderWrapp>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <SliderWrapp>
+                            <NewMusicPlayer/>
+                        </SliderWrapp>
+                    </SwiperSlide>
+                    <SwiperSlide>
+                        <SliderWrapp>
+                            <Row>
+                                <SlideImgItem>
+                                    <img src={cat1} alt=""/>
+                                </SlideImgItem>
+                                <SlideImgItem>
+                                    <img src={cat2} alt=""/>
+                                </SlideImgItem>
+                            </Row>
+                        </SliderWrapp>
+                    </SwiperSlide>
+                </>}
                 <SliderNext ref={navigationNextRef}/>
             </Swiper>
         </>
