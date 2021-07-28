@@ -148,8 +148,15 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
             <Swiper
                 slidesPerView={1}
                 slidesPerColumn={1}
-                spaceBetween={30}
+                spaceBetween={0}
                 initialSlide={editedActive ? 1 : undefined }
+                breakpoints={{
+                    1440: {
+                        width: 1090,
+                        slidesPerView: 3,
+                        slidesPerColumn: 2
+                    },
+                }}
                 // hideOnClick={false}
                 // centeredSlides={true}
                 // enabled={true}
@@ -173,7 +180,7 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                 }}
             >
                 <SliderPrev ref={navigationPrevRef}/>
-                <SwiperSlide>
+                <SwiperSlide key={1}>
                     <SliderWrapp>
                         <FeaturedContent onClick={() => editedActive && setFeaturedContentModal(true)}>
                             <div className={`${editedActive}`}> </div>
@@ -194,7 +201,7 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                     </SliderWrapp>
                 </SwiperSlide>
                 {!editedActive && <>
-                    <SwiperSlide>
+                    <SwiperSlide  key={2}>
                         <SliderWrapp>
                             <Row>
                                 <SlideImgItem>
@@ -206,12 +213,41 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                             </Row>
                         </SliderWrapp>
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide  key={3}>
                         <SliderWrapp>
                             <NewMusicPlayer/>
                         </SliderWrapp>
                     </SwiperSlide>
-                    <SwiperSlide>
+                    <SwiperSlide  key={4}>
+                        <SliderWrapp>
+                            <Row>
+                                <SlideImgItem>
+                                    <img src={cat1} alt=""/>
+                                </SlideImgItem>
+                                <SlideImgItem>
+                                    <img src={cat2} alt=""/>
+                                </SlideImgItem>
+                            </Row>
+                        </SliderWrapp>
+                    </SwiperSlide>
+                    <SwiperSlide  key={5}>
+                        <SliderWrapp>
+                            <Row>
+                                <SlideImgItem>
+                                    <img src={cat1} alt=""/>
+                                </SlideImgItem>
+                                <SlideImgItem>
+                                    <img src={cat2} alt=""/>
+                                </SlideImgItem>
+                            </Row>
+                        </SliderWrapp>
+                    </SwiperSlide>
+                    <SwiperSlide  key={6}>
+                        <SliderWrapp>
+                            <NewMusicPlayer/>
+                        </SliderWrapp>
+                    </SwiperSlide>
+                    <SwiperSlide  key={7}>
                         <SliderWrapp>
                             <Row>
                                 <SlideImgItem>

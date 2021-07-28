@@ -3,8 +3,8 @@ import styled from "styled-components";
 import background from "../../assets/cat-background.png";
 import CircleIcon from "./styled-components/icon-wrapper";
 import chat from "../../assets/chat.svg";
-import setting from "../../assets/settings-2.svg";
-import blackSetting from "../../assets/settings-black.svg";
+// import setting from "../../assets/settings-2.svg";
+// import blackSetting from "../../assets/settings-black.svg";
 // import edit from "../../assets/edit.svg";
 // import blackEdit from "../../assets/blackEdit.svg";
 import link from "../../assets/link.svg";
@@ -27,6 +27,7 @@ import ShareModal from "../sharingIconsModal";
 import EditUserDescription from "../editUserDescriptionModal";
 import FeaturedContent from "../FeaturedContentModal";
 import ImageUpdateModal from "../ImageUpdateModal";
+// import ScrollSnapPage from "../../pages/scrollSnapPage/ScrollSnapPage";
 
 const UserHeader = styled.div`
     position: relative;
@@ -151,7 +152,9 @@ const LikeAndCommentWrapper = styled.div`
 `;
 const UserName = styled.p`
   width: 236px;
-  height: 46px;
+  // height: 46px;
+  line-height: 24px;
+  padding: 13px 0 9px;
   font-size: 24px;
   display: flex;
   align-items: center;
@@ -304,15 +307,6 @@ const UserContentWrapper = styled.div`
       background-color: #EEEEEE;
     }
 `;
-const HeaderIcon = styled.div`
-    position: fixed;
-    z-index: 19;
-    font-family: "Azo Sans", sans-serif;
-    left: 185px;
-    top: 16px;
-    transform: translateZ(15px);
-    -webkit-transform: translateZ(15px);
-`;
 
 const HeaderEditText = styled.span`
     color: #EAEAEA;
@@ -342,14 +336,10 @@ const Separator = styled.div`
     }
 `;
 
-const HeaderTop = styled.div`
-  height: 68px;
-  position: fixed;
-  top: 0;
-  z-index: 19;
-`;
+
 
 const NewUserContent = (props) => {
+    const { editedActive, darkTheme } = props;
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("Alexander Newton");
     // const [activeTab, setActiveTab] = useState(1);
@@ -364,17 +354,12 @@ const NewUserContent = (props) => {
 
     const [imageUpdateModalToggle, setImageUpdateModalToggle] = useState(false)
 
-    const [editedActive, setEditedActive] = useState(false);
-
-    const [darkTheme, setDarkTheme] = useState(false);
-
     const closeModal = () => {
         setShareIsOpen(false);
         setEditUserDescription(false);
         setFeaturedContentModal(false);
         setImageUpdateModalToggle(false);
     }
-    console.log(setDarkTheme)
     const openShareModal = () => {
         setShareIsOpen(true)
     }
@@ -391,14 +376,8 @@ const NewUserContent = (props) => {
     return (
         <UserContentWrapper className={darkTheme ? 'light' : ''}>
             <UserHeader>
-                <HeaderTop>
-                    <FileMenu darkTheme={darkTheme}/>
-                </HeaderTop>
-                <HeaderIcon onClick={() => {
-                    setEditedActive(!editedActive)
-                }}>
-                        <CircleIcon imgUrl={darkTheme ? blackSetting : setting} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
-                </HeaderIcon>
+
+
                 {
                     editedActive
                         ? <div onClick={() => setImageUpdateModalToggle(true)}>
@@ -427,16 +406,8 @@ const NewUserContent = (props) => {
                     <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light bitcoin' : 'bitcoin'} />
                     {/*<PayWrapper>pay</PayWrapper>*/}
                 </Row>
-                <Description className={darkTheme ? 'light' : ''} onClick={() => {
-                    if (editedActive) {
-                        setEditUserDescription(!editUserDescription)
-                    }
-                }}>
-                    <div className={hideText && 'hide-text'} onClick={() => {
-                        if (!editedActive) {
-                            setHideText(!hideText)
-                        }
-                    }}>
+                <Description className={darkTheme ? 'light' : ''} onClick={() => setEditUserDescription(!editUserDescription)}>
+                    <div className={hideText ? 'hide-text' : ''} onClick={() => setHideText(!hideText)}>
                         {userDescription}
                     </div>
                 </Description>

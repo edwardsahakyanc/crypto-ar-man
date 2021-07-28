@@ -268,10 +268,11 @@ const FeaturedContent = ({isOpen, closeModal}) => {
                                             }
 
                                             {activeSlide !== i.id && i.elementText && i.elementText.map(text =>
-                                                <ContectGreySection content={text}/>)}
+                                                <ContectGreySection key={text} content={text}/>)}
                                             <SocialMediaLinks>
                                                 {
                                                     i.socialMediaIcons && i.socialMediaIcons.map(img => <CircleIcon
+                                                        key={img}
                                                         imgUrl={img} alt={"icon"} className='social-media'/>)
                                                 }
                                             </SocialMediaLinks>

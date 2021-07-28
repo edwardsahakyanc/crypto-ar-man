@@ -90,10 +90,25 @@
 .swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
   bottom: 94px;
 
+  @media screen and (min-width: 1440px){
+    z-index: 9999;
+    bottom: 1px;
+  }
+
 }
 
 .swiper-container {
   height: 316px;
   max-height: 316px;
   border: 1px solid transparent;
+
+  @media screen and (min-width: 1440px){
+    height: 416px;
+    max-height: 416px;
+    display: flex;
+    justify-content: center;
+    max-width: 1090px;
+    margin-top: 16px;
+    margin-bottom: 110px;
+  }
 }

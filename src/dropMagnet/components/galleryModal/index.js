@@ -285,7 +285,8 @@ const Collect = styled.div`
     img{
         width: 14px;
         height: 14px;
-        margin: 6px 11px 0 6px;
+        margin: 6
+        px 11px 0 6px;
     }
 `;
 // const Line = styled.div`

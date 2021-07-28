@@ -28,9 +28,25 @@ const Link = styled(NavLink)`
   // padding: 6px 12px 10px;
 `
 
+const Border = styled.div`
+    background-color: #1a1a1a;
+    margin-top: -1px;
+    position: absolute;
+    height: 20px;
+    width: 100%;
+    clip-path: polygon(0 0, 100% 0, 100% 1px, calc(50% + 187px) 1px, 50% 20px, calc(50% - 187px) 1px, 0 1px);
+    div {
+        background-color: black;
+        height: 100%;
+        clip-path: polygon(0 0, calc(50% - 187px) 0, 50% 19px, calc(50% + 187px) 0, 100% 0, 100% 1px, calc(50% + 187px) 1px, 50% 20px, calc(50% - 187px) 1px, 0 1px)
+    }
+`
+
+
 const HomePage = () => {
     return (
         <Container>
+            <Border><div></div></Border>
             <InsetBox>
                 <Row className="items-center justify-between mx-auto max-w-324">
                     <InsetBoxIcon>
@@ -69,10 +85,10 @@ const HomePage = () => {
             <div className="mx-auto max-w-564">
                 <div className="feed">Feed</div>
                 <div className="grid-content">
-                    <div className="grid-item"></div>
-                    <div className="grid-item"></div>
-                    <div className="grid-item"></div>
-                    <div className="grid-item"></div>
+                    <div className="grid-item"> </div>
+                    <div className="grid-item"> </div>
+                    <div className="grid-item"> </div>
+                    <div className="grid-item"> </div>
                 </div>
             </div>
 

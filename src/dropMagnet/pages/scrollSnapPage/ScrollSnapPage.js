@@ -10,7 +10,7 @@ import Portrait from "../../components/portrait/portrait";
 import Landscape from "../../components/landscape/landscape";
 
 
-const ScrollSnapPage = () => {
+const ScrollSnapPage = ({editedActive, setEditedActive, darkTheme}) => {
     const galleryRef = useRef(null);
     const coverPageRef = useRef(null);
     const firstSlide = {id: 1, imgUrl: galleryImage, backgroundColor: "#292929", price: "100"};
@@ -18,7 +18,7 @@ const ScrollSnapPage = () => {
     return (
         <article className="scroller">
             <section ref={coverPageRef}>
-                <NewUserContent galleryRef={galleryRef} coverPageRef={coverPageRef}/>
+                <NewUserContent galleryRef={galleryRef} coverPageRef={coverPageRef} editedActive={editedActive} setEditedActive={setEditedActive} darkTheme={darkTheme}/>
             </section>
             <section ref={galleryRef}>
                 <Gallery {...firstSlide}/>

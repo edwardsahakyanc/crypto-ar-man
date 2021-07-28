@@ -84,12 +84,15 @@ const DropDown = styled.div`
   }
   &.dropped{
   transition: width .2s ease-in-out, height .2s ease-in-out, border-radius .2s ease-in-out;
-  width: calc(100vw - 30px);
-  height: calc(100vh - 16px);
+  width: calc(100vw - 32px);
+  height: calc(100vh - 32px);
   @media(min-width: 500px){
       width: calc(444px);
       height: calc(785px);
   }
+  // @media (max-width: 414px) and (max-height: 896px) {
+  //   height: calc(100vh - 32px)
+  // }
   @media (max-width: 375px) and (max-height: 700px) {
         top: 12px;
         left: 13px;

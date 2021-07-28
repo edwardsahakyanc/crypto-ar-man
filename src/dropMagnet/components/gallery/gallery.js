@@ -56,6 +56,7 @@ const GalleryButtonWrapper = styled.div`
     // align-items:center;
     justify-content: center;
     margin-top: 16px;
+    margin-bottom: 55px; 
     .button{
         width: 99px;
         height: 40px;
@@ -90,11 +91,13 @@ const Gallery = (props) => {
         }
     })
 
-    const closeModal = () => {
+    const closeModal = (e) => {
+        e.view.document.querySelector('article').style.overflowY = 'auto'
         setIsOpen(false)
     }
 
-    const openModal = () => {
+    const openModal = (e) => {
+        e.view.document.querySelector('article').style.overflowY = 'hidden'
         setIsOpen(true)
     }
 

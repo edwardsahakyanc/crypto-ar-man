@@ -7,22 +7,24 @@ import {DropDownBtn} from "../../styled-components/DropDownBtn";
 
 const Navbar = () => {
     return (
-        <nav className="navbar">
-            <Row className="justify-between">
-                <Row className="items-center">
-                    <Link to="/explore-galleries">
-                        Home
-                    </Link>
+        <>
+            <nav className="navbar">
+                <Row className="justify-between">
+                    <Row className="items-center">
+                        <Link to="/explore-galleries">
+                            Home
+                        </Link>
+                    </Row>
+                    <Row>
+                        <Logo/>
+                    </Row>
+                    <Row className="items-center">
+                        <DropDownBtn/>
+                        {/*<UserLogo/>*/}
+                    </Row>
                 </Row>
-                <Row>
-                    <Logo/>
-                </Row>
-                <Row className="items-center">
-                    <DropDownBtn/>
-                    {/*<UserLogo/>*/}
-                </Row>
-            </Row>
-        </nav>
+            </nav>
+        </>
     )
 }
 

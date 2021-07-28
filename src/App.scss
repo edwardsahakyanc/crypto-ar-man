@@ -39,36 +39,10 @@ body{
 .navbar{
   width: 100%;
   padding: 16px 18px 23px 16px;
-  border-bottom: 1px solid black;
+  //border-bottom: 1px solid black;
   //clip-path: polygon(0 0, 100% 0, 100% 75px, 60% 75px, 50% 91px, 40% 75px, 0 75px);
   //background-color: grey;
   position: relative;
-  @media (max-width: 375px) {
-    border-bottom: none;
-  }
-  &::after {
-    content: '';
-    display: inline-block;
-    border-style: solid;
-    border-width: 20px 186px 0;
-    border-color: #1a1a1a transparent transparent transparent;
-    position: absolute;
-    left: calc(50% - 186px);
-    bottom: -19px
-  }
-  &::before {
-    content: '';
-    display: inline-block;
-    max-width: 375px;
-    width: 100%;
-    background-color: black;
-    height: 20px;
-    clip-path: polygon(-3px 0px, 50% 19px, 378px 0px, 100% 1px, 50% 20px, 1px 1px);
-    position: absolute;
-    left: calc(50% - 186px);
-    bottom: -19px;
-    z-index: 1;
-  }
   @media (max-width: 500px) {
     //padding: 9px;
     min-height: 70px;
