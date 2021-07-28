@@ -40,6 +40,7 @@ const Title = styled.div`
 const NameInput = styled.input`
     width: 236px;
     height: 46px;
+    padding: 12px 0 10px;
     border-radius: 100px;
     background-color: #101010;
     border: none;
