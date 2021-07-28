@@ -340,7 +340,7 @@ const Separator = styled.div`
 
 const HeaderIcon = styled.div`
     position: fixed;
-    z-index: 0;
+    z-index: 15;
     left: 185px;
     top: 16px;
 `;
