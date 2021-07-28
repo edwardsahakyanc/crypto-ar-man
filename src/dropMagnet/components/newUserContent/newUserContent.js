@@ -27,6 +27,8 @@ import ShareModal from "../sharingIconsModal";
 import EditUserDescription from "../editUserDescriptionModal";
 import FeaturedContent from "../FeaturedContentModal";
 import ImageUpdateModal from "../ImageUpdateModal";
+import blackSetting from "../../assets/settings-black.svg";
+import setting from "../../assets/settings-2.svg";
 // import ScrollSnapPage from "../../pages/scrollSnapPage/ScrollSnapPage";
 
 const UserHeader = styled.div`
@@ -218,16 +220,16 @@ const Description = styled.div`
   margin: 0 auto;
   padding-top: 24px;
   word-break: break-word;
-  .hide-text{
-     display: -webkit-box;
-     -webkit-line-clamp: 2;
-     -webkit-box-orient: vertical;
-     line-clamp: 2;
-     box-orient: vertical;  
-     overflow: hidden;
-     // white-space: nowrap;     
-     text-overflow: ellipsis;
-     overflow: hidden;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  .hide-text{ 
+    //white-space: nowrap;     
   }    
   &.light {
    font-weight: 400;
@@ -336,16 +338,20 @@ const Separator = styled.div`
     }
 `;
 
-
+const HeaderIcon = styled.div`
+    position: fixed;
+    z-index: 0;
+    left: 185px;
+    top: 16px;
+`;
 
 const NewUserContent = (props) => {
-    const { editedActive, darkTheme } = props;
+    const { darkTheme } = props;
+    const [editedActive, setEditedActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("Alexander Newton");
     // const [activeTab, setActiveTab] = useState(1);
     const [shareIsOpen, setShareIsOpen] = useState(false);
-
-    const [hideText, setHideText] = useState(true);
 
     const [userDescription, setUserDescription] = useState(`I’m a crypto artist. I’ve been collecting NFTs since 2017, and I also created Drop Magnet.`);
     const [editUserDescription, setEditUserDescription] = useState(false);
@@ -376,7 +382,11 @@ const NewUserContent = (props) => {
     return (
         <UserContentWrapper className={darkTheme ? 'light' : ''}>
             <UserHeader>
-
+                <HeaderIcon key='2342234' onClick={() => {
+                    setEditedActive(!editedActive)
+                }}>
+                    <CircleIcon imgUrl={darkTheme ? blackSetting : setting} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
+                </HeaderIcon>
 
                 {
                     editedActive
@@ -407,14 +417,14 @@ const NewUserContent = (props) => {
                     {/*<PayWrapper>pay</PayWrapper>*/}
                 </Row>
                 <Description className={darkTheme ? 'light' : ''} onClick={() => setEditUserDescription(!editUserDescription)}>
-                    <div className={hideText ? 'hide-text' : ''} onClick={() => setHideText(!hideText)}>
+                    <div>
                         {userDescription}
                     </div>
                 </Description>
             </UserWrapper>
             <MobileUserWrapper>
                 <MobileUserContent>
-                    <FileMenu darkTheme={darkTheme}/>
+                    {/*<FileMenu darkTheme={darkTheme}/>*/}
                     <UserImage>
                         <img src={ProfilePic} alt="profile-pic"/>
                     </UserImage>
@@ -482,8 +492,6 @@ const NewUserContent = (props) => {
                 closeModal={closeModal}
                 userDescription={userDescription}
                 setUserDescription={setUserDescription}
-                setHideText={setHideText}
-                hideText={hideText}
             />
             <FeaturedContent isOpen={featuredContentModal} closeModal={closeModal}/>
             <ShareModal isOpen={shareIsOpen} closeModal={closeModal}/>

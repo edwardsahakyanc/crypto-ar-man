@@ -87,7 +87,7 @@ const ComponentContainer = styled.div`
     }
 `;
 
-const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescription, setHideText, hideText}) => {
+const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescription}) => {
 
     const [maxHeight, setMaxHeight] = useState(false)
 
@@ -109,7 +109,6 @@ const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescri
                       <button className='add-btn' onClick={() => {
                           closeModal()
                           setMaxHeight(false)
-                          setHideText(true)
                       }}>
                           <div>Finish Editing</div>
                       </button>

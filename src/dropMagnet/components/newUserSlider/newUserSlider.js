@@ -77,7 +77,7 @@ const SliderPrev = styled.div`
      // opacity:0.1;
      transform: rotate(180deg);
      position: absolute;
-     left: calc(50% - 48px);
+     left: calc(50% - 68px);
      z-index:10;
      cursor: pointer;
      bottom: 96px;
@@ -88,7 +88,7 @@ const SliderNext = styled.div`
      background-image: url(${arrow});
      // opacity:0.1;
      position: absolute;
-     right: calc(50% - 48px);
+     right: calc(50% - 68px);
      z-index:10;
      cursor: pointer;
      bottom: 96px;

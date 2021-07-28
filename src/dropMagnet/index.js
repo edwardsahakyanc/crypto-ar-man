@@ -6,17 +6,7 @@ import Navbar from "./components/navbar/navbar";
 // import VericalySlidedPage from "./pages/vericalySlidedPage/vericalySlidedPage";
 import ScrollSnapPage from "./pages/scrollSnapPage/ScrollSnapPage";
 import FileMenu from "../myGallery/fileMenu/fileMenu";
-import CircleIcon from "./components/newUserContent/styled-components/icon-wrapper";
-import blackSetting from "./assets/settings-black.svg";
-import setting from "./assets/settings-2.svg";
 import styled from "styled-components";
-
-const HeaderIcon = styled.div`
-    position: fixed;
-    z-index: 18;
-    left: 185px;
-    top: 16px;
-`;
 
 const HeaderTop = styled.div`
   height: 68px;
@@ -26,8 +16,6 @@ const HeaderTop = styled.div`
 `;
 
 const DropMagnet = () => {
-
-	const [editedActive, setEditedActive] = useState(false);
 
 	const [darkTheme, setDarkTheme] = useState(false);
 	console.log(setDarkTheme)
@@ -51,12 +39,8 @@ const DropMagnet = () => {
 				<HeaderTop>
 					<FileMenu/>
 				</HeaderTop>
-				<HeaderIcon key='2342234' onClick={() => {
-					setEditedActive(!editedActive)
-				}}>
-					<CircleIcon imgUrl={darkTheme ? blackSetting : setting} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
-				</HeaderIcon>
-				<ScrollSnapPage editedActive={editedActive} setEditedActive={setEditedActive} darkTheme={darkTheme}/>
+
+				<ScrollSnapPage darkTheme={darkTheme}/>
 			</Route>
 		</div>
 
