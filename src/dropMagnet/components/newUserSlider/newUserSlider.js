@@ -131,7 +131,7 @@ const FeaturedContent = styled.div`
 const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
     const swiperRef = useRef();
     const pagination = {
-        "clickable": false,
+        "clickable": true,
         "renderBullet": (index, className) => {
             return '<span class=' + className + '> </span>';
         }

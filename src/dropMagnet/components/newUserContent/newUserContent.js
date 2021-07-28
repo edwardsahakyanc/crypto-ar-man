@@ -394,7 +394,9 @@ const NewUserContent = (props) => {
                 <HeaderTop>
                     <FileMenu darkTheme={darkTheme}/>
                 </HeaderTop>
-                <HeaderIcon onClick={() => setEditedActive(!editedActive)}>
+                <HeaderIcon onClick={() => {
+                    setEditedActive(!editedActive)
+                }}>
                         <CircleIcon imgUrl={darkTheme ? blackSetting : setting} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
                 </HeaderIcon>
                 {
@@ -430,7 +432,11 @@ const NewUserContent = (props) => {
                         setEditUserDescription(!editUserDescription)
                     }
                 }}>
-                    <div className={hideText && 'hide-text'} onClick={() => !editedActive && setHideText(!hideText)}>
+                    <div className={hideText && 'hide-text'} onClick={() => {
+                        if (!editedActive) {
+                            setHideText(!hideText)
+                        }
+                    }}>
                         {userDescription}
                     </div>
                 </Description>
@@ -505,6 +511,8 @@ const NewUserContent = (props) => {
                 closeModal={closeModal}
                 userDescription={userDescription}
                 setUserDescription={setUserDescription}
+                setHideText={setHideText}
+                hideText={hideText}
             />
             <FeaturedContent isOpen={featuredContentModal} closeModal={closeModal}/>
             <ShareModal isOpen={shareIsOpen} closeModal={closeModal}/>
