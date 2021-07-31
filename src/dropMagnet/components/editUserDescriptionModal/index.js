@@ -1,5 +1,5 @@
 import Modal from 'react-modal';
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
 
 Modal.setAppElement('#portal');
@@ -17,6 +17,10 @@ const ComponentContainer = styled.div`
     text-align: center;
     color: #ffffff;
     font-weight: 400;
+    
+    @media (min-width: 1400px) {
+        padding: 0 120px;
+    }
 
     header {
       font-weight: 500;
@@ -32,16 +36,27 @@ const ComponentContainer = styled.div`
       scrollbar-width: none;
       width: 100%;
       outline: none;
-      display: -webkit-box;
-      -webkit-line-clamp: 2;
-      -webkit-box-orient: vertical;
-      line-clamp: 2;
-      box-orient: vertical;  
-      overflow: hidden;
+      // display: -webkit-box;
+      // -webkit-line-clamp: 2;
+      // -webkit-box-orient: vertical;
+      // line-clamp: 2;
+      // box-orient: vertical;  
+      // overflow: hidden;
       // white-space: nowrap;     
-      text-overflow: ellipsis;
-      overflow: hidden;
-      line-height: 1.4;
+      // text-overflow: ellipsis;
+      // overflow: hidden;
+      // line-height: 1.4;
+      text-align: center;
+      height: inherit;
+      
+      @media (max-width: 768px) {
+        text-align: center;
+      }
+      
+      @media (min-width: 1140px) {
+        max-width: 1000px;
+        text-align: left
+      }
   }
     }
     
@@ -89,8 +104,6 @@ const ComponentContainer = styled.div`
 
 const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescription}) => {
 
-    const [maxHeight, setMaxHeight] = useState(false)
-
     return (
             <Modal
                 closeTimeoutMS={200}
@@ -102,14 +115,9 @@ const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescri
                       <header>Edit Bio</header>
                       <textarea
                           value={`${userDescription}`}
-                          style={{height: `${maxHeight && 'inherit'}`, display: `${maxHeight && 'block'}`}}
                           onChange={(e) => setUserDescription(e.currentTarget.value)}
-                          onClick={() => setMaxHeight(true)}
                       />
-                      <button className='add-btn' onClick={() => {
-                          closeModal()
-                          setMaxHeight(false)
-                      }}>
+                      <button className='add-btn' onClick={() => closeModal()}>
                           <div>Finish Editing</div>
                       </button>
                   </ComponentContainer>

@@ -48,7 +48,7 @@ const NameInput = styled.input`
     margin: 0 auto;
     color: #eaeaea;
     font-size: 24px;
-    font-weight: 700;
+    font-weight: 400;
     font-style: normal;
     letter-spacing: normal;
     line-height: normal;

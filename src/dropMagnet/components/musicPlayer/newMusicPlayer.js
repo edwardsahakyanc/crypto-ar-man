@@ -9,11 +9,11 @@ import ProgressBar from "./progressBar-";
 
 
 const MusicPlayerWrapper = styled.div`
-  max-width: 336px;
+  max-width: 100%;
   width: 100%;
   height: 158px;
-  border-radius: 11px;
   border: 1px solid #6f4b8f;
+  border-radius: 6px;
   background-color: #d8d8d8;
   background-image: url(${playerBackground});
   background-origin: border-box;

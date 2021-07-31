@@ -31,7 +31,11 @@ const DropDown = styled.div`
   @media (max-width: 375px) and (max-height: 700px) {
         top: 12px;
         left: 13px;
-    }
+   }
+   
+   @media (min-width: 1400px) {
+     left: 32px;
+   }
   .dropdown-btn{
     border: none;
     outline: none;

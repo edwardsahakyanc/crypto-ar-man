@@ -77,10 +77,15 @@ const SliderPrev = styled.div`
      // opacity:0.1;
      transform: rotate(180deg);
      position: absolute;
-     left: calc(50% - 68px);
+     left: 10px;
      z-index:10;
      cursor: pointer;
      bottom: 96px;
+          
+     @media (min-width: 1400px) {
+       left: calc(50% - 62px);
+       bottom: 3px;
+     }
 `;
 const SliderNext = styled.div`
      width: 8px;
@@ -88,10 +93,15 @@ const SliderNext = styled.div`
      background-image: url(${arrow});
      // opacity:0.1;
      position: absolute;
-     right: calc(50% - 68px);
+     right: calc(50% - 28px);
      z-index:10;
      cursor: pointer;
      bottom: 96px;
+     
+     @media (min-width: 1400px) {
+       right: calc(50% - 62px);
+       bottom: 3px;
+     }
 `;
 
 const FeaturedContent = styled.div`
@@ -106,7 +116,7 @@ const FeaturedContent = styled.div`
         width: 100%;
         height: 100%;
         left: 0px;
-        border-radius: 12px;    
+        border-radius: 12px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.54) 0%, rgba(0, 0, 0, 0.54) 100%);
         backdrop-filter: blur(4px);
         color: #EAEAEA;
@@ -138,7 +148,7 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
     }
     useEffect(() => {
         editedActive ? swiperRef.current.swiper.disable() : swiperRef.current.swiper.enable();
-        // swiperRef.current.swiper.disable();
+        swiperRef.current.swiper.disable();
     },[editedActive, swiperRef])
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
@@ -149,19 +159,6 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                 slidesPerView={1}
                 slidesPerColumn={1}
                 spaceBetween={0}
-                initialSlide={editedActive ? 1 : undefined }
-                breakpoints={{
-                    1440: {
-                        width: 1090,
-                        slidesPerView: 3,
-                        slidesPerColumn: 2
-                    },
-                }}
-                // hideOnClick={false}
-                // centeredSlides={true}
-                // enabled={true}
-                // noSwiping={true}
-                // enabled={false}
                 ref={swiperRef}
                 navigation={{
                     prevEl: navigationPrevRef.current,
@@ -230,7 +227,7 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                             </Row>
                         </SliderWrapp>
                     </SwiperSlide>
-                    <SwiperSlide  key={5}>
+                    <SwiperSlide key={5}>
                         <SliderWrapp>
                             <Row>
                                 <SlideImgItem>

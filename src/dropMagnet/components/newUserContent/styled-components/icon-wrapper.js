@@ -31,6 +31,7 @@ const IconWrap = styled.div`
   &.header-edit {
     background-image: linear-gradient(rgb(239, 239, 239, 0.83), rgb(239, 239, 239, 0.83));
     border: 1px solid rgb(214, 214, 214);
+    
   }
   
    &.header-edit-black {

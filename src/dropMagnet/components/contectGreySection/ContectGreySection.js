@@ -3,7 +3,8 @@ import styled from "styled-components";
 
 const Element = styled.div`
     font-size: 18px;
-    max-width: 342px;
+    max-width: 100%;
+    width: 100%;
     max-height: 42px;
     color: #fff;
     text-align: center;

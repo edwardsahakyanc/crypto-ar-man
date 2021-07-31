@@ -55,7 +55,7 @@ class AudioBubble extends React.Component {
     }
     componentDidMount() {
         this.$audio.addEventListener('loadedmetadata', () => {
-            this.duration = this.$audio.duration;
+            this.duration = this.$audio?.duration || 6000;
         });
         this.pathLength = this.$progress.getTotalLength();
         this.setState({

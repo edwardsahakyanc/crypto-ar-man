@@ -18,7 +18,7 @@ import ProfilePic from "../../assets/profile_pic.png";
 import LikeButton from "./styled-components/likeButton";
 import {Row} from "../../styled-component/row";
 import ShareIcon from "../../assets/share-icon.svg";
-import UserSlider from "../newUserSlider/newUserSlider";
+// import UserSlider from "../newUserSlider/newUserSlider";
 import BlurModal from "../editNameModal/editNameModal";
 import PortaledComponent from "../portaledComponent";
 import FileMenu from "../../../myGallery/fileMenu/fileMenu";
@@ -29,6 +29,7 @@ import FeaturedContent from "../FeaturedContentModal";
 import ImageUpdateModal from "../ImageUpdateModal";
 import blackSetting from "../../assets/settings-black.svg";
 import setting from "../../assets/settings-2.svg";
+import InfinitiveSlider from "../newUserSlider/infinitiveSlider";
 // import ScrollSnapPage from "../../pages/scrollSnapPage/ScrollSnapPage";
 
 const UserHeader = styled.div`
@@ -65,6 +66,11 @@ const UserHeader = styled.div`
     @media (max-width: 375px) and (max-height: 700px) {
         display:none;
     }
+    
+    @media (min-width: 1040px) {
+      height: 303px;
+      max-height: 303px;
+    }
 `;
 const UserWrapper = styled.div`
     background-color: #1A1A1A;
@@ -77,9 +83,47 @@ const UserWrapper = styled.div`
       box-shadow: 0 -10px 10px rgba(0 0 0 / 16%);
     }
     
+    .content-wrapper {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      
+      .wrapper-icon{
+        margin: 0 16px;
+        @media (max-width: 1140px) {
+            position: absolute;
+            &.link {
+                left: calc(50% - 180px);
+                margin: 0;
+            }
+            &.bitcoin {
+                right: calc(50% - 180px);
+                margin: 0;
+            }
+            &.heart {
+                right: calc(50% - 142px);
+                margin: 0;
+                top: -56px;
+            }
+            &.message {
+                left: calc(50% - 142px);
+                margin: 0;
+                top: -56px;
+             }
+           
+        }        
+      }
+    }
+    
     @media (max-width: 375px) and (max-height: 700px) {
      display: none;
     }
+    
+    @media (min-width: 1400px) {
+      padding: 32px 0;
+    }
+    
+    
 `;
 const MobileUserWrapper = styled.div`
     display: none;
@@ -146,11 +190,14 @@ const UserImage = styled.div`
 `;
 const LikeAndCommentWrapper = styled.div`
     position: absolute;
-    left: 0;
-    right: 0;
+    left: 19px;
     margin: 0 auto;
-    top: -87px;
+    top: -219px;
     z-index: 10;
+    @media (max-width: 1140px) {
+        left: calc(50% - 96px);
+        top: -90px;
+    }
 `;
 const UserName = styled.p`
   width: 236px;
@@ -238,7 +285,24 @@ const Description = styled.div`
   
   @media (max-width: 375px) and (max-height: 700px) {
         margin-top: 12px;
-    }
+  }
+  
+  @media (min-width: 1140px) {
+    max-width: 968px;
+    text-align: left;
+    padding-top: 32px;
+  }
+  
+  @media (max-width: 1140px) {
+    max-width: 470px;
+    padding-top: 32px;
+  }
+  
+  @media (max-width: 786px) {
+    max-width: 332px;
+    text-align: center;
+    padding-top: 32px;
+  }
 `;
 const GreyBack = styled.div`
   // padding: 32px 36px 0px 36px;
@@ -343,6 +407,10 @@ const HeaderIcon = styled.div`
     z-index: 15;
     left: 185px;
     top: 16px;
+    
+    @media (min-width: 1400px) {
+      left: 201px;
+    }
 `;
 
 const NewUserContent = (props) => {
@@ -353,7 +421,7 @@ const NewUserContent = (props) => {
     // const [activeTab, setActiveTab] = useState(1);
     const [shareIsOpen, setShareIsOpen] = useState(false);
 
-    const [userDescription, setUserDescription] = useState(`I’m a crypto artist. I’ve been collecting NFTs since 2017, and I also created Drop Magnet.`);
+    const [userDescription, setUserDescription] = useState("I'm a crypto artist. I've been collecting NFTs since 2017, and I also created Drop Magnet and on a tablet there is more room  of the decription so a user can add more lines in like this to decribe themselves and it should reduce in size depending on\n the screen and based on the rule that the NFT button at the botton should always have 32 px padding");
     const [editUserDescription, setEditUserDescription] = useState(false);
 
     const [featuredContentModal, setFeaturedContentModal] = useState(false);
@@ -398,24 +466,26 @@ const NewUserContent = (props) => {
             </UserHeader>
             <UserWrapper className={darkTheme ? 'light' : ''}>
                 <LikeAndCommentWrapper>
-                    <Row className="items-bottom justify-center">
-                        <CircleIcon imgUrl={darkTheme ? blackMessage : message} alt={"icon"} className={darkTheme ? 'light' : ''} />
                         <UserImage>
                             <img src={ProfilePic} alt="profile-pic"/>
                         </UserImage>
-                        <div>
+                </LikeAndCommentWrapper>
+                    <div className='content-wrapper'>
+                        <UserName onClick={handleOpenModal} className={darkTheme ? 'light' : ''}>{name}</UserName>
+                        <div onClick={openShareModal} className='wrapper-icon link'>
+                            <CircleIcon imgUrl={darkTheme ? blackLink : link} alt={"icon"} className={darkTheme ? 'light' : ''} />
+                        </div>
+                        <div className='wrapper-icon message'>
+                            <CircleIcon imgUrl={darkTheme ? blackMessage : message} alt={"icon"} className={darkTheme ? 'light' : ''} />
+                        </div>
+                        <div className='wrapper-icon heart'>
                             <LikeButton lightTheme={darkTheme ? 'light black' : ''}/>
                         </div>
-                    </Row>
-                </LikeAndCommentWrapper>
-                <Row className="items-center justify-center">
-                    <div onClick={openShareModal}>
-                        <CircleIcon imgUrl={darkTheme ? blackLink : link} alt={"icon"} className={darkTheme ? 'light' : ''} />
+                        <div className='wrapper-icon bitcoin'>
+                            <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light bitcoin' : 'bitcoin'} />
+                        </div>
                     </div>
-                    <UserName onClick={handleOpenModal} className={darkTheme ? 'light' : ''}>{name}</UserName>
-                    <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light bitcoin' : 'bitcoin'} />
                     {/*<PayWrapper>pay</PayWrapper>*/}
-                </Row>
                 <Description className={darkTheme ? 'light' : ''} onClick={() => setEditUserDescription(!editUserDescription)}>
                     <div>
                         {userDescription}
@@ -465,11 +535,15 @@ const NewUserContent = (props) => {
             </SmallDevice>
             <Separator className={darkTheme ? 'light' : ''}> </Separator>
             <GreyBack>
-                <UserSlider
-                    darkTheme={darkTheme}
-                    editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}
+                <InfinitiveSlider
+                    editedActive={editedActive}
                     setFeaturedContentModal={setFeaturedContentModal}
                 />
+                {/*<UserSlider*/}
+                {/*    darkTheme={darkTheme}*/}
+                {/*    editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}*/}
+                {/*    setFeaturedContentModal={setFeaturedContentModal}*/}
+                {/*/>*/}
                 {/*<PageLiks className={darkTheme ? 'light' : ''}>*/}
                 {/*    <Tab className={"active"} onClick={scrollToCover}>*/}
                 {/*        <img src={userLogo} alt="user logo"/>*/}

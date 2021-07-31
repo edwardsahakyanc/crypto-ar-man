@@ -20,7 +20,7 @@ const PageLiks = styled.div`
   position: fixed;
   left: 0;
   right: 0;
-  bottom: 30px;
+  bottom: 32px;
   z-index: 10;
   margin: 0 auto;
   -webkit-transform: translateZ(10px);
