@@ -106,7 +106,6 @@ export default class InfinitiveSlider extends Component {
 
                 document.querySelector('.slick-next').disabled = true;
 
-
             }
 
             let width = window.innerWidth
@@ -360,8 +359,9 @@ export default class InfinitiveSlider extends Component {
 
 
         };
+        console.log(this.props.setFeaturedContentModal)
         return (
-            <div className='slider-container'>
+            <div className='slider-container' onClick={() => this.props.editedActive && this.props.setFeaturedContentModal(true)}>
                 <Slider {...settings}>
                     {arr.map((i, index) => {
                         return (
