@@ -366,7 +366,7 @@ const GreyBack = styled.div`
 const UserContentWrapper = styled.div`
     width: 100%;
     height:100%;
-    overflow: auto;
+    overflow: hidden;
     background-color: #292929;
     
     &.light {
