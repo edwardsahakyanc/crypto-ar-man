@@ -227,6 +227,7 @@ const UserName = styled.p`
   text-align: center;
   margin: 0 16px;
   cursor: pointer;
+  margin-bottom: 16px;
   
   &.light {
     background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247));
@@ -242,12 +243,9 @@ const UserName = styled.p`
         width: 158px;
         height: 36px;
         font-size: 16px;
-        margin: 0;
     }
     
-    @media (min-width: 810px) {
-      margin-bottom: 32px;
-    }
+ 
 `;
 const PayWrapper = styled.div`
   width: 46px;
@@ -300,86 +298,10 @@ const Description = styled.div`
   @media (max-width: 720px) {
     max-width: 332px
   }
-  
-  // @media (max-width: 375px) and (max-height: 700px) {
-  //       margin-top: 12px;
-  // }
-  //
-  // @media (min-width: 1140px) {
-  //   max-width: 968px;
-  //   text-align: left;
-  //   padding-top: 32px;
-  // }
-  //
-  // @media (max-width: 1140px) {
-  //   max-width: 470px;
-  //   padding-top: 32px;
-  // }
-  //
-  // @media (max-width: 786px) {
-  //   max-width: 332px;
-  //   text-align: center;
-  //   padding-top: 16px;
-  // }
 `;
 const GreyBack = styled.div`
 
 `;
-// const PageLiks = styled.div`
-//   max-width: 122px;
-//   height: 36px;
-//   border-radius: 55px;
-//   background-color: #101010;
-//   border: 1px solid #101010;
-//   margin: 0 auto;
-//   padding: 21px 16px;
-//   display: flex;
-//   align-items: center;
-//   justify-content: space-between;
-//   position: fixed;
-//   left: 0;
-//   right: 0;
-//   margin: 0 auto;
-//   z-index: 10;
-//   bottom: 20px;
-//
-//   &.light {
-//     background-color: #F7F7F7;
-//     border: 1px solid #D6D6D6;
-//     box-shadow: 0 2px 4px #C3C3C3;
-//   }
-//
-//   img {
-//     position: relative;
-//     bottom: -3px
-//   }
-// `;
-// const Tab = styled.p`
-//     font-size: 21px;
-//     font-weight: 900;
-//     font-style: italic;
-//     color: #ffffff;
-//     font-style: normal;
-//     letter-spacing: normal;
-//     line-height: normal;
-//     text-align: center;
-//     margin: 0;
-//     cursor: pointer;
-//
-//     &.nft {
-//       font-style: italic;
-//     }
-//
-//     &.light {
-//       color: #5F5F5F;
-//     }
-//
-//     &.active{
-//         background: linear-gradient(to right, #d600ff 0%, #6600ff 100%);
-//         -webkit-background-clip: text;
-//         -webkit-text-fill-color: transparent;
-//     }
-// `;
 const UserContentWrapper = styled.div`
     width: 100%;
     height:100%;
@@ -515,16 +437,15 @@ const NewUserContent = (props) => {
                             <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light bitcoin' : 'bitcoin'} />
                         </div>
                     </div>
-                    {/*<PayWrapper>pay</PayWrapper>*/}
                 <Description className={darkTheme ? 'light' : ''} onClick={() => setEditUserDescription(!editUserDescription)}>
                     <div>
                         {userDescription}
                     </div>
                 </Description>
             </UserWrapper>
+
             <MobileUserWrapper>
                 <MobileUserContent>
-                    {/*<FileMenu darkTheme={darkTheme}/>*/}
                     <UserImage>
                         <img src={ProfilePic} alt="profile-pic"/>
                     </UserImage>
@@ -545,6 +466,7 @@ const NewUserContent = (props) => {
                     </Description>
                 </div>
             </MobileUserWrapper>
+
             <SmallDevice>
                 <FileMenu darkTheme={darkTheme}/>
                 <div>
@@ -565,13 +487,10 @@ const NewUserContent = (props) => {
             </SmallDevice>
             <Separator className={darkTheme ? 'light' : ''}> </Separator>
             <GreyBack>
-                {/*<InfinitiveSlider*/}
-                {/*    editedActive={editedActive}*/}
-                {/*    setFeaturedContentModal={setFeaturedContentModal}*/}
-                {/*/>*/}
                 {
                     currentScreenWidth > 720
-                        ? <UserSlider
+                        ?
+                        <UserSlider
                             darkTheme={darkTheme}
                             featuredContentModal={featuredContentModal}
                             editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}
@@ -586,12 +505,6 @@ const NewUserContent = (props) => {
                             imageUpdateModalToggle={imageUpdateModalToggle}
                           />
                 }
-                {/*<PageLiks className={darkTheme ? 'light' : ''}>*/}
-                {/*    <Tab className={"active"} onClick={scrollToCover}>*/}
-                {/*        <img src={userLogo} alt="user logo"/>*/}
-                {/*    </Tab>*/}
-                {/*    <Tab className={darkTheme ? 'light nft' : 'nft'} onClick={scrollToGallery}>NFTs</Tab>*/}
-                {/*</PageLiks>*/}
                 <PageLiksComponent darkTheme={darkTheme} props={props} userComponentStyles='user-component-styles'/>
             </GreyBack>
             <PortaledComponent

@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 
@@ -81,9 +81,24 @@ const SliderPrev = styled.div`
      cursor: pointer;
      bottom: -43px;
           
-     @media (min-width: 1400px) {
-       left: calc(50% - 62px);
-       bottom: 3px;
+     @media screen and (min-width: 1200px) and (max-height: 974px){
+       bottom: 2px !important;
+       left: calc(50% - 54px);
+     }
+     
+     @media screen and (min-width: 1024px) and (max-width: 1200px) and (max-height: 1024px) {
+       bottom: 2px !important;
+       left: calc(50% - 54px);
+     }
+     
+     @media screen and (min-height: 974px) {
+       bottom: 2px !important;
+       left: calc(50% - 32px);
+     }
+     
+     @media screen and (min-width: 720px) and (max-width: 810px) {
+       bottom: -42px !important;
+       left: calc(50% - 44px);     
      }
 `;
 const SliderNext = styled.div`
@@ -97,10 +112,26 @@ const SliderNext = styled.div`
      cursor: pointer;
      bottom: -43px;
      
-     @media (min-width: 1400px) {
-       right: calc(50% - 62px);
-       bottom: 3px;
+     @media screen and (min-width: 1200px) and (max-height: 974px){
+       bottom: 2px !important;
+       right: calc(50% - 54px);
      }
+     
+     @media screen and (min-width: 1024px) and (max-width: 1200px) and (max-height: 1024px) {
+       bottom: 2px !important;
+       right: calc(50% - 54px);
+     }
+     
+     @media screen and (min-height: 974px) {
+       bottom: 2px !important;
+       right: calc(50% - 32px);
+     }
+     
+     @media screen and (min-width: 720px) and (max-width: 810px) {
+       bottom: -42px !important;
+       right: calc(50% - 44px);     
+     }
+     
 `;
 
 // const FeaturedContent = styled.div`
@@ -187,6 +218,7 @@ const Wrapp = styled.div`
          top: 24px;
        }
        
+       
        // @media (min-width: 375px) and (max-width: 768px) {
        //   width: 100%;
        //   max-width: 720px;
@@ -218,28 +250,54 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
     const navigationPrevRef = React.useRef(null)
     const navigationNextRef = React.useRef(null)
 
-    // window.removeEventListener("resize", screenWidth)
+    const [rowCurrentCount, setRowCurrentCount] = useState(2)
+    // const [screenCurrentHeight, setScreenCurrentHeight] = useState(document.body.clientHeight)
+
+    useEffect(() => {
+        // const setScreenSizeUpdate = () => setScreenCurrentHeight(document.body.clientHeight);
+        setRowCountHandler()
+        window.addEventListener("resize", () => {
+            // setScreenSizeUpdate()
+            setRowCountHandler()
+        });
+        return () => {
+            window.removeEventListener('resize', setRowCountHandler);
+        }
+    },[])
+
+    const setRowCountHandler = () => (document.body.clientHeight >= 974 && document.body.clientWidth >= 1200) || (document.body.clientHeight >= 974 && document.body.clientWidth < 1200 && document.body.clientWidth > 810) ? setRowCurrentCount(2) : setRowCurrentCount(1);
+
+
+    console.log(rowCurrentCount)
+
     return (
         <Wrapp>
             <div className={`${editedActive}`} onClick={() => setFeaturedContentModal(true)}/>
-            <div className='desktop-swiper' style={{pointerEvents: editedActive && 'none'}}>
+            <div className='desktop-swiper' >
                 <Swiper
-                    slidesPerColumn={2}
+                    // slidesPerColumn={rowCurrentCount}
+                    key={rowCurrentCount}
                     loop={false}
+                    slidesPerView={3}
                     slidesPerColumnFill={"row"}
+                    allowTouchMove={true}
                     navigation={{
                         prevEl: navigationPrevRef.current,
                         nextEl: navigationNextRef.current,
                     }}
+                    shouldSwiperUpdate
                     pagination={pagination}
                     className="userSwiper"
                     onSwiper={(swiper) => {
                         setTimeout(() => {
-                            swiper.params.navigation.prevEl = navigationPrevRef.current
-                            swiper.params.navigation.nextEl = navigationNextRef.current
-                            swiper.navigation.destroy()
-                            swiper.navigation.init()
-                            swiper.navigation.update()
+                            if (swiper && swiper.params && swiper.params.navigation) {
+                                swiper.params.navigation.prevEl = navigationPrevRef.current
+                                swiper.params.navigation.nextEl = navigationNextRef.current
+                                swiper.navigation.destroy()
+                                swiper.navigation.init()
+                                swiper.navigation.update()
+                            }
+
                         })
                     }}
                     breakpoints={{
@@ -251,15 +309,16 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                         },
                         "810": {
                             "slidesPerView": 2,
-                            "slidesPerColumn": 2,
+                            "slidesPerColumn": rowCurrentCount,
                             "slidesPerColumnFill": "row",
                             "loop": false
                         },
                         "1200": {
                             "slidesPerView": 3,
-                            "slidesPerColumn": 2,
+                            "slidesPerColumn": rowCurrentCount,
                             "slidesPerColumnFill": "row",
-                            "loop": false
+                            "loop": false,
+                            "allowTouchMove": rowCurrentCount === 1 && true,
                         }
                     }}
                 >

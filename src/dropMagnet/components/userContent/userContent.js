@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React from 'react';
 import styled from "styled-components";
 import CircleIcon from "../../styled-component/icon-wrapper";
 import chat from "../../assets/chat.svg";
@@ -8,7 +8,7 @@ import ShareIcon from "../../assets/share-icon.svg";
 import UserSlider from "../userSlider/userSlider";
 import {Container} from "../../styled-component/container";
 import LikeButton from "../../styled-component/likeButton";
-import {color} from "three/examples/jsm/libs/dat.gui.module";
+// import {color} from "three/examples/jsm/libs/dat.gui.module";
 
 const UserImage = styled.div`
   width: 228px;

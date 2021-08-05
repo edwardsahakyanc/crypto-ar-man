@@ -2,8 +2,6 @@ import React from "react";
 import {Redirect, Route} from "react-router-dom"
 import SliderPage from "./pages/sliderPage";
 import Navbar from "./components/navbar/navbar";
-// import CryptoArtManPage from "./pages/cryptoartman/cryptoartmanPage";
-// import VericalySlidedPage from "./pages/vericalySlidedPage/vericalySlidedPage";
 import ScrollSnapPage from "./pages/scrollSnapPage/ScrollSnapPage";
 import FileMenu from "../myGallery/fileMenu/fileMenu";
 import styled from "styled-components";

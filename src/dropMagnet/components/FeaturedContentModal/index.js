@@ -12,12 +12,15 @@ import AddButtonsModal from "../addButtonsContentModal";
 import AddMediaModal from "../addMediaContentModal";
 import AddLinkModal from "../addLinkModal";
 import ContectGreySection from "../contectGreySection/ContectGreySection";
+import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
-import {
-    List,
-    arrayMove,
-    arrayRemove
-} from "baseui/dnd-list";
+//
+// import {
+//     List,
+//     arrayMove,
+//     arrayRemove
+// } from "baseui/dnd-list";
+// import Cart from "../../../myGallery/fileMenu/dropdownCard";
 
 
 Modal.setAppElement('#portal');
@@ -72,30 +75,8 @@ const ComponentContainer = styled.div`
       }
     
     ul {
-     padding: 0 7px;
-     display: flex;
-     flex-direction: column;
-     justify-content: center;
-     align-items: center;
      
-     li {
-       border: 3px solid #1A1A1A;
-       margin-bottom: 16px;
-       border-radius: 16px;
-       background-color: #3C3C3C;
-       box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
-       position: relative;
-       font-weight: 400;
-       color: #EAEAEA;
-       width: 100%;
-       display: flex;
-       flex-direction: column;
-       align-items: center;
-       padding-bottom: 16px;
-       max-width: 400px;
-       
-    }
-    
+     
     .additional-btn {
        min-width: 110px
     }
@@ -146,52 +127,304 @@ const SocialMediaLinks = styled.div`
     margin: 0 auto;
 `;
 
-const Content = styled.div`
-    .content {
-      
-    }
+// const Content = styled.div`
+//     .content {
+//
+//        padding: 0 7px;
+//        display: flex;
+//        flex-direction: column;
+//        justify-content: center;
+//        align-items: center;
+//
+//        li {
+//          border: 3px solid #1A1A1A;
+//          margin-bottom: 16px;
+//          border-radius: 16px;
+//          background-color: #3C3C3C;
+//          box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+//          position: relative;
+//          font-weight: 400;
+//          color: #EAEAEA;
+//          width: 100%;
+//          display: flex;
+//          flex-direction: column;
+//          align-items: center;
+//          padding-bottom: 16px;
+//          max-width: 400px;
+//        }
+//     }
+//
+//     .content-additional {
+//       padding: 16px 19px;
+//     }
+//
+//     .title {
+//       font-style: italic;
+//       margin-bottom: 16px;
+//     }
+//
+//     .description {
+//       font-size: 18px;
+//       margin-bottom: 32px;
+//     }
+//
+//     .slots-text {
+//       color: #676767;
+//       margin-top: 41px;
+//     }
+//
+//     .add-content {
+//       margin: 38px auto 17px 0;
+//     }
+//
+//     .menu {
+//       position: absolute;
+//       max-width: 16px;
+//       top: 4px;
+//       left: 16px;
+//       cursor: pointer;
+//
+//       .line {
+//         min-width: 16px;
+//         border: 1px solid #737373;
+//         margin: 7px 0;
+//       }
+//     }
+// `;
 
-    .content-additional {
-      padding: 16px 19px;
-    }
-    
-    .title {
-      font-style: italic;
-      margin-bottom: 16px;
-    }
-    
-    .description {
-      font-size: 18px;
-      margin-bottom: 32px;  
-    }
-    
-    .slots-text {
-      color: #676767;
-      margin-top: 41px;  
-    }
-    
-    .add-content {
-      margin: 38px auto 17px 0;
-    }
-    
-    .menu {
-      position: absolute;
-      max-width: 16px;
-      top: 4px;
-      left: 16px;
-      cursor: pointer;
-      
-      .line {
-        min-width: 16px;
-        border: 1px solid #737373;
-        margin: 7px 0;
-      }  
-    }
+// const FeaturedContent = ({isOpen, closeModal}) => {
+//
+//     const [additionalSlider, setAdditionalSlider] = useState(true);
+//
+//     const [addLinkModalToggle, setAddLinkModalToggle] = useState(false);
+//
+//     const [addMediaModalToggle, setAddMediaModalToggle] = useState(false);
+//
+//     const [addButtonModalToggle, setAddButtonModalToggle] = useState(false);
+//
+//     const [activeSlide, setActiveSlide] = useState(0);
+//
+//     const handleCloseModal = () => {
+//         setAddButtonModalToggle(false);
+//         setAddMediaModalToggle(false);
+//         setAddLinkModalToggle(false);
+//     }
+//
+//     const [items, setItems] = React.useState([
+//
+//         {
+//             id: 1,
+//             title: 'Slide One',
+//             elementText: [
+//                 'My latest movie “Beautiful Blue Eyes”',
+//                 <>My special merch for <span className='nft'>NFT</span> holders!</>
+//             ],
+//             socialMediaIcons: [
+//                 discord,
+//                 telegram,
+//                 openSea,
+//                 rarible,
+//                 instagram
+//             ]
+//
+//         },
+//         {
+//             id: 2,
+//             title: 'Slide two',
+//             description: 'What shall we add?',
+//             addBtn: true,
+//             slotText: 'Slide is Empty'
+//         },
+//     ]);
+//
+//     return (
+//         <Modal
+//             closeTimeoutMS={200}
+//             isOpen={isOpen}
+//             onRequestClose={closeModal}
+//             className='sharing'
+//         >
+//             <ComponentContainer>
+//                 <header className='header-title'>
+//                     <div>Featured Content</div>
+//                     <img src={checkIcon} alt="check" onClick={() => {
+//                         closeModal();
+//                     }}/>
+//                 </header>
+//                 <Content>
+//                     <div className='content'>
+//                         <List
+//                             items={
+//                                 items.map(i => {
+//                                     return (
+//                                         <React.Fragment key={i.id}>
+//                                             <div className='menu'>
+//                                                 <div className='line'> </div>
+//                                                 <div className='line'> </div>
+//                                                 <div className='line'> </div>
+//                                             </div>
+//                                             <div className='title'>{i.title}</div>
+//
+//                                             {
+//                                                 activeSlide === i.id && i.description &&
+//                                                 <div className='description'>{i.description}</div>
+//                                             }
+//
+//                                             {activeSlide !== i.id && i.elementText && i.elementText.map(text =>
+//                                                 <ContectGreySection key={text} content={text}/>)}
+//                                             <SocialMediaLinks>
+//                                                 {
+//                                                     i.socialMediaIcons && i.socialMediaIcons.map(img => <CircleIcon
+//                                                         key={img}
+//                                                         imgUrl={img} alt={"icon"} className='social-media'/>)
+//                                                 }
+//                                             </SocialMediaLinks>
+//
+//                                             {
+//                                                 activeSlide === i.id && <>
+//                                                     <button className='add-btn additional-btn'
+//                                                             onClick={() => setAddLinkModalToggle(true)}>
+//                                                         <div>Links</div>
+//                                                     </button>
+//                                                     <button className='add-btn additional-btn'
+//                                                             onClick={() => setAddMediaModalToggle(true)}>
+//                                                         <div>Media</div>
+//                                                     </button>
+//                                                     <button className='add-btn additional-btn'
+//                                                             onClick={() => setAddButtonModalToggle(true)}>
+//                                                         <div>Buttons</div>
+//                                                     </button>
+//
+//                                                 </>
+//                                             }
+//                                             {
+//                                                 i.addBtn && additionalSlider
+//                                                 && <button
+//                                                     className='add-btn'
+//                                                     value={i.id}
+//                                                     onClick={(e) => {
+//                                                         setActiveSlide(+e.currentTarget.value);
+//                                                         setAdditionalSlider(false)
+//                                                     }}
+//                                                 >
+//                                                     <div className='add-content'>
+//                                                         Add something else
+//                                                     </div>
+//                                                 </button>
+//                                             }
+//                                             {i.slotText && <div className='slots-text'>{i.slotText}</div>}
+//                                         </React.Fragment>
+//                                     )
+//                                 })
+//                             }
+//                             onChange={({oldIndex, newIndex}) =>
+//                                 setItems(
+//                                     newIndex === -1
+//                                         ? arrayRemove(items, oldIndex)
+//                                         : arrayMove(items, oldIndex, newIndex)
+//                                 )
+//                             }
+//
+//                         />
+//                     </div>
+//                 </Content>
+//                 <button className='add-btn' onClick={() => {
+//                     closeModal();
+//                 }}>
+//                     <div>Add slide</div>
+//                 </button>
+//             </ComponentContainer>
+//             <AddLinkModal isOpen={addLinkModalToggle} closeModal={handleCloseModal}/>
+//             <AddMediaModal isOpen={addMediaModalToggle} closeModal={handleCloseModal}/>
+//             <AddButtonsModal isOpen={addButtonModalToggle} closeModal={handleCloseModal}/>
+//         </Modal>
+//     )
+// }
+
+const SlideCard = styled.div`
+   border: 3px solid #1A1A1A;
+   margin-bottom: 16px;
+   border-radius: 16px;
+   background-color: #3C3C3C;
+   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+   position: relative;
+   font-weight: 400;
+   color: #EAEAEA;
+   width: 100%;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   padding-bottom: 16px;
+   max-width: 400px;
+   margin: 0 auto;
+   margin-bottom: 16px;
 `;
+//
+// const initial = Array.from({ length: 10 }, (v, k) => k).map(k => {
+//     const custom = {
+//         id: `id-${k}`,
+//         content: `Quote ${k}`
+//     };
+//
+//     return custom;
+// });
+
+const reorder = (list, startIndex, endIndex) => {
+    const result = Array.from(list);
+    const [removed] = result.splice(startIndex, 1);
+    result.splice(endIndex, 0, removed);
+
+    return result;
+};
+
+const QuoteItem = styled.div`
+  
+`;
+
+function Quote({ quote, index }) {
+    const [activeSlide, setActiveSlide] = useState(0);
+    console.log(setActiveSlide)
+    return (
+        <Draggable draggableId={quote.id} index={index}>
+            {provided => (
+                <QuoteItem
+                    ref={provided.innerRef}
+                    {...provided.draggableProps}
+                    {...provided.dragHandleProps}
+                >
+                                <SlideCard key={quote.id}>
+                                    <div>{quote.title}</div>
+
+                                    {
+                                        activeSlide === quote.id && quote.description &&
+                                        <div className='description'>{quote.description}</div>
+                                    }
+
+                                    {activeSlide !== quote.id && quote.elementText && quote.elementText.map(text =>
+                                        <ContectGreySection key={text} content={text}/>)}
+                                    <SocialMediaLinks>
+                                        {
+                                            quote.socialMediaIcons && quote.socialMediaIcons.map(img => <CircleIcon
+                                                key={img}
+                                                imgUrl={img} alt={"icon"} className='social-media'/>)
+                                        }
+                                    </SocialMediaLinks>
+                                </SlideCard>
+                </QuoteItem>
+            )}
+        </Draggable>
+    );
+}
+
+const QuoteList = React.memo(function QuoteList({ quotes }) {
+    return quotes.map((quote, index) => (
+        <Quote quote={quote} index={index} key={quote.id}/>
+    ));
+});
 
 const FeaturedContent = ({isOpen, closeModal}) => {
 
-    const [additionalSlider, setAdditionalSlider] = useState(true);
+    // const [additionalSlider, setAdditionalSlider] = useState(true);
 
     const [addLinkModalToggle, setAddLinkModalToggle] = useState(false);
 
@@ -199,7 +432,7 @@ const FeaturedContent = ({isOpen, closeModal}) => {
 
     const [addButtonModalToggle, setAddButtonModalToggle] = useState(false);
 
-    const [activeSlide, setActiveSlide] = useState(0);
+
 
     const handleCloseModal = () => {
         setAddButtonModalToggle(false);
@@ -207,10 +440,10 @@ const FeaturedContent = ({isOpen, closeModal}) => {
         setAddLinkModalToggle(false);
     }
 
-    const [items, setItems] = React.useState([
+    const [items, setItems] = useState([
 
         {
-            id: 1,
+            id: 'id-0',
             title: 'Slide One',
             elementText: [
                 'My latest movie “Beautiful Blue Eyes”',
@@ -226,13 +459,50 @@ const FeaturedContent = ({isOpen, closeModal}) => {
 
         },
         {
-            id: 2,
-            title: 'Slide two',
+            id: 'id-1',
+            title: 'Slide Two',
+            elementText: [
+                'My latest movie “Beautiful Blue Eyes”',
+                <>My special merch for <span className='nft'>NFT</span> holders!</>
+            ],
+            socialMediaIcons: [
+                discord,
+                telegram,
+                openSea,
+                rarible,
+                instagram
+            ]
+
+        },
+        {
+            id: 'id-2',
+            title: 'Slide Three',
             description: 'What shall we add?',
             addBtn: true,
             slotText: 'Slide is Empty'
         },
     ]);
+    // const [dropped, setDropped] = useState(false);
+    const [state, setState] = useState({ quotes: items });
+    console.log(setItems)
+
+    function onDragEnd(result) {
+        if (!result.destination) {
+            return;
+        }
+
+        if (result.destination.index === result.source.index) {
+            return;
+        }
+
+        const quotes = reorder(
+            state.quotes,
+            result.source.index,
+            result.destination.index
+        );
+
+        setState({ quotes });
+    }
 
     return (
         <Modal
@@ -248,83 +518,19 @@ const FeaturedContent = ({isOpen, closeModal}) => {
                         closeModal();
                     }}/>
                 </header>
-                <Content>
-                    <div className='content'>
-                        <List
-                            items={
-                                items.map(i => {
-                                    return (
-                                        <React.Fragment key={i.id}>
-                                            <div className='menu'>
-                                                <div className='line'> </div>
-                                                <div className='line'> </div>
-                                                <div className='line'> </div>
-                                            </div>
-                                            <div className='title'>{i.title}</div>
 
-                                            {
-                                                activeSlide === i.id && i.description &&
-                                                <div className='description'>{i.description}</div>
-                                            }
+                <DragDropContext onDragEnd={onDragEnd}>
+                    <Droppable droppableId="list">
+                        {provided => (
+                            <div ref={provided.innerRef} {...provided.droppableProps}>
+                                <QuoteList quotes={state.quotes}/>
+                            </div>
+                        )}
+                    </Droppable>
+                </DragDropContext>
 
-                                            {activeSlide !== i.id && i.elementText && i.elementText.map(text =>
-                                                <ContectGreySection key={text} content={text}/>)}
-                                            <SocialMediaLinks>
-                                                {
-                                                    i.socialMediaIcons && i.socialMediaIcons.map(img => <CircleIcon
-                                                        key={img}
-                                                        imgUrl={img} alt={"icon"} className='social-media'/>)
-                                                }
-                                            </SocialMediaLinks>
 
-                                            {
-                                                activeSlide === i.id && <>
-                                                    <button className='add-btn additional-btn'
-                                                            onClick={() => setAddLinkModalToggle(true)}>
-                                                        <div>Links</div>
-                                                    </button>
-                                                    <button className='add-btn additional-btn'
-                                                            onClick={() => setAddMediaModalToggle(true)}>
-                                                        <div>Media</div>
-                                                    </button>
-                                                    <button className='add-btn additional-btn'
-                                                            onClick={() => setAddButtonModalToggle(true)}>
-                                                        <div>Buttons</div>
-                                                    </button>
 
-                                                </>
-                                            }
-                                            {
-                                                i.addBtn && additionalSlider
-                                                && <button
-                                                    className='add-btn'
-                                                    value={i.id}
-                                                    onClick={(e) => {
-                                                        setActiveSlide(+e.currentTarget.value);
-                                                        setAdditionalSlider(false)
-                                                    }}
-                                                >
-                                                    <div className='add-content'>
-                                                        Add something else
-                                                    </div>
-                                                </button>
-                                            }
-                                            {i.slotText && <div className='slots-text'>{i.slotText}</div>}
-                                        </React.Fragment>
-                                    )
-                                })
-                            }
-                            onChange={({oldIndex, newIndex}) =>
-                                setItems(
-                                    newIndex === -1
-                                        ? arrayRemove(items, oldIndex)
-                                        : arrayMove(items, oldIndex, newIndex)
-                                )
-                            }
-
-                        />
-                    </div>
-                </Content>
                 <button className='add-btn' onClick={() => {
                     closeModal();
                 }}>
