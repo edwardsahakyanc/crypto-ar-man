@@ -53,10 +53,10 @@ const ImgWrapper = styled.div`
 `;
 const GalleryButtonWrapper = styled.div`
     display:flex;
-    // align-items:center;
+    align-items:center;
     justify-content: center;
     margin-top: 16px;
-    margin-bottom: 55px; 
+    // margin-bottom: 55px; 
     .button{
         width: 99px;
         height: 40px;

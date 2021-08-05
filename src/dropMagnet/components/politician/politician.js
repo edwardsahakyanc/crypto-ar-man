@@ -337,7 +337,7 @@ const FooterLink = styled.div`
 
 const Separator = styled.div`
     height: 9px;
-    background: #141414;
+    background: RGB(20, 20, 20);
     box-shadow: inset 0px 1px 3px rgb(0 0 0 / 50%);
     
     &.light {

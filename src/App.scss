@@ -4,32 +4,6 @@
   font-family: "Azo Sans", sans-serif;
   scroll-behavior: smooth;
   -webkit-overflow-scrolling: touch;
-  /* width */
-  &::-webkit-scrollbar {
-    width: 5px;
-    border-radius: 10000px;
-  }
-
-  /* Track */
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-    cursor: pointer;
-    border-radius: 10000px;
-  }
-
-  /* Handle */
-  &::-webkit-scrollbar-thumb {
-    background: #888;
-    border-radius: 10000px;
-    transition: all 150ms ease;
-    cursor: pointer;
-  }
-
-  /* Handle on hover */
-  &::-webkit-scrollbar-thumb:hover {
-    transition: all 150ms ease;
-    background: #555;
-  }
 }
 body{
   margin: 0;
@@ -117,4 +91,10 @@ body{
   text-align: center;
   font-style: italic;
   padding: 12px 0 16px;
+}
+.swiper-container-horizontal>.swiper-pagination-bullets, .swiper-pagination-custom, .swiper-pagination-fraction {
+  bottom: -46px!important;
+  @media (max-width: 720px) {
+    bottom: -41px!important;
+  }
 }

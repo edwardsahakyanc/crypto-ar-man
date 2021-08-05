@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import styled from "styled-components";
 import background from "../../assets/cat-background.png";
 import CircleIcon from "./styled-components/icon-wrapper";
@@ -29,13 +29,15 @@ import FeaturedContent from "../FeaturedContentModal";
 import ImageUpdateModal from "../ImageUpdateModal";
 import blackSetting from "../../assets/settings-black.svg";
 import setting from "../../assets/settings-2.svg";
-import InfinitiveSlider from "../newUserSlider/infinitiveSlider";
+// import InfinitiveSlider from "../newUserSlider/infinitiveSlider";
+import UserSlider from "../newUserSlider/newUserSlider";
+import MobileSlider from "../newUserSlider/mobileSlider";
 // import ScrollSnapPage from "../../pages/scrollSnapPage/ScrollSnapPage";
 
 const UserHeader = styled.div`
     position: relative;
     width: 100%;
-    max-height: 183px;
+    max-height: 210px;
     height: 100%;
     min-height: 96px;
     background-image: url(${background});
@@ -63,14 +65,19 @@ const UserHeader = styled.div`
     @media (max-height: 700px) and (min-width: 1024px){
         height: 96px;
     }
-    @media (max-width: 375px) and (max-height: 700px) {
-        display:none;
+    @media (max-width: 414px) and (max-height: 723px){
+        height: 183px !important;
     }
-    
-    @media (min-width: 1040px) {
-      height: 303px;
-      max-height: 303px;
+    @media (max-width: 390px) and (max-height: 666px){
+        height: 150px !important;
     }
+    @media (max-width: 375px) and (max-height: 633px){
+        height: 155px !important;
+    }
+    @media (max-width: 375px) and (max-height: 620px) {
+        display:none !important;
+    }
+   
 `;
 const UserWrapper = styled.div`
     background-color: #1A1A1A;
@@ -87,31 +94,32 @@ const UserWrapper = styled.div`
       display: flex;
       justify-content: center;
       position: relative;
+      margin-top: 60px;
       
       .wrapper-icon{
         margin: 0 16px;
-        @media (max-width: 1140px) {
+       
             position: absolute;
             &.link {
-                left: calc(50% - 180px);
+                left: calc(50% - 181px);
                 margin: 0;
             }
             &.bitcoin {
-                right: calc(50% - 180px);
+                right: calc(50% - 181px);
                 margin: 0;
             }
             &.heart {
-                right: calc(50% - 142px);
+                right: calc(50% - 152px);
+                top: -62px;
                 margin: 0;
-                top: -56px;
             }
             &.message {
-                left: calc(50% - 142px);
+                left: calc(50% - 152px);
+                top: -62px;
                 margin: 0;
-                top: -56px;
              }
            
-        }        
+               
       }
     }
     
@@ -119,8 +127,12 @@ const UserWrapper = styled.div`
      display: none;
     }
     
-    @media (min-width: 1400px) {
-      padding: 32px 0;
+    @media (min-width: 320px) {
+      padding: 32px 0 22px;
+    }
+    
+    @media (min-width: 810px) {
+      padding: 34px 0 32px;
     }
     
     
@@ -169,7 +181,7 @@ const SmallDevice = styled.div`
 const UserImage = styled.div`
   width: 164px;
   height: 164px;
-  margin: 0 14px 4px;
+  margin: 3px 14px 4px;
   background-image: linear-gradient(180deg, rgba(24, 24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
   border-radius: 1000px;
   img{
@@ -190,14 +202,14 @@ const UserImage = styled.div`
 `;
 const LikeAndCommentWrapper = styled.div`
     position: absolute;
-    left: 19px;
-    margin: 0 auto;
-    top: -219px;
+    // left: 19px;
+    // margin: 0 auto;
+    // top: -219px;
     z-index: 10;
-    @media (max-width: 1140px) {
+    // @media (max-width: 1140px) {
         left: calc(50% - 96px);
         top: -90px;
-    }
+    // }
 `;
 const UserName = styled.p`
   width: 236px;
@@ -232,6 +244,10 @@ const UserName = styled.p`
         font-size: 16px;
         margin: 0;
     }
+    
+    @media (min-width: 810px) {
+      margin-bottom: 32px;
+    }
 `;
 const PayWrapper = styled.div`
   width: 46px;
@@ -256,16 +272,15 @@ const PayWrapper = styled.div`
    }
 `;
 const Description = styled.div`
-  max-width: 342px;
+  max-width: 470px;
   color: #eaeaea;
   font-size: 16px;
   font-weight: 400;
   font-style: normal;
   letter-spacing: normal;
-  line-height: normal;
+  line-height: 20px;
   text-align: center;
   margin: 0 auto;
-  padding-top: 24px;
   word-break: break-word;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -282,31 +297,33 @@ const Description = styled.div`
    font-weight: 400;
    color: #000000;  
   }
-  
-  @media (max-width: 375px) and (max-height: 700px) {
-        margin-top: 12px;
+  @media (max-width: 720px) {
+    max-width: 332px
   }
   
-  @media (min-width: 1140px) {
-    max-width: 968px;
-    text-align: left;
-    padding-top: 32px;
-  }
-  
-  @media (max-width: 1140px) {
-    max-width: 470px;
-    padding-top: 32px;
-  }
-  
-  @media (max-width: 786px) {
-    max-width: 332px;
-    text-align: center;
-    padding-top: 32px;
-  }
+  // @media (max-width: 375px) and (max-height: 700px) {
+  //       margin-top: 12px;
+  // }
+  //
+  // @media (min-width: 1140px) {
+  //   max-width: 968px;
+  //   text-align: left;
+  //   padding-top: 32px;
+  // }
+  //
+  // @media (max-width: 1140px) {
+  //   max-width: 470px;
+  //   padding-top: 32px;
+  // }
+  //
+  // @media (max-width: 786px) {
+  //   max-width: 332px;
+  //   text-align: center;
+  //   padding-top: 16px;
+  // }
 `;
 const GreyBack = styled.div`
-  // padding: 32px 36px 0px 36px;
-  
+
 `;
 // const PageLiks = styled.div`
 //   max-width: 122px;
@@ -366,7 +383,7 @@ const GreyBack = styled.div`
 const UserContentWrapper = styled.div`
     width: 100%;
     height:100%;
-    overflow: hidden;
+    // overflow: hidden;
     background-color: #292929;
     
     &.light {
@@ -393,7 +410,7 @@ const HeaderEditText = styled.span`
 
 const Separator = styled.div`
     height: 9px;
-    background: #141414;
+    background: RGB(20, 20, 20);
     box-shadow: inset 1px 3px 0 rgb(0 0 0 / 50%);
     
     &.light {
@@ -405,12 +422,8 @@ const Separator = styled.div`
 const HeaderIcon = styled.div`
     position: fixed;
     z-index: 15;
-    left: 185px;
-    top: 16px;
-    
-    @media (min-width: 1400px) {
-      left: 201px;
-    }
+    left: 16px;
+    top: 68px;
 `;
 
 const NewUserContent = (props) => {
@@ -426,7 +439,12 @@ const NewUserContent = (props) => {
 
     const [featuredContentModal, setFeaturedContentModal] = useState(false);
 
-    const [imageUpdateModalToggle, setImageUpdateModalToggle] = useState(false)
+    const [imageUpdateModalToggle, setImageUpdateModalToggle] = useState(false);
+    const [currentScreenWidth, setCurrentScreenWidth] = useState(0);
+
+    useEffect(() => {
+       setCurrentScreenWidth(document.body.clientWidth)
+    },[])
 
     const closeModal = () => {
         setShareIsOpen(false);
@@ -442,16 +460,28 @@ const NewUserContent = (props) => {
         document.querySelector("body").style.overflow = "hidden";
         setIsOpen(true);
     };
+
     const handleCloseModal = () => {
         document.querySelector("body").style.overflow = "auto";
         setIsOpen(false);
     };
 
+    useEffect(() => {
+        const screenWidth = () => setCurrentScreenWidth(document.body.clientWidth);
+
+        window.addEventListener("resize", screenWidth);
+        return () => {
+            window.removeEventListener('resize',screenWidth);
+        }
+    },[currentScreenWidth])
+
     return (
         <UserContentWrapper className={darkTheme ? 'light' : ''}>
             <UserHeader>
-                <HeaderIcon key='2342234' onClick={() => {
+                <HeaderIcon onClick={(e) => {
                     setEditedActive(!editedActive)
+                    e.preventDefault();
+
                 }}>
                     <CircleIcon imgUrl={darkTheme ? blackSetting : setting} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
                 </HeaderIcon>
@@ -535,15 +565,27 @@ const NewUserContent = (props) => {
             </SmallDevice>
             <Separator className={darkTheme ? 'light' : ''}> </Separator>
             <GreyBack>
-                <InfinitiveSlider
-                    editedActive={editedActive}
-                    setFeaturedContentModal={setFeaturedContentModal}
-                />
-                {/*<UserSlider*/}
-                {/*    darkTheme={darkTheme}*/}
-                {/*    editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}*/}
+                {/*<InfinitiveSlider*/}
+                {/*    editedActive={editedActive}*/}
                 {/*    setFeaturedContentModal={setFeaturedContentModal}*/}
                 {/*/>*/}
+                {
+                    currentScreenWidth > 720
+                        ? <UserSlider
+                            darkTheme={darkTheme}
+                            featuredContentModal={featuredContentModal}
+                            editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}
+                            setFeaturedContentModal={setFeaturedContentModal}
+                          />
+                        : <MobileSlider
+                            darkTheme={darkTheme}
+                            featuredContentModal={featuredContentModal}
+                            editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}
+                            setFeaturedContentModal={setFeaturedContentModal}
+                            userDescription={userDescription}
+                            imageUpdateModalToggle={imageUpdateModalToggle}
+                          />
+                }
                 {/*<PageLiks className={darkTheme ? 'light' : ''}>*/}
                 {/*    <Tab className={"active"} onClick={scrollToCover}>*/}
                 {/*        <img src={userLogo} alt="user logo"/>*/}

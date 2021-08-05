@@ -48,7 +48,9 @@ const ComponentContainer = styled.div`
       // line-height: 1.4;
       text-align: center;
       height: inherit;
-      
+      text-align: justify !important;
+      text-justify: inter-word !important;
+    
       @media (max-width: 768px) {
         text-align: center;
       }

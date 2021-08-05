@@ -53,7 +53,7 @@ const MiddleImage = styled.div`
 
 const Separator = styled.div`
     height: 9px;
-    background: #141414;
+    background: RGB(20, 20, 20);
     box-shadow: inset 1px 3px 0 rgb(0 0 0 / 50%);
 `;
 

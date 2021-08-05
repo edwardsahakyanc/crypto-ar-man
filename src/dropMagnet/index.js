@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import {Redirect, Route} from "react-router-dom"
 import SliderPage from "./pages/sliderPage";
 import Navbar from "./components/navbar/navbar";
@@ -13,12 +13,16 @@ const HeaderTop = styled.div`
   position: fixed;
   top: 0;
   z-index: 19;
+  
+  @media (min-width: 1400px) {
+    left: -16px;
+  }
 `;
 
 const DropMagnet = () => {
 
-	const [darkTheme, setDarkTheme] = useState(false);
-	console.log(setDarkTheme)
+	// const [darkTheme, setDarkTheme] = useState(false);
+	const darkTheme = false;
 	return (
 		<div>
 			<Route exact path="/drop-magnet" render={()=> <Redirect to="/drop-magnet/artgallery.link" />}/>

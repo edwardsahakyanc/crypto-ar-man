@@ -7,7 +7,7 @@ export const InsetBoxIcon = styled.div`
     align-items: center;
     justify-content: center;
     // box-shadow: 0 2px 4px rgba(0, 0, 0, 0.5), inset 0 -1px 0 #002b40;
-    background-image: linear-gradient(180deg, #181818 0%, #131313 100%);
+    background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19, 19, 19, 0.83) 100%);
     border-radius: 100px;
     border: 1px solid black;
     position: relative;

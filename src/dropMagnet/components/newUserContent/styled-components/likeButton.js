@@ -7,7 +7,7 @@ import FavoriteBorderIcon from '@material-ui/icons/FavoriteBorder';
 const Like = styled.div`
   width: 46px;
   height: 46px;
-  background-image: linear-gradient(180deg, #181818 0%, #131313 100%);
+  background-image: linear-gradient(180deg, rgba(24,24, 24, 0.83) 0%, rgba(19, 19, 19, 0.83)100%);
   border-radius: 100px;
   display: flex;
   align-items: center;

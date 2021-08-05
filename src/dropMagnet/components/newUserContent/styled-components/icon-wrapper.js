@@ -50,17 +50,21 @@ const IconWrap = styled.div`
         width: 62px;
         height: 42px;
         border-radius: 9px;
-        margin: 0 2px;
         
         img {
          width: 28px;
          height: 26px;
         } 
       }
-  
+      
+   @media (max-width: 375px) {
+      margin: 0 2px;
+   }
+    
    @media (max-width: 350px) and (max-height: 650px) {
         width: 36px;
         height: 36px;
+        
         img{
             width: 18px;
             height: 18px;
