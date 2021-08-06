@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useMemo, useRef, useState} from "react";
 import "./ScrollSnapPage.scss";
 import NewUserContent from "../../components/newUserContent/newUserContent";
 import Gallery from "../../components/gallery/gallery";
@@ -14,7 +14,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
     // console.log(data);
     const galleryRef = useRef(null);
     const coverPageRef = useRef(null);
-    const firstSlide = {id: 1, imgUrl: galleryImage, backgroundColor: "#292929", price: "100"};
+    const firstSlide = useMemo(() => ({id: 1, imgUrl: galleryImage, backgroundColor: "#292929", price: "100"}), []);
     const [filteredData, setFilteredData] = useState([]);
 
     // useEffect(() => {
@@ -22,7 +22,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
     // },[data])
     // console.log(data)
 
-    const slideItems = [
+    const slideItems = useMemo(() => [
         {
             id: 1,
             content: <section ref={coverPageRef}><NewUserContent galleryRef={galleryRef} coverPageRef={coverPageRef} darkTheme={darkTheme} changeSlide={changeSlide}/></section>
@@ -51,8 +51,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
             id: 7,
             content: <section><Landscape/></section>
         }
-    ];
-
+    ],[darkTheme,changeSlide, firstSlide]);
     useEffect(() => {
         const sortOrder = data.map(e => +e.id);
         const sortedArr = [];
@@ -66,7 +65,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
         setFilteredData(sortedArr.length ? sortedArr : slideItems);
         // console.log(sortedArr);
 
-    },[data])
+    },[data, slideItems])
     return (
         <article className="scroller">
             {
