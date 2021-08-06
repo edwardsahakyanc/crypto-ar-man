@@ -96,6 +96,11 @@ const SliderPrev = styled.div`
        left: calc(50% - 32px);
      }
      
+     @media screen and (max-height: 974px) {
+       bottom: 2px !important;
+       left: calc(50% - 52px);
+     }
+     
      @media screen and (min-width: 720px) and (max-width: 810px) {
        bottom: -42px !important;
        left: calc(50% - 44px);     
@@ -125,6 +130,11 @@ const SliderNext = styled.div`
      @media screen and (min-height: 974px) {
        bottom: 2px !important;
        right: calc(50% - 32px);
+     }
+     
+     @media screen and (max-height: 974px) {
+       bottom: 2px !important;
+       right: calc(50% - 52px);
      }
      
      @media screen and (min-width: 720px) and (max-width: 810px) {
@@ -207,8 +217,15 @@ const Wrapp = styled.div`
         @media (min-width: 1200px) {
          width: 1090px;
          max-width: 1090px;
-         height: 333px;
-         top: 56px;
+         height: 336px;
+         top: 53px;
+       }
+       
+       @media (min-width: 1200px) and (max-height: 973px) {
+         width: 100%;
+         max-width: 1077px;
+         height: 160px;
+         top: 55px;
        }
        
        @media (min-width: 810px) and (max-width: 1200px) {
@@ -218,13 +235,19 @@ const Wrapp = styled.div`
          top: 24px;
        }
        
+       @media (min-width: 810px) and (max-width: 1200px) and (max-height: 973px) {
+         width: 100%;
+         max-width: 720px;
+         height: 160px;
+         top: 24px;
+       }
        
-       // @media (min-width: 375px) and (max-width: 768px) {
-       //   width: 100%;
-       //   max-width: 720px;
-       //   height: 333px;
-       //   top: 24px;
-       // }
+       @media (min-width: 720px) and (max-width: 810px) {
+         width: 100%;
+         max-width: 348px;
+         height: 334px;
+         top: 23px;
+       }
        
         ::after {
         content: "Edit Featured Content";
@@ -251,17 +274,23 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
     const navigationNextRef = React.useRef(null)
 
     const [rowCurrentCount, setRowCurrentCount] = useState(2)
-    // const [screenCurrentHeight, setScreenCurrentHeight] = useState(document.body.clientHeight)
+    const [screenCurrentHeight, setScreenCurrentHeight] = useState(null)
+    console.log(screenCurrentHeight)
+    useEffect(() => {
+        setScreenCurrentHeight(document.body.clientHeight)
+    }, [])
 
     useEffect(() => {
-        // const setScreenSizeUpdate = () => setScreenCurrentHeight(document.body.clientHeight);
+        const setScreenSizeUpdate = () => setScreenCurrentHeight(document.body.clientHeight);
         setRowCountHandler()
         window.addEventListener("resize", () => {
-            // setScreenSizeUpdate()
-            setRowCountHandler()
+            setScreenSizeUpdate()
+            setRowCountHandler(document.body.clientHeight)
         });
         return () => {
-            window.removeEventListener('resize', setRowCountHandler);
+            window.removeEventListener('resize', () => {
+                setRowCountHandler(document.body.clientHeight)
+            });
         }
     },[])
 
@@ -273,7 +302,7 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
     return (
         <Wrapp>
             <div className={`${editedActive}`} onClick={() => setFeaturedContentModal(true)}/>
-            <div className='desktop-swiper' >
+            <div className='desktop-swiper' style={{pointerEvents: editedActive && 'none'}}>
                 <Swiper
                     // slidesPerColumn={rowCurrentCount}
                     key={rowCurrentCount}
