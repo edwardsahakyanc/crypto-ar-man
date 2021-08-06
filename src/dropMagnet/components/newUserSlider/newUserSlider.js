@@ -221,7 +221,7 @@ const Wrapp = styled.div`
          top: 53px;
        }
        
-       @media (min-width: 1200px) and (max-height: 973px) {
+       @media (min-width: 1200px) and (max-height: 945px) {
          width: 100%;
          max-width: 1077px;
          height: 160px;
@@ -294,10 +294,10 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
         }
     },[])
 
-    const setRowCountHandler = () => (document.body.clientHeight >= 974 && document.body.clientWidth >= 1200) || (document.body.clientHeight >= 974 && document.body.clientWidth < 1200 && document.body.clientWidth > 810) ? setRowCurrentCount(2) : setRowCurrentCount(1);
+    const setRowCountHandler = () => (document.body.clientHeight >= 975 && document.body.clientWidth < 1200 && document.body.clientWidth > 810) || (document.body.clientHeight >= 945 && document.body.clientWidth >= 1200) ? setRowCurrentCount(2) : setRowCurrentCount(1);
 
 
-    console.log(rowCurrentCount)
+    // console.log(rowCurrentCount)
 
     return (
         <Wrapp>
@@ -347,7 +347,7 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                             "slidesPerColumn": rowCurrentCount,
                             "slidesPerColumnFill": "row",
                             "loop": false,
-                            "allowTouchMove": rowCurrentCount === 1 && true,
+                            "allowTouchMove": rowCurrentCount === 1 && true
                         }
                     }}
                 >

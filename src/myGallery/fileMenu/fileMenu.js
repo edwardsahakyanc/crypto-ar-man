@@ -3,7 +3,6 @@ import arrow from "./arrow.svg";
 import blackArrow from "./greyArrow.svg";
 import Cart from "./dropdownCard";
 import styled from "styled-components";
-// import UserSlider from "../../dropMagnet/components/newUserSlider/newUserSlider";
 import { DragDropContext, Droppable, Draggable } from "react-beautiful-dnd";
 
 
@@ -125,9 +124,9 @@ const CardsContent = styled.div`
 `;
 
 
-const initial = Array.from({ length: 10 }, (v, k) => k).map(k => {
+const initial = Array.from({ length: 6 }, (v, k) => k).map(k => {
     const custom = {
-        id: `id-${k}`,
+        id: `${k+2}`,
         content: `Quote ${k}`
     };
 
@@ -138,25 +137,23 @@ const reorder = (list, startIndex, endIndex) => {
     const result = Array.from(list);
     const [removed] = result.splice(startIndex, 1);
     result.splice(endIndex, 0, removed);
-
+    // console.log(result)
     return result;
 };
 
-const QuoteItem = styled.div`
-  
-`;
+
 
 function Quote({ quote, index }) {
     return (
         <Draggable draggableId={quote.id} index={index}>
             {provided => (
-                <QuoteItem
+                <div
                     ref={provided.innerRef}
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                 >
                     <Cart/>
-                </QuoteItem>
+                </div>
             )}
         </Draggable>
     );
@@ -168,14 +165,14 @@ const QuoteList = React.memo(function QuoteList({ quotes }) {
     ));
 });
 
-const FileMenu = ({darkTheme}) => {
+const FileMenu = (props) => {
+    const { darkTheme, changeSlide } = props;
     const [dropped, setDropped] = useState(false);
 
     const handleOpen = () => {
         setDropped(prevState => !prevState)
     }
     const [state, setState] = useState({ quotes: initial });
-
     function onDragEnd(result) {
         if (!result.destination) {
             return;
@@ -191,9 +188,13 @@ const FileMenu = ({darkTheme}) => {
             result.destination.index
         );
 
-        setState({ quotes });
+        setState({ quotes: [...quotes] });
+        changeSlide([...quotes])
     }
 
+    // useEffect(() => {
+    //     changeSlide(state.quotes)
+    // },[])
 
     return (
         <DropDown className={`${darkTheme ? 'light' : ''} ${dropped ? 'dropped' : ''}`} >

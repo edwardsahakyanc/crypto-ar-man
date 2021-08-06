@@ -25,13 +25,13 @@ const GalleryContent = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
-    // align-items: center;
+    align-items: center;
     font-weight: 700;
     max-width: 600px;
     width: 100%;
     margin: 0 auto;
     height: auto;
-    // justify-content: space-between;
+    justify-content: center;
 `;
 const ImgWrapper = styled.div`
     // max-width: 440px;
@@ -113,6 +113,7 @@ const Gallery = (props) => {
                         <ImgWrapper>
                             <img src={props.imgUrl} alt="gallery"/>
                         </ImgWrapper>
+
                     </ControlledZoom>
                     <GalleryButtonWrapper>
 
@@ -128,6 +129,7 @@ const Gallery = (props) => {
                             <img src={dots} alt="dots"/>
                         </div>
                     </GalleryButtonWrapper>
+
                 </GalleryContent>
             </GalleryWrapper>
             <GalleryModal isOpen={isOpen} closeModal={closeModal}/>

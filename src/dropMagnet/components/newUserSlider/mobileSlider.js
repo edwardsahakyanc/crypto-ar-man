@@ -163,7 +163,7 @@ const MobileSlider = ({darkTheme, editedActive, setFeaturedContentModal, feature
         slidero.current.childNodes[1].children[1].classList.add('swiper-slide-active')
         document.querySelector('.swiper-wrapper').style.transform = `translate3d(-${slideCurrentSize}px,0,0)`
         slidero.current.childNodes[1].style.transform = `translate3d(-${slideCurrentSize}px,0,0)`
-        slidero.current.childNodes[1].style.transitionDuration = "1s"
+        // slidero.current.childNodes[1].style.transitionDuration = "1s"
     }
 
     useEffect(() => {

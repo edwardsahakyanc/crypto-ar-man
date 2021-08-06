@@ -81,7 +81,7 @@ const UserHeader = styled.div`
 `;
 const UserWrapper = styled.div`
     background-color: #1A1A1A;
-    padding: 91px 10px 16px;
+    padding: 36px 10px 16px;
     position:relative;
     box-shadow: 0 -7px 10px rgba(28,28,28, .33);
     
@@ -126,13 +126,17 @@ const UserWrapper = styled.div`
     @media (max-width: 375px) and (max-height: 700px) {
      display: none;
     }
+    //
+    // @media (min-width: 320px) and (max-width: 720px){
+    //   padding: 32px 0 16px;
+    // }
     
-    @media (min-width: 320px) {
-      padding: 32px 0 22px;
+    @media (min-width: 720px) {
+      padding-bottom: 32px;
     }
     
-    @media (min-width: 810px) {
-      padding: 34px 0 32px;
+    @media (min-width: 720px) and (max-width: 1024px) {
+      padding-top: 30px;
     }
     
     
@@ -245,7 +249,14 @@ const UserName = styled.p`
         font-size: 16px;
     }
     
- 
+    
+    @media (min-width: 320px) and (max-width: 720px) {
+      margin-bottom: 16px;
+    }
+    
+    @media (min-width: 720px) {
+      margin-bottom: 32px;
+    }
 `;
 const PayWrapper = styled.div`
   width: 46px;
@@ -349,7 +360,7 @@ const HeaderIcon = styled.div`
 `;
 
 const NewUserContent = (props) => {
-    const { darkTheme } = props;
+    const { darkTheme, changeSlide } = props;
     const [editedActive, setEditedActive] = useState(false);
     const [isOpen, setIsOpen] = useState(false);
     const [name, setName] = useState("Alexander Newton");
@@ -468,7 +479,7 @@ const NewUserContent = (props) => {
             </MobileUserWrapper>
 
             <SmallDevice>
-                <FileMenu darkTheme={darkTheme}/>
+                <FileMenu darkTheme={darkTheme} changeSlide={changeSlide}/>
                 <div>
                     <Row className="items-center justify-center">
                         <UserImage>

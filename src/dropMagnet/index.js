@@ -1,4 +1,4 @@
-import React from "react";
+import React, {useState} from "react";
 import {Redirect, Route} from "react-router-dom"
 import SliderPage from "./pages/sliderPage";
 import Navbar from "./components/navbar/navbar";
@@ -21,6 +21,15 @@ const DropMagnet = () => {
 
 	// const [darkTheme, setDarkTheme] = useState(false);
 	const darkTheme = false;
+
+	const [data, setData] = useState([])
+
+	const changeSlide = (val) => {
+		// console.log(val);
+		// console.log(data);
+		setData([...val])
+	}
+
 	return (
 		<div>
 			<Route exact path="/drop-magnet" render={()=> <Redirect to="/drop-magnet/artgallery.link" />}/>
@@ -39,10 +48,10 @@ const DropMagnet = () => {
 
 			<Route path="/drop-magnet/artgallery.link/verticaly">
 				<HeaderTop>
-					<FileMenu/>
+					<FileMenu changeSlide={changeSlide}/>
 				</HeaderTop>
 
-				<ScrollSnapPage darkTheme={darkTheme}/>
+				<ScrollSnapPage darkTheme={darkTheme} changeSlide={changeSlide} data={data}/>
 			</Route>
 		</div>
 

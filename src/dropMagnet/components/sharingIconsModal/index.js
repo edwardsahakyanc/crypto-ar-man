@@ -10,6 +10,63 @@ import close from "../../assets/close.svg";
 // import image from  "../../assets/image source.svg";
 // import CircleIcon from "../newUserContent/styled-components/icon-wrapper";
 // import LikeButton from "../newUserContent/styled-components/likeButton";
+//
+// import {
+//     EmailShareButton,
+//     FacebookShareButton,
+//     HatenaShareButton,
+//     InstapaperShareButton,
+//     LineShareButton,
+//     LinkedinShareButton,
+//     LivejournalShareButton,
+//     MailruShareButton,
+//     OKShareButton,
+//     PinterestShareButton,
+//     PocketShareButton,
+//     RedditShareButton,
+//     TelegramShareButton,
+//     TumblrShareButton,
+//     TwitterShareButton,
+//     ViberShareButton,
+//     VKShareButton,
+//     WhatsappShareButton,
+//     WorkplaceShareButton
+// } from "react-share";
+//
+//
+// import {
+//     FacebookShareCount,
+//     HatenaShareCount,
+//     OKShareCount,
+//     PinterestShareCount,
+//     RedditShareCount,
+//     TumblrShareCount,
+//     VKShareCount
+// } from "react-share";
+
+import {
+    // EmailIcon,
+    FacebookIcon,
+    // FacebookMessengerIcon,
+    // HatenaIcon,
+    // InstapaperIcon,
+    // LineIcon,
+    LinkedinIcon,
+    // LivejournalIcon,
+    // MailruIcon,
+    // OKIcon,
+    PinterestIcon,
+    // PocketIcon,
+    RedditIcon,
+    TelegramIcon,
+    // TumblrIcon,
+    TwitterIcon,
+    ViberIcon,
+    VKIcon,
+    // WeiboIcon,
+    WhatsappIcon,
+    // WorkplaceIcon
+} from "react-share";
 
 Modal.setAppElement('#portal');
 
@@ -93,6 +150,8 @@ const Close = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
+    top: 24px;
+    left: 16px;
     @media(max-width: 520px){
       top: 24px;
       left: 16px;
@@ -107,38 +166,57 @@ const Close = styled.button`
 const ShareModal = ({isOpen, closeModal}) => {
 
     return (
-            <Modal
-                closeTimeoutMS={200}
-                isOpen={isOpen}
-                onRequestClose={closeModal}
-                className='sharing'
-            >
-                  <ComponentContainer>
-                      <Close onClick={closeModal}><img src={close} alt="close"/></Close>
-                      <TextContainer>
-                          <Title>
-                              Link copied!
-                          </Title>
-                          <Description>
-                              Fast share:
-                          </Description>
-                      </TextContainer>
-                      <Content>
-                          <Items/>
-                          <Items/>
-                          <Items/>
-                          <Items/>
-                          <Items/>
-                          <Items/>
-                          <Items/>
-                          <Items/>
-                          <Items/>
-                      </Content>
-                      <TimeOutText>
-                          This screen will close in: 10s
-                      </TimeOutText>
-                  </ComponentContainer>
-            </Modal>
+        <Modal
+            closeTimeoutMS={200}
+            isOpen={isOpen}
+            onRequestClose={closeModal}
+            className='sharing'
+        >
+            <ComponentContainer>
+                <Close onClick={closeModal}><img src={close} alt="close"/></Close>
+                <TextContainer>
+                    <Title>
+                        Link copied!
+                    </Title>
+                    <Description>
+                        Fast share:
+                    </Description>
+                </TextContainer>
+                <Content>
+
+                    <Items style={{backgroundColor: "#3b5998"}}>
+                        <FacebookIcon size={"100%"} round={false}/>
+                    </Items>
+                    <Items style={{backgroundColor: "#25D366"}}>
+                        <WhatsappIcon size={"100%"} round={false}/>
+                    </Items>
+                    <Items style={{backgroundColor: "#007fb1"}}>
+                        <LinkedinIcon size={"100%"} round={false}/>
+                    </Items>
+                    <Items style={{backgroundColor: "#cb2128"}}>
+                        <PinterestIcon size={"100%"} round={false}/>
+                    </Items>
+                    <Items style={{backgroundColor: "#ff4500"}}>
+                        <RedditIcon size={"100%"} round={false}/>
+                    </Items>
+                    <Items style={{backgroundColor: "#37aee2"}}>
+                        <TelegramIcon size={"100%"} round={false}/>
+                    </Items>
+                    <Items style={{backgroundColor: "#00aced"}}>
+                        <TwitterIcon size={"100%"} round={false}/>
+                    </Items>
+                    <Items style={{backgroundColor: "#45668e"}}>
+                        <VKIcon size={"100%"} round={false}/>
+                    </Items>
+                    <Items style={{backgroundColor: "#7C529E"}}>
+                        <ViberIcon size={"100%"} round={false}/>
+                    </Items>
+                </Content>
+                <TimeOutText>
+                    This screen will close in: 10s
+                </TimeOutText>
+            </ComponentContainer>
+        </Modal>
     )
 }
 
