@@ -67,6 +67,7 @@ const ComponentContainer = styled.div`
     }
     
     .add-btn {
+      max-width: 147px;  
       background: none; 
       outline: none;
       border: none;
@@ -74,17 +75,15 @@ const ComponentContainer = styled.div`
       bottom: 16px;
       left: 0;
       right: 0;
+      padding: 8px 16px;
+      background-image: linear-gradient(rgba(0, 0, 0, 0.61) 0%, rgba(0, 0, 0, 0.61) 100%);
+      color: #EAEAEA;
+      font-size: 18px;
+      border-radius: 26px;
+      border: 0.75px solid #000;
       margin: 0 auto;
-      
-      div {
-        padding: 8px 16px;
-        background-image: linear-gradient(rgba(0, 0, 0, 0.61) 0%, rgba(0, 0, 0, 0.61) 100%);
-        color: #EAEAEA;
-        font-size: 18px;
-        border-radius: 26px;
-        border: 0.75px solid #000;
 
-      }  
+
     }
     
     .close-btn {
@@ -119,9 +118,9 @@ const EditUserDescription = ({isOpen, closeModal, userDescription, setUserDescri
                           value={`${userDescription}`}
                           onChange={(e) => setUserDescription(e.currentTarget.value)}
                       />
-                      <button className='add-btn' onClick={() => closeModal()}>
-                          <div>Finish Editing</div>
-                      </button>
+                      <div className='add-btn' onClick={() => closeModal()}>
+                          Finish Editing
+                      </div>
                   </ComponentContainer>
             </Modal>
     )

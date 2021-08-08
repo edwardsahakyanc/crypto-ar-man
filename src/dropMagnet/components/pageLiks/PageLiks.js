@@ -21,9 +21,9 @@ const PageLiks = styled.div`
   left: 0;
   right: 0;
   bottom: 32px;
-  z-index: 10;
+  z-index: 100!important;
   margin: 0 auto;
-  -webkit-transform: translateZ(10px);
+  -webkit-transform: translateZ(10px)!important;
   
   &.light {
     background-image: linear-gradient(rgb(247, 247, 247), rgb(247, 247, 247));

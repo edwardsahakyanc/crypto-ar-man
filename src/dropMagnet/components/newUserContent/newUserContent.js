@@ -22,7 +22,7 @@ import ShareIcon from "../../assets/share-icon.svg";
 import BlurModal from "../editNameModal/editNameModal";
 import PortaledComponent from "../portaledComponent";
 import FileMenu from "../../../myGallery/fileMenu/fileMenu";
-import PageLiksComponent from "../pageLiks/PageLiks";
+// import PageLiksComponent from "../pageLiks/PageLiks";
 import ShareModal from "../sharingIconsModal";
 import EditUserDescription from "../editUserDescriptionModal";
 import FeaturedContent from "../FeaturedContentModal";
@@ -354,7 +354,7 @@ const Separator = styled.div`
 
 const HeaderIcon = styled.div`
     position: fixed;
-    z-index: 15;
+    z-index: 1;
     left: 16px;
     top: 68px;
 `;
@@ -516,7 +516,7 @@ const NewUserContent = (props) => {
                             imageUpdateModalToggle={imageUpdateModalToggle}
                           />
                 }
-                <PageLiksComponent darkTheme={darkTheme} props={props} userComponentStyles='user-component-styles'/>
+
             </GreyBack>
             <PortaledComponent
                 modal={

@@ -8,6 +8,7 @@ import Three from "../../components/threeJs/threeJs";
 import VideoPlayer from "../../components/videoPlayer/videoPlayer";
 import Portrait from "../../components/portrait/portrait";
 import Landscape from "../../components/landscape/landscape";
+import PageLiksComponent from "../../components/pageLiks/PageLiks";
 
 
 const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
@@ -77,6 +78,8 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
                     )
                 })
             }
+            {/* props={props}*/}
+            <PageLiksComponent darkTheme={darkTheme} userComponentStyles='user-component-styles'/>
         </article>
     )
 }
