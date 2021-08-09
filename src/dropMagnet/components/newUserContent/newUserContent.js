@@ -69,14 +69,17 @@ const UserHeader = styled.div`
         height: 183px !important;
     }
     @media (max-width: 390px) and (max-height: 666px){
-        height: 150px !important;
+        height: 151px !important;
+    }
+    @media (max-width: 375px) and (max-height: 638px){
+        height: 122px !important;
     }
     @media (max-width: 375px) and (max-height: 633px){
         height: 155px !important;
-    }
-    @media (max-width: 375px) and (max-height: 620px) {
-        display:none !important;
-    }
+    // }
+    // @media (max-width: 375px) and (max-height: 620px) {
+    //     display:none !important;
+    // }
    
 `;
 const UserWrapper = styled.div`
@@ -139,6 +142,13 @@ const UserWrapper = styled.div`
       padding-top: 30px;
     }
     
+    @media (max-width: 390px) and (max-height: 666px){
+       padding-top: 41px;
+    }
+    
+    @media (max-width: 375px) and (max-height: 633px){
+       padding-top: 24px;
+    }        
     
 `;
 const MobileUserWrapper = styled.div`
@@ -154,9 +164,9 @@ const MobileUserWrapper = styled.div`
     @media (max-width: 375px) and (max-height: 700px) {
         display: block;
     }
-    @media (max-width: 350px) and (max-height: 650px) {
-        display: none;
-    }
+    // @media (max-width: 350px) and (max-height: 650px) {
+    //     display: none;
+    // }
 `;
 const MobileUserContent = styled.div`
     display: flex;
@@ -198,11 +208,11 @@ const UserImage = styled.div`
         height: 87px;
         margin: 3px 11px 0 13px;
     }
-    @media (max-width: 350px) and (max-height: 650px) {
-        width: 36px;
-        height: 36px;
-        margin: 0 19px 0 0;
-    }
+    // @media (max-width: 350px) and (max-height: 650px) {
+    //     width: 36px;
+    //     height: 36px;
+    //     margin: 0 19px 0 0;
+    // }
 `;
 const LikeAndCommentWrapper = styled.div`
     position: absolute;
@@ -307,7 +317,7 @@ const Description = styled.div`
    color: #000000;  
   }
   @media (max-width: 720px) {
-    max-width: 332px
+    max-width: 332px;
   }
 `;
 const GreyBack = styled.div`

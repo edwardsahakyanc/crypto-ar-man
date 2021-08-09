@@ -46,6 +46,10 @@ const PageLiks = styled.div`
     color: linear-gradient(to right, #d600ff 0%, #6600ff 100%);
   }
   
+  @media screen and (max-height: 666px) {
+    bottom: 20px;
+  }
+  
 `;
 
 const Tab = styled.p`

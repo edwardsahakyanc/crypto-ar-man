@@ -13,10 +13,8 @@ import LikeButton from "../newUserContent/styled-components/likeButton";
 const GalleryWrapper = styled.div`
     width: 100%;
     height: 100%;
+    max-height: 100%;
     position:relative;
-    display:flex;
-    align-items: center;
-    justify-content: center;
      @media(max-height: 550px){
       // align-items: stretch;
     }
@@ -25,13 +23,17 @@ const GalleryContent = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
-    align-items: center;
     font-weight: 700;
-    max-width: 600px;
     width: 100%;
     margin: 0 auto;
-    height: auto;
-    justify-content: center;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-60%);
+     -moz-transform: translate(-50%,-60%);
+      -ms-transform: translate(-50%,-60%);
+       -o-transform: translate(-50%,-60%);
+          transform: translate(-50%,-60%);
 `;
 const ImgWrapper = styled.div`
     // max-width: 440px;
@@ -109,7 +111,8 @@ const Gallery = (props) => {
                         overlayBgColorEnd={"rgba(0,0,0,.7)"}
                         isZoomed={isZoomed}
                         onZoomChange={handleZoomChange}
-                        zoomMargin={margin}>
+                        zoomMargin={margin}
+                    >
                         <ImgWrapper>
                             <img src={props.imgUrl} alt="gallery"/>
                         </ImgWrapper>

@@ -8,26 +8,40 @@ Modal.setAppElement('#portal');
 const ComponentContainer = styled.div`
     width: 100%;
     height: 100%;
-    max-height: 100vh;
     align-items: center;
     background: none;
     position: fixed;
     z-index: 1200;
     text-align: center;
     color: #ffffff;
-    font-weight: 400;    
+    font-weight: 400;
 `;
 
 const Content = styled.div`
     .content {
       background-color: transparent;
       position: relative;
+      
+      display: grid;
+      grid-template-rows: 210px 248px 9px auto;
+      height: 100vh;
+      
+      @media screen  and (max-width: 720px) {
+        grid-template-rows: 210px 216px 9px auto;
+      }
+      
+      @media screen  and (max-width: 414px) {
+        grid-template-rows: 183px 216px 9px auto;
+      }
+      
+      @media screen  and (max-height: 666px) {
+        grid-template-rows: 151px 221px 9px auto;
+      }
     }
     
 `;
 
 const HeaderImage = styled.div`
-   height: 183px;
    backdrop-filter: blur(10px);
    background-image: linear-gradient(rgba(45, 45, 45, 0.67), rgba(45, 45, 45, 0.67));
    display: flex;
@@ -39,11 +53,11 @@ const HeaderImage = styled.div`
         padding: 0;
         right: 16px;
         top: 16px;
-      }  
+   }
+     
 `;
 
 const MiddleImage = styled.div`
-   height: 215px;
    background-color: rgb(26, 26, 26);
    box-shadow: 0 -7px 10px rgba(28, 28, 28, 0.33);
    display: flex;
@@ -58,7 +72,6 @@ const Separator = styled.div`
 `;
 
 const FooterImage = styled.div`
-   height: 316px;
    background-color: rgb(41, 41, 41);
    display: flex;
    align-items: center;
