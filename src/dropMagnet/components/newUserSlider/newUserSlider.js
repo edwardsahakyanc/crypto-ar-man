@@ -349,7 +349,7 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                     }}
                 >
                     <SliderPrev ref={navigationPrevRef}/>
-                    <SwiperSlide key={1} onClick={(e) => e.view.document.querySelector('.scroller').style.position = 'fixed'}>
+                    <SwiperSlide key={1}>
                         <SliderWrapp>
                                 <ContectGreySection content='My latest movie “Beautiful Blue Eyes”'
                                                     styles={`${darkTheme && 'light'}`}/>
