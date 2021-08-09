@@ -20,19 +20,21 @@ const CardWrapper = styled.div`
    align-items:center;
    justify-content:center;
    width:100%;
-   height:414px;
+   height:425px;
 
-  //  @media(max-width: 500px) {
-  //   height: 300px;
-  // }
+   @media(max-width: 425px) {
+    height: initial;
+    padding-top: 100%;
+    position: relative;
+  }
 `;
 const Card = styled.div`
   // border-radius: 10px;
   overflow:hidden;
   box-shadow: 0 1px 5px #00000099;
-  // width: 300px;
   width: 100%;
-  height: 400px;
+  height: 425px;
+  max-width: 425px;
   background-image: url(${cardImg});
   background-size: cover;
   background-repeat: no-repeat;
@@ -42,10 +44,11 @@ const Card = styled.div`
   transition-property: transform, box-shadow;
   transition-timing-function: ease-out;
   transform: rotate3d(0,0,0,0deg);
-  // @media(max-width: 500px) {
-  //   width: 210px;
-  //   height: 300px;
-  // }
+  @media(max-width: 425px) {
+    width: 100%;
+    height: 100%;
+    top: 0;
+  }
   &:hover{
   transition-duration: 150ms;
   box-shadow: 0 5px 20px 5px #00000044;
@@ -69,7 +72,7 @@ const GalleryButtonWrapper = styled.div`
     display:flex;
     align-items:center;
     justify-content: center;
-    margin-top: 70px;
+    margin-top: 16px;
     
     .button{
         // width: 51px;
