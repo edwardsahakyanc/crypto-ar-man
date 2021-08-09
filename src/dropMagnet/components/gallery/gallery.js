@@ -15,6 +15,8 @@ const GalleryWrapper = styled.div`
     height: 100%;
     max-height: 100%;
     position:relative;
+    display: flex;
+    
      @media(max-height: 550px){
       // align-items: stretch;
     }
@@ -23,17 +25,31 @@ const GalleryContent = styled.div`
     box-sizing: border-box;
     display: flex;
     flex-flow: column;
+    align-items: center;
+    justify-content: center;
     font-weight: 700;
     width: 100%;
     margin: 0 auto;
     position: absolute;
+    margin: 0 auto;
     top: 50%;
     left: 50%;
-    -webkit-transform: translate(-50%,-60%);
-     -moz-transform: translate(-50%,-60%);
-      -ms-transform: translate(-50%,-60%);
-       -o-transform: translate(-50%,-60%);
+    -webkit-transform: translate(-50%,-50%);
+     -moz-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+       -o-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+          
+    &.safari {
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%,-60%);
+       -moz-transform: translate(-50%,-60%);
+        -ms-transform: translate(-50%,-60%);
+         -o-transform: translate(-50%,-60%);
           transform: translate(-50%,-60%);
+          border: 2px solid #fff;
+    }      
 `;
 const ImgWrapper = styled.div`
     // max-width: 440px;
@@ -93,6 +109,8 @@ const Gallery = (props) => {
         }
     })
 
+    const isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification))
+
     const closeModal = (e) => {
         e.view.document.querySelector('article').style.overflowY = 'auto'
         setIsOpen(false)
@@ -102,11 +120,11 @@ const Gallery = (props) => {
         e.view.document.querySelector('article').style.overflowY = 'hidden'
         setIsOpen(true)
     }
-
+    console.log(isSafari, 'safari true')
     return (
         <>
             <GalleryWrapper >
-                <GalleryContent>
+                <GalleryContent className={isSafari && 'safari'}>
                     <ControlledZoom
                         overlayBgColorEnd={"rgba(0,0,0,.7)"}
                         isZoomed={isZoomed}
