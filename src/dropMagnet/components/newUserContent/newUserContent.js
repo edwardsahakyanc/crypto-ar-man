@@ -423,8 +423,9 @@ const NewUserContent = (props) => {
             <UserHeader>
                 <HeaderIcon onClick={(e) => {
                     let scroll = editedActive === false ? 'hidden' : 'scroll';
-                    e.view.document.querySelector('.scroller').style.overflowY = scroll
-                    setEditedActive(!editedActive)
+                    e.view.document.querySelector('.scroller').style.overflowY = scroll;
+                    e.view.document.querySelector('.scroller').style.position = 'fixed';
+                    setEditedActive(!editedActive);
                     e.preventDefault();
 
                 }}>

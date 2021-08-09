@@ -432,8 +432,6 @@ const FeaturedContent = ({isOpen, closeModal}) => {
 
     const [addButtonModalToggle, setAddButtonModalToggle] = useState(false);
 
-
-
     const handleCloseModal = () => {
         setAddButtonModalToggle(false);
         setAddMediaModalToggle(false);
