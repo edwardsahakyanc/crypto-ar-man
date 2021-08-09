@@ -275,7 +275,6 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
 
     const [rowCurrentCount, setRowCurrentCount] = useState(2)
     const [screenCurrentHeight, setScreenCurrentHeight] = useState(null)
-    console.log(screenCurrentHeight)
     useEffect(() => {
         setScreenCurrentHeight(document.body.clientHeight)
     }, [])

@@ -48,7 +48,6 @@ const GalleryContent = styled.div`
         -ms-transform: translate(-50%,-60%);
          -o-transform: translate(-50%,-60%);
           transform: translate(-50%,-60%);
-          border: 2px solid #fff;
     }      
 `;
 const ImgWrapper = styled.div`
@@ -109,7 +108,9 @@ const Gallery = (props) => {
         }
     })
 
-    const isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification))
+    // const isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification))
+
+    const iOS = !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     const closeModal = (e) => {
         e.view.document.querySelector('article').style.overflowY = 'auto'
@@ -120,11 +121,11 @@ const Gallery = (props) => {
         e.view.document.querySelector('article').style.overflowY = 'hidden'
         setIsOpen(true)
     }
-    console.log(isSafari, 'safari true')
+
     return (
         <>
             <GalleryWrapper >
-                <GalleryContent className={isSafari && 'safari'}>
+                <GalleryContent className={iOS && 'safari'}>
                     <ControlledZoom
                         overlayBgColorEnd={"rgba(0,0,0,.7)"}
                         isZoomed={isZoomed}
