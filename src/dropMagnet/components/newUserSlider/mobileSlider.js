@@ -192,7 +192,7 @@ const MobileSlider = ({darkTheme, editedActive, setFeaturedContentModal, feature
                 >
                     <SliderPrev ref={navigationPrevRef}/>
                     <div>
-                        <SwiperSlide key={1} onClick={(e) => e.view.document.querySelector('.scroller').style.position = 'fixed'}>
+                        <SwiperSlide key={1} onClick={(e) => console.log(e.view.document)}>
                             <SliderWrapp>
 
                                 <ContectGreySection content='My latest movie “Beautiful Blue Eyes”'
