@@ -13,18 +13,38 @@ const PlayerWrapper = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
+    position: relative;
 `;
 const ReactPlayerWrapper = styled.div`
     max-width: 640px;
     // max-height: 360px;
     width: 100%;
     // height: calc(100vw/1.8);
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+     -moz-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+       -o-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+          
+    &.safari {
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%,-60%);
+       -moz-transform: translate(-50%,-60%);
+        -ms-transform: translate(-50%,-60%);
+         -o-transform: translate(-50%,-60%);
+          transform: translate(-50%,-60%);
+    }      
 `;
 const GalleryButtonWrapper = styled.div`
     display:flex;
     align-items:center;
     justify-content: center;
     margin-top:25px;
+    margin-bottom: 50px;
     .button{
         // width: 51px;
         // height: 51px;
@@ -49,7 +69,7 @@ const GalleryButtonWrapper = styled.div`
     }
 `;
 
-const VideoPlayer = () => {
+const VideoPlayer = ({iOS}) => {
     const [overlay, setOverlay] = useState(false);
 
     const closeOverlay = () => {
@@ -62,26 +82,28 @@ const VideoPlayer = () => {
     return (
         <>
             <PlayerWrapper>
-                <ReactPlayerWrapper>
+                <ReactPlayerWrapper className={iOS && 'safari'}>
                     <ReactPlayer
                         url='https://www.youtube.com/watch?v=MzI_CIYSsfQ'
                         controls={true}
                         width='100%'
                         height='414px'
                     />
+
+                    <GalleryButtonWrapper>
+
+                        {/*<button>*/}
+                        {/*    <img src={share} alt="share"/>*/}
+                        {/*</button>*/}
+
+                        <LikeButton galleryStyle='gallery-style'/>
+
+                        <div onClick={openOverlay} className='button'>
+                            <img src={dots} alt="dots"/>
+                        </div>
+                    </GalleryButtonWrapper>
                 </ReactPlayerWrapper>
-                <GalleryButtonWrapper>
 
-                    {/*<button>*/}
-                    {/*    <img src={share} alt="share"/>*/}
-                    {/*</button>*/}
-
-                    <LikeButton galleryStyle='gallery-style'/>
-
-                    <div onClick={openOverlay} className='button'>
-                        <img src={dots} alt="dots"/>
-                    </div>
-                </GalleryButtonWrapper>
             </PlayerWrapper>
             <GalleryModal isOpen={overlay} closeModal={closeOverlay}/>
         </>

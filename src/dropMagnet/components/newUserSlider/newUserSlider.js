@@ -296,9 +296,6 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
 
     const setRowCountHandler = () => (document.body.clientHeight >= 975 && document.body.clientWidth < 1200 && document.body.clientWidth > 810) || (document.body.clientHeight >= 945 && document.body.clientWidth >= 1200) ? setRowCurrentCount(2) : setRowCurrentCount(1);
 
-
-    // console.log(rowCurrentCount)
-
     return (
         <Wrapp>
             <div className={`${editedActive}`} onClick={() => setFeaturedContentModal(true)}/>

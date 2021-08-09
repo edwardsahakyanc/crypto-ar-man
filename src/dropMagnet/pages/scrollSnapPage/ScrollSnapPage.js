@@ -18,6 +18,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
     const firstSlide = useMemo(() => ({id: 1, imgUrl: galleryImage, backgroundColor: "#292929", price: "100"}), []);
     const [filteredData, setFilteredData] = useState([]);
 
+    const iOS = !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
     // useEffect(() => {
     //
     // },[data])
@@ -30,11 +31,11 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
         },
         {
             id: 2,
-            content: <section ref={galleryRef}><Gallery {...firstSlide}/></section>
+            content: <section ref={galleryRef}><Gallery {...firstSlide} iOS={iOS}/></section>
         },
         {
             id: 3,
-            content: <section><HoveredCard/></section>
+            content: <section><HoveredCard iOS={iOS} /></section>
         },
         {
             id: 4,
@@ -42,7 +43,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
         },
         {
             id: 5,
-            content: <section><VideoPlayer/></section>
+            content: <section><VideoPlayer iOS={iOS} /></section>
         },
         {
             id: 6,
@@ -52,7 +53,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
             id: 7,
             content: <section><Landscape/></section>
         }
-    ],[darkTheme,changeSlide, firstSlide]);
+    ],[darkTheme,changeSlide, firstSlide, iOS]);
     useEffect(() => {
         const sortOrder = data.map(e => +e.id);
         const sortedArr = [];

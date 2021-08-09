@@ -62,13 +62,14 @@ const Card = styled.div`
   top: 0;
   background-image: radial-gradient(circle at 50% -20%, #ffffff22, #0000000f);
   }
+  
 `;
 
 const GalleryButtonWrapper = styled.div`
     display:flex;
     align-items:center;
     justify-content: center;
-    margin-top: 20px;
+    margin-top: 70px;
     
     .button{
         // width: 51px;

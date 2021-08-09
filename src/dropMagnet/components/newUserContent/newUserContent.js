@@ -422,6 +422,8 @@ const NewUserContent = (props) => {
         <UserContentWrapper className={darkTheme ? 'light' : ''}>
             <UserHeader>
                 <HeaderIcon onClick={(e) => {
+                    let scroll = editedActive === false ? 'hidden' : 'scroll';
+                    e.view.document.querySelector('.scroller').style.overflowY = scroll
                     setEditedActive(!editedActive)
                     e.preventDefault();
 

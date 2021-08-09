@@ -59,10 +59,15 @@ const ImgWrapper = styled.div`
     // height: 40vw;
     // border-radius: 15px;
     overflow: hidden;
-    height: 414px;
+    position: relative;
+    width: 100%;
+    padding-top: 100%;
+    // height: 414px;
     // margin-top: 139px;
     
     img{
+    position: absolute;
+    top: 0;
     width:100%;
     height:100%;
     object-fit: cover;
@@ -93,6 +98,7 @@ const GalleryButtonWrapper = styled.div`
 `
 
 const Gallery = (props) => {
+    const {iOS} = props;
     const [isZoomed, setIsZoomed] = useState(false);
     const [margin, setMargin] = useState(70);
     const [isOpen, setIsOpen] = useState(false);
@@ -109,8 +115,6 @@ const Gallery = (props) => {
     })
 
     // const isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === "[object SafariRemoteNotification]"; })(!window['safari'] || (typeof safari !== 'undefined' && window['safari'].pushNotification))
-
-    const iOS = !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
 
     const closeModal = (e) => {
         e.view.document.querySelector('article').style.overflowY = 'auto'
