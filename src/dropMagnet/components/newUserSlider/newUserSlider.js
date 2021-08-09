@@ -274,16 +274,17 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
     const navigationNextRef = React.useRef(null)
 
     const [rowCurrentCount, setRowCurrentCount] = useState(2)
-    const [screenCurrentHeight, setScreenCurrentHeight] = useState(null)
+    // const [screenCurrentHeight, setScreenCurrentHeight] = useState(null)
+    // console.log(screenCurrentHeight)
     useEffect(() => {
-        setScreenCurrentHeight(document.body.clientHeight)
+        // setScreenCurrentHeight(document.body.clientHeight)
     }, [])
 
     useEffect(() => {
-        const setScreenSizeUpdate = () => setScreenCurrentHeight(document.body.clientHeight);
+        // const setScreenSizeUpdate = () => setScreenCurrentHeight(document.body.clientHeight);
         setRowCountHandler()
         window.addEventListener("resize", () => {
-            setScreenSizeUpdate()
+            // setScreenSizeUpdate()
             setRowCountHandler(document.body.clientHeight)
         });
         return () => {
