@@ -6,14 +6,32 @@ import GalleryModal from "../galleryModal";
 import LikeButton from "../newUserContent/styled-components/likeButton";
 
 const SlideWrapper = styled.div`
-   position: relative;
+   position: absolute;
+   
    width:100%;
-   height:100vh;
+   // height:100vh;
    perspective: 1500px;
    display:flex;
    flex-direction: column;
    align-items:center;
    justify-content:center;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%,-50%);
+     -moz-transform: translate(-50%,-50%);
+      -ms-transform: translate(-50%,-50%);
+       -o-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
+          
+    &.safari {
+      top: 50%;
+      left: 50%;
+      -webkit-transform: translate(-50%,-60%);
+       -moz-transform: translate(-50%,-60%);
+        -ms-transform: translate(-50%,-60%);
+         -o-transform: translate(-50%,-60%);
+          transform: translate(-50%,-60%);
+    }   
 `;
 const CardWrapper = styled.div`
    display:flex;
@@ -97,7 +115,7 @@ const GalleryButtonWrapper = styled.div`
     }
 `
 
-const HoveredCard = () => {
+const HoveredCard = ({iOS}) => {
     const cardRef = useRef();
     const [center, setCenter] = useState({x: 0, y: 0, distance: 0});
     const [scale, setScale] = useState({x: 1, y: 1, z: 1});
@@ -134,8 +152,8 @@ const HoveredCard = () => {
     }
 
     return (
-        <>
-            <SlideWrapper>
+        <div className="slider-container">
+            <SlideWrapper className={iOS && 'safari'}>
                 <CardWrapper>
                     <Card
                         ref={cardRef}
@@ -163,7 +181,7 @@ const HoveredCard = () => {
                 </GalleryButtonWrapper>
             </SlideWrapper>
             <GalleryModal isOpen={isOpen} closeModal={closeModal}/>
-        </>
+        </div>
     )
 }
 

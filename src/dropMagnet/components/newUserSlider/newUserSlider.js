@@ -297,8 +297,8 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
     const setRowCountHandler = () => (document.body.clientHeight >= 975 && document.body.clientWidth < 1200 && document.body.clientWidth > 810) || (document.body.clientHeight >= 945 && document.body.clientWidth >= 1200) ? setRowCurrentCount(2) : setRowCurrentCount(1);
 
     return (
-        <Wrapp>
-            <div className={`${editedActive}`} onClick={() => setFeaturedContentModal(true)}/>
+        <Wrapp className="fade-in">
+            <div className={`${editedActive}`} onClick={(e) => setFeaturedContentModal(true)}/>
             <div className='desktop-swiper' style={{pointerEvents: editedActive && 'none'}}>
                 <Swiper
                     // slidesPerColumn={rowCurrentCount}
@@ -349,7 +349,7 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
                     }}
                 >
                     <SliderPrev ref={navigationPrevRef}/>
-                    <SwiperSlide key={1}>
+                    <SwiperSlide key={1} onClick={(e) => e.view.document.querySelector('.scroller').style.position = 'fixed'}>
                         <SliderWrapp>
                                 <ContectGreySection content='My latest movie “Beautiful Blue Eyes”'
                                                     styles={`${darkTheme && 'light'}`}/>
