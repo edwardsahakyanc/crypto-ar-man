@@ -29,6 +29,7 @@ const ComponentContainer = styled.div`
     width: 100%;
     height: 100%;
     max-height: 100vh;
+    min-height: 90px;
     align-items: center;
     background-color: #292929;
     backdrop-filter: blur(10px);
@@ -37,6 +38,11 @@ const ComponentContainer = styled.div`
     text-align: center;
     color: #ffffff;
     font-weight: 400;
+    padding: 0 7px;
+    
+    @media screen and (max-width: 360px) {
+      padding: 0;
+    }
     
     .add-btn {
       background: none; 
@@ -351,13 +357,24 @@ const SlideCard = styled.div`
    font-weight: 400;
    color: #EAEAEA;
    width: 100%;
-   display: flex;
-   flex-direction: column;
-   align-items: center;
-   padding-bottom: 16px;
    max-width: 400px;
    margin: 0 auto;
    margin-bottom: 16px;
+   min-height: 60px;
+   padding: 0 8px;
+   
+   .content {
+      width: 100%;
+      max-width: 342px;
+      background-color: #3c3c3c;
+      padding: 16px 0;
+      border-radius: 16px;
+      margin: 0 auto;
+   }
+   
+   .title {
+        margin-top: 16px;
+      }
 `;
 //
 // const initial = Array.from({ length: 10 }, (v, k) => k).map(k => {
@@ -381,7 +398,7 @@ const QuoteItem = styled.div`
   
 `;
 
-function Quote({ quote, index }) {
+function Quote({quote, index}) {
     const [activeSlide, setActiveSlide] = useState(0);
     console.log(setActiveSlide)
     return (
@@ -392,33 +409,39 @@ function Quote({ quote, index }) {
                     {...provided.draggableProps}
                     {...provided.dragHandleProps}
                 >
-                                <SlideCard key={quote.id}>
-                                    <div>{quote.title}</div>
 
-                                    {
-                                        activeSlide === quote.id && quote.description &&
-                                        <div className='description'>{quote.description}</div>
-                                    }
 
-                                    {activeSlide !== quote.id && quote.elementText && quote.elementText.map(text =>
-                                        <ContectGreySection key={text} content={text}/>)}
-                                    <SocialMediaLinks>
-                                        {
-                                            quote.socialMediaIcons && quote.socialMediaIcons.map(img => <CircleIcon
-                                                key={img}
-                                                imgUrl={img} alt={"icon"} className='social-media'/>)
-                                        }
-                                    </SocialMediaLinks>
-                                </SlideCard>
+
+                    <div className='content' key={quote.id}>
+
+                            {
+                                activeSlide === quote.id && quote.description &&
+                                <div className='description'>{quote.description}</div>
+                            }
+
+                            {activeSlide !== quote.id && quote.elementText && quote.elementText.map(text =>
+                                <ContectGreySection key={text} content={text}/>)}
+                            <SocialMediaLinks>
+                                {
+                                    quote.socialMediaIcons && quote.socialMediaIcons.map(img => <CircleIcon
+                                        key={img}
+                                        imgUrl={img} alt={"icon"} className='social-media'/>)
+                                }
+                            </SocialMediaLinks>
+                        </div>
+
                 </QuoteItem>
             )}
         </Draggable>
     );
 }
 
-const QuoteList = React.memo(function QuoteList({ quotes }) {
+const QuoteList = React.memo(function QuoteList({quotes}) {
     return quotes.map((quote, index) => (
-        <Quote quote={quote} index={index} key={quote.id}/>
+        <SlideCard>
+            <div className='title'>{quote.title}</div>
+            <Quote quote={quote} index={index} key={quote.id}/>
+        </SlideCard>
     ));
 });
 
@@ -481,7 +504,7 @@ const FeaturedContent = ({isOpen, closeModal}) => {
         },
     ]);
     // const [dropped, setDropped] = useState(false);
-    const [state, setState] = useState({ quotes: items });
+    const [state, setState] = useState({quotes: items});
     console.log(setItems)
 
     function onDragEnd(result) {
@@ -499,7 +522,7 @@ const FeaturedContent = ({isOpen, closeModal}) => {
             result.destination.index
         );
 
-        setState({ quotes });
+        setState({quotes});
     }
 
     return (
@@ -526,7 +549,6 @@ const FeaturedContent = ({isOpen, closeModal}) => {
                         )}
                     </Droppable>
                 </DragDropContext>
-
 
 
                 <button className='add-btn' onClick={() => {

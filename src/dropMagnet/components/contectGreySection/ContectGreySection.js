@@ -14,16 +14,13 @@ const Element = styled.div`
     text-align: center;
     border-radius: 9px;
     font-family: Azo Sans;
+    font-size: 18px;
     font-weight: 400;
     margin: 0 auto;
     margin-bottom: 16px;
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
-
-    @media(max-width: 370px) {
-      font-size: 16px;
-    }
        
     .nft {
       font-style: italic;

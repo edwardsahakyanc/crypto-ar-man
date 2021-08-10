@@ -106,29 +106,43 @@ const UserWrapper = styled.div`
             &.link {
                 left: calc(50% - 181px);
                 margin: 0;
+                @media (max-width: 375px) {
+                    left: calc(50% - 175px);
+                }
             }
             &.bitcoin {
                 right: calc(50% - 181px);
                 margin: 0;
+                @media (max-width: 375px) {
+                    right: calc(50% - 175px);
+                }
             }
             &.heart {
                 right: calc(50% - 152px);
                 top: -62px;
                 margin: 0;
+                @media (max-width: 375px) {
+                    right: calc(50% - 151px);
+                    top: -60px
+                }
             }
             &.message {
                 left: calc(50% - 152px);
                 top: -62px;
                 margin: 0;
+                @media (max-width: 375px) {
+                    left: calc(50% - 151px);
+                    top: -60px
+                }
              }
            
                
       }
     }
     
-    @media (max-width: 375px) and (max-height: 700px) {
-     display: none;
-    }
+    // @media (max-width: 375px) and (max-height: 700px) {
+    //  display: none;
+    // }
     //
     // @media (min-width: 320px) and (max-width: 720px){
     //   padding: 32px 0 16px;
@@ -151,28 +165,28 @@ const UserWrapper = styled.div`
     }        
     
 `;
-const MobileUserWrapper = styled.div`
-    display: none;
-    background-color: #1a1a1a;
-    padding-bottom: 12px;
-    
-    &.light {
-      background-color: #FCFCFC;
-      box-shadow: 0 -10px 10px rgba(0 0 0 / 16%); 
-    }
-    
-    @media (max-width: 375px) and (max-height: 700px) {
-        display: block;
-    }
-    // @media (max-width: 350px) and (max-height: 650px) {
-    //     display: none;
-    // }
-`;
-const MobileUserContent = styled.div`
-    display: flex;
-    position: relative;
-    padding-top: 64px;
-`;
+// const MobileUserWrapper = styled.div`
+//     display: none;
+//     background-color: #1a1a1a;
+//     padding-bottom: 12px;
+//
+//     &.light {
+//       background-color: #FCFCFC;
+//       box-shadow: 0 -10px 10px rgba(0 0 0 / 16%);
+//     }
+//
+//     @media (max-width: 375px) and (max-height: 700px) {
+//         display: block;
+//     }
+//     // @media (max-width: 350px) and (max-height: 650px) {
+//     //     display: none;
+//     // }
+// `;
+// const MobileUserContent = styled.div`
+//     display: flex;
+//     position: relative;
+//     padding-top: 64px;
+// `;
 const SmallDevice = styled.div`
     display: none;
     position: relative;
@@ -204,9 +218,9 @@ const UserImage = styled.div`
     object-fit: contain;
   }
   @media (max-width: 375px) and (max-height: 700px) {
-        width: 87px;
-        height: 87px;
-        margin: 3px 11px 0 13px;
+        width: 155px;
+        height: 155px;
+        margin: 12px 22px 4px;
     }
     // @media (max-width: 350px) and (max-height: 650px) {
     //     width: 36px;
@@ -229,7 +243,7 @@ const UserName = styled.p`
   width: 236px;
   // height: 46px;
   line-height: 24px;
-  padding: 13px 0 9px;
+  padding: 12px 0 8px;
   font-size: 24px;
   display: flex;
   align-items: center;
@@ -422,8 +436,7 @@ const NewUserContent = (props) => {
         <UserContentWrapper className={darkTheme ? 'light' : ''}>
             <UserHeader>
                 <HeaderIcon onClick={(e) => {
-                    let scroll = editedActive === false ? 'hidden' : 'scroll';
-                    e.view.document.querySelector('.scroller').style.overflowY = scroll;
+                    e.view.document.querySelector('.scroller').style.overflowY = editedActive === false ? 'hidden' : 'scroll';
                     e.view.document.querySelector('.scroller').style.position = 'fixed';
                     setEditedActive(!editedActive);
                     e.preventDefault();
@@ -468,28 +481,28 @@ const NewUserContent = (props) => {
                 </Description>
             </UserWrapper>
 
-            <MobileUserWrapper>
-                <MobileUserContent>
-                    <UserImage>
-                        <img src={ProfilePic} alt="profile-pic"/>
-                    </UserImage>
-                    <div>
-                        <UserName onClick={handleOpenModal}>{name}</UserName>
-                        <Row className="items-center justify-between">
-                            <CircleIcon imgUrl={ShareIcon} alt={"icon"}/>
-                            <CircleIcon imgUrl={chat} alt={"icon"}/>
-                            <LikeButton/>
-                            <PayWrapper>pay</PayWrapper>
-                        </Row>
-                    </div>
-                </MobileUserContent>
-                <div>
-                    <Description>
-                        I’m a crypto artist. I’ve been collecting NFTs
-                        since 2017, and I also created Drop Magnet.
-                    </Description>
-                </div>
-            </MobileUserWrapper>
+            {/*<MobileUserWrapper>*/}
+            {/*    <MobileUserContent>*/}
+            {/*        <UserImage>*/}
+            {/*            <img src={ProfilePic} alt="profile-pic"/>*/}
+            {/*        </UserImage>*/}
+            {/*        <div>*/}
+            {/*            <UserName onClick={handleOpenModal}>{name}</UserName>*/}
+            {/*            <Row className="items-center justify-between">*/}
+            {/*                <CircleIcon imgUrl={ShareIcon} alt={"icon"}/>*/}
+            {/*                <CircleIcon imgUrl={chat} alt={"icon"}/>*/}
+            {/*                <LikeButton/>*/}
+            {/*                <PayWrapper>pay</PayWrapper>*/}
+            {/*            </Row>*/}
+            {/*        </div>*/}
+            {/*    </MobileUserContent>*/}
+            {/*    <div>*/}
+            {/*        <Description>*/}
+            {/*            I’m a crypto artist. I’ve been collecting NFTs*/}
+            {/*            since 2017, and I also created Drop Magnet.*/}
+            {/*        </Description>*/}
+            {/*    </div>*/}
+            {/*</MobileUserWrapper>*/}
 
             <SmallDevice>
                 <FileMenu darkTheme={darkTheme} changeSlide={changeSlide}/>

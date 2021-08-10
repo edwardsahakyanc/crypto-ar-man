@@ -26,11 +26,11 @@ const SlideWrapper = styled.div`
     &.safari {
       top: 50%;
       left: 50%;
-      -webkit-transform: translate(-50%,-60%);
-       -moz-transform: translate(-50%,-60%);
-        -ms-transform: translate(-50%,-60%);
-         -o-transform: translate(-50%,-60%);
-          transform: translate(-50%,-60%);
+      -webkit-transform: translate(-50%,-50%);
+       -moz-transform: translate(-50%,-50%);
+        -ms-transform: translate(-50%,-50%);
+         -o-transform: translate(-50%,-50%);
+          transform: translate(-50%,-50%);
     }   
 `;
 const CardWrapper = styled.div`

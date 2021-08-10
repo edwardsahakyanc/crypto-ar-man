@@ -83,6 +83,11 @@ const SliderPrev = styled.div`
        left: calc(50% - 62px);
        bottom: 3px;
      }
+     
+     @media (max-height: 633px) {
+       left: calc(50% - 60px);
+       bottom: -29px;
+     }
 `;
 const SliderNext = styled.div`
      width: 8px;
@@ -98,6 +103,11 @@ const SliderNext = styled.div`
      @media (min-width: 1400px) {
        right: calc(50% - 62px);
        bottom: 3px;
+     }
+     
+     @media (max-height: 633px) {
+       right: calc(50% - 60px);
+       bottom: -29px;
      }
 `;
 

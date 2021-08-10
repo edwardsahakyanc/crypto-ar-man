@@ -58,7 +58,7 @@ const IconWrap = styled.div`
       }
       
    @media (max-width: 375px) {
-      margin: 0 2px;
+      // margin: 0 2px;
    }
     
    @media (max-width: 350px) and (max-height: 650px) {

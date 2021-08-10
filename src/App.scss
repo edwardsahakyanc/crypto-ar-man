@@ -98,6 +98,10 @@ body{
     bottom: -41px!important;
   }
 
+  @media (max-height: 633px) {
+    bottom: -31px!important;
+  }
+
   @media screen and (min-width: 1024px) and (max-width: 1200px) and (min-height: 1024px) {
     bottom: 0 !important;
   }

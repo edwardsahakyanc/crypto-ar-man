@@ -8,7 +8,7 @@ import LikeButton from "../newUserContent/styled-components/likeButton";
 // import ShareModal from "../sharingIconsModal";
 // import share from "../../assets/share.svg"
 
-
+// const size = window.innerHeight;
 
 const GalleryWrapper = styled.div`
     width: 100%;
@@ -43,11 +43,11 @@ const GalleryContent = styled.div`
     &.safari {
       top: 50%;
       left: 50%;
-      -webkit-transform: translate(-50%,-60%);
-       -moz-transform: translate(-50%,-60%);
-        -ms-transform: translate(-50%,-60%);
-         -o-transform: translate(-50%,-60%);
-          transform: translate(-50%,-60%);
+      -webkit-transform: translate(-50%, -50%);
+       -moz-transform: translate(-50%, -50%);
+        -ms-transform: translate(-50%, -50%);
+         -o-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%);
     }      
 `;
 const ImgWrapper = styled.div`

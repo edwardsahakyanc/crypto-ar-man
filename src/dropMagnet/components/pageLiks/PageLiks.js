@@ -50,6 +50,10 @@ const PageLiks = styled.div`
     bottom: 20px;
   }
   
+  @media screen and (max-height: 633px) {
+    bottom: 15px;
+  }
+  
 `;
 
 const Tab = styled.p`
