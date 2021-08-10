@@ -16,6 +16,8 @@ const GalleryWrapper = styled.div`
     max-height: 100%;
     position:relative;
     display: flex;
+    justify-content: center;
+    align-items: center;
     
      @media(max-height: 550px){
       // align-items: stretch;
@@ -30,25 +32,25 @@ const GalleryContent = styled.div`
     font-weight: 700;
     width: 100%;
     margin: 0 auto;
-    position: absolute;
+    // position: absolute;
     margin: 0 auto;
-    top: 50%;
-    left: 50%;
-    -webkit-transform: translate(-50%,-50%);
-     -moz-transform: translate(-50%,-50%);
-      -ms-transform: translate(-50%,-50%);
-       -o-transform: translate(-50%,-50%);
-          transform: translate(-50%,-50%);
+    // top: 50%;
+    // left: 50%;
+    // -webkit-transform: translate(-50%,-50%);
+    //  -moz-transform: translate(-50%,-50%);
+    //   -ms-transform: translate(-50%,-50%);
+    //    -o-transform: translate(-50%,-50%);
+    //       transform: translate(-50%,-50%);
           
-    &.safari {
-      top: 50%;
-      left: 50%;
-      -webkit-transform: translate(-50%, -50%);
-       -moz-transform: translate(-50%, -50%);
-        -ms-transform: translate(-50%, -50%);
-         -o-transform: translate(-50%, -50%);
-          transform: translate(-50%, -50%);
-    }      
+    // &.safari {
+    //   top: 50%;
+    //   left: 50%;
+    //   -webkit-transform: translate(-50%, -50%);
+    //    -moz-transform: translate(-50%, -50%);
+    //     -ms-transform: translate(-50%, -50%);
+    //      -o-transform: translate(-50%, -50%);
+    //       transform: translate(-50%, -50%);
+    // }      
 `;
 const ImgWrapper = styled.div`
     // max-width: 440px;
