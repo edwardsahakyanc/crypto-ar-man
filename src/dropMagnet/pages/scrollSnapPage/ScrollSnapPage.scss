@@ -5,7 +5,7 @@
   -webkit-overflow-scrolling: touch;
   width: 100%;
   overflow-x: hidden;
-  @media (max-height: 829px) and (max-width: 414px) {
+  @media only screen and (min-width: 414px) and (orientation: portrait) {
     height: 719px;
   }
 }
