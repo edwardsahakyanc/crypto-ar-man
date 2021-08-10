@@ -5,9 +5,24 @@
   -webkit-overflow-scrolling: touch;
   width: 100%;
   overflow-x: hidden;
+  //iphone 11 and iphone 11 pro max
   @media only screen and (min-width: 414px) and (orientation: portrait) {
     height: 719px;
   }
+  //iphone 11 pro
+  @media only screen and (min-width: 414px) and (height: 749px) and (orientation: portrait) {
+    height: 635px;
+  }
+  //@media only screen and (min-width: 414px) and (orientation: portrait) {
+  //  height: 719px;
+  //}
+  //@media only screen and (min-width: 414px) and (orientation: portrait) {
+  //  height: 719px;
+  //}
+  //@media only screen and (min-width: 414px) and (orientation: portrait) {
+  //  height: 719px;
+  //}
+
 }
 
 .scroller section {
