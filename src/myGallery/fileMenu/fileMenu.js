@@ -46,7 +46,9 @@ const DropDown = styled.div`
     background: transparent;
     padding: 0;
     margin: 0;
+    width: 100%;
     p{
+      width:100%;
       margin: 0;
       color: #ffffff;
       font-size: 16px;
@@ -55,6 +57,8 @@ const DropDown = styled.div`
       letter-spacing: normal;
       line-height: normal;
       text-align: left;
+      text-overflow: ellipsis;
+      overflow:hidden;
     }
     img{
       transition: transform 200ms ease-in-out;
@@ -199,11 +203,10 @@ const FileMenu = (props) => {
     return (
         <DropDown className={`${darkTheme ? 'light' : ''} ${dropped ? 'dropped' : ''}`} >
             <button className={`${darkTheme ? 'light dropdown-btn' : 'dropdown-btn'}`} onClick={handleOpen}>
-                <p>Me.Link/Alex…</p>
+                <p>Me.link/AlexanderNewton</p>
                 <img src={darkTheme ? blackArrow : arrow} alt="arrow"/>
             </button>
             <div className="dropdown-content">
-                <h2 className="dropdown-header">Me.link/AlexanderNewton</h2>
                 <CardsContent>
                     <DragDropContext onDragEnd={onDragEnd}>
                         <Droppable droppableId="list">
