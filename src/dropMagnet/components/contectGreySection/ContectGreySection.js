@@ -21,6 +21,7 @@ const Element = styled.div`
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis;
+
        
     .nft {
       font-style: italic;
