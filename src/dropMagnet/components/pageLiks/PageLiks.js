@@ -1,6 +1,6 @@
-import React from "react";
+import React, {useState} from "react";
 // import userLogo from "../../assets/profile.svg";
-// import whiteUserLogo from "../../assets/profileWhiteSvg.svg";
+import whiteUserLogo from "../../assets/profileWhiteSvg.svg";
 import userLogo from "../../assets/account (1).svg";
 import styled from "styled-components";
 
@@ -77,6 +77,12 @@ const Tab = styled.p`
       color: #5F5F5F;
     }
     
+    .bg-gradient {
+      background-image: linear-gradient(270deg, #9B00FF 0%, #6600FF 100%);
+      -webkit-background-clip: text;
+      color: transparent;
+    } 
+    
     &.active{
         background: linear-gradient(to right, #d600ff 0%, #6600ff 100%);
         -webkit-background-clip: text;
@@ -90,23 +96,29 @@ const Tab = styled.p`
     }
 `;
 
-const PageLiksComponent = ({darkTheme, props, modalPageStyles, userComponentStyles}) => {
+const PageLiksComponent = ({darkTheme, galleryRef, coverPageRef, modalPageStyles, userComponentStyles}) => {
+
+    const [isNFTActive, setIsNFTActive] = useState(false);
 
     const scrollToCover = () => {
-        props.coverPageRef.current.scrollIntoView();
+        coverPageRef.current.scrollIntoView();
+        setIsNFTActive(false)
         // setActiveTab(1)
     };
     const scrollToGallery = () => {
-        props.galleryRef.current.scrollIntoView();
+        galleryRef.current.scrollIntoView();
+        setIsNFTActive(true)
         // setActiveTab(2)
     };
 
     return (
         <PageLiks className={`${darkTheme ? 'light' : '' } ${modalPageStyles} ${userComponentStyles}`}>
             <Tab className={"active"} onClick={scrollToCover}>
-                <img src={modalPageStyles ? userLogo : userLogo} alt="user logo"/>
+                <img src={isNFTActive ? whiteUserLogo : userLogo} alt="user logo"/>
             </Tab>
-            <Tab className={`${darkTheme ? 'light nft' : 'nft'} ${modalPageStyles}`} onClick={scrollToGallery}>NFTs</Tab>
+            <Tab className={`${darkTheme ? 'light nft' : 'nft'} ${modalPageStyles}`} onClick={scrollToGallery}>
+                <span className={isNFTActive && 'bg-gradient'}>NFTs</span>
+            </Tab>
         </PageLiks>
     );
 }

@@ -65,16 +65,16 @@ const Close = styled.button`
     display: flex;
     align-items: center;
     justify-content: center;
-    @media(max-width: 520px){
-    position: relative;
-    top: 0;
-    left: 10px;
-    margin-bottom: 10px;
-    }
-    img{
+     @media(max-width: 520px){
+      position: relative;
+      top: 0;
+      left: 10px;
+      margin-bottom: 10px;
+     }
+     img{
         width:18px;
         height:18px
-    }
+     }
 `;
 
 const Footer = styled.div`
@@ -123,6 +123,27 @@ const Footer = styled.div`
 // `;
 const Tabs = styled.div`
     // margin: 32px 0;
+    
+    textarea {
+      max-width: 322px;
+      background: none;
+      border: none;
+      outline: none;
+      resize: none;
+      color: #EAEAEA;
+      font-size: 16px;
+      border: none;
+      scrollbar-width: none;
+      width: 100%;
+      overflow-y: auto;
+      box-sizing:border-box;
+      font-size: 18px;
+      font-weight: 400;
+      outline:none !important;
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+    }
 `;
 const TabsHeader = styled.div`
     margin: 0 auto;
@@ -213,6 +234,12 @@ const TabContent = styled.div`
     @media(max-width: 530px) {
       height: 235px;
     }
+    
+    .content {
+      max-width: 342px;
+      display: flex;
+    }
+    
 `;
 const Textarea = styled.textarea`
     width: 100%;
@@ -273,7 +300,7 @@ const CollectWrapper = styled.div`
     }
 `;
 const Collect = styled.div`
-    display:flex;
+    display: flex;
     background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
     border: 0.75px solid #000000;
     justify-content: center;
@@ -282,11 +309,11 @@ const Collect = styled.div`
     border-radius: 7px;
     color: #fff;
     margin-top: 32px;
+    max-width: 322px;
     img{
         width: 14px;
         height: 14px;
-        margin: 6
-        px 11px 0 6px;
+        margin: 5px 0 0 4px;
     }
 `;
 // const Line = styled.div`
@@ -301,30 +328,34 @@ const IconsWrap = styled.div`
     display: flex;
     justify-content: space-between;
     width: 100%;
+    max-width: 322px;
 `;
 
 const TabsWrapper = styled.div`
     padding: 12px 7px;
     background-color: #232323;
     border: 1px solid #232323;
-    display: flex;
-    justify-content: space-between;
+    
+    .content {
+      display: flex;
+      justify-content: space-between;
+      max-width: 322px;
+      margin: 0 auto;    
+    }
 `;
 
 const Tab = styled.div`
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    padding: 5px 0 4px 0;
-    width: 94px;
     border-radius: 11px;
     color: #EAEAEA;
     font-size: 18px;
     font-weight: 500;
-    text-align: center;
-    margin: 0 4px;
     background-image: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
     border: 0.75px solid #000000;
+    width: calc(100% / 4 - 4px);
+    height: 31px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 `;
 
 const GalleryModal = ({isOpen, closeModal}) => {
@@ -391,14 +422,16 @@ const GalleryModal = ({isOpen, closeModal}) => {
                     </Header>
                     <Tabs>
                         <TabContent>
-                            <Textarea style={{minHeight: activeTab !== 1 ? '235px' : '176px'}} name="text" value={tabsInfo[activeTab-1].content} className={`${activeTab === 2 ? 'active' : ''}`} onChange={(e) => handleChange(e.target.value)}/>
+                            <textarea style={{minHeight: activeTab !== 1 ? '235px' : '176px'}} name="text" value={tabsInfo[activeTab-1].content} className={`${activeTab === 2 ? 'active' : ''}`} onChange={(e) => handleChange(e.target.value)}/>
 
                             {activeTab === 1
                                 ? <TabsWrapper>
-                                    <Tab>Trait 1</Tab>
-                                    <Tab>Trait 2</Tab>
-                                    <Tab>Trait 3</Tab>
-                                    <Tab>Trait 4</Tab>
+                                    <div className='content'>
+                                        <Tab>Trait 1</Tab>
+                                        <Tab>Trait 2</Tab>
+                                        <Tab>Trait 3</Tab>
+                                        <Tab>Trait 4</Tab>
+                                    </div>
                                 </TabsWrapper>
 
                                 : null

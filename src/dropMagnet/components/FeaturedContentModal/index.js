@@ -13,6 +13,7 @@ import AddMediaModal from "../addMediaContentModal";
 import AddLinkModal from "../addLinkModal";
 import ContectGreySection from "../contectGreySection/ContectGreySection";
 import {DragDropContext, Droppable, Draggable} from "react-beautiful-dnd";
+import NewMusicPlayer from "../musicPlayer/newMusicPlayer";
 
 Modal.setAppElement('#portal');
 
@@ -30,16 +31,16 @@ const ComponentContainer = styled.div`
     color: #ffffff;
     font-weight: 400;
     padding: 0 7px;
-    
+
     @media screen and (max-width: 360px) {
       padding: 0;
     }
-    
+
     .add-btn {
-      background: none; 
+      background: none;
       outline: none;
       border: none;
-      
+
       div {
         padding: 8px 16px;
         background-image: linear-gradient(rgba(0, 0, 0, 0.61) 0%, rgba(0, 0, 0, 0.61) 100%);
@@ -47,37 +48,37 @@ const ComponentContainer = styled.div`
         font-size: 18px;
         border-radius: 26px;
         border: 0.75px solid #000;
-      }  
+      }
     }
-    
+
     header {
          display: flex;
          align-items: center;
-         justify-content: center; 
+         justify-content: center;
          position: relative;
          margin: 16px 0;
-        
+
       .header-title {
          font-weight: 500;
          margin: 16px 0;
       }
-      
+
       img {
         position: absolute;
         padding: 0;
         right: 16px;
         top: 0;
-      }  
-                
       }
-    
+
+      }
+
     ul {
-     
-     
+
+
     .additional-btn {
        min-width: 110px
     }
-        
+
     .close-btn {
       font-size: 18px;
       padding: 8px 16px;
@@ -106,8 +107,16 @@ const Title = styled.div`
    padding: 11px 0;
    position: relative;
    z-index: 9;
-   top: 13px;      
+   top: 13px;
 `;
+
+const icons = [
+    discord,
+    telegram,
+    openSea,
+    rarible,
+    instagram,
+];
 
 const SocialMediaLinks = styled.div`
     max-width: 342px;
@@ -131,8 +140,8 @@ const SlideCard = styled.div`
    margin: 0 auto;
    margin-bottom: 16px;
    min-height: 60px;
-   padding: 0 8px;
-   
+   padding: 16px 8px 16px 8px;
+
    .content {
       width: 100%;
       max-width: 342px;
@@ -140,69 +149,79 @@ const SlideCard = styled.div`
       padding: 16px 0;
       border-radius: 16px;
       margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
    }
 `;
 
-const reorder = (list, startIndex, endIndex) => {
-    const result = Array.from(list);
-    const [removed] = result.splice(startIndex, 1);
-    result.splice(endIndex, 0, removed);
-
-    return result;
-};
-
-const QuoteItem = styled.div`
-  
+const ContentItem = styled.div`
+    background-color: transparent;
+    margin-bottom: 16px;
 `;
 
-function Quote({quote, index}) {
-    const [activeSlide, setActiveSlide] = useState(0);
-    console.log(setActiveSlide)
-    return (
-        <>
-            <Title className='title'>{quote.title}</Title>
+const AddButton = styled.button`
+  background: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+  border: 0.75px solid #000000;
+  border-radius: 26px;
+  width: 161px;
+  padding: 8px 0;
+  color: #EAEAEA;
+  font-size: 18px;
+  margin-top: 16px;
+`;
 
-            <Draggable draggableId={quote.id} index={index}>
-                {provided => (
-                    <QuoteItem
-                        ref={provided.innerRef}
-                        {...provided.draggableProps}
-                        {...provided.dragHandleProps}
-                    >
-                        <SlideCard>
-                            <div className='content' key={quote.id}>
+const LinksButton = styled.button`
+  background: linear-gradient(180deg, rgba(24,24,24,0.83) 0%, rgba(19,19,19, 0.83) 100%);
+  border: 0.75px solid #000000;
+  border-radius: 26px;
+  width: 110px;
+  padding: 8px 0;
+  color: #EAEAEA;
+  font-size: 18px;
+`;
 
-                                {
-                                    activeSlide === quote.id && quote.description &&
-                                    <div className='description'>{quote.description}</div>
-                                }
+const onDragEnd = (result, columns, setColumns) => {
+    if (!result.destination) return;
+    const { source, destination } = result;
 
-                                {activeSlide !== quote.id && quote.elementText && quote.elementText.map(text =>
-                                    <ContectGreySection key={text} content={text}/>)}
-                                <SocialMediaLinks>
-                                    {
-                                        quote.socialMediaIcons && quote.socialMediaIcons.map(img => <CircleIcon
-                                            key={img}
-                                            imgUrl={img} alt={"icon"} className='social-media'/>)
-                                    }
-                                </SocialMediaLinks>
-                            </div>
-                        </SlideCard>
+    if (source.droppableId !== destination.droppableId) {
+        const sourceColumn = columns[source.droppableId];
+        const destColumn = columns[destination.droppableId];
+        const sourceItems = [...sourceColumn.items];
+        const destItems = [...destColumn.items];
+        const [removed] = sourceItems.splice(source.index, 1);
+        destItems.splice(destination.index, 0, removed);
+        setColumns({
+            ...columns,
+            [source.droppableId]: {
+                ...sourceColumn,
+                items: sourceItems
+            },
+            [destination.droppableId]: {
+                ...destColumn,
+                items: destItems
+            }
+        });
+    } else {
+        const column = columns[source.droppableId];
+        const copiedItems = [...column.items];
+        const [removed] = copiedItems.splice(source.index, 1);
+        copiedItems.splice(destination.index, 0, removed);
+        setColumns({
+            ...columns,
+            [source.droppableId]: {
+                ...column,
+                items: copiedItems
+            }
+        });
+    }
+};
 
-                    </QuoteItem>
-                )}
-            </Draggable>
-        </>
-    );
-}
-
-const QuoteList = React.memo(function QuoteList({quotes}) {
-    return quotes.map((quote, index) => (
-        <Quote quote={quote} index={index} key={quote.id}/>
-    ));
-});
 
 const FeaturedContent = ({isOpen, closeModal}) => {
+
+    const [addContent, setAddContent] = useState(false)
 
     // const [additionalSlider, setAdditionalSlider] = useState(true);
 
@@ -218,70 +237,57 @@ const FeaturedContent = ({isOpen, closeModal}) => {
         setAddLinkModalToggle(false);
     }
 
-    const [items, setItems] = useState([
-
+    const itemsFromBackend = [
         {
-            id: 'id-0',
-            title: 'Slide One',
-            elementText: [
-                'My latest movie “Beautiful Blue Eyes”',
-                <>My special merch for <span className='nft'>NFT</span> holders!</>
-            ],
-            socialMediaIcons: [
-                discord,
-                telegram,
-                openSea,
-                rarible,
-                instagram
-            ]
-
+            id: '9', content: <ContentItem>
+                <ContectGreySection content='some content here'/>
+                <ContectGreySection content='some content 2 here'/>
+                <SocialMediaLinks>
+                    {
+                        icons.map(img => <CircleIcon
+                            key={img}
+                            imgUrl={img} alt={"icon"} className='social-media'/>)
+                    }
+                </SocialMediaLinks>
+            </ContentItem>
         },
+        {id: '8', content: <NewMusicPlayer/>},
+    ];
+
+    const additionalButtons = [
         {
-            id: 'id-1',
-            title: 'Slide Two',
-            elementText: [
-                'My latest movie “Beautiful Blue Eyes”',
-                <>My special merch for <span className='nft'>NFT</span> holders!</>
-            ],
-            socialMediaIcons: [
-                discord,
-                telegram,
-                openSea,
-                rarible,
-                instagram
-            ]
-
-        },
-        {
-            id: 'id-2',
-            title: 'Slide Three',
-            description: 'What shall we add?',
-            addBtn: true,
-            slotText: 'Slide is Empty'
-        },
-    ]);
-    // const [dropped, setDropped] = useState(false);
-    const [state, setState] = useState({quotes: items});
-    console.log(setItems)
-
-    function onDragEnd(result) {
-        if (!result.destination) {
-            return;
+            id: '10',
+            content: <ContentItem>
+                {
+                    !addContent
+                        ? <AddButton><div>Add something</div></AddButton>
+                        : <>
+                            <LinksButton>Links</LinksButton>
+                            {/*<MediaButton>Media</MediaButton>*/}
+                            {/*<Btns>Buttons</Btns>*/}
+                          </>
+                }
+            </ContentItem>
         }
 
-        if (result.destination.index === result.source.index) {
-            return;
-        }
+    ]
 
-        const quotes = reorder(
-            state.quotes,
-            result.source.index,
-            result.destination.index
-        );
+    const columnsFromBackend = {
+        '1': {
+            name: "slide one",
+            items: itemsFromBackend
+        },
+        '2': {
+            name: "slide two",
+            items: additionalButtons
+        },
+        // "3": {
+        //     name: "slide tree",
+        //     items: []
+        // }
+    };
 
-        setState({quotes});
-    }
-
+    const [columns, setColumns] = useState(columnsFromBackend);
     return (
         <Modal
             closeTimeoutMS={200}
@@ -290,6 +296,7 @@ const FeaturedContent = ({isOpen, closeModal}) => {
             className='sharing'
         >
             <ComponentContainer>
+
                 <header className='header-title'>
                     <div>Featured Content</div>
                     <img src={checkIcon} alt="check" onClick={() => {
@@ -297,22 +304,72 @@ const FeaturedContent = ({isOpen, closeModal}) => {
                     }}/>
                 </header>
 
-                <DragDropContext onDragEnd={onDragEnd}>
-                    <Droppable droppableId="list">
-                        {provided => (
-                            <div ref={provided.innerRef} {...provided.droppableProps}>
-                                <QuoteList quotes={state.quotes}/>
+                <DragDropContext
+                    onDragEnd={result => onDragEnd(result, columns, setColumns)}
+                >
+                    {Object.entries(columns).map(([columnId, column], index) => {
+                        return (
+                            <div
+                                style={{
+                                    display: "flex",
+                                    flexDirection: "column",
+                                    alignItems: "center"
+                                }}
+                                key={columnId + addContent}
+                            >
+                                <Title>{column.name}</Title>
+                                <SlideCard>
+                                    <Droppable droppableId={columnId} key={columnId}>
+                                        {(provided, snapshot) => {
+                                            return (
+                                                <div
+                                                    {...provided.droppableProps}
+                                                    ref={provided.innerRef}
+                                                    className='content'
+                                                    style={{
+                                                        // background: snapshot.isDraggingOver
+                                                        //     ? "lightblue"
+                                                        //     : "lightgrey",
+                                                        padding: 4,
+                                                        width: '100%',
+                                                        minHeight: 100
+                                                    }}
+                                                >
+                                                    {column.items.map((item, index) => {
+                                                        return (
+                                                            <Draggable
+                                                                key={item.id}
+                                                                draggableId={item.id}
+                                                                index={index}
+                                                            >
+                                                                {(provided, snapshot) => {
+                                                                    return (
+                                                                        <div
+                                                                            ref={provided.innerRef}
+                                                                            {...provided.draggableProps}
+                                                                            {...provided.dragHandleProps}
+                                                                            style={{
+
+                                                                                ...provided.draggableProps.style
+                                                                            }}
+                                                                        >
+                                                                            {item.content}
+                                                                        </div>
+                                                                    );
+                                                                }}
+                                                            </Draggable>
+                                                        );
+                                                    })}
+                                                    {provided.placeholder}
+                                                </div>
+                                            );
+                                        }}
+                                    </Droppable>
+                                </SlideCard>
                             </div>
-                        )}
-                    </Droppable>
+                        );
+                    })}
                 </DragDropContext>
-
-
-                <button className='add-btn' onClick={() => {
-                    closeModal();
-                }}>
-                    <div>Add slide</div>
-                </button>
             </ComponentContainer>
             <AddLinkModal isOpen={addLinkModalToggle} closeModal={handleCloseModal}/>
             <AddMediaModal isOpen={addMediaModalToggle} closeModal={handleCloseModal}/>

@@ -263,7 +263,7 @@ const Wrapp = styled.div`
     }
 `;
 
-const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
+const UserSlider = ({darkTheme, editedActive, setEditedActive, setFeaturedContentModal}) => {
     const pagination = {
         "clickable": true,
         "renderBullet": (index, className) => {
@@ -286,10 +286,12 @@ const UserSlider = ({darkTheme, editedActive, setFeaturedContentModal}) => {
         window.addEventListener("resize", () => {
             // setScreenSizeUpdate()
             setRowCountHandler(document.body.clientHeight)
+            setEditedActive(false)
         });
         return () => {
             window.removeEventListener('resize', () => {
                 setRowCountHandler(document.body.clientHeight)
+                setEditedActive(false)
             });
         }
     },[])

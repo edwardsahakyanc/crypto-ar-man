@@ -81,7 +81,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
                 })
             }
             {/* props={props}*/}
-            <PageLiksComponent darkTheme={darkTheme} userComponentStyles='user-component-styles'/>
+            <PageLiksComponent darkTheme={darkTheme} galleryRef={galleryRef} coverPageRef={coverPageRef} userComponentStyles='user-component-styles'/>
         </article>
     )
 }
