@@ -25,7 +25,7 @@ const MusicPlayerWrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   @media(max-width: 400px){
-       max-width: 90%;
+       // max-width: 90%;
   }
   @media(max-width: 370px){
        max-width: 85%;

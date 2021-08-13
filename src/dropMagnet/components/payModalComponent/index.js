@@ -17,6 +17,7 @@ const ComponentContainer = styled.div`
     text-align: center;
     color: #ffffff;
     font-weight: 400;
+    padding: 0 16px;
     
     .title {
       color: #fff;
