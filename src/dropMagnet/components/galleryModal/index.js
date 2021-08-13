@@ -241,37 +241,37 @@ const TabContent = styled.div`
     }
     
 `;
-const Textarea = styled.textarea`
-    width: 100%;
-    overflow-y: auto;
-    resize: none;
-    border: none;
-    outline: none !important;
-    // border-radius: 6px;
-    background-color: #000000;
-    padding: 14px 17px;
-    box-sizing:border-box;
-    font-size: 18px;
-    color: #eaeaea;
-    font-weight: 400;
-    font-style: normal;
-    letter-spacing: normal;
-    line-height: normal;
-    text-align: left;
-    font-style: normal;
-    letter-spacing: normal;
-    line-height: normal;
-    outline:none !important;
-    
-    &.active {
-      font-size: 16px;
-    }
-    
-    @media(max-width: 520px){
-    // padding:20px;
-    font-size: 20px;
-    }
-`;
+// const Textarea = styled.textarea`
+//     width: 100%;
+//     overflow-y: auto;
+//     resize: none;
+//     border: none;
+//     outline: none !important;
+//     // border-radius: 6px;
+//     background-color: #000000;
+//     padding: 14px 17px;
+//     box-sizing:border-box;
+//     font-size: 18px;
+//     color: #eaeaea;
+//     font-weight: 400;
+//     font-style: normal;
+//     letter-spacing: normal;
+//     line-height: normal;
+//     text-align: left;
+//     font-style: normal;
+//     letter-spacing: normal;
+//     line-height: normal;
+//     outline:none !important;
+//
+//     &.active {
+//       font-size: 16px;
+//     }
+//
+//     @media(max-width: 520px){
+//     // padding:20px;
+//     font-size: 20px;
+//     }
+// `;
 
 const CollectWrapper = styled.div`
     display: flex;

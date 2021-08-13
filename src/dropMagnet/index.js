@@ -48,10 +48,10 @@ const DropMagnet = () => {
 
 			<Route path="/drop-magnet/artgallery.link/verticaly">
 				<HeaderTop>
-					<FileMenu changeSlide={changeSlide}/>
+					<FileMenu changeSlide={changeSlide} darkTheme={darkTheme}/>
 				</HeaderTop>
 
-				<ScrollSnapPage darkTheme={darkTheme} changeSlide={changeSlide} data={data}/>
+				<ScrollSnapPage darkTheme={darkTheme} changeSlide={changeSlide}  data={data}/>
 			</Route>
 		</div>
 

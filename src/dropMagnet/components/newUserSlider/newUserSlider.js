@@ -294,7 +294,7 @@ const UserSlider = ({darkTheme, editedActive, setEditedActive, setFeaturedConten
                 setEditedActive(false)
             });
         }
-    },[])
+    },[editedActive, rowCurrentCount, setEditedActive])
 
     const setRowCountHandler = () => (document.body.clientHeight >= 975 && document.body.clientWidth < 1200 && document.body.clientWidth > 810) || (document.body.clientHeight >= 945 && document.body.clientWidth >= 1200) ? setRowCurrentCount(2) : setRowCurrentCount(1);
 
