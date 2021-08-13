@@ -25,13 +25,14 @@ import FileMenu from "../../../myGallery/fileMenu/fileMenu";
 // import PageLiksComponent from "../pageLiks/PageLiks";
 import ShareModal from "../sharingIconsModal";
 import EditUserDescription from "../editUserDescriptionModal";
-import FeaturedContent from "../FeaturedContentModal";
+import FeaturedContent from "../FeaturedContentModal/index";
 import ImageUpdateModal from "../ImageUpdateModal";
 import blackSetting from "../../assets/settings-black.svg";
 import setting from "../../assets/settings-2.svg";
 // import InfinitiveSlider from "../newUserSlider/infinitiveSlider";
 import UserSlider from "../newUserSlider/newUserSlider";
 import MobileSlider from "../newUserSlider/mobileSlider";
+import PayModalComponent from "../payModalComponent";
 // import ScrollSnapPage from "../../pages/scrollSnapPage/ScrollSnapPage";
 
 const UserHeader = styled.div`
@@ -378,7 +379,7 @@ const Separator = styled.div`
 
 const HeaderIcon = styled.div`
     position: fixed;
-    z-index: 1;
+    z-index: 0;
     left: 16px;
     top: 68px;
 `;
@@ -397,6 +398,7 @@ const NewUserContent = (props) => {
     const [featuredContentModal, setFeaturedContentModal] = useState(false);
 
     const [imageUpdateModalToggle, setImageUpdateModalToggle] = useState(false);
+    const [payModalComponentToggle, setPayModalComponentToggle] = useState(false);
     const [currentScreenWidth, setCurrentScreenWidth] = useState(0);
 
     useEffect(() => {
@@ -408,6 +410,7 @@ const NewUserContent = (props) => {
         setEditUserDescription(false);
         setFeaturedContentModal(false);
         setImageUpdateModalToggle(false);
+        setPayModalComponentToggle(false);
     }
     const openShareModal = () => {
         setShareIsOpen(true)
@@ -436,11 +439,11 @@ const NewUserContent = (props) => {
         <UserContentWrapper className={darkTheme ? 'light' : ''}>
             <UserHeader>
                 <HeaderIcon onClick={(e) => {
-                    e.view.document.querySelector('.scroller').style.overflowY = editedActive === false ? 'hidden' : 'scroll';
-                    e.view.document.querySelector('.scroller').style.position = 'fixed';
+                    if (editedActive) {
+                        e.view.document.querySelector('.scroller').style.overflowY = !editedActive ? 'hidden' : 'scroll';
+                        e.view.document.querySelector('.scroller').style.position = !editedActive ? 'fixed' : 'unset';
+                    }
                     setEditedActive(!editedActive);
-                    e.preventDefault();
-
                 }}>
                     <CircleIcon imgUrl={darkTheme ? blackSetting : setting} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
                 </HeaderIcon>
@@ -470,7 +473,7 @@ const NewUserContent = (props) => {
                         <div className='wrapper-icon heart'>
                             <LikeButton lightTheme={darkTheme ? 'light black' : ''}/>
                         </div>
-                        <div className='wrapper-icon bitcoin'>
+                        <div className='wrapper-icon bitcoin' onClick={() => setPayModalComponentToggle(true)}>
                             <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light bitcoin' : 'bitcoin'} />
                         </div>
                     </div>
@@ -522,28 +525,31 @@ const NewUserContent = (props) => {
                     <PayWrapper>bio</PayWrapper>
                 </div>
             </SmallDevice>
-            <Separator className={darkTheme ? 'light' : ''}> </Separator>
-            <GreyBack>
-                {
-                    currentScreenWidth > 720
-                        ?
-                        <UserSlider
-                            darkTheme={darkTheme}
-                            featuredContentModal={featuredContentModal}
-                            editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}
-                            setFeaturedContentModal={setFeaturedContentModal}
-                          />
-                        : <MobileSlider
-                            darkTheme={darkTheme}
-                            featuredContentModal={featuredContentModal}
-                            editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}
-                            setFeaturedContentModal={setFeaturedContentModal}
-                            userDescription={userDescription}
-                            imageUpdateModalToggle={imageUpdateModalToggle}
-                          />
-                }
+            <div className="cover-z">
+                <Separator className={darkTheme ? 'light' : ''}> </Separator>
+                <GreyBack>
+                    {
+                        currentScreenWidth > 720
+                            ?
+                            <UserSlider
+                                darkTheme={darkTheme}
+                                featuredContentModal={featuredContentModal}
+                                editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}
+                                setEditedActive={setEditedActive}
+                                setFeaturedContentModal={setFeaturedContentModal}
+                              />
+                            : <MobileSlider
+                                darkTheme={darkTheme}
+                                featuredContentModal={featuredContentModal}
+                                editedActive={`${ editedActive ? 'edited-text edited-text-active' : ''}`}
+                                setFeaturedContentModal={setFeaturedContentModal}
+                                userDescription={userDescription}
+                                imageUpdateModalToggle={imageUpdateModalToggle}
+                              />
+                    }
 
-            </GreyBack>
+                </GreyBack>
+            </div>
             <PortaledComponent
                 modal={
                     <BlurModal
@@ -562,6 +568,7 @@ const NewUserContent = (props) => {
             <FeaturedContent isOpen={featuredContentModal} closeModal={closeModal}/>
             <ShareModal isOpen={shareIsOpen} closeModal={closeModal}/>
             <ImageUpdateModal isOpen={imageUpdateModalToggle} closeModal={closeModal}/>
+            <PayModalComponent isOpen={payModalComponentToggle} closeModal={closeModal}/>
         </UserContentWrapper>
     )
 }
