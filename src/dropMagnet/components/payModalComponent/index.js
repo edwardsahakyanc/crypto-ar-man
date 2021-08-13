@@ -1,6 +1,7 @@
 import Modal from 'react-modal';
-import React, {useState} from "react";
+import React from "react";
 import styled from "styled-components";
+import {NavLink} from "react-router-dom";
 
 Modal.setAppElement('#portal');
 
@@ -128,14 +129,14 @@ const PayModalComponent = ({isOpen, closeModal}) => {
                 <button className='close-btn' onClick={() => closeModal()}/>
                 <h5 className='title'>SEND CRYPTO TO ME.LINK/ALEXANDERNEWTON</h5>
                 <div className='link'>
-                    <a href="#">0xdasjnk4q98h9e28hdiuhhuaiuhwn828288..djak</a>
+                    <NavLink to="#">0xdasjnk4q98h9e28hdiuhhuaiuhwn828288..djak</NavLink>
                 </div>
 
                 <div className='info'>Tap wallet address above to copy to clipboard.</div>
                 <div className='or'>or</div>
                 <div className='metamask'>
                     <span className='metamask-text'>Auto-Fill In MetaMask</span>
-                    <img src="https://raw.githubusercontent.com/MetaMask/brand-resources/c3c894bb8c460a2e9f47c07f6ef32e234190a7aa/SVG/metamask-fox.svg" height="68" width="68"/>
+                    <img src="https://raw.githubusercontent.com/MetaMask/brand-resources/c3c894bb8c460a2e9f47c07f6ef32e234190a7aa/SVG/metamask-fox.svg" alt='ico' height="68" width="68"/>
                 </div>
                 <div className='condition-btn'>Terms & Conditions</div>
             </ComponentContainer>

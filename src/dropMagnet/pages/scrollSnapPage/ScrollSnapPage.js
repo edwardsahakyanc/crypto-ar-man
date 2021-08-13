@@ -28,7 +28,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
     const slideItems = useMemo(() => [
         {
             id: 1,
-            content: <section ref={coverPageRef}><NewUserContent galleryRef={galleryRef} coverPageRef={coverPageRef} darkTheme={darkTheme} changeSlide={changeSlide}/></section>
+            content: <section ref={coverPageRef}><NewUserContent galleryRef={galleryRef}  coverPageRef={coverPageRef} darkTheme={darkTheme} changeSlide={changeSlide}/></section>
         },
         {
             id: 2,

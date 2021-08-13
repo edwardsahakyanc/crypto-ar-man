@@ -223,6 +223,7 @@ const FeaturedContent = ({isOpen, closeModal}) => {
 
     const [addContent, setAddContent] = useState(false)
 
+
     // const [additionalSlider, setAdditionalSlider] = useState(true);
 
     const [addLinkModalToggle, setAddLinkModalToggle] = useState(false);
@@ -260,7 +261,7 @@ const FeaturedContent = ({isOpen, closeModal}) => {
             content: <ContentItem>
                 {
                     !addContent
-                        ? <AddButton><div>Add something</div></AddButton>
+                        ? <AddButton><div onClick={() => setAddContent(true)}>Add something</div></AddButton>
                         : <>
                             <LinksButton>Links</LinksButton>
                             {/*<MediaButton>Media</MediaButton>*/}
