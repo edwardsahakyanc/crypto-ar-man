@@ -7,12 +7,12 @@ import chat from "../../assets/chat.svg";
 // import blackSetting from "../../assets/settings-black.svg";
 // import edit from "../../assets/edit.svg";
 // import blackEdit from "../../assets/blackEdit.svg";
-// import link from "../../assets/link.svg";
-// import bitcoin from "../../assets/bitcoin.svg";
-// import message from "../../assets/message.svg";
-// import blackLink from "../../assets/blackLink.svg";
-// import blackBitcoin from "../../assets/blackBitcoin.svg";
-// import blackMessage from "../../assets/blackMessage.svg";
+import link from "../../assets/link.svg";
+import bitcoin from "../../assets/bitcoin.svg";
+import message from "../../assets/message.svg";
+import blackLink from "../../assets/blackLink.svg";
+import blackBitcoin from "../../assets/blackBitcoin.svg";
+import blackMessage from "../../assets/blackMessage.svg";
 // import userLogo from "../../assets/profile.svg";
 import ProfilePic from "../../assets/profile_pic.png";
 import LikeButton from "./styled-components/likeButton";
@@ -33,7 +33,6 @@ import setting from "../../assets/settings-2.svg";
 import UserSlider from "../newUserSlider/newUserSlider";
 import MobileSlider from "../newUserSlider/mobileSlider";
 import PayModalComponent from "../payModalComponent";
-import UserWrapper from "../userWrapper";
 // import ScrollSnapPage from "../../pages/scrollSnapPage/ScrollSnapPage";
 
 const UserHeader = styled.div`
@@ -84,7 +83,89 @@ const UserHeader = styled.div`
     // }
    
 `;
-
+const UserWrapper = styled.div`
+    background-color: #1A1A1A;
+    padding: 36px 10px 16px;
+    position:relative;
+    box-shadow: 0 -7px 10px rgba(28,28,28, .33);
+    
+    &.light {
+      background-color: #FCFCFC;
+      box-shadow: 0 -10px 10px rgba(0 0 0 / 16%);
+    }
+    
+    .content-wrapper {
+      display: flex;
+      justify-content: center;
+      position: relative;
+      margin-top: 60px;
+      
+      .wrapper-icon{
+        margin: 0 16px;
+       
+            position: absolute;
+            &.link {
+                left: calc(50% - 181px);
+                margin: 0;
+                @media (max-width: 375px) {
+                    left: calc(50% - 175px);
+                }
+            }
+            &.bitcoin {
+                right: calc(50% - 181px);
+                margin: 0;
+                @media (max-width: 375px) {
+                    right: calc(50% - 175px);
+                }
+            }
+            &.heart {
+                right: calc(50% - 152px);
+                top: -62px;
+                margin: 0;
+                @media (max-width: 375px) {
+                    right: calc(50% - 151px);
+                    top: -60px
+                }
+            }
+            &.message {
+                left: calc(50% - 152px);
+                top: -62px;
+                margin: 0;
+                @media (max-width: 375px) {
+                    left: calc(50% - 151px);
+                    top: -60px
+                }
+             }
+           
+               
+      }
+    }
+    
+    // @media (max-width: 375px) and (max-height: 700px) {
+    //  display: none;
+    // }
+    //
+    // @media (min-width: 320px) and (max-width: 720px){
+    //   padding: 32px 0 16px;
+    // }
+    
+    @media (min-width: 720px) {
+      padding-bottom: 32px;
+    }
+    
+    @media (min-width: 720px) and (max-width: 1024px) {
+      padding-top: 30px;
+    }
+    
+    @media (max-width: 390px) and (max-height: 666px){
+       padding-top: 41px;
+    }
+    
+    @media (max-width: 375px) and (max-height: 633px){
+       padding-top: 24px;
+    }        
+    
+`;
 // const MobileUserWrapper = styled.div`
 //     display: none;
 //     background-color: #1a1a1a;
@@ -126,7 +207,6 @@ const SmallDevice = styled.div`
         }
     }
 `;
-
 const UserImage = styled.div`
   width: 164px;
   height: 164px;
@@ -149,7 +229,17 @@ const UserImage = styled.div`
     //     margin: 0 19px 0 0;
     // }
 `;
-
+const LikeAndCommentWrapper = styled.div`
+    position: absolute;
+    // left: 19px;
+    // margin: 0 auto;
+    // top: -219px;
+    z-index: 10;
+    // @media (max-width: 1140px) {
+        left: calc(50% - 96px);
+        top: -90px;
+    // }
+`;
 const UserName = styled.p`
   width: 236px;
   // height: 46px;
@@ -215,7 +305,36 @@ const PayWrapper = styled.div`
         font-size: 14px;
    }
 `;
-
+const Description = styled.div`
+  max-width: 470px;
+  color: #eaeaea;
+  font-size: 16px;
+  font-weight: 400;
+  font-style: normal;
+  letter-spacing: normal;
+  line-height: 20px;
+  text-align: center;
+  margin: 0 auto;
+  word-break: break-word;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  line-clamp: 2;
+  box-orient: vertical;  
+  overflow: hidden;
+  text-overflow: ellipsis;
+  overflow: hidden;
+  .hide-text{ 
+    //white-space: nowrap;     
+  }    
+  &.light {
+   font-weight: 400;
+   color: #000000;  
+  }
+  @media (max-width: 720px) {
+    max-width: 332px;
+  }
+`;
 const GreyBack = styled.div`
 
 `;
@@ -264,6 +383,8 @@ const HeaderIcon = styled.div`
     left: 16px;
     top: 68px;
 `;
+
+
 
 const NewUserContent = (props) => {
     const { darkTheme, changeSlide } = props;
@@ -337,17 +458,33 @@ const NewUserContent = (props) => {
                         : null
                 }
             </UserHeader>
-            <UserWrapper
-                darkTheme={darkTheme}
-                userDescription={userDescription}
-                editUserDescription={editUserDescription}
-                handleOpenModal={handleOpenModal}
-                setEditUserDescription={setEditUserDescription}
-                name={name}
-                openShareModal={openShareModal}
-                setPayModalComponentToggle={setPayModalComponentToggle}
-
-            />
+            <UserWrapper className={darkTheme ? 'light' : ''}>
+                <LikeAndCommentWrapper>
+                    <UserImage>
+                        <img src={ProfilePic} alt="profile-pic"/>
+                    </UserImage>
+                </LikeAndCommentWrapper>
+                <div className='content-wrapper'>
+                    <UserName onClick={handleOpenModal} className={darkTheme ? 'light' : ''}>{name}</UserName>
+                    <div onClick={openShareModal} className='wrapper-icon link'>
+                        <CircleIcon imgUrl={darkTheme ? blackLink : link} alt={"icon"} className={darkTheme ? 'light' : ''} />
+                    </div>
+                    <div className='wrapper-icon message'>
+                        <CircleIcon imgUrl={darkTheme ? blackMessage : message} alt={"icon"} className={darkTheme ? 'light' : ''} />
+                    </div>
+                    <div className='wrapper-icon heart'>
+                        <LikeButton lightTheme={darkTheme ? 'light black' : ''}/>
+                    </div>
+                    <div className='wrapper-icon bitcoin' onClick={() => setPayModalComponentToggle(true)}>
+                        <CircleIcon imgUrl={darkTheme ? blackBitcoin : bitcoin} alt={"icon"} className={darkTheme ? 'light bitcoin' : 'bitcoin'} />
+                    </div>
+                </div>
+                <Description className={darkTheme ? 'light' : ''} onClick={() => setEditUserDescription(!editUserDescription)}>
+                    <div>
+                        {userDescription}
+                    </div>
+                </Description>
+            </UserWrapper>
             {/*<MobileUserWrapper>*/}
             {/*    <MobileUserContent>*/}
             {/*        <UserImage>*/}
