@@ -15,7 +15,7 @@ const ComponentContainer = styled.div`
     position: fixed;
     z-index: 1200;
     text-align: center;
-    color: #ffffff;
+    color: #fff;
     font-weight: 400;
     padding: 0 16px;
     
