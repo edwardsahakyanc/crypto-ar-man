@@ -413,6 +413,7 @@ const ComponentContainer = styled.div`
     color: #ffffff;
     font-weight: 400;
     padding: 0 7px;
+    overflow: scroll:
     
     @media screen and (max-width: 360px) {
       padding: 0;
