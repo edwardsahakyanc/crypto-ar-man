@@ -163,7 +163,7 @@ const MobileSlider = ({darkTheme, editedActive, setFeaturedContentModal, feature
 
     const handleChangeSlideToFirst = () => {
         const slideCurrentSize = slidero.current.childNodes[1].children[1].style.width.replace(/px/i, '')
-        console.log(document.querySelectorAll('.swiper-pagination .swiper-pagination-bullet')[0])
+        // console.log(document.querySelectorAll('.swiper-pagination .swiper-pagination-bullet')[0])
         const bullets = document.querySelectorAll('.swiper-pagination .swiper-pagination-bullet')
 
         for (let i = 0; i < bullets.length; i++ ) {

@@ -19,7 +19,7 @@ const ScrollSnapPage = ({darkTheme,changeSlide, data}) => {
     const [filteredData, setFilteredData] = useState([]);
 
     const iOS = !window.MSStream && /iPad|iPhone|iPod/.test(navigator.userAgent);
-    console.log(window.innerHeight)
+    // console.log(window.innerHeight)
     // useEffect(() => {
     //
     // },[data])
