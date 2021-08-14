@@ -359,7 +359,7 @@ export default class InfinitiveSlider extends Component {
 
 
         };
-        console.log(this.props.setFeaturedContentModal)
+        // console.log(this.props.setFeaturedContentModal)
         return (
             <div className='slider-container' onClick={() => this.props.editedActive && this.props.setFeaturedContentModal(true)}>
                 <Slider {...settings}>
