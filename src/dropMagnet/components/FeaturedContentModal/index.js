@@ -566,7 +566,7 @@ const items = [
         description: 'What shall we add?',
         addBtn: true,
         slotText: 'Slide is Empty'
-    },
+    }
 ];
 
 const reorder = (list, startIndex, endIndex) => {
