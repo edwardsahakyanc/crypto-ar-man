@@ -441,20 +441,23 @@ const NewUserContent = (props) => {
         <UserContentWrapper className={darkTheme ? 'light' : ''}>
             <UserHeader>
                 <HeaderIcon onClick={(e) => {
-                    if (editedActive) {
+                    setEditedActive(!editedActive);
+
+                    if (!editedActive) {
                         e.view.document.querySelector('.scroller').style.overflowY = !editedActive ? 'hidden' : 'scroll';
                         e.view.document.querySelector('.scroller').style.position = !editedActive ? 'fixed' : 'unset';
                     }
-                    setEditedActive(!editedActive);
+
                 }}>
-                    <CircleIcon imgUrl={darkTheme ? blackSetting : setting} alt={"icon"} className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
+                    <CircleIcon imgUrl={darkTheme ? blackSetting : setting} alt={"icon"}
+                                className={darkTheme ? 'header-edit' : 'header-edit-black'}/>
                 </HeaderIcon>
 
                 {
                     editedActive
                         ? <div onClick={() => setImageUpdateModalToggle(true)}>
                             <HeaderEditText>Edit Header & BGs</HeaderEditText>
-                          </div>
+                        </div>
                         : null
                 }
             </UserHeader>
