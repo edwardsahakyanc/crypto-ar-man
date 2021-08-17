@@ -5,6 +5,7 @@ import ExploreGalleries from "./exploreGalleries";
 import DropMagnet from "./dropMagnet";
 import MyGallery from "./myGallery";
 import Politician from './dropMagnet/components/politician/politician';
+import MovieFarm from "./movieFarm";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
             <Route path="/drop-magnet" component={DropMagnet} />
             <Route path="/my-gallery" component={MyGallery} />
             <Route path="/politician" component={Politician} />
+            <Route path="/movie-farm" render={() => <MovieFarm/>}/>
         </Switch>
     </div>
   );
