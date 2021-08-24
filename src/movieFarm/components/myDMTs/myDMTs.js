@@ -4,6 +4,7 @@ import {NavLink} from "react-router-dom";
 
 const Dmt = styled.div`
  text-align: center;
+ padding: 300px 0;
 `;
 
 const Title = styled.h1`

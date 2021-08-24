@@ -194,26 +194,26 @@ body{
 //    mix-blend-mode: screen;
 //}
 
-//.bg {
-//  height: 80vh;
-//  background-image: url("./movieFarm/assets/frame-000000.jpg");
-//  animation: anim 2s infinite;
-//  //background-repeat: no-repeat;
-//  //background-size: cover;
-//  .bg-wrapper {
-//    height: 100%;
-//    font-size: 400px;
-//    background-color: #fff;
-//    mix-blend-mode: screen;
-//    line-height: 400px;
-//    animation: text 8s infinite;
-//    span {
-//      font-size: 20px;
-//      mix-blend-mode: screen;
-//      background-color: #fff;
-//    }
-//  }
-//}
+.bg {
+  //height: 80vh;
+  background-image: url("./movieFarm/assets/frame-000000.jpg");
+  animation: anim 2s infinite;
+  background-repeat: no-repeat;
+  //background-size: cover;
+  .bg-wrapper {
+    //height: 100%;
+    //font-size: 400px;
+    background-color: #fff;
+    mix-blend-mode: screen;
+    //line-height: 400px;
+    animation: text 8s infinite;
+    span {
+      font-size: 20px;
+      mix-blend-mode: screen;
+      background-color: #fff;
+    }
+  }
+}
 
 @keyframes text {
   from {
@@ -377,4 +377,7 @@ body{
   100% {
     background-image: url("./movieFarm/assets/frame-000051.jpg");
   }
+}
+::-webkit-scrollbar {
+  display: none;
 }
